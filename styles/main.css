@@ -1,9 +1,21 @@
 .darkBG {
-	background: : #999;
+	background: #999;
+	color: black;
+	padding: 5px;
 }
 .darkerBG {
 	background: #666;
+	color: rgb(230,230,230);
+	padding: 5px;
 }
 .darkestBG {
 	background: #333;
+	color: white;
+	padding: 5px;
+}
+
+header h1 {
+	background: #666;
+	color: white;
+	padding: 5px;
 }
