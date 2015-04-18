@@ -1,14 +1,13 @@
 <html>
 	<head>
-		<title>Hello world!</title>
-		<!--Selfmade main.css Stylesheet for optimizations -->
-		<link rel="stylesheet" href="styles/main.css">
+		<title>Hello world!</title>		
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		
+		<!--Selfmade main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/main.css">
 	</head>
 	<body>
 		<header class="navbar-inverse">
@@ -23,7 +22,10 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="#"><strong>Tally</strong>&nbsp;C&amp;S</a>
+				      <a class="navbar-brand" href="#">
+				      	<!--<strong>Tally</strong>&nbsp;C&amp;S-->
+				      	<img alt="Brand" src="images/tally_icon.png">
+				      </a>
 				    </div>
 
 				    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,13 +62,43 @@
 		
 		
 		<div class="container">
-			<h1>Hello and welcome to <strong>Tally C&amp;S </strong>, your personal debt register assistant for coffee and sweets!</h1> </br>
+			</br>
+			<div class="jumbotron">
+				<h1>Hello and welcome to <strong>Tally</strong> <strong>C</strong>&amp;<strong>S</strong></h1>
+				<p>Your personal debt register assistant for coffee and sweets! </br></p> 
+			</div>
 			<div class="row">
-				<div class="darkBG col-sm-4">Text1</div>
-				<div class="darkerBG col-sm-4">Text2</div>
-				<div class="darkestBG col-sm-4">Text3</div>
+				<div class="col-sm-4">
+					<div class="panel panel-info">
+					  <div class="panel-heading">Info</div>
+					  <div class="panel-body">
+					    Go,get the sweets!&rarr;
+					    <a href="http://www3.artflakes.com/artwork/products/803835/poster/i-love-sweets.jpg?1326921868">	
+					    	<div class="btn btn-primary">Primary Button</div>
+					 	</a>
+					  </div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-success">
+					  <div class="panel-heading">Success</div>
+					  <div class="panel-body">
+					    Panel content
+					  </div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="panel panel-default">
+					  <div class="panel-heading">Default</div>
+					  <div class="panel-body">
+					    Panel content
+					  </div>
+					</div>
+				</div>
 			</div>
 		</div>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	</body>
