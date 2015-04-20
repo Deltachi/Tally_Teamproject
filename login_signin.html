@@ -22,7 +22,7 @@
 				        <span class="icon-bar"></span>
 				        <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="#">
+				      <a class="navbar-brand" href="index.html">
 				      	<!--<strong>Tally</strong>&nbsp;C&amp;S-->
 				      	<img alt="Brand" src="images/tally_icon.png">
 				      </a>
@@ -32,7 +32,7 @@
 				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				      <ul class="nav navbar-nav">
 				        <li><a href="about.html">About <span class="sr-only">(current)</span></a></li>
-				        <li><a href="login_signin.html">LogIn/SignIn</a></li>
+				        <li class="active"><a href="#">LogIn/SignIn</a></li>
 				        <li class="dropdown">
 				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
 				          <ul class="dropdown-menu" role="menu">
@@ -63,37 +63,13 @@
 		
 		<div class="container">
 			</br>
-			<div class="jumbotron">
-				<h1>Hello and welcome to </br> <strong>Tally</strong> <strong>C</strong>&amp;<strong>S</strong></h1>
-				<p class="jumbo_subtitle">Your personal debt register assistant for coffee and sweets! <span style="color:#BBB; font-size:80%;">also for Tea ;)</span></p> 
-			</div>
 			<div class="row">
-				<div class="col-sm-4">
-					<div id="panel_sweets" class="panel panel-info">
-					  <div class="panel-heading">Info</div>
-					  <div class="panel-body">
-					    Go,get the sweets!&rarr;
-					    <a class="btn btn-primary" href="http://www3.artflakes.com/artwork/products/803835/poster/i-love-sweets.jpg?1326921868">Go!</a>
-						<img src="images/beere_icon.png">
-					  </div>
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+						Hello.
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel panel-success">
-					  <div class="panel-heading">Success</div>
-					  <div class="panel-body">
-					    Try this: 
-					    <button id="btn_hide" href="#" class="btn btn-success">Hide the sweets</button>	
-					  </div>	
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="panel panel-default">
-					  <div class="panel-heading">Default</div>
-					  <div class="panel-body">
-					    Or try that: 
-					    <button id="btn_show" href="#"  class="btn btn-default">Show the sweets</button>	
-					  </div>
+					<div class="panel-body">
+						You're currently in the 'LogIn/SignIn' tab
 					</div>
 				</div>
 			</div>
@@ -103,15 +79,7 @@
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 		<script>
-			$(function(){
-				
-				$('#btn_hide').on('click', function(){
-					$('#panel_sweets').slideUp(1000);
-				});
-				$('#btn_show').on('click', function(){
-					$('#panel_sweets').slideDown(1000);
-				});
-			});
+			
 		</script>
 	</body>
 </html>
