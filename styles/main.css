@@ -21,11 +21,36 @@ header h1 {
 	margin: 0;
 }
 
-.navbar {
-	min-height: 65px;
-}
-
 .jumbo_subtitle {
 	color: #777;
 }
 
+
+/* Large desktop // 1200*/
+@media (min-width: 1200px) { 
+	.navbar-header{
+		min-height: 60px;
+	}
+}
+ 
+/* Portrait tablet to landscape and desktop // 768 - 979 */
+/*and (max-width: 979px)*/
+@media (min-width: 768px)  {
+	.navbar-header{
+		min-height: 60px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet // 767 */
+@media (max-width: 767px) { 
+	.navbar-header{
+		min-height: 85px;
+	}
+}
+ 
+/* Landscape phones and down // 480
+@media (max-width: 480px) {
+	.navbar-header{
+		min-height: 85px;
+	}
+}*/
