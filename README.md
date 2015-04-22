@@ -1,17 +1,17 @@
 
-Tally_Teamproject
- ==============
+#Tally_Teamproject
+ ==============test
  
 Team Project Summer Semester 2015
- --------------
+ --------------test2
  
- ### Develop an `Electronic Coffee Tally`.
+ #Develop an `Electronic Coffee Tally`.
  
  *260h worktime*
  **weekly** meetings
  
- <<<A [link](http://example.com).
-    No space between ] and (  >>>
+ <A [link](http://example.com).
+    No space between ] and (  >
 
  Threads:
  
