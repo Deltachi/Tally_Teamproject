@@ -5,13 +5,14 @@
 `Team Project Summer Semester 2015`
  
  
- #Develop an Electronic Coffee Tally.
+ <p>Develop an Electronic Coffee Tally.</p>
  
- *260h worktime*
- **weekly** meetings
- 
- <A [link](http://example.com).
-    No space between ] and (  >
+ <p>
+	 *260h worktime* </br>
+	 **weekly** meetings
+ </p>
+
+ <A [link](http://example.com).>
 
  Threads:
  
