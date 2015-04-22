@@ -1,17 +1,17 @@
 
 Tally_Teamproject
- =======
+ ==============
  
 Team Project Summer Semester 2015
- -----------
+ --------------
  
  ### Develop an `Electronic Coffee Tally`.
  
  *260h worktime*
  **weekly** meetings
  
- <<<A [link](http://example.com).>>>
- <<<   No space between ] and (  >>>
+ <<<A [link](http://example.com).
+    No space between ] and (  >>>
 
  Threads:
  
@@ -21,7 +21,7 @@ Team Project Summer Semester 2015
    * HTML, CSS, JavaScript, jQuery, PHP
 
 
-| Member  | Thread |
+| Members  | Threads |
 | ------------- | ------------- |
 | Deltachi  | Web Frontend/Backend  |
 | Ambriador  | Apache2 PHP SQLite  |
