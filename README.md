@@ -2,10 +2,15 @@
 #Tally_Teamproject
  
  
-`Team Project Summer Semester 2015`
+<span style="font-size:200%">`Team Project Summer Semester 2015`</span>
  
  
- <p>Develop an Electronic Coffee Tally.</p>
+ <p>
+ 	<h4>
+ 		Develop an Electronic Coffee Tally.
+ 	</h4>
+ 	Put some descriptive text here (maybe later)
+ </p>
  
  <p>
 	 *260h worktime* </br>
@@ -27,4 +32,4 @@
 | Deltachi  | Web Frontend/Backend  |
 | Ambriador  | Apache2 PHP SQLite  |
 | Flipse789  | C++ QT5/4  |
-| Content Cell  | C++ QT5/4  |
+| Sebastian789  | C++ QT5/4  |
