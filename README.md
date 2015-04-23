@@ -2,7 +2,7 @@
 #Tally_Teamproject
  
  
-<span style="font-size:200%">`Team Project Summer Semester 2015`</span>
+<span style="font-size:100%">`Team Project Summer Semester 2015`</span>
  
  
  <p>
