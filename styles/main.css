@@ -66,8 +66,7 @@ header h1 {
 }
 
 .img-slider {
-	
-	
-	height: 25%;
-	width: auto;	
+	height: 750px;
+	width: auto;
+	margin:-20% 0;	
 }
