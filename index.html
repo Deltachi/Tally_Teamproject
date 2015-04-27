@@ -1,12 +1,18 @@
 <html>
 	<head>
 		<title>Tally C&amp;S</title>		
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+		<!--Online sources -->
+		<!-- Latest compiled and minified CSS 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+		<!-- Optional theme 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap.css">
+		<!-- Optional theme (locally saved) -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-		<!--Selfmade main.css Stylesheet for optimizations -->
+		<!--main.css Stylesheet for optimizations -->
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
 	<body>
@@ -116,6 +122,7 @@
 			<div  style="text-align: center;" class="alert alert-info"><h3>Here are a few concepts of the GUI from the Raspberry Pi User Interface</h3><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></div>
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
+					<!--IMAGE SLIDER aka News Ticker -->
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 					  <!-- Indicators -->
 					  <ol class="carousel-indicators">
@@ -127,21 +134,21 @@
 					  <!-- Wrapper for slides -->
 					  <div class="carousel-inner" role="listbox">
 					    <div class="item active">   	
-			      		<div class="img-slider"><img src="images/test1.png" alt="Test1"></div>
+			      		<div><img src="images/test1.png" alt="Test1" class="img-slider"></div>
 					      <div class="carousel-caption dark_box">
 					        <h3>The LogIn screen</h3>
 					        <p>This is an example of the structure, not an actual and representative image.</p>
 					      </div>
 					    </div>
 					    <div class="item">     
-			      		<div class="img-slider"><img src="images/test2.png" alt="Test2"></div>
+			      		<div><img src="images/test2.png" alt="Test2" class="img-slider"></div>
 					      <div class="carousel-caption dark_box">
 					        <h3>The touchscreen is too small to not use a huge keyboard</h3>
 					        <p>This is an example of the structure, not an actual and representative image.</p>
 					      </div>
 					    </div>
 					    <div class="item">     
-			      		<div class="img-slider"><img src="images/test3.png" alt="Test3"></div>
+			      		<div><img src="images/test3.png" alt="Test3" class="img-slider"></div>
 					      <div class="carousel-caption dark_box">
 					        <h3>There's the main menu</h3>
 					        <p>This is an example of the structure, not an actual and representative image.</p>
@@ -161,6 +168,7 @@
 					</div><!-- /.carousel slide -->
 				</div><!-- /col-sm-6 -->
 			</div><!-- /row -->
+			</br>
 			<div class="panel panel-default">
 			  <div class="panel-body">
 			    Here is some space for much info, wow!
@@ -170,11 +178,16 @@
 
 		
 
+		<!-- These sources stay in the clouds and are not availabe in intranet-only-mode -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+		<!-- Latest compiled and minified JavaScript 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
 
-		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+		<script src="javascript/jquery-1.11.2.js"></script>
+		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
 		<script>
 			$(function(){
 				
