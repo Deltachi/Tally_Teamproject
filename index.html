@@ -15,8 +15,8 @@
 		<!--main.css Stylesheet for optimizations -->
 		<link rel="stylesheet" href="styles/main.css">
 	</head>
-	<body>
-		<header class="navbar-inverse">
+	<body class="body_bg">
+		<div class="navbar-inverse navbar-fixed-top boxShadow">
 			<div class="container">
 				<nav class="navbar">
 				  <div class="container-fluid">
@@ -30,7 +30,7 @@
 				      </button>
 				      <a class="navbar-brand" href="#">
 				      	<!--<strong>Tally</strong>&nbsp;C&amp;S-->
-				      	<img alt="Brand" src="images/tally_icon.png">
+				      	<img alt="Brand" src="images/tally_icon.png" class="logoMargin">
 				      </a>
 				    </div>
 
@@ -53,23 +53,26 @@
 				        </li>
 				      </ul>
 				      <form class="navbar-form navbar-left" role="search">
-				        <div class="form-group">
-				          <input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
+				      	<div class="input-group">
+					        <input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
+					        <span class="input-group-btn">
+					        	<button type="submit" class="btn btn-default">Go!</button>
+					    	</span>
 				        </div>
-				        <button type="submit" class="btn btn-default">Go!</button>
 				      </form>
 				      
 				    </div><!-- /.navbar-collapse -->
 				  </div><!-- /.container-fluid -->
 				</nav>	
 			</div>
-		</header>
-		
-		
-		
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
 		<div class="container">
 			</br>
-			<div class="jumbotron">
+			<div class="jumbotron boxShadow">
 				<h1>
 					Hello 
 					<span style="font-size:70%;">
@@ -89,7 +92,7 @@
 			</div><!-- /jumbotron -->
 			<div class="row">
 				<div class="col-sm-4">
-					<div id="panel_sweets" class="panel panel-info">
+					<div id="panel_sweets" class="panel panel-info boxShadow">
 					  <div class="panel-heading">Info</div>
 					  <div class="panel-body">
 					    Go,get the sweets!&rarr;
@@ -99,7 +102,7 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="panel panel-success">
+					<div class="panel panel-success  boxShadow">
 					  <div class="panel-heading">Success</div>
 					  <div class="panel-body">
 					    Try this: 
@@ -108,7 +111,7 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="panel panel-default">
+					<div class="panel panel-default  boxShadow">
 					  <div class="panel-heading">Default</div>
 					  <div class="panel-body">
 					    Or try that: 
@@ -119,11 +122,11 @@
 			</div><!-- /button row -->
 			</br>
 			</br>
-			<div  style="text-align: center;" class="alert alert-info"><h3>Here are a few concepts of the GUI from the Raspberry Pi User Interface</h3><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></div>
+			<div  style="text-align: center;" class="alert alert-info boxShadow"><h3>Here are a few concepts of the GUI from the Raspberry Pi User Interface</h3><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span></div>
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
 					<!--IMAGE SLIDER aka News Ticker -->
-					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<div id="carousel-example-generic" class="carousel slide boxShadow" data-ride="carousel">
 					  <!-- Indicators -->
 					  <ol class="carousel-indicators">
 					    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -169,7 +172,7 @@
 				</div><!-- /col-sm-6 -->
 			</div><!-- /row -->
 			</br>
-			<div class="panel panel-default">
+			<div class="panel panel-default boxShadow">
 			  <div class="panel-body">
 			    Here is some space for much info, wow!
 			  </div>
@@ -197,6 +200,11 @@
 				$('#btn_show').on('click', function(){
 					$('#panel_sweets').slideDown(1000);
 				});
+				$('#nav').affix({
+				      offset: {
+				        top: $('header').height()
+				      }
+				});	
 			});
 		</script>
 	</body>
