@@ -1,3 +1,21 @@
+.navbar-inverse {
+  background-image: -webkit-linear-gradient(top, #423424 0%, #241E18 100%);
+  background-image:      -o-linear-gradient(top, #423424 0%, #241E18 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#423424), to(#241E18));
+  background-image:         linear-gradient(to bottom, #423424 0%, #241E18 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff423424', endColorstr='#ff241E18', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+}
+
+.body_bg {
+	background: #E3D4C3;
+}
+
+ .boxShadow {
+ 	box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
+ }
+
 .darkBG {
 	background: #999;
 	color: black;
@@ -25,11 +43,14 @@ header h1 {
 	color: #777;
 }
 
+.logoMargin {
+	margin: -5% 0;
+}
 
 /* Large desktop // 1200*/
 @media (min-width: 1200px) { 
 	.navbar-header{
-		min-height: 60px;
+		min-height: 55px;
 	}
 }
  
@@ -37,14 +58,14 @@ header h1 {
 /*and (max-width: 979px)*/
 @media (min-width: 768px)  {
 	.navbar-header{
-		min-height: 60px;
+		min-height: 55px;
 	}
 }
  
 /* Landscape phone to portrait tablet // 767 */
 @media (max-width: 767px) { 
 	.navbar-header{
-		min-height: 85px;
+		min-height: 75px;
 	}
 }
  
