@@ -30,8 +30,10 @@ void MainWindow::setMainWindowPointer(QApplication *a){
 void MainWindow::setMainMenueScreen(){
     MainMenue *MyMainMenue = new MainMenue();
 
-    QWidget *oldWidget = ui->gridLayout_port->widget();
+    QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
+    QWidget *oldWidget = oldItem->widget();
     ui->gridLayout_port->removeWidget(oldWidget);
+    oldWidget->setVisible(false);
 
     ui->gridLayout_port->addWidget(MyMainMenue);
 }

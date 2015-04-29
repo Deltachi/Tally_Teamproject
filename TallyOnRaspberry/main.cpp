@@ -21,10 +21,10 @@ int main(int argc, char *argv[])
     while(!exit){
         exitcode = a.exec();
         if(exitcode == 10){ //Login was pressed?
-
+            w.setMainMenueScreen();
+            qDebug("Clicked^^");
         }else{
             exit = true;
-            w.setMainMenueScreen();
         }
     }
     return exitcode;
