@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/MyFiles">
+        <file>Tally CS - Logo beta.png</file>
+    </qresource>
+</RCC>
