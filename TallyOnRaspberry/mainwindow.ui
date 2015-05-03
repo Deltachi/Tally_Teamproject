@@ -20,7 +20,7 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,100">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="1,200">
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="1,1,1">
       <property name="spacing">
@@ -32,7 +32,7 @@
       <item>
        <widget class="QLabel" name="label_pic">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -51,6 +51,9 @@
         </property>
         <property name="scaledContents">
          <bool>true</bool>
+        </property>
+        <property name="margin">
+         <number>0</number>
         </property>
        </widget>
       </item>
@@ -71,7 +74,7 @@
        </spacer>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayoutDate" stretch="1,1,1">
+       <layout class="QVBoxLayout" name="verticalLayoutDate" stretch="1,1">
         <item>
          <widget class="QLabel" name="label_Time">
           <property name="sizePolicy">
@@ -126,22 +129,6 @@
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
-        </item>
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeType">
-           <enum>QSizePolicy::Expanding</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>10</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </item>

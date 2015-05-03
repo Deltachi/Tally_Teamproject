@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     w.show();
     w.setMainWindowPointer(&a);
 
-
     //w.setStyleSheet("color: black; background-color:brown;");
     int exitcode;
     bool exit = false;

@@ -20,13 +20,94 @@ void LoginScreen::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
 }
 
-void LoginScreen::on_pushButton_clicked()
+void LoginScreen::update_name_label(){
+    ui->listWidget->clear();
+    QListWidgetItem Peter;//new QListWidgetItem(tr("Paul"),ui->listWidget );
+    qDebug() << NameField;
+   if(NameField.endsWith("1")){
+       Peter.setText("Anna");
+       ui->listWidget->addItem(&Peter);
+       ui->listWidget->insertItem(1,"Anne Fresse");
+   }else if(NameField.endsWith("2")){
+       Peter.setText("Dieter");
+       ui->listWidget->addItem(&Peter);
+
+   }else if(NameField.endsWith("3")){
+       Peter.setText("Gustavo");
+       ui->listWidget->addItem(&Peter);
+   }else{
+       Peter.setText("Herbertina");
+       ui->listWidget->addItem(&Peter);
+   }
+}
+
+void LoginScreen::on_pushButton_1_clicked()
 {
-    if(ui->lineEdit_Name->text().toStdString() == "Philip" && ui->lineEdit_Password->text().toStdString() == "1234"){
-        MainWindowPointer->exit(10);
-    }else{
-        ui->label_wrongPw->setVisible(true);
-        ui->label_wrongPw->setText("Invalid login...");
-        ui->label_wrongPw->setStyleSheet("QLabel { background-color : white; color : red; }");
-    }
+    NameField.append("1");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_2_clicked()
+{
+    NameField.append("2");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_3_clicked()
+{
+    NameField.append("3");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_4_clicked()
+{
+    NameField.append("4");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_5_clicked()
+{
+    NameField.append("5");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_6_clicked()
+{
+    NameField.append("6");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_7_clicked()
+{
+    NameField.append("7");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_8_clicked()
+{
+    NameField.append("8");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_9_clicked()
+{
+    NameField.append("9");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_loeschen_clicked()
+{
+    NameField.clear();
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_0_clicked()
+{
+    NameField.append("0");
+    update_name_label();
+}
+
+void LoginScreen::on_pushButton_Weiter_clicked()
+{
+
 }
