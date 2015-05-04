@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QApplication>
 #include <QString>
+#include <QtDebug>
+#include <QtSql>
+#include <QFileInfo>
+#include "sqlzugriff.h"
 
 namespace Ui {
 class LoginScreen;
@@ -53,6 +57,7 @@ private:
     QString NameField;          //REAL Name
     QString PasswordField;
     QString Username; //this is the logged in Username
+    QSqlDatabase database;
 };
 
 #endif // LOGINSCREEN_H

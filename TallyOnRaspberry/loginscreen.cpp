@@ -10,6 +10,8 @@ LoginScreen::LoginScreen(QWidget *parent) :
     ui(new Ui::LoginScreen)
 {
     ui->setupUi(this);
+    database = QSqlDatabase::addDatabase("QSQLITE");
+    database.setDatabaseName("C:/SQLite/database.sqlite");
 }
 
 LoginScreen::~LoginScreen()
@@ -25,29 +27,22 @@ QString LoginScreen::getUsername(){
 
 void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
+    SqlZugriff Database;
+    database.open();
+    Database.initGetId();
+    QString tempName;
 
-   if(NameField.endsWith("1")){ //which letter have we added? update lineEdit and listWidget!
+    tempName = Database.getNextId();
+    int i = 0;
+    while(tempName.length() > 0){
+        qDebug() << tempName;
+        qDebug() << tempName.compare(NameField);
 
-       ui->listWidget->insertItem(1,"Anne Fresse");
-       ui->listWidget->insertItem(2,"Anne Bar");
-       ui->listWidget->insertItem(3,"Anna Hinderlich");
-
-   }else if(NameField.endsWith("2")){
-
-       ui->listWidget->insertItem(1,"Dieter Knebel");
-       ui->listWidget->insertItem(2,"Donut Essen");
-
-   }else if(NameField.endsWith("3")){
-
-       ui->listWidget->insertItem(1,"Gelatina");
-       ui->listWidget->insertItem(2,"Indiane Nesjo");
-       ui->listWidget->insertItem(3,"Gustavo Machdichfertig");
-
-   }else{
-       if(NameField.length() > 0){
-           ui->listWidget->insertItem(1,"Mir faellt nichts mehr ein...");
-           ui->listWidget->insertItem(2,"Drueck was anders..");
-       }
+        if(tempName.compare(NameField)== NameField.length()){
+            ui->listWidget->insertItem(i,tempName);
+            i++;
+        }
+        tempName = Database.getNextId();
    }
    ui->lineEdit->setText(NameField);
 }
@@ -120,6 +115,8 @@ void LoginScreen::on_pushButton_0_clicked()
 
 void LoginScreen::on_pushButton_Weiter_clicked()
 {
-    Username = ui->listWidget->selectedItems().first()->text();
-    MainWindowPointer->exit(10);
+    if( ui->listWidget->selectedItems().length() > 0){
+        Username = ui->listWidget->selectedItems().first()->text();
+        MainWindowPointer->exit(10);
+    }
 }

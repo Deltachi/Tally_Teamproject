@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'loginscreen.h'
 **
-** Created: Sun 3. May 19:23:54 2015
+** Created: Mon 4. May 22:27:37 2015
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Sun 3. May 18:54:34 2015
+** Created: Mon 4. May 14:42:30 2015
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -19,7 +19,6 @@
 #include <QtGui/QHeaderView>
 #include <QtGui/QLabel>
 #include <QtGui/QMainWindow>
-#include <QtGui/QSpacerItem>
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
@@ -32,7 +31,7 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_pic;
-    QSpacerItem *horizontalSpacer_3;
+    QLabel *label_username;
     QVBoxLayout *verticalLayoutDate;
     QLabel *label_Time;
     QLabel *label_Date;
@@ -69,9 +68,14 @@ public:
 
         horizontalLayout_3->addWidget(label_pic);
 
-        horizontalSpacer_3 = new QSpacerItem(200, 40, QSizePolicy::Maximum, QSizePolicy::Minimum);
+        label_username = new QLabel(centralWidget);
+        label_username->setObjectName(QString::fromUtf8("label_username"));
+        QFont font;
+        font.setPointSize(15);
+        label_username->setFont(font);
+        label_username->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_3->addItem(horizontalSpacer_3);
+        horizontalLayout_3->addWidget(label_username);
 
         verticalLayoutDate = new QVBoxLayout();
         verticalLayoutDate->setSpacing(6);
@@ -83,9 +87,9 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(label_Time->sizePolicy().hasHeightForWidth());
         label_Time->setSizePolicy(sizePolicy1);
-        QFont font;
-        font.setPointSize(20);
-        label_Time->setFont(font);
+        QFont font1;
+        font1.setPointSize(20);
+        label_Time->setFont(font1);
         label_Time->setLayoutDirection(Qt::RightToLeft);
         label_Time->setTextFormat(Qt::AutoText);
         label_Time->setScaledContents(false);
@@ -97,10 +101,10 @@ public:
         label_Date->setObjectName(QString::fromUtf8("label_Date"));
         sizePolicy1.setHeightForWidth(label_Date->sizePolicy().hasHeightForWidth());
         label_Date->setSizePolicy(sizePolicy1);
-        QFont font1;
-        font1.setPointSize(20);
-        font1.setStrikeOut(false);
-        label_Date->setFont(font1);
+        QFont font2;
+        font2.setPointSize(20);
+        font2.setStrikeOut(false);
+        label_Date->setFont(font2);
         label_Date->setLayoutDirection(Qt::RightToLeft);
         label_Date->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
@@ -136,6 +140,7 @@ public:
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Tally", 0, QApplication::UnicodeUTF8));
         label_pic->setText(QString());
+        label_username->setText(QString());
         label_Time->setText(QApplication::translate("MainWindow", "16:00", 0, QApplication::UnicodeUTF8));
         label_Date->setText(QApplication::translate("MainWindow", "16.1.2015", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
