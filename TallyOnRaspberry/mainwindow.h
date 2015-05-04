@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "loginscreen.h"
 
 namespace Ui {
 class MainWindow;
@@ -16,6 +17,7 @@ public:
     ~MainWindow();
     void setMainMenueScreen();
     void setMainWindowPointer(QApplication *a);
+    void getUserFromLoginScreen();
 
 private slots:
     void on_pushButton_clicked();
@@ -23,6 +25,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QApplication *MainWindowPointer;
+    LoginScreen *MyLoginScreen;
 };
 
 #endif // MAINWINDOW_H

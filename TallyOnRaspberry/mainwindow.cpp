@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    LoginScreen *MyLoginScreen = new LoginScreen();
+    MyLoginScreen = new LoginScreen();
     ui->gridLayout_port->addWidget(MyLoginScreen);
 }
 
@@ -25,6 +25,9 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::setMainWindowPointer(QApplication *a){
 
     MainWindowPointer = a;
+}
+void MainWindow::getUserFromLoginScreen(){
+   ui->label_username->setText(MyLoginScreen->getUsername());
 }
 
 void MainWindow::setMainMenueScreen(){

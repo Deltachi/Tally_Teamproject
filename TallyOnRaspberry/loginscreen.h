@@ -18,6 +18,7 @@ public:
     ~LoginScreen();
     void setMainWindowPointer(QApplication *a);
     void update_name_label();
+    QString getUsername();
 
 private slots:
 
@@ -51,6 +52,7 @@ private:
     QApplication *MainWindowPointer;
     QString NameField;          //REAL Name
     QString PasswordField;
+    QString Username; //this is the logged in Username
 };
 
 #endif // LOGINSCREEN_H

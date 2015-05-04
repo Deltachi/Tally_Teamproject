@@ -19,26 +19,37 @@ LoginScreen::~LoginScreen()
 void LoginScreen::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
 }
+QString LoginScreen::getUsername(){
+    return Username;
+}
 
 void LoginScreen::update_name_label(){
-    ui->listWidget->clear();
-    QListWidgetItem Peter;//new QListWidgetItem(tr("Paul"),ui->listWidget );
-    qDebug() << NameField;
-   if(NameField.endsWith("1")){
-       Peter.setText("Anna");
-       ui->listWidget->addItem(&Peter);
+    ui->listWidget->clear(); //clears the listwidget
+
+   if(NameField.endsWith("1")){ //which letter have we added? update lineEdit and listWidget!
+
        ui->listWidget->insertItem(1,"Anne Fresse");
+       ui->listWidget->insertItem(2,"Anne Bar");
+       ui->listWidget->insertItem(3,"Anna Hinderlich");
+
    }else if(NameField.endsWith("2")){
-       Peter.setText("Dieter");
-       ui->listWidget->addItem(&Peter);
+
+       ui->listWidget->insertItem(1,"Dieter Knebel");
+       ui->listWidget->insertItem(2,"Donut Essen");
 
    }else if(NameField.endsWith("3")){
-       Peter.setText("Gustavo");
-       ui->listWidget->addItem(&Peter);
+
+       ui->listWidget->insertItem(1,"Gelatina");
+       ui->listWidget->insertItem(2,"Indiane Nesjo");
+       ui->listWidget->insertItem(3,"Gustavo Machdichfertig");
+
    }else{
-       Peter.setText("Herbertina");
-       ui->listWidget->addItem(&Peter);
+       if(NameField.length() > 0){
+           ui->listWidget->insertItem(1,"Mir faellt nichts mehr ein...");
+           ui->listWidget->insertItem(2,"Drueck was anders..");
+       }
    }
+   ui->lineEdit->setText(NameField);
 }
 
 void LoginScreen::on_pushButton_1_clicked()
@@ -109,5 +120,6 @@ void LoginScreen::on_pushButton_0_clicked()
 
 void LoginScreen::on_pushButton_Weiter_clicked()
 {
-
+    Username = ui->listWidget->selectedItems().first()->text();
+    MainWindowPointer->exit(10);
 }

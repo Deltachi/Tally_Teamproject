@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         exitcode = a.exec();
         if(exitcode == 10){ //Login was pressed?
             w.setMainMenueScreen();
-            qDebug("Clicked^^");
+            w.getUserFromLoginScreen();
         }else{
             exit = true;
         }
