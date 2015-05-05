@@ -12,6 +12,11 @@ LoginScreen::LoginScreen(QWidget *parent) :
     ui->setupUi(this);
     database = QSqlDatabase::addDatabase("QSQLITE");
     database.setDatabaseName("C:/SQLite/database.sqlite");
+
+    update_name_label();
+    update_name_label();
+
+
 }
 
 LoginScreen::~LoginScreen()
@@ -25,24 +30,23 @@ QString LoginScreen::getUsername(){
     return Username;
 }
 
+
 void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
     SqlZugriff Database;
     database.open();
     Database.initGetId();
-    QString tempName;
 
-    tempName = Database.getNextId();
+    QString tempID;
+
+    tempID = Database.getNextId();
     int i = 0;
-    while(tempName.length() > 0){
-        qDebug() << tempName;
-        qDebug() << tempName.compare(NameField);
-
-        if(tempName.compare(NameField)== NameField.length()){
-            ui->listWidget->insertItem(i,tempName);
+    while(tempID.length() > 0){
+        if(tempID.contains(NameField)){
+            ui->listWidget->insertItem(i,Database.getName());
             i++;
         }
-        tempName = Database.getNextId();
+        tempID = Database.getNextId();
    }
    ui->lineEdit->setText(NameField);
 }

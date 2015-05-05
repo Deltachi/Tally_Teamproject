@@ -13,6 +13,8 @@ public:
     ~SqlZugriff();
     void initGetId();
     QString getNextId();
+    QString getName();
+    QString getnextName();
 
 private:
      QSqlQuery query;

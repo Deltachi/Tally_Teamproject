@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'loginscreen.ui'
 **
-** Created: Sun 3. May 19:22:24 2015
+** Created: Tue 5. May 15:47:17 2015
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -75,21 +75,6 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         listWidget = new QListWidget(LoginScreen);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
 
         verticalLayout->addWidget(listWidget);
@@ -221,41 +206,6 @@ public:
     {
         LoginScreen->setWindowTitle(QApplication::translate("LoginScreen", "Form", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("LoginScreen", "Name", 0, QApplication::UnicodeUTF8));
-
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
-        ___qlistwidgetitem->setText(QApplication::translate("LoginScreen", "Penis", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
-        ___qlistwidgetitem1->setText(QApplication::translate("LoginScreen", "Anne Bar", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
-        ___qlistwidgetitem2->setText(QApplication::translate("LoginScreen", "Hans", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
-        ___qlistwidgetitem3->setText(QApplication::translate("LoginScreen", "Gruber", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem4 = listWidget->item(4);
-        ___qlistwidgetitem4->setText(QApplication::translate("LoginScreen", "Peter Lustig", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem5 = listWidget->item(5);
-        ___qlistwidgetitem5->setText(QApplication::translate("LoginScreen", "Peter nicht lustig", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem6 = listWidget->item(6);
-        ___qlistwidgetitem6->setText(QApplication::translate("LoginScreen", "Herbertz", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem7 = listWidget->item(7);
-        ___qlistwidgetitem7->setText(QApplication::translate("LoginScreen", "Brunhilde", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem8 = listWidget->item(8);
-        ___qlistwidgetitem8->setText(QApplication::translate("LoginScreen", "Hardi", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem9 = listWidget->item(9);
-        ___qlistwidgetitem9->setText(QApplication::translate("LoginScreen", "Peter", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem10 = listWidget->item(10);
-        ___qlistwidgetitem10->setText(QApplication::translate("LoginScreen", "Witcher", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem11 = listWidget->item(11);
-        ___qlistwidgetitem11->setText(QApplication::translate("LoginScreen", "Robin", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem12 = listWidget->item(12);
-        ___qlistwidgetitem12->setText(QApplication::translate("LoginScreen", "Adolf", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem13 = listWidget->item(13);
-        ___qlistwidgetitem13->setText(QApplication::translate("LoginScreen", "Vagina", 0, QApplication::UnicodeUTF8));
-        QListWidgetItem *___qlistwidgetitem14 = listWidget->item(14);
-        ___qlistwidgetitem14->setText(QApplication::translate("LoginScreen", "Regina", 0, QApplication::UnicodeUTF8));
-        listWidget->setSortingEnabled(__sortingEnabled);
-
         pushButton_4->setText(QApplication::translate("LoginScreen", "4GHI", 0, QApplication::UnicodeUTF8));
         pushButton_3->setText(QApplication::translate("LoginScreen", "3DEF", 0, QApplication::UnicodeUTF8));
         pushButton_7->setText(QApplication::translate("LoginScreen", "7PQRS", 0, QApplication::UnicodeUTF8));
