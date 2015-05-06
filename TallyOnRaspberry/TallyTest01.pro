@@ -16,16 +16,19 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     mainmenue.cpp \
     loginscreen.cpp \
-    sqlzugriff.cpp
+    sqlzugriff.cpp \
+    passwordscreen.cpp
 
 HEADERS  += mainwindow.h \
     mainmenue.h \
     loginscreen.h \
-    sqlzugriff.h
+    sqlzugriff.h \
+    passwordscreen.h
 
 FORMS    += mainwindow.ui \
     mainmenue.ui \
-    loginscreen.ui
+    loginscreen.ui \
+    passwordscreen.ui
 
 RESOURCES += \
     myressources.qrc

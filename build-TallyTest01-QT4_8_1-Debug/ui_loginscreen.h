@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'loginscreen.ui'
 **
-** Created: Tue 5. May 15:47:17 2015
+** Created: Wed 6. May 16:37:16 2015
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -132,7 +132,15 @@ public:
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
-        pushButton_2->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font1.setPointSize(20);
+        font1.setBold(true);
+        font1.setItalic(false);
+        font1.setUnderline(false);
+        font1.setWeight(75);
+        font1.setStrikeOut(false);
+        pushButton_2->setFont(font1);
 
         gridLayout->addWidget(pushButton_2, 0, 1, 1, 1);
 
@@ -172,7 +180,15 @@ public:
         pushButton_Weiter->setObjectName(QString::fromUtf8("pushButton_Weiter"));
         sizePolicy.setHeightForWidth(pushButton_Weiter->sizePolicy().hasHeightForWidth());
         pushButton_Weiter->setSizePolicy(sizePolicy);
-        pushButton_Weiter->setFont(font);
+        QFont font2;
+        font2.setPointSize(20);
+        font2.setBold(true);
+        font2.setItalic(false);
+        font2.setUnderline(false);
+        font2.setWeight(75);
+        font2.setStrikeOut(false);
+        font2.setKerning(true);
+        pushButton_Weiter->setFont(font2);
 
         gridLayout->addWidget(pushButton_Weiter, 5, 2, 1, 1);
 

@@ -140,6 +140,7 @@
         </property>
         <property name="font">
          <font>
+          <family>MS Shell Dlg 2</family>
           <pointsize>20</pointsize>
           <weight>75</weight>
           <italic>false</italic>
@@ -261,6 +262,7 @@
           <bold>true</bold>
           <underline>false</underline>
           <strikeout>false</strikeout>
+          <kerning>true</kerning>
          </font>
         </property>
         <property name="text">

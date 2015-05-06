@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\mainmenue.o
+./release\loginscreen.o
+./release\sqlzugriff.o
+./release\passwordscreen.o
+./release\moc_mainwindow.o
+./release\moc_mainmenue.o
+./release\moc_loginscreen.o
+./release\moc_passwordscreen.o
+./release\qrc_myressources.o
+);
