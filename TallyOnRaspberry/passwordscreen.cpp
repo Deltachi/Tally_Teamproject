@@ -90,8 +90,6 @@ void passwordscreen::on_pushButton_0_clicked()
 
 void passwordscreen::on_pushButton_login_clicked()
 {
-    SqlZugriff database;
-    database.init();
     if(database.checkPassword(userName,ui->lineEdit_password->text())){
 
     }

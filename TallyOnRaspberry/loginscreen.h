@@ -56,8 +56,9 @@ private:
     QApplication *MainWindowPointer;
     QString NameField;          //REAL Name
     QString PasswordField;
-    QString Username; //this is the logged in Username
-    //QSqlDatabase database;
+    QString Username; //this is the logged in Usernam
+    QSqlDatabase Data;
+
 };
 
 #endif // LOGINSCREEN_H

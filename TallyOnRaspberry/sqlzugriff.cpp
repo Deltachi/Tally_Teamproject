@@ -9,15 +9,9 @@
 SqlZugriff::SqlZugriff()
 {
 }
-void SqlZugriff::init(){
-   if(!database.isOpen()){
-        database = QSqlDatabase::addDatabase("QSQLITE");
-        database.setDatabaseName("C:/SQLite/database.sqlite");
-        database.open();
-    }
-}
 
 void SqlZugriff::initGetT9_code(){
+
     query.exec("Select t9_code, name from Benutzer");
 }
 
@@ -53,11 +47,7 @@ QString SqlZugriff::getNextName(){
     if(query.next()) value = query.value(1).toString();
     return value;
 }
-void SqlZugriff::close(){
-    database.close();
-}
 SqlZugriff::~SqlZugriff()
 {
-    database.close();
 }
 

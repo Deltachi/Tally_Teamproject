@@ -19,11 +19,6 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-//close application button
-void MainWindow::on_pushButton_clicked()
-{
-    delete ui;
-}
 //sets the pointer to the window generated from qt
 void MainWindow::setMainWindowPointer(QApplication *a){
 

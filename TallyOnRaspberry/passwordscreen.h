@@ -52,6 +52,7 @@ private:
     QApplication *mainWindowPointer;
     QString userName;
     QString password;
+    SqlZugriff database;
 };
 
 #endif // PASSWORDSCREEN_H
