@@ -4,14 +4,15 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QString>
+#include "sqlzugriff.h"
 
 LoginScreen::LoginScreen(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::LoginScreen)
 {
     ui->setupUi(this);
-    database = QSqlDatabase::addDatabase("QSQLITE");
-    database.setDatabaseName("C:/SQLite/database.sqlite");
+    //database = QSqlDatabase::addDatabase("QSQLITE");
+   //database.setDatabaseName("C:/SQLite/database.sqlite");
 
     update_name_label();
     update_name_label();
@@ -34,20 +35,21 @@ QString LoginScreen::getUsername(){
 void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
     SqlZugriff Database;
-    database.open();
-    Database.initGetId();
+    Database.init();
+    Database.initGetT9_code();
 
     QString tempID;
 
-    tempID = Database.getNextId();
+    tempID = Database.getNextString();
     int i = 0;
     while(tempID.length() > 0){
         if(tempID.contains(NameField)){
             ui->listWidget->insertItem(i,Database.getName());
             i++;
         }
-        tempID = Database.getNextId();
+        tempID = Database.getNextString();
    }
+   Database.close();
    ui->lineEdit->setText(NameField);
 }
 

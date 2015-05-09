@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "loginscreen.h"
+#include "shoppingcart.h"
 
 namespace Ui {
 class MainWindow;
@@ -18,14 +19,18 @@ public:
     void setMainMenueScreen();
     void setMainWindowPointer(QApplication *a);
     void getUserFromLoginScreen();
+    void init();
+    void showLoginPasswordWidget();
+    void removeWidget();
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QApplication *MainWindowPointer;
-    LoginScreen *MyLoginScreen;
+    QApplication *mainWindowPointer;
+    LoginScreen *myLoginScreen;
+    Shoppingcart * myShoppingCart;
 };
 
 #endif // MAINWINDOW_H

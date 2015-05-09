@@ -18,6 +18,9 @@ class passwordscreen : public QWidget
 public:
     explicit passwordscreen(QWidget *parent = 0);
     ~passwordscreen();
+    void updatePasswordField();
+    void setMainWindowPointer(QApplication *a);
+    void setUsername(QString name);
 
 private slots:
     void on_pushButton_1_clicked();
@@ -47,9 +50,8 @@ private slots:
 private:
     Ui::passwordscreen *ui;
     QApplication *mainWindowPointer;
-    QString userID;
+    QString userName;
     QString password;
-    QSqlDatabase database;
 };
 
 #endif // PASSWORDSCREEN_H

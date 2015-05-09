@@ -2,8 +2,10 @@
 #define SQLZUGRIFF_H
 
 #include <QtSql>
-#include <QtDebug>
+#include <QString>
+#include <QDebug>
 #include <QFileInfo>
+#include <QString>
 
 
 class SqlZugriff
@@ -11,14 +13,18 @@ class SqlZugriff
 public:
     SqlZugriff();
     ~SqlZugriff();
-    void initGetId();
+    void initGetT9_code();
+    void init();
     QString getNextId();
     QString getName(QString ID);
     QString getName();
-    QString getnextName();
+    QString getNextString();
+    QString getNextName();
+    void close();
+    bool checkPassword(QString username, QString password);
 
 private:
      QSqlQuery query;
-
+     QSqlDatabase database;
 };
 #endif // SQLZUGRIFF_H

@@ -57,7 +57,7 @@ private:
     QString NameField;          //REAL Name
     QString PasswordField;
     QString Username; //this is the logged in Username
-    QSqlDatabase database;
+    //QSqlDatabase database;
 };
 
 #endif // LOGINSCREEN_H

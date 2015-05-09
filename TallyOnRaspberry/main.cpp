@@ -9,22 +9,43 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     MainWindow w;
+    int state = 0;
 
     w.setWindowTitle("Tally");
     w.show();
     w.setMainWindowPointer(&a);
+    w.init();
 
-    //w.setStyleSheet("color: black; background-color:brown;");
-    int exitcode;
+    int exitcode = -1;
     bool exit = false;
     while(!exit){
-        exitcode = a.exec();
-        if(exitcode == 10){ //Login was pressed?
-            w.setMainMenueScreen();
-            w.getUserFromLoginScreen();
-        }else{
-            exit = true;
+        switch(state){
+            case 0: {//Loginscreen (showing Name list)
+                if(exitcode == 10){ //->login was clicked
+                    w.getUserFromLoginScreen();
+                    w.removeWidget();
+                    w.showLoginPasswordWidget();
+                    state = 1;
+                }else if(exitcode != -1){ //init
+                    return 0;
+                }
+            }
+            break;
+            case 1: {//password screen
+                if(exitcode == 11){ //->back
+                    w.removeWidget();
+                    w.init();
+                    state = 0;
+                }
+            }break;
+            case 2: {//coffee sweets scan screen
+
+            }break;
+            default: {//something went wrong...
+
+            }break;
         }
+        exitcode = a.exec();
     }
     return exitcode;
 }

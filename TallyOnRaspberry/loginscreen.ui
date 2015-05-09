@@ -57,7 +57,7 @@
          </font>
         </property>
         <property name="text">
-         <string>4GHI</string>
+         <string>4ghi</string>
         </property>
        </widget>
       </item>
@@ -80,7 +80,7 @@
          </font>
         </property>
         <property name="text">
-         <string>3DEF</string>
+         <string>3def</string>
         </property>
        </widget>
       </item>
@@ -103,7 +103,7 @@
          </font>
         </property>
         <property name="text">
-         <string>7PQRS</string>
+         <string>7pqrs</string>
         </property>
        </widget>
       </item>
@@ -126,7 +126,7 @@
          </font>
         </property>
         <property name="text">
-         <string>0</string>
+         <string>0 space</string>
         </property>
        </widget>
       </item>
@@ -150,7 +150,7 @@
          </font>
         </property>
         <property name="text">
-         <string>2ABC</string>
+         <string>2abc</string>
         </property>
        </widget>
       </item>
@@ -196,7 +196,7 @@
          </font>
         </property>
         <property name="text">
-         <string>9WXYZ</string>
+         <string>9wxyz</string>
         </property>
        </widget>
       </item>
@@ -242,7 +242,7 @@
          </font>
         </property>
         <property name="text">
-         <string>8TUV</string>
+         <string>8tuv</string>
         </property>
        </widget>
       </item>
@@ -289,7 +289,7 @@
          </font>
         </property>
         <property name="text">
-         <string>5JKL</string>
+         <string>5jkl</string>
         </property>
        </widget>
       </item>
@@ -312,7 +312,7 @@
          </font>
         </property>
         <property name="text">
-         <string>6MNO</string>
+         <string>6mno</string>
         </property>
        </widget>
       </item>

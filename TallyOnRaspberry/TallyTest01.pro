@@ -17,18 +17,27 @@ SOURCES += main.cpp\
     mainmenue.cpp \
     loginscreen.cpp \
     sqlzugriff.cpp \
-    passwordscreen.cpp
+    passwordscreen.cpp \
+    coffesweetsscann.cpp \
+    buywidget.cpp \
+    shoppingcart.cpp
 
 HEADERS  += mainwindow.h \
     mainmenue.h \
     loginscreen.h \
     sqlzugriff.h \
-    passwordscreen.h
+    passwordscreen.h \
+    coffesweetsscann.h \
+    buywidget.h \
+    shoppingcart.h
 
 FORMS    += mainwindow.ui \
     mainmenue.ui \
     loginscreen.ui \
-    passwordscreen.ui
+    passwordscreen.ui \
+    coffesweetsscann.ui \
+    buywidget.ui \
+    shoppingcart.ui
 
 RESOURCES += \
     myressources.qrc
