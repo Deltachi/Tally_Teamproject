@@ -16,14 +16,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void setMainMenueScreen();
     void setMainWindowPointer(QApplication *a);
     void getUserFromLoginScreen();
     void init();
     void showLoginPasswordWidget();
     void removeWidget();
+    void setLogoutButton(bool a);
+    void showCoffeeSweetWidget();
 
 private slots:
+
+    void on_pushButton_logout_clicked();
 
 private:
     Ui::MainWindow *ui;

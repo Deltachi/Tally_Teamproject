@@ -14,28 +14,40 @@ int main(int argc, char *argv[])
     w.setWindowTitle("Tally");
     w.show();
     w.setMainWindowPointer(&a);
-    w.init();
-
-    int exitcode = -1;
+    int exitcode = 100;
     bool exit = false;
+
     while(!exit){
+        if(exitcode == 100){ //logout was pressed
+            state = 0;
+            w.removeWidget();
+            w.init();
+            w.setLogoutButton(false);
+        }
         switch(state){
             case 0: {//Loginscreen (showing Name list)
                 if(exitcode == 10){ //->login was clicked
                     w.getUserFromLoginScreen();
                     w.removeWidget();
                     w.showLoginPasswordWidget();
+                    w.setLogoutButton(true);
                     state = 1;
-                }else if(exitcode != -1){ //init
+                }else if(exitcode != 100){ //init
                     return 0;
                 }
             }
             break;
             case 1: {//password screen
-                if(exitcode == 11){ //->back
+                if(exitcode == 20){ //->back
                     w.removeWidget();
                     w.init();
                     state = 0;
+                    w.setLogoutButton(false);
+                }else if(exitcode == 21){
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                }else if(exitcode != 100){ //init
+                    return 0;
                 }
             }break;
             case 2: {//coffee sweets scan screen

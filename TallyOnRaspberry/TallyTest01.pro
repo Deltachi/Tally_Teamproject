@@ -14,7 +14,6 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mainmenue.cpp \
     loginscreen.cpp \
     sqlzugriff.cpp \
     passwordscreen.cpp \
@@ -23,7 +22,6 @@ SOURCES += main.cpp\
     shoppingcart.cpp
 
 HEADERS  += mainwindow.h \
-    mainmenue.h \
     loginscreen.h \
     sqlzugriff.h \
     passwordscreen.h \
@@ -32,7 +30,6 @@ HEADERS  += mainwindow.h \
     shoppingcart.h
 
 FORMS    += mainwindow.ui \
-    mainmenue.ui \
     loginscreen.ui \
     passwordscreen.ui \
     coffesweetsscann.ui \

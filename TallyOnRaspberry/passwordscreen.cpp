@@ -8,6 +8,8 @@ passwordscreen::passwordscreen(QWidget *parent) :
     ui(new Ui::passwordscreen)
 {
     ui->setupUi(this);
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Data.setDatabaseName("C:/SQLite/database.sqlite");
 }
 
 passwordscreen::~passwordscreen()
@@ -23,6 +25,15 @@ void passwordscreen::setMainWindowPointer(QApplication *a){
 void passwordscreen::setUsername(QString name){
     userName = name;
 }
+void passwordscreen::updateAccoutPicture(QString name){
+    Data.open();
+    SqlZugriff database;
+    QPixmap icon;
+    icon = database.getPixmap(name);
+    ui->label_pic->setPixmap(icon);
+    Data.close();
+}
+
 void passwordscreen::on_pushButton_1_clicked()
 {
     password.append("1");
@@ -79,7 +90,7 @@ void passwordscreen::on_pushButton_9_clicked()
 
 void passwordscreen::on_pushButton_back_clicked()
 {
-    mainWindowPointer->exit(11);
+    mainWindowPointer->exit(20);
 }
 
 void passwordscreen::on_pushButton_0_clicked()
@@ -90,7 +101,10 @@ void passwordscreen::on_pushButton_0_clicked()
 
 void passwordscreen::on_pushButton_login_clicked()
 {
+    Data.open();
+    SqlZugriff database;
     if(database.checkPassword(userName,ui->lineEdit_password->text())){
-
+        mainWindowPointer->exit(21);
     }
+    Data.close();
 }

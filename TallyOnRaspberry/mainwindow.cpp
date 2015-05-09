@@ -38,20 +38,30 @@ void MainWindow::getUserFromLoginScreen(){
 void MainWindow::removeWidget(){
 
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
-    QWidget *oldWidget = oldItem->widget();
-    ui->gridLayout_port->removeWidget(oldWidget);
-    oldWidget->setVisible(false);
-    delete oldWidget;
-}
-//switches to the MainMenueScreen
-void MainWindow::setMainMenueScreen(){
-
-    MainMenue *myMainMenue = new MainMenue();
-    ui->gridLayout_port->addWidget(myMainMenue);
+    if(oldItem != NULL){
+        QWidget *oldWidget = oldItem->widget();
+        ui->gridLayout_port->removeWidget(oldWidget);
+        oldWidget->setVisible(false);
+        delete oldWidget;
+    }
 }
 void MainWindow::showLoginPasswordWidget(){
 
     passwordscreen *myPwScreen = new passwordscreen();
     ui->gridLayout_port->addWidget(myPwScreen);
+    myPwScreen->updateAccoutPicture(ui->label_username->text());
     myPwScreen->setUsername(ui->label_username->text());
+}
+void MainWindow::showCoffeeSweetWidget(){
+
+    CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
+    ui->gridLayout_port->addWidget(myCoffeeWidget);
+}
+void MainWindow::setLogoutButton(bool a){
+    ui->pushButton_logout->setEnabled(a);
+}
+
+void MainWindow::on_pushButton_logout_clicked()
+{
+    mainWindowPointer->exit(100);
 }

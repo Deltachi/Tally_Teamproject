@@ -20,6 +20,7 @@ public:
     QString getNextString();
     QString getNextName();
     bool checkPassword(QString username, QString password);
+    QPixmap getPixmap(QString name);
 
 private:
      QSqlQuery query;

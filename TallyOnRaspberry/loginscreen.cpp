@@ -13,7 +13,6 @@ LoginScreen::LoginScreen(QWidget *parent) :
     ui->setupUi(this);
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Data.setDatabaseName("C:/SQLite/database.sqlite");
-    Data.open();
 
     update_name_label();
     update_name_label();
@@ -35,7 +34,7 @@ QString LoginScreen::getUsername(){
 
 void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
-    //Data.open();
+    Data.open();
     SqlZugriff Database;
     Database.initGetT9_code();
     QString tempID;
@@ -50,7 +49,7 @@ void LoginScreen::update_name_label(){
         tempID = Database.getNextString();
    }
    ui->lineEdit->setText(NameField);
-   //Data.close();
+   Data.close();
 }
 
 void LoginScreen::on_pushButton_1_clicked()

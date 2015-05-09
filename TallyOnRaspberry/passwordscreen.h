@@ -21,6 +21,7 @@ public:
     void updatePasswordField();
     void setMainWindowPointer(QApplication *a);
     void setUsername(QString name);
+    void updateAccoutPicture(QString name);
 
 private slots:
     void on_pushButton_1_clicked();
@@ -52,7 +53,7 @@ private:
     QApplication *mainWindowPointer;
     QString userName;
     QString password;
-    SqlZugriff database;
+    QSqlDatabase Data;
 };
 
 #endif // PASSWORDSCREEN_H
