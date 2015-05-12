@@ -15,8 +15,15 @@
  .boxShadow {
  	box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
  }
+.inline-text{
+	text-align: center;
+}
 
-
+.inline-block{
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+}
 
 .darkBG {
 	background: #999;
@@ -89,7 +96,12 @@ header h1 {
 }
 
 .img-slider {
-	height: 750px;
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 200px;
 	width: auto;
-	margin:-20% 0;	
+	position: relative;
+	bottom: 300px;	
+	
 }
