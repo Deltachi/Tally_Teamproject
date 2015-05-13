@@ -44,6 +44,34 @@ body.color-bg{
 	position: relative;
 	width: 100%;
 }
+.night-coffee-bg{
+	background: url("images/backgrounds/night-coffee.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	padding-top: 20px;	
+	position: relative;
+	width: 100%;
+}
+.dark-coffee-bg{
+	background: url("images/backgrounds/dark-coffee-bg.jpg");
+	background-attachment: fixed;
+	background-size: 120%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	padding-top: 20px;	
+	position: relative;
+	width: 100%;
+}
+.lil-jumbo{
+	padding-top: 10;
+	padding-bottom: 10;
+	margin-bottom: 20;
+}
+
 
  .boxShadow {
  	box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
