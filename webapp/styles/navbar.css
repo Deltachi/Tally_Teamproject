@@ -1,0 +1,20 @@
+.navbar-inverse {
+	background-image: -webkit-linear-gradient(top, #423424 0%, #241E18 100%);
+	background-image:      -o-linear-gradient(top, #423424 0%, #241E18 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#423424), to(#241E18));
+	background-image:         linear-gradient(to bottom, #423424 0%, #241E18 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff423424', endColorstr='#ff241E18', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background-repeat: repeat-x;
+}
+
+.navbar{
+	margin-bottom: 5px; 
+	margin-top: 10px; 
+}
+
+#my-brand{
+	padding: 0;
+	padding-right: 20px;
+}
+

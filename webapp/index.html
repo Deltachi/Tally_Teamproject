@@ -1,0 +1,226 @@
+<html>
+	<head>
+		<title>Tally C&amp;S</title>		
+		<!--Online sources -->
+		<!-- Latest compiled and minified CSS 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+		<!-- Optional theme 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap.css">
+		<!-- Optional theme (locally saved) -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
+
+		<!--main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/index.css">
+		<link rel="stylesheet" href="styles/navbar.css">
+		<link rel="stylesheet" href="styles/footer.css">
+		<link rel="stylesheet" href="styles/main.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body class="color-bg">
+		<div id="wrap">
+			<div class="navbar-inverse navbar-fixed-top boxShadow">
+				<div class="container">
+					<nav class="navbar">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<!-- <div>
+									<a class="navbar-brand" href="#">
+										<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+									</a>
+						  		</div> -->
+							</div>
+
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li>
+										<a id="my-brand" href="#"> <!--class= navbar-brand -->
+											<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+										</a>
+							  		</li>
+									<li><a href="menu.html">Speisekarte</a></li><!--  <span class="sr-only">(current)</span> -->
+									<li class="dropdown" id="menuLogin">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navLogin">LogIn/SignIn  <span class="glyphicon glyphicon-user"></span></a>
+										<ul id="panel_login" class="dropdown-menu" role="menu" style="padding: 10px 10px;">
+											<form class="form not-available" id="formLogin"> 	
+												<li>
+													<div class="input-group">
+														<input name="username" id="username"  type="text" class="form-control" placeholder="Username">
+													</div>
+												</li>
+												<li>
+													<div class="input-group">
+														<input name="password" id="password" type="password" class="form-control" placeholder="Password">
+														<span class="input-group-btn">
+															<button id="btn_login" type="submit" class="btn btn-default">Login</button>
+														</span>
+													</div>
+												</li>
+											</form>
+											<!-- <li><div id="btn_testLogin" class="btn btn-default">TEST Login</div></li> -->
+											<li><a class="not-available" href="#">Passwort vergessen?</a></li>
+											<li class="divider"></li>
+											<li><a class="not-available" href="#">Jetzt registrieren <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="glyphicon glyphicon-cog"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a class="not-available" href="#">Einstellungen</a></li>
+											<li><a class="not-available" href="lb.html">Leader Board</a></li>
+											<li><a class="not-available" href="#">Favoriten</a></li>
+											<li class="divider"></li>
+											<li><a class="not-available" href="#">Benachrichtigungen</a></li>
+											<li class="divider"></li>
+											<li><a class="not-available" href="#">Abmelden</a></li>
+										</ul>
+									</li>
+								</ul>
+								<form class="navbar-form navbar-left" role="search">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-default">Go!</button>
+										</span>
+									</div>
+								</form>
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>	
+				</div><!-- container -->
+			</div> <!-- navbar -->
+			<div class="color-bg">
+				<div class="container">
+					<div id="alert-not-available"class="alert alert-danger" role="alert">
+						<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
+						Diese Funktion ist leider noch <strong>nicht verf&uuml;gbar!</strong>
+					</div>
+
+					<div class="jumbotron boxShadow">
+						<h1>
+							Hello 
+							<span style="font-size:70%;">
+								and
+							</span> 
+							welcome 
+							<span style="font-size:70%;">
+								to
+							</span> 
+							</br> 
+							<span style="font-size:140%;">
+								<strong>Tally</strong> 
+								<strong>C</strong>&amp;<strong>S</strong>
+							</span>
+						</h1>
+						<p class="jumbo_subtitle">Your personal debt register assistant for coffee and sweets! <span style="color:#BBB; font-size:80%;">also for Tea ;)</span></p> 
+					</div><!-- /jumbotron -->
+				</div><!-- container -->
+			</div> <!-- color-bg -->
+			<div class="index-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12 col-sm-offset-0">
+							<div class="panel panel-info boxShadow">
+								<div class="panel-heading inline-text">
+									<h3>News!</h3>
+								</div>
+								<div class="panel-body">
+									<!--IMAGE SLIDER aka News Ticker -->
+									<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+									  <!-- Indicators -->
+									  <ol class="carousel-indicators">
+									    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+									    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+									    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+									  </ol>
+
+									  <!-- Wrapper for slides -->
+									  <div class="carousel-inner" role="listbox">
+									    <div class="item active">   	
+							      		<div class="img-slider"><img src="styles/images/test1.png" alt="Test1"></div>
+									      <div class="carousel-caption dark_box">
+									        <h3>The LogIn screen</h3>
+									        <p>This is an example of the structure, not an actual and representative image.</p>
+									      </div>
+									    </div>
+									    <div class="item">     
+							      		<div class="img-slider"><img src="styles/images/test2.png" alt="Test2"></div>
+									      <div class="carousel-caption dark_box">
+									        <h3>The touchscreen is too small to not use a huge keyboard</h3>
+									        <p>This is an example of the structure, not an actual and representative image.</p>
+									      </div>
+									    </div>
+									    <div class="item">     
+							      		<div class="img-slider"><img src="styles/images/test3.png" alt="Test3"></div>
+									      <div class="carousel-caption dark_box">
+									        <h3>There's the main menu</h3>
+									        <p>This is an example of the structure, not an actual and representative image.</p>
+									      </div>
+									    </div>
+									  </div>
+
+									  <!-- Controls -->
+									  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+									    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+									    <span class="sr-only">Previous</span>
+									  </a>
+									  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+									    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+									    <span class="sr-only">Next</span>
+									  </a>
+									</div><!-- /.carousel slide -->
+								</div>
+							</div>
+						</div><!-- /col-sm-6 -->
+					</div><!-- row -->
+				</div> <!-- container -->
+			</div> <!-- coffee-bg -->
+			<div class="color-bg">
+				<div class="container">	
+					<div class="panel panel-default boxShadow">
+					  <div class="panel-body">
+					    <h2 class="text-primary">Latest changes:</h2>
+					    <p>Here is some space for much info, wow!</p>
+					  </div>
+					</div>
+				</div><!-- /container -->
+			</div> <!-- color-bg -->
+			
+		</div> <!-- close wrap -->
+		<footer id="footer" class="text-center">
+			<div class="container">
+				<div class="col-sm-4">
+					<span id="updated" class="text-muted">
+						<script src="javascript/templates/updated.js"></script>
+					</span>
+				</div>
+				<div class="col-sm-4"><a class="footerLinks"href="impressum.html">Impressum</a></div>
+				<div class="col-sm-4"><a class="footerLinks"href="disclaimer.html">Haftungsausschluss</a></div>
+			</div> <!-- close container -->
+		</footer>
+		
+
+		<!-- These sources stay in the clouds and are not availabe in intranet-only-mode -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+		<!-- Latest compiled and minified JavaScript 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+		<script src="javascript/jquery-1.11.2.js"></script>
+		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="javascript/index.js"></script>
+	</body>
+</html>
