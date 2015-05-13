@@ -19,7 +19,9 @@ SOURCES += main.cpp\
     passwordscreen.cpp \
     coffesweetsscann.cpp \
     buywidget.cpp \
-    shoppingcart.cpp
+    shoppingcart.cpp \
+    scanwidget.cpp \
+    favcart.cpp
 
 HEADERS  += mainwindow.h \
     loginscreen.h \
@@ -27,14 +29,18 @@ HEADERS  += mainwindow.h \
     passwordscreen.h \
     coffesweetsscann.h \
     buywidget.h \
-    shoppingcart.h
+    shoppingcart.h \
+    scanwidget.h \
+    favcart.h
 
 FORMS    += mainwindow.ui \
     loginscreen.ui \
     passwordscreen.ui \
     coffesweetsscann.ui \
     buywidget.ui \
-    shoppingcart.ui
+    shoppingcart.ui \
+    scanwidget.ui \
+    favcart.ui
 
 RESOURCES += \
     myressources.qrc

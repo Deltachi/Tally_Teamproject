@@ -6,6 +6,8 @@
 #include "shoppingcart.h"
 #include "buywidget.h"
 #include "coffesweetsscann.h"
+#include "scanwidget.h"
+#include "favcart.h"
 
 //constructer
 MainWindow::MainWindow(QWidget *parent) :
@@ -13,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    showFavCart = true;
 }
 //delete MainWindow
 MainWindow::~MainWindow()
@@ -56,12 +59,35 @@ void MainWindow::showCoffeeSweetWidget(){
 
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);
+    myCoffeeWidget->setMainWindowPointer(mainWindowPointer);
+    if(showFavCart){
+        //shoppingCart.clear();
+        FavCart *myFavCart = new FavCart();
+        myCoffeeWidget->setQWidget(myFavCart);
+    }else{
+        myShoppingCart = new Shoppingcart();
+        myCoffeeWidget->setQWidget(myShoppingCart);
+    }
 }
 void MainWindow::setLogoutButton(bool a){
     ui->pushButton_logout->setEnabled(a);
 }
-
+void MainWindow::showBuyWidget(){
+    buywidget *myBuyWidget = new buywidget();
+    ui->gridLayout_port->addWidget(myBuyWidget);
+}
+void MainWindow::showScanWidget(){
+    ScanWidget *myScanWidget = new ScanWidget();
+    ui->gridLayout_port->addWidget(myScanWidget);
+}
 void MainWindow::on_pushButton_logout_clicked()
 {
+    //shoppingcart.clear();
+    showFavCart = true;
     mainWindowPointer->exit(100);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    mainWindowPointer->exit(0);
 }

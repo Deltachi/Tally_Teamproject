@@ -173,7 +173,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Löschen</string>
+         <string>Del</string>
         </property>
        </widget>
       </item>
@@ -266,7 +266,7 @@
          </font>
         </property>
         <property name="text">
-         <string>Weiter</string>
+         <string>Continue</string>
         </property>
        </widget>
       </item>

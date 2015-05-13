@@ -12,3 +12,10 @@ Shoppingcart::~Shoppingcart()
 {
     delete ui;
 }
+bool Shoppingcart::isEmpyt(){
+    if(ui->listWidget->count() <= 0){
+        return true;
+    }else{
+        return false;
+    }
+}
