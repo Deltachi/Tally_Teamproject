@@ -90,7 +90,7 @@ void passwordscreen::on_pushButton_9_clicked()
 
 void passwordscreen::on_pushButton_back_clicked()
 {
-    mainWindowPointer->exit(20);
+
 }
 
 void passwordscreen::on_pushButton_0_clicked()

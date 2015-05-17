@@ -14,6 +14,7 @@ class Shoppingcart : public QWidget
 public:
     explicit Shoppingcart(QWidget *parent = 0);
     ~Shoppingcart();
+    bool isEmpyt();
 
 private:
     Ui::Shoppingcart *ui;
