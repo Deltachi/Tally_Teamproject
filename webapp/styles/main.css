@@ -20,9 +20,9 @@ body.color-bg{
 	padding-top: 20px;
 }
 .index-bg{
-	background: url("images/backgrounds/index-bg.jpg");
+	background: url("images/backgrounds/chocolate-bg-2.jpg");
 	background-attachment: fixed;
-	background-size: 120%;
+	background-size: 100%;
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
@@ -64,9 +64,9 @@ body.color-bg{
 	width: 100%;
 }
 .dark-coffee-bg{
-	background: url("images/backgrounds/dark-coffee-bg.jpg");
+	background: url("images/backgrounds/Coffee_Mix_Night.png");
 	background-attachment: fixed;
-	background-size: 120%;
+	background-size: 100%;
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
@@ -75,7 +75,7 @@ body.color-bg{
 	width: 100%;
 }
 .drinks-bg{
-	background: url("images/backgrounds/drinks-bg.jpg");
+	background: url("images/backgrounds/Coffee_Mix.png");
 	background-attachment: fixed;
 	background-size: 100%;
 	display: inline-block;
