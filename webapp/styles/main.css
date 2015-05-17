@@ -7,6 +7,14 @@ body.color-bg{
 	padding-top: 70px; 
 }
 
+.important-alert {
+  position: absolute;
+  top: 100px;
+  left: 120px;
+  right: 120px;
+  text-align: center;
+}
+
 .color-bg {
 	background: #E3D4C3;
 	padding-top: 20px;
@@ -66,6 +74,17 @@ body.color-bg{
 	position: relative;
 	width: 100%;
 }
+.drinks-bg{
+	background: url("images/backgrounds/drinks-bg.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	padding-top: 20px;	
+	position: relative;
+	width: 100%;
+}
 .lil-jumbo{
 	padding-top: 10;
 	padding-bottom: 10;
@@ -115,7 +134,11 @@ header h1 {
 		min-height: 55px;
 	}
 }
- 
+@media (max-width: 991px) and (min-width: 767px) { 
+	.menu-search{
+		display: none;
+	}
+}
 /* Portrait tablet to landscape and desktop // 768 - 979 */
 /*and (max-width: 979px)*/
 @media (min-width: 768px)  {
