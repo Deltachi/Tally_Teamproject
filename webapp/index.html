@@ -13,10 +13,11 @@
 		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
 
 		<!--main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/main.css">
 		<link rel="stylesheet" href="styles/index.css">
 		<link rel="stylesheet" href="styles/navbar.css">
 		<link rel="stylesheet" href="styles/footer.css">
-		<link rel="stylesheet" href="styles/main.css">
+		
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
@@ -79,7 +80,7 @@
 										<ul class="dropdown-menu" role="menu">
 											<li><a class="not-available" href="#">Einstellungen</a></li>
 											<li><a class="not-available" href="lb.html">Leader Board</a></li>
-											<li><a class="not-available" href="#">Favoriten</a></li>
+											<li><a class="" href="favorites.html">Favoriten</a></li>
 											<li class="divider"></li>
 											<li><a class="not-available" href="#">Benachrichtigungen</a></li>
 											<li class="divider"></li>
@@ -87,7 +88,7 @@
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left" role="search">
+								<form class="navbar-form navbar-left menu-search" role="search">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
 										<span class="input-group-btn">
@@ -102,12 +103,17 @@
 			</div> <!-- navbar -->
 			<div class="color-bg">
 				<div class="container">
-					<div id="alert-not-available"class="alert alert-danger" role="alert">
+					<div id="alert-not-available"class="alert alert-danger important-alert" role="alert">
 						<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-						Diese Funktion ist leider noch <strong>nicht verf&uuml;gbar!</strong>
+						Diese Funktion ist leider noch <strong>nicht verf&uuml;gbar! :(</strong>
 					</div>
 
-					<div class="jumbotron boxShadow">
+					<div class="jumbotron boxShadow intro">
+						<div align="center" class="embed-responsive embed-responsive-16by9">
+							<video autoplay loop >
+								<source src="styles/videos/intro.mp4" />
+							</video>
+						</div>
 						<h1>
 							Hello 
 							<span style="font-size:70%;">
@@ -123,7 +129,9 @@
 								<strong>C</strong>&amp;<strong>S</strong>
 							</span>
 						</h1>
-						<p class="jumbo_subtitle">Your personal debt register assistant for coffee and sweets! <span style="color:#BBB; font-size:80%;">also for Tea ;)</span></p> 
+						<p class="jumbo_subtitle">
+							Your personal debt register assistant for coffee and sweets! <span style="color:#BBB; font-size:80%;">also for Tea ;)</span>
+						</p> 
 					</div><!-- /jumbotron -->
 				</div><!-- container -->
 			</div> <!-- color-bg -->
@@ -222,5 +230,6 @@
 		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
 		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
 		<script src="javascript/index.js"></script>
+		<script src="javascript/main.js"></script>
 	</body>
 </html>

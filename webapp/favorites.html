@@ -1,0 +1,184 @@
+<html>
+	<head>
+		<title>Tally C&amp;S</title>		
+		<!--Online sources -->
+		<!-- Latest compiled and minified CSS 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+		<!-- Optional theme 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap.css">
+		<!-- Optional theme (locally saved) -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
+
+		<!--main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/index.css">
+		<link rel="stylesheet" href="styles/navbar.css">
+		<link rel="stylesheet" href="styles/footer.css">
+		<link rel="stylesheet" href="styles/main.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body >
+		<div id="wrap">			
+			<div class="navbar-inverse navbar-fixed-top boxShadow">
+				<div class="container">
+					<nav class="navbar">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<!-- <div>
+									<a class="navbar-brand" href="#">
+										<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+									</a>
+						  		</div> -->
+							</div>
+
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li>
+										<a id="my-brand" href="index.html"> <!--class= navbar-brand -->
+											<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+										</a>
+							  		</li>
+									<li><a href="menu.html">Speisekarte</a></li><!--  <span class="sr-only">(current)</span> -->
+									<li class="dropdown" id="menuLogin">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navLogin">LogIn/SignIn  <span class="glyphicon glyphicon-user"></span></a>
+										<ul id="panel_login" class="dropdown-menu" role="menu" style="padding: 10px 10px;">
+											<form class="form" id="formLogin"> 	
+												<li>
+													<div class="input-group">
+														<input name="username" id="username"  type="text" class="form-control" placeholder="Username">
+													</div>
+												</li>
+												<li>
+													<div class="input-group">
+														<input name="password" id="password" type="password" class="form-control" placeholder="Password">
+														<span class="input-group-btn">
+															<button id="btn_login" type="submit" class="btn btn-default">Login</button>
+														</span>
+													</div>
+												</li>
+											</form>
+											<li><a href="">Passwort vergessen?</a></li>
+											<li class="divider"></li>
+											<li><a href="">Jetzt registrieren <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="glyphicon glyphicon-cog"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li><a href="#">Einstellungen</a></li>
+											<li><a href="lb.html">Leader Board</a></li>
+											<li class="active"><a href="#">Favoriten</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Benachrichtigungen</a></li>
+											<li class="divider"></li>
+											<li><a href="#">Abmelden</a></li>
+										</ul>
+									</li>
+								</ul>
+								<form class="navbar-form navbar-left" role="search">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-default">Go!</button>
+										</span>
+									</div>
+								</form>
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>	
+				</div>
+			</div> <!-- navbar-inverse -->
+			<div class="color-bg">
+				<div class="container">
+					<div class="jumbotron lil-jumbo boxShadow">
+						<h1>Max, <small> &auml;ndern Sie hier Ihre Favoriten</small></h1>
+					</div>
+				</div>
+			</div>
+			<div class="drinks-bg">
+				<div class="container">
+					<div class="panel panel-default  boxShadow">
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="row inline-text">
+									<div class="col-md-6">
+										<h2>Ausgew&auml;hlte Favoriten</h2>
+									</div>
+									<div class="col-md-6">
+										<img class="lb-symbol" src="" alt="">
+									</div>
+								</div>
+							</div>
+							<div class="panel-body">
+								<table class="table panel-body">
+									<thead>
+										<tr class="text-muted">
+											<th></th>
+											<th>Bezeichnung</th>
+											<th>L&ouml;schen</th>
+										</tr>
+									</thead>	
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Cappuchino</td>
+											<td><button class="btn btn-xs btn-danger">x</button></td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Snickers</td>
+											<td><button class="btn btn-xs btn-danger">x</button></td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Twix</td>
+											<td><button class="btn btn-xs btn-danger">x</button></td>
+										</tr>
+										<tr>
+											<th scope="row">4</th>
+											<td>Latte Machiato</td>
+											<td><button class="btn btn-xs btn-danger">x</button></td>
+										</tr>
+									</tbody>
+								</table>
+							</div> <!-- panel-body -->
+						</div> <!-- panel -->
+					</div>
+				</div>
+			</div>
+		</div> <!-- wrap -->
+		<footer id="footer" class="text-center">
+			<div class="container">
+				<div class="col-sm-4">
+					<span id="updated" class="text-muted">
+						<script src="javascript/templates/updated.js"></script>
+					</span>
+				</div>
+				<div class="col-sm-4"><a class="footerLinks"href="impressum.html">Impressum</a></div>
+				<div class="col-sm-4"><a class="footerLinks"href="disclaimer.html">Haftungsausschluss</a></div>
+			</div> <!-- close container -->
+		</footer>
+		<!-- These sources stay in the clouds and are not availabe in intranet-only-mode -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+		<!-- Latest compiled and minified JavaScript 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+		<script src="javascript/jquery-1.11.2.js"></script>
+		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="javascript/main.js"></script>
+	</body>
+</html>
