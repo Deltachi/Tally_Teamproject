@@ -21,7 +21,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
-	<body class="color-bg">
+	<body class="color-bg"> <!-- class="color-bg" -->
+		
 		<div id="wrap">
 			<div class="navbar-inverse navbar-fixed-top boxShadow">
 				<div class="container">
@@ -54,7 +55,7 @@
 									<li class="dropdown" id="menuLogin">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navLogin">LogIn/SignIn  <span class="glyphicon glyphicon-user"></span></a>
 										<ul id="panel_login" class="dropdown-menu" role="menu" style="padding: 10px 10px;">
-											<form class="form not-available" id="formLogin"> 	
+											<form class="form not-available " id="formLogin"> 	
 												<li>
 													<div class="input-group">
 														<input name="username" id="username"  type="text" class="form-control" placeholder="Username">
@@ -101,19 +102,15 @@
 					</nav>	
 				</div><!-- container -->
 			</div> <!-- navbar -->
-			<div class="color-bg">
-				<div class="container">
-					<div id="alert-not-available"class="alert alert-danger important-alert" role="alert">
-						<!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-						Diese Funktion ist leider noch <strong>nicht verf&uuml;gbar! :(</strong>
-					</div>
-
-					<div class="jumbotron boxShadow intro">
-						<div align="center" class="embed-responsive embed-responsive-16by9">
-							<video controls autoplay loop muted>
-								<source src="styles/videos/intro.mp4" />
-							</video>
-						</div>
+			<!-- <div class="fullscreen-bg">
+				<video loop muted autoplay poster="http://placehold.it/800x600" class="fullscreen-bg__video">
+					<source src="styles/videos/intro.mp4" type="video/mp4">
+					
+				</video>
+			</div>	 -->
+			<div class="color-bg"> <!-- color-bg -->
+				<div class="container ">
+					<div class="jumbotron boxShadow">
 						<h1>
 							Hello 
 							<span style="font-size:70%;">
@@ -129,6 +126,9 @@
 								<strong>C</strong>&amp;<strong>S</strong>
 							</span>
 						</h1>
+						<div class="embed-responsive embed-responsive-16by9 introBox">
+							<video muted autoplay loop class="embed-responsive-item" src="styles/videos/intro.mp4"></iframe>
+						</div>
 						<p class="jumbo_subtitle">
 							Your personal debt register assistant for coffee and sweets! <span style="color:#BBB; font-size:80%;">also for Tea ;)</span>
 						</p> 
