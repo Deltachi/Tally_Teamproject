@@ -43,7 +43,7 @@ body.color-bg{
 	width: 100%;
 }
 .chocolate-bg{
-	background: url("images/backgrounds/chocolate-bg.jpg");
+	background: url("images/backgrounds/raspberry.png");
 	background-attachment: fixed;
 	background-size: 100%;
 	display: inline-block;
@@ -52,6 +52,7 @@ body.color-bg{
 	padding-top: 20px;	
 	position: relative;
 	width: 100%;
+	background-position: 0 200px;
 }
 .night-coffee-bg{
 	background: url("images/backgrounds/night-coffee.jpg");
