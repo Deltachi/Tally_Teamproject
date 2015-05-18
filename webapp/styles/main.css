@@ -4,7 +4,7 @@ body {
 }
 body.color-bg{
 	background: #E3D4C3;
-	padding-top: 70px; 
+	padding-top: 65px; 
 }
 
 .important-alert {
@@ -23,7 +23,7 @@ body.color-bg{
 .index-bg{
 	background: url("images/backgrounds/chocolate-bg-2.jpg");
 	background-attachment: fixed;
-	background-size: 100%;
+	background-size: 110%;
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
@@ -52,7 +52,7 @@ body.color-bg{
 	padding-top: 20px;	
 	position: relative;
 	width: 100%;
-	background-position: 0 200px;
+	background-position: 0 350px;
 }
 .night-coffee-bg{
 	background: url("images/backgrounds/night-coffee.jpg");
