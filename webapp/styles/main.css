@@ -1,6 +1,7 @@
 /*Padding for Navbar fixed-top*/
 body { 
 	padding-top: 90px; 
+	height: 100%;
 }
 body.color-bg{
 	background: #E3D4C3;
@@ -21,7 +22,7 @@ body.color-bg{
 	padding-top: 20px;
 }
 .index-bg{
-	background: url("images/backgrounds/chocolate-bg-2.jpg");
+	background: url("images/backgrounds/sweets-rasp-coffee.jpg");
 	background-attachment: fixed;
 	background-size: 110%;
 	display: inline-block;
@@ -43,7 +44,7 @@ body.color-bg{
 	width: 100%;
 }
 .chocolate-bg{
-	background: url("images/backgrounds/raspberry.png");
+	background: url("images/backgrounds/sweets-tea.jpg");
 	background-attachment: fixed;
 	background-size: 100%;
 	display: inline-block;
@@ -52,7 +53,7 @@ body.color-bg{
 	padding-top: 20px;	
 	position: relative;
 	width: 100%;
-	background-position: 0 350px;
+	background-position: 0 200px;
 }
 .night-coffee-bg{
 	background: url("images/backgrounds/night-coffee.jpg");
