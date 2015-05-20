@@ -17,4 +17,26 @@
 	padding: 0;
 	padding-right: 20px;
 }
+#my-brand-mobile{
+	padding: 0;
+	padding-right: 20px;
+}
 
+
+@media (min-width: 768px)  {
+	.mobile-brand{
+		display: none;
+	}
+	.desktop-brand{
+		display: block;
+	}
+}
+@media (max-width: 767px) { 
+	.mobile-brand{
+		display: block;
+		padding-bottom: 10px;
+	}
+	.desktop-brand #my-brand{
+		display: none;
+	}
+}

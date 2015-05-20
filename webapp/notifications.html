@@ -1,0 +1,178 @@
+<html>
+	<head>
+		<title>Tally C&amp;S</title>		
+		<!--Online sources -->
+		<!-- Latest compiled and minified CSS 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+		<!-- Optional theme 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> -->
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap.css">
+		<!-- Optional theme (locally saved) -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
+
+		<!--main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/navbar.css">
+		<link rel="stylesheet" href="styles/footer.css">
+		
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body class="color-bg"> <!-- class="color-bg" -->
+		<div id="wrap">
+			<div class="navbar-inverse navbar-fixed-top boxShadow">
+				<div class="container">
+					<nav class="navbar">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<div class="mobile-brand">
+									<a id="my-brand-mobile" class="" href="index.html"> <!--navbar-brand-->
+										<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+									</a>
+						  		</div>
+							</div>
+
+							<!-- Collect the nav links, forms, and other content for toggling -->
+							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+								<ul class="nav navbar-nav">
+									<li class="desktop-brand">
+										<a id="my-brand" href="index.html"> <!--class= navbar-brand -->
+											<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
+										</a>
+							  		</li>
+									<li><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
+									<li>
+										<!-- Button trigger modal -->
+										<a href="#"  data-toggle="modal" data-target="#myModal">
+											Log in <span class="glyphicon glyphicon-user"></span>
+										</a>
+									</li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<li class="active"><a href="#">Notifications <span class="badge">6</span></a></li>
+											<li><a href="lb.html">Leader Board</a></li>
+											<li class="divider"></li>
+											<li><a class="not-available" href="#">Settings</a></li>
+											<li><a class="" href="favorites.html">Favorites</a></li>
+											<li class="divider"></li>
+											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
+										</ul>
+									</li>
+								</ul>
+								<form class="navbar-form navbar-left menu-search not-available" role="search">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
+										<span class="input-group-btn">
+											<button type="submit" class="btn btn-default">Go!</button>
+										</span>
+									</div>
+								</form>
+							</div><!-- /.navbar-collapse -->
+						</div><!-- /.container-fluid -->
+					</nav>	
+				</div><!-- container -->
+			</div> <!-- navbar -->
+			<!-- Modal -->
+			<div class="color-bg">
+				<div class="container">
+					<div class="jumbotron lil-jumbo inline-text">
+						<h1 style="font-size:45px;"><small>Welcome, </small>Max Mustermann!</h1>
+					</div>
+					<div class="jumbotron inline-text">
+						<h3>Your balance: <strong><span id="balance" style="font-size:35px;" class="text-success">55&euro;</span></strong></h3>
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%">
+								<span class="sr-only">55&euro;</span>
+							</div>
+						</div>
+						<div id="btn-good" class="btn btn-success">Example: Positive</div>
+						<div id="btn-neutral" class="btn btn-warning">Example: Neutral</div>
+						<div id="btn-bad" class="btn btn-danger">Example: Warning</div>
+					</div>
+					<div class="col-md-4">
+						<div class="jumbotron lil-jumbo inline-text">
+							<h3>Latest purchases:</h3>
+							<table class="table panel-body">
+								<tbody>
+									<tr>
+										<th scope="row">Kaffee L</th>
+										<td>1,50&euro;</td>
+									</tr>
+									<tr>
+										<th scope="row">Kaffee M</th>
+										<td>1,00&euro;</td>
+									</tr>
+									<tr>
+										<th scope="row">Kaffee S</th>
+										<td>0,50&euro;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<!-- <div class="jumbotron lil-jumbo"> -->
+						<div class="panel panel-default" style="border-radius:0 30px 30px 0;">
+							<div class="panel-heading inline-text" style="border-radius:0 30px 0 0;">
+								<h3>Your notifications and messages:</h3>
+							</div>
+							<div class="panel-body" style="margin:0 20px;">
+								<div class="row">
+									<div class="alert alert-info alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<strong>System:</strong> Did you check out our new<a class="alert-link" href="menu.html"> menu?</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="alert alert-success alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<strong>System:</strong> Just today 10% off, for Snickers and Twix!
+									</div>
+								</div>
+								<div class="row">
+									<div class="alert alert-danger alert-dismissible" role="alert">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<strong>Administrator:</strong> Pay your bills!
+									</div>
+								</div>
+							</div> <!-- panel-body -->
+						</div> <!-- panel -->
+					</div> <!-- col-md-8 -->
+				</div> <!-- container -->
+			</div> <!-- color-bg -->
+		</div> <!-- close wrap -->
+		<footer id="footer" class="text-center">
+			<div class="container">
+				<div class="col-sm-4">
+					<span id="updated" class="text-muted">
+						<script src="javascript/templates/updated.js"></script>
+					</span>
+				</div>
+				<div class="col-sm-4"><a class="footerLinks"href="404.html">Impressum</a></div>
+				<div class="col-sm-4"><a class="footerLinks"href="404.html">Haftungsausschluss</a></div>
+			</div> <!-- close container -->
+		</footer>
+		<!-- These sources stay in the clouds and are not availabe in intranet-only-mode -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) 
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+		<!-- Latest compiled and minified JavaScript 
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+		<script src="javascript/jquery-1.11.2.js"></script>
+		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="javascript/main.js"></script>
+		<script src="javascript/notifications.js"></script>
+	</body>
+</html>

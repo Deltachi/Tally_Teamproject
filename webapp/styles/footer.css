@@ -33,3 +33,9 @@ Footer CSS
 #footer.mobileFooter {
 	
 }
+
+@media (max-width: 767px) {
+	#footer {
+		height: 100px;
+	}
+}
