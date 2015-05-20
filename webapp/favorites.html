@@ -34,59 +34,42 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<!-- <div>
-									<a class="navbar-brand" href="#">
+								<div class="mobile-brand">
+									<a id="my-brand-mobile" class="" href="index.html"> <!--navbar-brand-->
 										<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
 									</a>
-						  		</div> -->
+						  		</div>
 							</div>
 
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li>
+									<li class="desktop-brand">
 										<a id="my-brand" href="index.html"> <!--class= navbar-brand -->
 											<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
 										</a>
 							  		</li>
-									<li><a href="menu.html">Speisekarte</a></li><!--  <span class="sr-only">(current)</span> -->
-									<li class="dropdown" id="menuLogin">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navLogin">LogIn/SignIn  <span class="glyphicon glyphicon-user"></span></a>
-										<ul id="panel_login" class="dropdown-menu" role="menu" style="padding: 10px 10px;">
-											<form class="form" id="formLogin"> 	
-												<li>
-													<div class="input-group">
-														<input name="username" id="username"  type="text" class="form-control" placeholder="Username">
-													</div>
-												</li>
-												<li>
-													<div class="input-group">
-														<input name="password" id="password" type="password" class="form-control" placeholder="Password">
-														<span class="input-group-btn">
-															<button id="btn_login" type="submit" class="btn btn-default">Login</button>
-														</span>
-													</div>
-												</li>
-											</form>
-											<li><a href="">Passwort vergessen?</a></li>
-											<li class="divider"></li>
-											<li><a href="">Jetzt registrieren <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
-										</ul>
+									<li><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
+									<li>
+										<!-- Button trigger modal -->
+										<a href="#"  data-toggle="modal" data-target="#myModal">
+											Log in <span class="glyphicon glyphicon-user"></span>
+										</a>
 									</li>
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="glyphicon glyphicon-cog"></span></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
 										<ul class="dropdown-menu" role="menu">
-											<li class="not-available"><a href="#">Einstellungen</a></li>
+											<li><a href="notifications.html">Notifications <span class="badge">6</span></a></li>
 											<li><a href="lb.html">Leader Board</a></li>
-											<li class="active"><a href="#">Favoriten</a></li>
 											<li class="divider"></li>
-											<li class="not-available"><a href="#">Benachrichtigungen</a></li>
+											<li><a class="not-available" href="#">Settings</a></li>
+											<li class="active"><a href="favorites.html">Favorites</a></li>
 											<li class="divider"></li>
-											<li class="not-available"><a href="#">Abmelden</a></li>
+											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left not-available" role="search">
+								<form class="navbar-form navbar-left menu-search not-available" role="search">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
 										<span class="input-group-btn">
@@ -97,66 +80,96 @@
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>	
-				</div>
-			</div> <!-- navbar-inverse -->
+				</div><!-- container -->
+			</div> <!-- navbar -->
 			<div class="color-bg">
 				<div class="container">
 					<div class="jumbotron lil-jumbo boxShadow">
-						<h1>Max, <small> &auml;ndern Sie hier Ihre Favoriten</small></h1>
+						<h2>Max, <small>choose your favorites here.</small></h2>
 					</div>
 				</div>
 			</div>
 			<div class="drinks-bg">
 				<div class="container">
 					<div class="panel panel-default  boxShadow">
-						<div class="panel panel-default">
-							<div class="panel-heading">
-								<div class="row inline-text">
-									<div class="col-md-6">
-										<h2>Ausgew&auml;hlte Favoriten</h2>
-									</div>
-									<div class="col-md-6">
-										<img class="lb-symbol" src="" alt="">
-									</div>
+						<div class="panel-heading">
+							<div class="row inline-text">
+								<div class="col-md-6">
+									<h3>Your current favorites<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h3>
+								</div>
+								<div class="col-md-6">
+									
 								</div>
 							</div>
-							<div class="panel-body">
-								<table class="table panel-body">
-									<thead>
-										<tr class="text-muted">
-											<th></th>
-											<th>Bezeichnung</th>
-											<th>L&ouml;schen</th>
-										</tr>
-									</thead>	
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Cappuchino</td>
-											<td><button class="btn btn-xs btn-danger deleteBtn">x</button></td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Snickers</td>
-											<td><button class="btn btn-xs btn-danger deleteBtn">x</button></td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Twix</td>
-											<td><button class="btn btn-xs btn-danger deleteBtn">x</button></td>
-										</tr>
-										<tr>
-											<th scope="row">4</th>
-											<td>Latte Machiato</td>
-											<td><button class="btn btn-xs btn-danger deleteBtn">x</button></td>
-										</tr>
-									</tbody>
-								</table>
-							</div> <!-- panel-body -->
-						</div> <!-- panel -->
-					</div>
-				</div>
-			</div>
+						</div>
+						<div class="panel-body">
+							<table id="favorites" class="table panel-body">
+								<thead>
+									<tr class="text-muted">
+										<th></th>
+										<th>Item</th>
+										<th>Delete</th>
+									</tr>
+								</thead>	
+								<tbody>
+									<tr>
+										<th class="index" scope="row">1</th>
+										<td>Cappuchino</td>
+										<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									<tr>
+										<th class="index" scope="row">2</th>
+										<td>Snickers</td>
+										<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									<tr>
+										<th class="index" scope="row">3</th>
+										<td>Twix</td>
+										<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+									<tr>
+										<th class="index" scope="row">4</th>
+										<td>Latte Machiato</td>
+										<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div> <!-- panel-body -->
+					</div> <!-- panel -->
+					<div class="panel panel-default boxShadow">
+						<div class="panel-heading">
+							<div class="row inline-text">
+								<div class="col-md-6">
+									<h3>Add a favorite here!</h3>
+								</div>
+								<div class="col-md-6">
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="input-group">
+								<select id="itemList" class="form-control">
+									<option value="Coffee L" class="topic">Coffee L</option>
+									<option value="Coffee M" class="topic">Coffee M</option>
+									<option value="Coffee S" class="topic">Coffee S</option>
+									<option value="Cappuchino" class="topic">Cappuchino</option>
+									<option value="Machiato" class="topic">Machiato</option>
+									<option value="Latte" class="topic">Latte</option>
+									<option value="Tea" class="topic">Tea</option>
+									<option value="Snickers" class="topic">Snickers</option>
+									<option value="Mars" class="topic">Mars</option>
+									<option value="Twix" class="topic">Twix</option>
+									<option value="M&amp;M's" class="topic">M&amp;M's</option>
+									<option value="Haribo" class="topic">Haribo</option>
+									<option value="Skittles" class="topic">Skittles</option>
+								</select>
+								<span class="input-group-btn"><div id="addBtn" class="btn btn-success">Add to list</div></span>
+							</div>	<!-- group -->
+						</div> 	<!-- panel-body -->				
+					</div> <!-- panel-default -->
+				</div> <!-- container -->
+			</div> <!-- drinks-bg -->
 		</div> <!-- wrap -->
 		<footer id="footer" class="text-center">
 			<div class="container">
