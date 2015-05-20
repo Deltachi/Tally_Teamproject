@@ -6,6 +6,17 @@ $(function(){
 	$('#btn-neutral').on('click', neutral);
 	$('#btn-bad').on('click', bad);
 	
+	$('.panel').on('click', function(){
+		setTimeout(checkIfEmpty,500);
+	});
+
+	function checkIfEmpty(){
+		list = $('.alert');
+		if( list.length <= 1  ) {
+			$('.panel-body').append('<p>No notifications</p>');
+		}
+	}
+
 	function good(){
 		$balance.html("55&euro;");
 		$balance.removeClass();
