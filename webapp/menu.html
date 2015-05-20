@@ -34,65 +34,42 @@
 									<span class="icon-bar"></span>
 									<span class="icon-bar"></span>
 								</button>
-								<!-- <div>
-									<a class="navbar-brand" href="#">
+								<div class="mobile-brand">
+									<a id="my-brand-mobile" class="" href="index.html"> <!--navbar-brand-->
 										<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
 									</a>
-						  		</div> -->
+						  		</div>
 							</div>
 
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
-									<li>
+									<li class="desktop-brand">
 										<a id="my-brand" href="index.html"> <!--class= navbar-brand -->
 											<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
 										</a>
 							  		</li>
-									<li class="active"><a href="menu.html">Speisekarte</a></li><!--  <span class="sr-only">(current)</span> -->
-									<!-- <li class="dropdown" id="menuLogin">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="navLogin">LogIn/SignIn  <span class="glyphicon glyphicon-user"></span></a>
-										<ul id="panel_login" class="dropdown-menu" role="menu" style="padding: 10px 10px;">
-											<form class="form" id="formLogin"> 	
-												<li>
-													<div class="input-group">
-														<input name="username" id="username"  type="text" class="form-control" placeholder="Username">
-													</div>
-												</li>
-												<li>
-													<div class="input-group">
-														<input name="password" id="password" type="password" class="form-control" placeholder="Password">
-														<span class="input-group-btn">
-															<button id="btn_login" type="submit" class="btn btn-default">Login</button>
-														</span>
-													</div>
-												</li>
-											</form>
-											<li><a class="not-available" href="">Passwort vergessen?</a></li>
-											<li class="divider"></li>
-											<li><a class="not-available" href="">Jetzt registrieren <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
-										</ul>
-									</li> -->
+									<li class="active"><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
 									<li>
 										<!-- Button trigger modal -->
 										<a href="#"  data-toggle="modal" data-target="#myModal">
-											Anmelden <span class="glyphicon glyphicon-user"></span>
+											Log in <span class="glyphicon glyphicon-user"></span>
 										</a>
 									</li>
 									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="glyphicon glyphicon-cog"></span></a>
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
 										<ul class="dropdown-menu" role="menu">
-											<li><a class="not-available" href="#">Einstellungen</a></li>
+											<li><a href="notifications.html">Notifications <span class="badge">6</span></a></li>
 											<li><a href="lb.html">Leader Board</a></li>
-											<li><a href="favorites.html">Favoriten</a></li>
 											<li class="divider"></li>
-											<li><a class="not-available" href="#">Benachrichtigungen</a></li>
+											<li><a class="not-available" href="#">Settings</a></li>
+											<li><a class="" href="favorites.html">Favorites</a></li>
 											<li class="divider"></li>
-											<li><a class="not-available" href="#">Abmelden</a></li>
+											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left not-available" role="search">
+								<form class="navbar-form navbar-left menu-search not-available" role="search">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
 										<span class="input-group-btn">
@@ -103,15 +80,20 @@
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>	
-				</div> <!-- container -->
+				</div><!-- container -->
 			</div> <!-- navbar -->
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="myModalLabel">Melden Sie sich an</h4>
+							<div class="row">
+								<button style="margin-right:20px;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							</div>
+							<div class="row">
+								<div class="col-sm-7"><h4 class="modal-title" id="myModalLabel">Does Tally know you? Then log in!</h4></div>
+								<div class="col-sm-4"><img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin" style="margin-right:5px;"></div>
+							</div>
 						</div>
 						<div class="modal-body">
 							<form class="form not-available " id="formLogin"> 	
@@ -127,9 +109,9 @@
 							</form>
 						</div>
 						<div class="modal-footer">
-							<a class="not-available" href="#">Passwort vergessen?</a>
-							<button type="button" class="btn btn-default" data-dismiss="modal">R&uuml;ckzug!</button>
-							<button type="button" class="btn btn-primary not-available">Jetzt registrieren <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+							<a class="not-available" href="#">For got your password?</a>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary not-available">Register now <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
 						</div>
 					</div>
 				</div>
@@ -137,13 +119,13 @@
 			<div class="color-bg">
 				<div class="container">
 					<div class="jumbotron inline-text lil-jumbo">
-						<h1>Getr&auml;nke</h1>
+						<h2>Getr&auml;nke</h2>
 					</div>
 				</div>
 			</div>
 			<div class="drinks-bg">
 				<div class="container">
-					<div class="panel panel-default color: menuTable">
+					<div class="panel panel-default menuTable">
 						<table class="table panel-body">
 							<tbody>
 								<tr>
@@ -209,7 +191,7 @@
 			<div class="color-bg">
 				<div class="container">
 					<div class="jumbotron inline-text lil-jumbo">
-						<h1>Snacks</h1>
+						<h2>Snacks</h2>
 					</div>
 				</div>
 			</div> <!-- color-bg -->
@@ -254,7 +236,7 @@
 									<td>1,00&euro;</td>
 								</tr>
 								<tr>
-									<th scope="row">M&M's</th>
+									<th scope="row">M&amp;M's</th>
 									<td>Jeder will sie haben</td>
 									<td>1,15&euro;</td>
 								</tr>
