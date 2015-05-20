@@ -52,8 +52,27 @@
 }*/
 
 .introBox{
-	padding-bottom: 540px;
+	max-height: 380px;
+
+	/*padding-bottom: 540px;*/
 	overflow: hidden;
+}
+.introBox div{
+	top: -100px;
+}
+@media (max-width: 1199px){
+	.introBox div{
+		top: -50;
+	}
+}
+@media (max-width: 767px){
+	.introBox div{
+		top: 0;
+	}
+	#intro{
+		height: 300%;
+    	top: -100%;
+	}
 }
 
 .fullscreen-bg {

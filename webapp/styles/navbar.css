@@ -34,8 +34,9 @@
 @media (max-width: 767px) { 
 	.mobile-brand{
 		display: block;
+		padding-bottom: 10px;
 	}
-	.desktop-brand{
+	.desktop-brand #my-brand{
 		display: none;
 	}
 }
