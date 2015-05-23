@@ -13,7 +13,7 @@ $(function(){
 	function checkIfEmpty(){
 		list = $('.alert');
 		if( list.length <= 1  ) {
-			$('.panel-body').append('<p>No notifications</p>');
+			$('.panel-notifications').append('<p>No notifications</p>');
 		}
 	}
 
