@@ -22,6 +22,16 @@ void passwordscreen::updatePasswordField(){
     for(loop=0;loop<password.length();loop++){
         ui->lineEdit_password->setText(ui->lineEdit_password->text() + "*");
     }
+
+    Data.open();
+    SqlZugriff database;
+    qDebug() << userName;
+    qDebug() << password;
+    if(database.checkPassword(userName,password)){
+        mainWindowPointer->exit(21);
+    }
+    Data.close();
+
 }
 void passwordscreen::setMainWindowPointer(QApplication *a){
     mainWindowPointer = a;
