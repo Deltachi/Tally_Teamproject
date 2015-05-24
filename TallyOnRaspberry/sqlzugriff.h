@@ -21,6 +21,7 @@ public:
     QString getNextName();
     bool checkPassword(QString username, QString password);
     QPixmap getPixmap(QString name);
+    QString getCredits(QString name);
 
 private:
      QSqlQuery query;

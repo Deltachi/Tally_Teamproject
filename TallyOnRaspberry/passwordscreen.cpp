@@ -33,6 +33,9 @@ void passwordscreen::updateAccoutPicture(QString name){
     Data.open();
     SqlZugriff database;
     QPixmap icon;
+    QString credit = database.getCredits("Flipse");
+    ui->label_credit->setText(credit);
+
     icon = database.getPixmap(name);
     ui->label_pic->setPixmap(icon);
     Data.close();

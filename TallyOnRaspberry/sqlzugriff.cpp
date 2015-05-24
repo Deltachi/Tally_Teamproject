@@ -21,7 +21,7 @@ QString SqlZugriff::getNextString(){
     return value;
 }
 QString SqlZugriff::getName(QString ID){
-    query.exec("Select Username from User_ID where User_ID = '"+ID+"'");
+    query.exec("Select Username from Users where User_ID = '"+ID+"'");
 
     QString ausgabe;
     ausgabe = query.value(0).toString();
@@ -57,6 +57,16 @@ QPixmap SqlZugriff::getPixmap(QString name){
         return icon;
     }
     return icon;
+}
+
+QString SqlZugriff::getCredits(QString name){
+
+    query.exec("SELECT Credits FROM Users WHERE Username=\'" + name + "\'");
+    if(query.next()){
+        QString credit;
+        credit = query.value(0).toString();
+        return credit;
+    }
 }
 
 SqlZugriff::~SqlZugriff()

@@ -51,12 +51,15 @@ private slots:
 
     void on_pushButton_Weiter_clicked();
 
+    void on_listWidget_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::LoginScreen *ui;
     QApplication *MainWindowPointer;
     QString NameField;          //REAL Name
     QString PasswordField;
-    QString Username; //this is the logged in Usernam
+    QString Username; //this is the logged in Username
+    int UserID; //this is the logged in User_ID
     QSqlDatabase Data;
 
 };

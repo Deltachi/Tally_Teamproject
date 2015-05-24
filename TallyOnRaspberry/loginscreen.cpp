@@ -122,6 +122,14 @@ void LoginScreen::on_pushButton_Weiter_clicked()
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();
-        MainWindowPointer->exit(10);
+                MainWindowPointer->exit(10);
+    }
+}
+
+void LoginScreen::on_listWidget_doubleClicked(const QModelIndex &index)
+{
+    if( ui->listWidget->selectedItems().length() > 0){
+        Username = ui->listWidget->selectedItems().first()->text();
+                MainWindowPointer->exit(10);
     }
 }
