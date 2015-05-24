@@ -8,6 +8,8 @@
 #include "coffesweetsscann.h"
 #include "scanwidget.h"
 #include "favcart.h"
+#include <QTime>
+#include <QDate>
 
 //constructer
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,12 +18,35 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     showFavCart = true;
+
+    QTime qtime = QTime::currentTime();
+    QString stime = qtime.toString(Qt::LocalDate);
+    ui->label_Time->setText(stime);
+    startTimer(1000);
+
+    QDate qdate = QDate::currentDate();
+    QString sdate = qdate.toString(Qt::LocalDate);
+    ui->label_Date->setText(sdate);
 }
 //delete MainWindow
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+//reset time and date
+void MainWindow::timerEvent(QTimerEvent *event)
+{
+QTime qtime = QTime::currentTime();
+QString stime = qtime.toString(Qt::LocalDate);
+ui->label_Time->setText(stime);
+
+QDate qdate = QDate::currentDate();
+QString sdate = qdate.toString(Qt::LocalDate);
+ui->label_Date->setText(sdate);
+
+}
+
 //sets the pointer to the window generated from qt
 void MainWindow::setMainWindowPointer(QApplication *a){
 

@@ -33,6 +33,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void timerEvent(QTimerEvent *event);
+
 private:
     Ui::MainWindow *ui;
     QApplication *mainWindowPointer;

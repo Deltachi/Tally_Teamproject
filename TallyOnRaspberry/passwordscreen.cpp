@@ -25,8 +25,6 @@ void passwordscreen::updatePasswordField(){
 
     Data.open();
     SqlZugriff database;
-    qDebug() << userName;
-    qDebug() << password;
     if(database.checkPassword(userName,password)){
         mainWindowPointer->exit(21);
     }
