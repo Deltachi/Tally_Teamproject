@@ -17,7 +17,11 @@ passwordscreen::~passwordscreen()
     delete ui;
 }
 void passwordscreen::updatePasswordField(){
-    ui->lineEdit_password->setText(password);
+    short loop;
+    ui->lineEdit_password->setText("");
+    for(loop=0;loop<password.length();loop++){
+        ui->lineEdit_password->setText(ui->lineEdit_password->text() + "*");
+    }
 }
 void passwordscreen::setMainWindowPointer(QApplication *a){
     mainWindowPointer = a;
@@ -90,12 +94,13 @@ void passwordscreen::on_pushButton_9_clicked()
 
 void passwordscreen::on_pushButton_back_clicked()
 {
-
+    password.clear();
+    updatePasswordField();
 }
 
 void passwordscreen::on_pushButton_0_clicked()
 {
-    password.clear();
+    password.append("0");
     updatePasswordField();
 }
 
@@ -103,7 +108,7 @@ void passwordscreen::on_pushButton_login_clicked()
 {
     Data.open();
     SqlZugriff database;
-    if(database.checkPassword(userName,ui->lineEdit_password->text())){
+    if(database.checkPassword(userName,password)){
         mainWindowPointer->exit(21);
     }
     Data.close();
