@@ -37,14 +37,17 @@ void passwordscreen::setMainWindowPointer(QApplication *a){
 void passwordscreen::setUsername(QString name){
     userName = name;
 }
-void passwordscreen::updateAccoutPicture(QString name){
+void passwordscreen::updateAccoutPicture(QString id){
     Data.open();
     SqlZugriff database;
     QPixmap icon;
-    QString credit = database.getCredits("Flipse");
-    ui->label_credit->setText(credit);
 
-    icon = database.getPixmap(name);
+    database.initGetUser();
+    while(database.next()){
+        if(database.getString(0) == id){
+            icon = database.getPixmap();
+        }
+    }
     ui->label_pic->setPixmap(icon);
     Data.close();
 }

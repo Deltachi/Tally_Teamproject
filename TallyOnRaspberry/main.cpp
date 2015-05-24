@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
             case 0: {//Loginscreen (showing Name list)
                 if(exitcode == 10){ //->login was clicked
                     w.getUserFromLoginScreen();
+                    w.getUserIDFromLoginScreen();
                     w.removeWidget();
                     w.showLoginPasswordWidget();
                     w.setLogoutButton(true);

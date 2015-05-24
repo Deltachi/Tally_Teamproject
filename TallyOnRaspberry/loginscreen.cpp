@@ -36,18 +36,27 @@ void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
     Data.open();
     SqlZugriff Database;
-    Database.initGetT9_code();
+    Database.initGetUser();
     QString tempID;
-
-    tempID = Database.getNextString();
     int i = 0;
-    while(tempID.length() > 0){
+    while(Database.next()){
+        tempID = Database.getString(0);
         if(tempID.contains(NameField)){
-            ui->listWidget->insertItem(i,Database.getName());
+            QListWidgetItem *item = new QListWidgetItem();
+            item->setData(0,Database.getString(0).toInt());
+            item->setIcon(Database.getPixmap());
+            item->setText(Database.getString(2));
+            QColor farbe;
+            if(Database.getString(4).toInt() < 0){
+                farbe.setRed(1);
+            }else{
+                farbe.setGreen(1);
+            }
+            item->setTextColor(farbe);
+            ui->listWidget->addItem(item);
             i++;
         }
-        tempID = Database.getNextString();
-   }
+    }
    ui->lineEdit->setText(NameField);
    Data.close();
 }
@@ -117,12 +126,16 @@ void LoginScreen::on_pushButton_0_clicked()
     NameField.append("0");
     update_name_label();
 }
+QString LoginScreen::getUserID(){
+    return UserID;
+}
 
 void LoginScreen::on_pushButton_Weiter_clicked()
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();
-                MainWindowPointer->exit(10);
+        UserID = ui->listWidget->selectedItems().first()->data(0).toString();
+        MainWindowPointer->exit(10);
     }
 }
 
@@ -130,6 +143,7 @@ void LoginScreen::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();
-                MainWindowPointer->exit(10);
+        UserID = ui->listWidget->selectedItems().first()->data(0).toString();
+        MainWindowPointer->exit(10);
     }
 }

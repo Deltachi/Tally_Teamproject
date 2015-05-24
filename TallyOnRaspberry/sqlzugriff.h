@@ -13,15 +13,12 @@ class SqlZugriff
 public:
     SqlZugriff();
     ~SqlZugriff();
-    void initGetT9_code();
-    QString getNextId();
+    void initGetUser();
+    bool next();
     QString getName(QString ID);
-    QString getName();
-    QString getNextString();
-    QString getNextName();
+    QString getString(int x);
     bool checkPassword(QString username, QString password);
-    QPixmap getPixmap(QString name);
-    QString getCredits(QString name);
+    QPixmap getPixmap();
 
 private:
      QSqlQuery query;

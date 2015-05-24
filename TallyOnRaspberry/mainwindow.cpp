@@ -73,11 +73,20 @@ void MainWindow::removeWidget(){
         delete oldWidget;
     }
 }
+void MainWindow::setUserID(QString id){
+    userID = id;
+}
+QString MainWindow::getUserIDFromLoginScreen(){
+    LoginScreen *loginS;
+    loginS = (LoginScreen*)(ui->gridLayout_port->itemAt(0)->widget());
+    return loginS->getUserID();
+}
+
 void MainWindow::showLoginPasswordWidget(){
 
     passwordscreen *myPwScreen = new passwordscreen();
     ui->gridLayout_port->addWidget(myPwScreen);
-    myPwScreen->updateAccoutPicture(ui->label_username->text());
+    myPwScreen->updateAccoutPicture(userID);
     myPwScreen->setUsername(ui->label_username->text());
 }
 void MainWindow::showCoffeeSweetWidget(){

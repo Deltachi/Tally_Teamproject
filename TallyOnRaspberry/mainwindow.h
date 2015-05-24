@@ -26,6 +26,9 @@ public:
     void showCoffeeSweetWidget();
     void showBuyWidget();
     void showScanWidget();
+    void setUserID(QString id);
+    QString getUserIDFromLoginScreen();
+    QString getUserID();
 
 private slots:
 
@@ -41,6 +44,7 @@ private:
     LoginScreen *myLoginScreen;
     Shoppingcart * myShoppingCart;
     bool showFavCart;
+    QString userID;
 };
 
 #endif // MAINWINDOW_H

@@ -23,6 +23,7 @@ public:
     void setMainWindowPointer(QApplication *a);
     void update_name_label();
     QString getUsername();
+    QString getUserID();
 
 private slots:
 
@@ -59,7 +60,7 @@ private:
     QString NameField;          //REAL Name
     QString PasswordField;
     QString Username; //this is the logged in Username
-    int UserID; //this is the logged in User_ID
+    QString UserID; //this is the logged in User_ID
     QSqlDatabase Data;
 
 };

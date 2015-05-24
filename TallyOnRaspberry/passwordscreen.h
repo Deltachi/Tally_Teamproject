@@ -21,7 +21,7 @@ public:
     void updatePasswordField();
     void setMainWindowPointer(QApplication *a);
     void setUsername(QString name);
-    void updateAccoutPicture(QString name);
+    void updateAccoutPicture(QString id);
 
 private slots:
     void on_pushButton_1_clicked();
