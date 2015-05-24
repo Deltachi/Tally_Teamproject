@@ -12,7 +12,7 @@ SqlZugriff::SqlZugriff()
 
 void SqlZugriff::initGetT9_code(){
 
-    query.exec("Select t9_code, name from Benutzer");
+    query.exec("Select T9, Username from Users");
 }
 
 QString SqlZugriff::getNextString(){
@@ -21,7 +21,7 @@ QString SqlZugriff::getNextString(){
     return value;
 }
 QString SqlZugriff::getName(QString ID){
-    query.exec("Select name from Benutzer where id = '"+ID+"'");
+    query.exec("Select Username from User_ID where User_ID = '"+ID+"'");
 
     QString ausgabe;
     ausgabe = query.value(0).toString();
@@ -33,8 +33,8 @@ QString SqlZugriff::getName(){
     return ausgabe;
 }
 bool SqlZugriff::checkPassword(QString username, QString password){
-    if(query.exec("SELECT id FROM Benutzer WHERE name=\'" + username +
-               "\' AND password=\'" + password + "\'")){
+    if(query.exec("SELECT USER_ID FROM Users WHERE Username=\'" + username +
+               "\' AND Password=\'" + password + "\'")){
         if(query.next()){
             return true;
         }
@@ -50,7 +50,7 @@ QString SqlZugriff::getNextName(){
 QPixmap SqlZugriff::getPixmap(QString name){
     QPixmap icon;
     QByteArray imagedata;
-    query.exec("SELECT image FROM Benutzer WHERE name=\'" + name + "\'");
+    query.exec("SELECT Image FROM Users WHERE Username=\'" + name + "\'");
     if(query.next()){
         imagedata = query.value(0).toByteArray();
         icon.loadFromData(imagedata);
