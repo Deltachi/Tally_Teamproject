@@ -1,0 +1,228 @@
+%------------------------------------------------------------------------------------------------
+%
+% LaTeX document Tally
+%
+%------------------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper]{article} % weitere Option: twoside
+
+%------------------------------------------------------------------------------------------------
+
+% weitere Pakete laden
+\usepackage[latin1]{inputenc}          % Kodierung einstellen
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{ngerman}
+
+% weitere Formatierung
+\frenchspacing                         % Kein zus�tzlichen Abstand nach Punkt (.)
+\setlength{\parindent}{0cm}            % keine Einr�ckung bei Beginn eines Absatzes
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.5ex}  % mehr Absatzabstand
+
+
+%------------------------------------------------------------------------------------------------
+%
+%  AB HIER SOLLEN �NDERUNGEN VORGENOMMEN WERDEN
+%
+%------------------------------------------------------------------------------------------------
+
+% Hier sucht man sich den gew�nschten Stil f�r Kopf- bzw. Fu�zeile aus.
+%\pagestyle{empty}                     % keine Kopf- und Fu�zeilen
+\pagestyle{plain}                      % nur Seitenzahlen
+%\pagestyle{headings}                  % Aktivieren f�r Kopf- und Fu�zeilen
+
+
+\title{Tally\\ digitale Strichliste am Raspberry Pi}
+\author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philipp Frieling \\ Sebastian Reinke}
+\date{Ein Datum}
+
+
+%------------------------------------------------------------------------------------------------
+
+\begin{document}
+
+%------------------------------------------------------------------------------------------------
+
+\maketitle  % Titel erzeugen, verwendet die Angaben aus \title, \author und \date
+
+%\tableofcontents % Um Inhaltsverzeichnis zu erzeugen
+
+%------------------------------------------------------------------------------------------------
+
+\section{Projektvorfeld\ Kaffeestrichliste bisher }
+\label{Grundlagen}
+
+%------------------------------------------------------------------------------------------------
+
+Da das benutzen einer Strichliste auf Papier und das anschliessende einfuegen der Daten in eine Datenbank sehr aufwendig ist, entwickeln wir eine Art 'digitale' Strichliste auf der Grundlagen eine Raspberry Pi 2 mit einem integrierten Webserver.
+
+\subsection{Aufgaben der neuen Kaffeestrichliste}
+\label{SchriftAnpassen}
+
+Hier sehen wir, wie wir die Schrift \emph{hervorheben} k�nnen. Daf�r wird automatisch Kursivdruck gew�hlt.\footnote{Die gew�hlte Schrift f�r die Hervorhebung h�ngt von der Dokumentenklasse ab.} \textit{Verwendet man allerdings schon Kursivdruck, so wird durch \emph{Normaldruck} hervorgehoben}. Man kann auch die Hervorhebungsart, wie \textbf{Fettdruck}, \textit{Kursivdruck} oder \underline{Unterstreichen} auch direkt w�hlen. \texttt{Quellcode} wird oft durch eine Schrift gesetzt, in der jeder Buchstabe gleich viel Platz einnimmt. Das ist somit eine \texttt{Nichtproportionalschrift}. Schreibmaschinen haben fr�her stets solche Schriften verwendet. Im Druck sind sie wegen der schlechten Lesbarkeit eher verp�nt. Weitere Hervorhebungsm�glicheiten ergeben sich durch \textsc{kleine Kapit�lchen} oder durch \textsf{serifenlose Schrift}. Auf manuelle Schriftgr��enanpassung sollte man weitestgehend verzichten. Aber \begin{tiny} ein kleines Beispiel ist sicher nicht verkehrt.\end{tiny}
+
+\subsection{Anforderungen an die neue Kaffeestrichliste}
+\label{Ausrichtung}
+
+\subsubsection{Linksb�ndiger Text}
+
+\begin{flushleft}
+Es gibt die M�glichkeit die Ausrichtung zu steuern. In der Regel sollte man an der Ausrichtung nichts �ndern, da der Blocksatz von \LaTeX\ zuverl�ssig gute Ergebnisse liefert. Trotzdem braucht man manchmal linksb�ndiger Text.
+\end{flushleft}
+
+\section{Projektziele\ }
+
+\begin{flushright}
+Rechtsb�ndiger Text ist schon eher exotisch. Wof�r ist der eigentlich gut? Egal, \LaTeX\ bietet auch diese M�glichkeit an. Vielleicht braucht man das auch manchmal?
+\end{flushright}
+
+
+\section{Zeitplanung\ Meilenstein}
+
+\begin{center}
+\begin{large}
+\textbf{Zentrierter Text hingegen ist schon eher n�tzlich.}
+\end{large}
+\end{center}
+
+
+\subsection{Umbr�che}
+\label{Umbrueche}
+
+Wie wir im vorangegangen Text gesehen haben, sind die Zeilenumbr�che automatisch ganz gut. Neue Abschnitte werden durch eine Leerzeile erzeugt. Wenn man trotzdem eine Zeile in einem Absatz abbrechen will, so geht das nat�rlich auch. \\  Aber eigentlich sehen diese Umbr�che seltsam aus und man sollte sie vermeiden. Da ist es doch in der Regel besser, gleich einen neuen Absatz zu beginnen. In Abschnitt \ref{Sonderzeichen} sehen wir, wie eine gute Absatzstruktur aussieht. �brigens k�nnen wir auch einen neuen Seitenbeginn erzwingen.
+
+\newpage
+
+Aber auch das sollte man in der Regel vermeiden. \LaTeX\ bricht Seiten in der Regel selbst vern�nftig um, und wenn man sp�ter noch Text einf�gt, stehen manuelle Seitenumbr�che fast immer an der falschen Stelle.\footnote{Manuelle Seitenumbr�che sollten deswegen h�chstens dann eingef�gt werden, wenn das Dokument vollst�ndig fertig ist und die Seitenumbr�che von \LaTeX\ nicht zufriedenstellend waren.}
+
+\subsection{Sonderzeichen}
+\label{Sonderzeichen}
+
+Viele Sonderzeichen haben in \LaTeX\ eine spezielle Bedeutung und d�rfen nicht einfach so verwendet werden, sondern werden durch spezielle Befehle erzeugt. Das ist ganz �hnlich wie HTML. Zum Beispiel ist \& ein Trennzeichen in Tabellen, \$ signalisiert den Beginn und das Ende von mathematischem Text, \% macht eine Zeile zu einem Kommentar, der von \LaTeX\ nat�rlich ignoriert wird, \{ und \} sind f�r die Parameter�bergabe bei Befehlen reserviert, \_ und \^{} haben ihre Bedeutung bei dem Setzen von mathematischen Formeln und \# ist erforderlich bei selbst definierten Befehlen.
+
+Viele Buchstaben aus anderen europ�ischen Sprachen, die sich nicht auf der Tastatur befinden, k�nnen ebenfalls als Sonderzeichen erzeugt werden. Das ist manchmal ganz n�tzlich in der Physik und Chemie, weil man da noch immer die L�ngeneinheit \AA ngstr�m findet. 
+
+\glqq Deutsche\grqq, \flqq franz�sische\frqq\ und ``englische'' Anf�hrungszeichen sind manchmal n�tzlich. Und f�r einem Zitat in einem Zitat ben�tigt man die \glq einfachen\grq\ Anf�hrungszeichen. 
+
+%------------------------------------------------------------------------------------------------
+
+\section{Auflistungen und Aufz�hlungen}
+\label{Listen}
+
+%------------------------------------------------------------------------------------------------
+
+Wir fassen zusammen, was wir bisher k�nnen:
+
+\begin{itemize}
+ \item Die Schrift anpassen
+ \item Den Text ausrichten. Da gab es folgende M�glichkeiten:
+    \begin{itemize}
+        \item Blocksatz
+        \item linksb�ndig
+        \item rechtsb�ndig
+        \item zentriert. Zentrierte Text ist vor allem gut um
+            \begin{itemize}
+                \item Text hervorzuheben
+                \item Objekte, wie Tabellen und Grafiken zu zentrieren
+            \end{itemize}
+    \end{itemize}
+ \item Umbr�che erzwingen
+ \item Sonderzeichen setzen
+\end{itemize}
+
+Bisher k�nnen wir noch nicht:
+
+\begin{enumerate}
+ \item Tabellen erzeugen
+ \item Grafiken einbinden
+ \item mathematischen Text setzen. Dazu geh�rt
+    \begin{enumerate}
+       \item weitere mathematische Sonderzeichen, wie z.B.
+           \begin{enumerate}
+               \item griechische Buchstaben, etwa $\alpha$, $\zeta$, usw.
+               \item spezielle Akzente, wie $\vec{a}$ oder $\ddot{x}$
+               \item echte Sonderzeichen, wie $\oplus$ oder $\perp$
+               \item alle M�glichen Klammern, wie $\lfloor x \rfloor$
+               \item und noch vieles mehr\ldots
+           \end{enumerate}
+       \item spezielle mathematische Objekte, wie Matrizen
+       \item automatische Nummerierung von Formeln
+    \end{enumerate}
+ \item Referenzen und Bibliographie erzeugen
+ \item Pr�sentationsfolien erstellen
+\end{enumerate}
+
+Offensichtlich kann man hier ziemlich tief schachteln. Ob das allerdings immer sinnvoll ist?
+
+
+%------------------------------------------------------------------------------------------------
+
+\section{Tabellen, Grafiken und Gleitobjekte}
+\label{TabellenGrafikenFloats}
+
+%------------------------------------------------------------------------------------------------
+
+\subsection{Grafiken}
+\label{Grafiken}
+
+Grafiken k�nnen an Ort und Stelle eingef�gt werden. Gerade bei gr��eren Grafiken, die auf der laufenden Seite keinen Platz mehr haben, verursacht dies aber oft unsch�ne Seitenumbr�che oder der Platz zwischen Abs�tzen wird in die L�nge gezogen. Deswegen ist es besser, Grafiken als Gleitobjekte, als sogenannte \glqq Floats\grqq, zu setzen. Dann findet \LaTeX\ f�r die Grafik einen geeigneten Platz. Dies sehen wir sp�ter, vgl. Abschnitt \ref{Floats}\footnote{Man beachte, dass die Nummer des Abschnitts, den wir hier zitieren, automatisch erzeugt wird. Werden sp�ter weitere Abschnitte eingef�gt, so wird diese Referenz automatisch angepasst.}
+
+\begin{center}
+\includegraphics[angle=-90,width=12cm]{bild.pdf}
+\end{center}
+
+Hier hatten wir Gl�ck. Die vorherige Seite war voll, so dass es ganz in Ordnung ist, wenn diese Grafik am Beginn dieser Seite ist. Aber was ist, wenn das mal nicht per Zufall so g�nstig kommt?
+
+\subsection{Tabellen}
+\label{Tabellen}
+
+�hnlich kann man Tabellen an Ort und Stelle einf�gen. Diese Tabelle passt leider nicht mehr auf diese Seite und deswegen haben wir jetzt einen \textbf{h�sslichen Seitenumbruch!}
+
+\begin{center}
+\begin{tabular}{|l||c|c|c|}
+\hline
+           & \multicolumn{3}{|c|}{gemessen von Dr. Tex} \\
+\cline{2-4}
+Name       &  Alter    & Gr��e   & Gewicht \\
+           &  (Jahre)  & (in cm) & (in kg) \\
+\hline
+\hline
+           &   7       &  120    &  25     \\
+\cline{2-4}
+Andreas    &   10      &  141    &  34     \\
+\cline{2-4}
+           &   14      &  163    &  50     \\
+\hline
+           &   6       &  110    &  22     \\
+\cline{2-4}
+Beate      &   9       &  138    &  32     \\
+\cline{2-4}
+           &   13      &  156    &  46     \\
+\hline
+           &   8       &  132    &  30     \\
+\cline{2-4}
+Tina       &   11      &  151    &  43     \\
+\cline{2-4}
+           &   15      &  174    &  51     \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Bewegliche Objekte}
+\label{Floats}
+
+Wie wir gesehen haben, sollen gro�e Objekte beweglich sein, so dass \LaTeX\ einen guten Platz f�r diese Objekte findet. Oft sind diese Objekte dann fr�her oder weiter hinten im Text. Man bezieht sich dann auf diese Objekte mit Referenzen. Zu Beispiel kennen wir Abbildung \ref{bild} schon, allerdings steht sie jetzt auf dem Kopf und ist ein bisschen kleiner.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[angle=-90,width=6cm]{bild.pdf}
+\caption{Dasselbe nochmal als Gleitobjekt. \label{bild}}
+\end{center}
+\end{figure}
+
+%------------------------------------------------------------------------------------------------
+
+\end{document}
+
+%------------------------------------------------------------------------------------------------
