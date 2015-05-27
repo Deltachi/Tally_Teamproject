@@ -1,7 +1,9 @@
 $(function(){
 	$bar = $('.progress .progress-bar');
 	$balance = $('#balance');
+	$no_notifications = $('.no_alert');
 
+	$no_notifications.hide();
 	$('#btn-good').on('click', good);
 	$('#btn-neutral').on('click', neutral);
 	$('#btn-bad').on('click', bad);
@@ -13,8 +15,20 @@ $(function(){
 	function checkIfEmpty(){
 		list = $('.alert');
 		if( list.length <= 1  ) {
-			$('.panel-notifications').append('<p>No notifications</p>');
+			$no_notifications.slideDown(500);
 		}
+	}
+
+	function adminNotification(){
+		var adminNote = '' +
+		'<div class="row">' +
+			'<div class="alert alert-danger alert-dismissible" role="alert">' +
+				'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+				'<strong>Administrator:</strong> Pay your bills!' +
+			'</div>' +
+		'</div>'
+		$no_notifications.slideUp(500);
+		$('.panel-notifications').append(adminNote);
 	}
 
 	function good(){
@@ -61,6 +75,7 @@ $(function(){
 			display: 'block', 
 			float: 'right'
 		});
+		adminNotification();
 	}
 		
 });
