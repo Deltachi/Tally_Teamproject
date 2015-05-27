@@ -199,7 +199,14 @@
 				<div class="container">
 					<div class="panel panel-default menuTable">
 						<table class="table panel-body">
-							<tbody>
+							<tbody id="item-list">
+								<template id="item-template">
+									<tr>
+										<th scope="row">{{name}}</th>
+										<td>{{description}}</td>
+										<td>{{price}} &euro;</td>
+									</tr>
+								</template>
 								<tr>
 									<th scope="row">Twix</th>
 									<td>[placeholder]</td>
@@ -277,6 +284,8 @@
 		<script src="javascript/jquery-1.11.2.js"></script>
 		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
 		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="mustache/mustache.js"></script>
 		<script src="javascript/main.js"></script>
+		<script src="javascript/menu.js"></script>
 	</body>
 </html>
