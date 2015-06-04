@@ -56,24 +56,39 @@ int main(int argc, char *argv[])
                 if(exitcode == 31){ //coffee was clicked
                     w.removeWidget();
                     w.showBuyWidget();
-                    state = 4;
+                    state = 3;
                 }else if(exitcode == 32){ //sweets was clicked
                     w.removeWidget();
                     w.showBuyWidget();
-                    state = 5;
+                    state = 4;
                 }else if(exitcode == 33){ //scan was clicked
                     w.removeWidget();
                     w.showScanWidget();
-                    state = 6;
+                    state = 5;
                 }else if(exitcode != 100){ //logout == 100
                     return 0;
                 }
             }break;
         case 3: { //buy coffee
+            if(exitcode == 51){ //back was clicked
+                w.removeWidget();
+                w.showCoffeeSweetWidget();
+                state = 2;
+            }
         }break;
         case 4: { //buy sweets
+            if(exitcode == 51){ //back was clicked
+                w.removeWidget();
+                w.showCoffeeSweetWidget();
+                state = 2;
+        }
         }break;
         case 5: { //user wants to scan things
+            if(exitcode == 51){ //back was clicked
+                w.removeWidget();
+                w.showCoffeeSweetWidget();
+                state = 2;
+            }
         }break;
             default: {//something went wrong...
 

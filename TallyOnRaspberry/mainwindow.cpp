@@ -97,6 +97,8 @@ void MainWindow::showCoffeeSweetWidget(){
     if(showFavCart){
         //shoppingCart.clear();
         FavCart *myFavCart = new FavCart();
+        myShoppingCart = new Shoppingcart();
+        myShoppingCart->addSomething("Test");
         myCoffeeWidget->setQWidget(myFavCart);
     }else{
         myShoppingCart = new Shoppingcart();
@@ -108,11 +110,13 @@ void MainWindow::setLogoutButton(bool a){
 }
 void MainWindow::showBuyWidget(){
     buywidget *myBuyWidget = new buywidget();
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,myShoppingCart);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){
     ScanWidget *myScanWidget = new ScanWidget();
     ui->gridLayout_port->addWidget(myScanWidget);
+    myScanWidget->setMainWindowPointer(mainWindowPointer,myShoppingCart);
 }
 void MainWindow::on_pushButton_logout_clicked()
 {

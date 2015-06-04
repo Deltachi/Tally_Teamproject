@@ -15,9 +15,15 @@ public:
     explicit Shoppingcart(QWidget *parent = 0);
     ~Shoppingcart();
     bool isEmpyt();
+    void setMainWindowPointer(QApplication *a);
+    void addSomething(QString text);
+
+private slots:
+    void on_pushButton_back_clicked();
 
 private:
     Ui::Shoppingcart *ui;
+    QApplication *MainWindowPointer;
 };
 
 #endif // SHOPPINGCART_H

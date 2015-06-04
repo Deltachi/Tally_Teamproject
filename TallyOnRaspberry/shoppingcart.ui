@@ -50,21 +50,6 @@
          <pointsize>20</pointsize>
         </font>
        </property>
-       <item>
-        <property name="text">
-         <string>hey</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Ich bin ein fake Item</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Ich bin ein besseres fake Item</string>
-        </property>
-       </item>
       </widget>
      </item>
      <item>
@@ -98,7 +83,7 @@
           </font>
          </property>
          <property name="text">
-          <string>PREIS</string>
+          <string>0 €</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -119,7 +104,7 @@
           </font>
          </property>
          <property name="text">
-          <string>buy items</string>
+          <string>buy</string>
          </property>
         </widget>
        </item>

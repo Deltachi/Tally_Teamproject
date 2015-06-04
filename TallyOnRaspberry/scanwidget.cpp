@@ -12,3 +12,7 @@ ScanWidget::~ScanWidget()
 {
     delete ui;
 }
+void ScanWidget::setMainWindowPointer(QApplication *a,Shoppingcart *cart){
+    MainWindowPointer = a;
+    ui->gridLayout_port->addWidget(cart);
+}

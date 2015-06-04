@@ -19,3 +19,18 @@ bool Shoppingcart::isEmpyt(){
         return false;
     }
 }
+
+void Shoppingcart::on_pushButton_back_clicked()
+{
+    MainWindowPointer->exit(51);
+}
+void Shoppingcart::addSomething(QString text){
+    QListWidgetItem *item = new QListWidgetItem();
+    item->setData(0,1);
+    item->setText(text);
+    ui->listWidget->addItem(item);
+}
+
+void Shoppingcart::setMainWindowPointer(QApplication *a){
+    MainWindowPointer = a;
+}
