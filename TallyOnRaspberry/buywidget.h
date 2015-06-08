@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "shoppingcart.h"
+#include <QListWidgetItem>
 
 namespace Ui {
 class buywidget;
@@ -16,7 +17,7 @@ public:
     explicit buywidget(QWidget *parent = 0);
     ~buywidget();
     void removeWidget();
-    void setMainWindowPointer(QApplication *a,Shoppingcart *cart);
+    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems);
 
 private slots:
 

@@ -5,6 +5,7 @@
 #include "loginscreen.h"
 #include "shoppingcart.h"
 #include "favcart.h"
+#include <QListWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -37,12 +38,11 @@ private slots:
     void on_pushButton_clicked();
 
     void timerEvent(QTimerEvent *event);
-
 private:
     Ui::MainWindow *ui;
     QApplication *mainWindowPointer;
     LoginScreen *myLoginScreen;
-    Shoppingcart * myShoppingCart;
+    QList<QListWidgetItem> myCartItems;
     bool showFavCart;
     QString userID;
 };

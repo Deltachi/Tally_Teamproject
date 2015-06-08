@@ -22,8 +22,9 @@ void buywidget::removeWidget(){
         delete oldWidget;
     }
 }
-void buywidget::setMainWindowPointer(QApplication *a,Shoppingcart *cart){
+void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems){
     removeWidget();
+    Shoppingcart *cart = new Shoppingcart();
     cart->setMainWindowPointer(a);
     ui->gridLayout_port->addWidget(cart);
 }

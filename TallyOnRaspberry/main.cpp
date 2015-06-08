@@ -69,27 +69,27 @@ int main(int argc, char *argv[])
                     return 0;
                 }
             }break;
-        case 3: { //buy coffee
-            if(exitcode == 51){ //back was clicked
-                w.removeWidget();
-                w.showCoffeeSweetWidget();
-                state = 2;
-            }
-        }break;
-        case 4: { //buy sweets
-            if(exitcode == 51){ //back was clicked
-                w.removeWidget();
-                w.showCoffeeSweetWidget();
-                state = 2;
-        }
-        }break;
-        case 5: { //user wants to scan things
-            if(exitcode == 51){ //back was clicked
-                w.removeWidget();
-                w.showCoffeeSweetWidget();
-                state = 2;
-            }
-        }break;
+            case 3: { //buy coffee
+                if(exitcode == 51){ //back was clicked
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                }
+            }break;
+            case 4: { //buy sweets
+                if(exitcode == 51){ //back was clicked
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                }
+            }break;
+            case 5: { //user wants to scan things
+                if(exitcode == 51){ //back was clicked
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                }
+            }break;
             default: {//something went wrong...
 
             }break;

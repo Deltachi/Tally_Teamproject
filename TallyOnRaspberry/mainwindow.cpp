@@ -88,21 +88,22 @@ void MainWindow::showLoginPasswordWidget(){
     ui->gridLayout_port->addWidget(myPwScreen);
     myPwScreen->updateAccoutPicture(userID);
     myPwScreen->setUsername(ui->label_username->text());
+    showFavCart = true;
 }
 void MainWindow::showCoffeeSweetWidget(){
-
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);
     myCoffeeWidget->setMainWindowPointer(mainWindowPointer);
+
+    Shoppingcart *cart = new Shoppingcart;
     if(showFavCart){
-        //shoppingCart.clear();
         FavCart *myFavCart = new FavCart();
-        myShoppingCart = new Shoppingcart();
-        myShoppingCart->addSomething("Test");
         myCoffeeWidget->setQWidget(myFavCart);
+        showFavCart = false;
     }else{
-        myShoppingCart = new Shoppingcart();
-        myCoffeeWidget->setQWidget(myShoppingCart);
+        qDebug() << "Start Critical";
+        myCoffeeWidget->setQWidget(cart);
+        qDebug() << "finish Critical";
     }
 }
 void MainWindow::setLogoutButton(bool a){
@@ -110,13 +111,13 @@ void MainWindow::setLogoutButton(bool a){
 }
 void MainWindow::showBuyWidget(){
     buywidget *myBuyWidget = new buywidget();
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,myShoppingCart);
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){
     ScanWidget *myScanWidget = new ScanWidget();
     ui->gridLayout_port->addWidget(myScanWidget);
-    myScanWidget->setMainWindowPointer(mainWindowPointer,myShoppingCart);
+    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems);
 }
 void MainWindow::on_pushButton_logout_clicked()
 {

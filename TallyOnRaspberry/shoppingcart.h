@@ -17,6 +17,7 @@ public:
     bool isEmpyt();
     void setMainWindowPointer(QApplication *a);
     void addSomething(QString text);
+    void clear();
 
 private slots:
     void on_pushButton_back_clicked();

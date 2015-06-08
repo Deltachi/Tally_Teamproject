@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "shoppingcart.h"
+#include <QListWidgetItem>
 
 namespace Ui {
 class ScanWidget;
@@ -15,7 +16,7 @@ class ScanWidget : public QWidget
 public:
     explicit ScanWidget(QWidget *parent = 0);
     ~ScanWidget();
-    void setMainWindowPointer(QApplication *a,Shoppingcart *cart);
+    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems);
 
 private:
     Ui::ScanWidget *ui;

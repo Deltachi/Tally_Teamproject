@@ -34,3 +34,6 @@ void Shoppingcart::addSomething(QString text){
 void Shoppingcart::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
 }
+void Shoppingcart::clear(){
+    ui->listWidget->clear();
+}
