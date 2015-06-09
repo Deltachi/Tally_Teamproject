@@ -38,23 +38,15 @@ void LoginScreen::update_name_label(){
     SqlZugriff Database;
     Database.initGetUser();
     QString tempID;
-    int i = 0;
     while(Database.next()){
         tempID = Database.getString(1);
         if(tempID.contains(NameField)){
             QListWidgetItem *item = new QListWidgetItem();
-            item->setData(0,Database.getString(0).toInt());
+            item->setData(4,Database.getString(0).toInt());
             item->setIcon(Database.getPixmap());
             item->setText(Database.getString(2));
-            QColor farbe;
-            if(Database.getString(4).toInt() < 0){
-                farbe.setRed(1);
-            }else{
-                farbe.setGreen(1);
-            }
-            item->setTextColor(farbe);
             ui->listWidget->addItem(item);
-            i++;
+
         }
     }
    ui->lineEdit->setText(NameField);
@@ -134,7 +126,7 @@ void LoginScreen::on_pushButton_Weiter_clicked()
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();
-        UserID = ui->listWidget->selectedItems().first()->data(0).toString();
+        UserID = ui->listWidget->selectedItems().first()->data(4).toString();
         MainWindowPointer->exit(10);
     }
 }
@@ -143,7 +135,7 @@ void LoginScreen::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();
-        UserID = ui->listWidget->selectedItems().first()->data(0).toString();
+        UserID = ui->listWidget->selectedItems().first()->data(4).toString();
         MainWindowPointer->exit(10);
     }
 }

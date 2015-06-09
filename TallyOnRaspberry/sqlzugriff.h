@@ -19,6 +19,7 @@ public:
     QString getString(int x);
     bool checkPassword(QString username, QString password);
     QPixmap getPixmap();
+    void initGetGroceries();
 
 private:
      QSqlQuery query;

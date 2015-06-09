@@ -27,8 +27,7 @@ public:
     void showCoffeeSweetWidget();
     void showBuyWidget();
     void showScanWidget();
-    void setUserID(QString id);
-    QString getUserIDFromLoginScreen();
+    void getUserIDFromLoginScreen();
     QString getUserID();
     void updateQListCart();
     void setQListCart(QList<QListWidgetItem> item);
