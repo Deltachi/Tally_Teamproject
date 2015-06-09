@@ -18,6 +18,7 @@ public:
     ~buywidget();
     void removeWidget();
     void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems);
+    QList<QListWidgetItem> getItems();
 
 private slots:
 

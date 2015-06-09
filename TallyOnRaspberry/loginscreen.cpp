@@ -40,7 +40,7 @@ void LoginScreen::update_name_label(){
     QString tempID;
     int i = 0;
     while(Database.next()){
-        tempID = Database.getString(0);
+        tempID = Database.getString(1);
         if(tempID.contains(NameField)){
             QListWidgetItem *item = new QListWidgetItem();
             item->setData(0,Database.getString(0).toInt());

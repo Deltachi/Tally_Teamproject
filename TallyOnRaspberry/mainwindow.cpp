@@ -98,13 +98,43 @@ void MainWindow::showCoffeeSweetWidget(){
     Shoppingcart *cart = new Shoppingcart;
     if(showFavCart){
         FavCart *myFavCart = new FavCart();
+        QListWidgetItem temp;
+        temp.setText("Test");
+        cart->addSomething("test");
         myCoffeeWidget->setQWidget(myFavCart);
         showFavCart = false;
+        favCartVisible = true;
     }else{
-        qDebug() << "Start Critical";
         myCoffeeWidget->setQWidget(cart);
-        qDebug() << "finish Critical";
+        int loop = 0;
+        favCartVisible = false;
+        CoffeSweetsScann *temp = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
+        Shoppingcart *tempCart = temp->getShoppingcart();
+        while(loop < myCartItems.length()){
+            QListWidgetItem *test = new QListWidgetItem;
+            *test = myCartItems.at(loop);
+            tempCart->addItem(test);
+            loop++;
+        }
     }
+}
+void MainWindow::updateQListCart(){
+    if(!favCartVisible){ //is there a shopping cart or is there the favcart?
+        CoffeSweetsScann *temp = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
+        Shoppingcart *tempCart = temp->getShoppingcart();
+        myCartItems = tempCart->getItems();
+    }
+}
+void MainWindow::setQListCart(QList<QListWidgetItem> item){
+    myCartItems = item;
+}
+void MainWindow::updateCartFromBuyWidget(){
+    buywidget *temp = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();
+    myCartItems = temp->getItems();
+}
+void MainWindow::updateCartFromScanWidget(){
+    ScanWidget *temp = (ScanWidget*)ui->gridLayout_port->itemAt(0)->widget();
+    myCartItems = temp->getItems();
 }
 void MainWindow::setLogoutButton(bool a){
     ui->pushButton_logout->setEnabled(a);

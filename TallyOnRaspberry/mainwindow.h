@@ -30,6 +30,10 @@ public:
     void setUserID(QString id);
     QString getUserIDFromLoginScreen();
     QString getUserID();
+    void updateQListCart();
+    void setQListCart(QList<QListWidgetItem> item);
+    void updateCartFromBuyWidget();
+    void updateCartFromScanWidget();
 
 private slots:
 
@@ -43,7 +47,8 @@ private:
     QApplication *mainWindowPointer;
     LoginScreen *myLoginScreen;
     QList<QListWidgetItem> myCartItems;
-    bool showFavCart;
+    bool showFavCart; //is the user fresh logged in? should he see when going into coffesweetsscan widget the favcart?
+    bool favCartVisible; //is the favcart visible now?
     QString userID;
 };
 

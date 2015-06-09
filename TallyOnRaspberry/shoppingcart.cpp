@@ -1,5 +1,7 @@
 #include "shoppingcart.h"
 #include "ui_shoppingcart.h"
+#include <QDebug>
+#include <QString>
 
 Shoppingcart::Shoppingcart(QWidget *parent) :
     QWidget(parent),
@@ -30,10 +32,26 @@ void Shoppingcart::addSomething(QString text){
     item->setText(text);
     ui->listWidget->addItem(item);
 }
+void Shoppingcart::addItem(QListWidgetItem *item){
+    ui->listWidget->addItem(item);
+}
 
+QList<QListWidgetItem> Shoppingcart::getItems(){
+    QList<QListWidgetItem> itemList;
+    int loop = 0;
+    while(ui->listWidget->item(loop) != NULL){
+       itemList.append(*(ui->listWidget->item(loop)));
+       QString Text = itemList.at(loop).text();
+       loop++;
+    }
+    return itemList;
+}
 void Shoppingcart::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
 }
 void Shoppingcart::clear(){
     ui->listWidget->clear();
+}
+void Shoppingcart::disableBackButton(){
+    ui->pushButton_back->setEnabled(false);
 }

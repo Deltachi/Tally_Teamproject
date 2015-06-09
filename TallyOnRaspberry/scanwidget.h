@@ -17,6 +17,7 @@ public:
     explicit ScanWidget(QWidget *parent = 0);
     ~ScanWidget();
     void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems);
+    QList<QListWidgetItem> getItems();
 
 private:
     Ui::ScanWidget *ui;
