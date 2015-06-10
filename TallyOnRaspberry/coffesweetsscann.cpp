@@ -1,5 +1,7 @@
 #include "coffesweetsscann.h"
 #include "ui_coffesweetsscann.h"
+#include <QDebug>
+#include <QString>
 
 CoffeSweetsScann::CoffeSweetsScann(QWidget *parent) :
     QWidget(parent),
@@ -39,4 +41,13 @@ void CoffeSweetsScann::setQWidget(QWidget *a){
         delete oldWidget;
     }
     ui->gridLayout_port->addWidget(a);
+}
+void CoffeSweetsScann::enableBackButtonOnShoppingcart(bool enable){
+    Shoppingcart *cart = (Shoppingcart*)ui->gridLayout_port->itemAt(0);
+    cart->disableBackButton();
+    qDebug() << "test03";
+}
+Shoppingcart *CoffeSweetsScann::getShoppingcart(){
+    QLayoutItem *temp = ui->gridLayout_port->itemAt(0);
+    return (Shoppingcart*)temp->widget();
 }

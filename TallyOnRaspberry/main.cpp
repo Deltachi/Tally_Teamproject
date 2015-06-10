@@ -54,27 +54,51 @@ int main(int argc, char *argv[])
             }break;
             case 2: {//coffee sweets scan screen
                 if(exitcode == 31){ //coffee was clicked
+                    w.updateQListCart();
+                    w.removeWidget();
+                    w.showBuyWidget();
+                    state = 3;
+                }else if(exitcode == 32){ //sweets was clicked
+                    w.updateQListCart();
                     w.removeWidget();
                     w.showBuyWidget();
                     state = 4;
-                }else if(exitcode == 32){ //sweets was clicked
-                    w.removeWidget();
-                    w.showBuyWidget();
-                    state = 5;
                 }else if(exitcode == 33){ //scan was clicked
+                    w.updateQListCart();
                     w.removeWidget();
                     w.showScanWidget();
-                    state = 6;
+                    state = 5;
                 }else if(exitcode != 100){ //logout == 100
                     return 0;
                 }
             }break;
-        case 3: { //buy coffee
-        }break;
-        case 4: { //buy sweets
-        }break;
-        case 5: { //user wants to scan things
-        }break;
+            case 3: { //buy coffee
+                if(exitcode == 51){ //back was clicked
+                    w.updateCartFromBuyWidget();
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                }
+            }break;
+            case 4: { //buy sweets
+                if(exitcode == 51){ //back was clicked
+                    qDebug() << "01";
+                    w.updateCartFromBuyWidget();
+                     qDebug() << "02";
+                    w.removeWidget();
+                     qDebug() << "03";
+                    w.showCoffeeSweetWidget();
+                     qDebug() << "04";
+                    state = 2;
+                }
+            }break;
+            case 5: { //user wants to scan things
+                if(exitcode == 51){ //back was clicked
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                }
+            }break;
             default: {//something went wrong...
 
             }break;

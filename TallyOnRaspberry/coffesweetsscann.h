@@ -2,6 +2,7 @@
 #define COFFESWEETSSCANN_H
 
 #include <QWidget>
+#include "shoppingcart.h"
 
 namespace Ui {
 class CoffeSweetsScann;
@@ -16,6 +17,8 @@ public:
     ~CoffeSweetsScann();
     void setMainWindowPointer(QApplication *a);
     void setQWidget(QWidget *a);
+    Shoppingcart *getShoppingcart();
+    void enableBackButtonOnShoppingcart(bool enable);
 
 private slots:
     void on_pushButton_coffee_clicked();

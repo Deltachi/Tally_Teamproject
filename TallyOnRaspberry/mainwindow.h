@@ -5,6 +5,7 @@
 #include "loginscreen.h"
 #include "shoppingcart.h"
 #include "favcart.h"
+#include <QListWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -26,9 +27,12 @@ public:
     void showCoffeeSweetWidget();
     void showBuyWidget();
     void showScanWidget();
-    void setUserID(QString id);
-    QString getUserIDFromLoginScreen();
+    void getUserIDFromLoginScreen();
     QString getUserID();
+    void updateQListCart();
+    void setQListCart(QList<QListWidgetItem> item);
+    void updateCartFromBuyWidget();
+    void updateCartFromScanWidget();
 
 private slots:
 
@@ -37,13 +41,13 @@ private slots:
     void on_pushButton_clicked();
 
     void timerEvent(QTimerEvent *event);
-
 private:
     Ui::MainWindow *ui;
     QApplication *mainWindowPointer;
     LoginScreen *myLoginScreen;
-    Shoppingcart * myShoppingCart;
-    bool showFavCart;
+    QList<QListWidgetItem> myCartItems;
+    bool showFavCart; //is the user fresh logged in? should he see when going into coffesweetsscan widget the favcart?
+    bool favCartVisible; //is the favcart visible now?
     QString userID;
 };
 

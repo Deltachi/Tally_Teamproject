@@ -10,6 +10,11 @@ SqlZugriff::SqlZugriff()
 {
 }
 
+void SqlZugriff::initGetGroceries(){
+
+    query.exec("Select Grocery_ID, Name, Nick, Barcode, Amount, Price, Image from Groceries");
+}
+
 void SqlZugriff::initGetUser(){
 
     query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users");
