@@ -1,0 +1,106 @@
+var menu = {
+	"drinks":[
+		{
+			"name": "Coffee L",
+			"description": "[description]",
+			"price": "1,20"
+		},
+		{
+			"name": "Coffee M",
+			"description": "[description]",
+			"price": "0,80"
+		},
+		{
+			"name": "Coffee S",
+			"description": "[description]",
+			"price": "0,40"
+		},
+		{
+			"name": "Cappuchino",
+			"description": "[description]",
+			"price": "1,20"
+		},
+		{
+			"name": "Latte Machiato",
+			"description": "[description]",
+			"price": "1,20"
+		},
+		{
+			"name": "Espresso",
+			"description": "[description]",
+			"price": "1,00"
+		},
+		{
+			"name": "Frappuchino",
+			"description": "[description]",
+			"price": "1,40"
+		},
+		{
+			"name": "Tea",
+			"description": "[description]",
+			"price": "0,50"
+		},
+		{
+			"name": "Milk",
+			"description": "[description]",
+			"price": "0,60"
+		},
+		{
+			"name": "Softdrink",
+			"description": "[description]",
+			"price": "0,75"
+		},
+		{
+			"name": "Hot Water",
+			"description": "[description]",
+			"price": "0,00"
+		},
+		{
+			"name": "Spice Latte",
+			"description": "[description]",
+			"price": "5,00"
+		}
+	],
+	"items":[
+		{
+			"name": "Snickers",
+			"description": "[description]",
+			"price": "0,85"
+		},
+		{
+			"name": "Mars",
+			"description": "[description]",
+			"price": "0,90"
+		},
+		{
+			"name": "Bounty",
+			"description": "[description]",
+			"price": "0,70"
+		},
+		{
+			"name": "Kitcat",
+			"description": "[description]",
+			"price": "0,75"
+		},
+		{
+			"name": "Twix",
+			"description": "[description]",
+			"price": "0,80"
+		},
+		{
+			"name": "Rittersport",
+			"description": "[description]",
+			"price": "1,10"
+		},
+		{
+			"name": "Skittles",
+			"description": "[description]",
+			"price": "1,20"
+		},
+		{
+			"name": "Sugar cube",
+			"description": "[description]",
+			"price": "0,02"
+		}
+	]
+}

@@ -16,6 +16,7 @@
 		<link rel="stylesheet" href="styles/main.css">
 		<link rel="stylesheet" href="styles/navbar.css">
 		<link rel="stylesheet" href="styles/footer.css">
+		<link rel="stylesheet" href="styles/settings.css">
 		
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -50,72 +51,119 @@
 										</a>
 							  		</li>
 									<li><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
-									<li>
+									<li class="loggedOut">
 										<!-- Button trigger modal -->
 										<a href="#"  data-toggle="modal" data-target="#myModal">
 											Log in <span class="glyphicon glyphicon-user"></span>
 										</a>
 									</li>
-									<li class="dropdown">
+									<li class="dropdown loggedIn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
 										<ul class="dropdown-menu" role="menu">
 											<li><a class="not-available" href="notifications.html">Notifications <span class="badge">6</span></a></li>
 											<li><a href="lb.html">Leader Board</a></li>
 											<li class="divider"></li>
-											<li><a class="not-available" href="setting.html">Settings</a></li>
+											<li class="active"><a href="#">Settings</a></li>
 											<li><a class="" href="favorites.html">Favorites</a></li>
 											<li class="divider"></li>
 											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left menu-search not-available" role="search">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
-										<span class="input-group-btn">
-											<button type="submit" class="btn btn-default">Go!</button>
-										</span>
-									</div>
-								</form>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>	
 				</div><!-- container -->
 			</div> <!-- navbar -->
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div class="row">
-								<button style="margin-right:20px;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							</div>
-							<div class="row">
-								<div class="col-sm-7"><h4 class="modal-title" id="myModalLabel">Does Tally know you? Then log in!</h4></div>
-								<div class="col-sm-4"><img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin" style="margin-right:5px;"></div>
-							</div>
-						</div>
-						<div class="modal-body">
-							<form class="form not-available " id="formLogin"> 	
-									<div class="">
-										<input  style="border-radius:10px 10px 0 0;" name="username" id="username"  type="text" class="form-control" placeholder="Username">
-									</div>
-									<div class="input-group" >
-										<input style="border-radius:0 0 0 10px;" name="password" id="password" type="password" class="form-control" placeholder="Password">
-										<span class="input-group-btn">
-											<button style="border-radius:0 0 10px 0;" id="btn_login" type="submit" class="btn btn-default">Login</button>
-										</span>
-									</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<a class="not-available" href="#">For got your password?</a>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary not-available">Register now <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-						</div>
+			<div class="color-bg topic-padding">
+				<div class="container">
+					<div class="jumbotron lil-jumbo boxShadow">
+						<h2>Max, <small>edit your settings here.</small></h2>
 					</div>
 				</div>
-			</div> <!-- modal-login -->
+			</div>
+			<div class="drinks-bg topic-padding">
+				<div class="container">
+					<div class="panel panel-default  boxShadow">
+						<div class="panel-heading">
+							<div class="row inline-text">
+								<div class="">
+									<h3><small>Settings of: </small> Max Mustermann <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h3>
+								</div>
+								<div class="">
+									
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<table class="table panel-body">
+								<thead>
+									<tr class="text-muted">
+										<th class="width-title"></th>
+										<th class="width-details">Details</th>
+										<th class="width-buttonbar">Edit</th>
+									</tr>
+								</thead>	
+								<tbody id="settings">
+									<tr id="name" class="noedit">
+										<th class="index" scope="row">Username</th>
+										<td>
+											<span class="noedit">Max Mustermann</span>
+											<input class="edit" type="text" placeholder="Max Mustermann">
+										</td>
+										<td>
+											<button class="btn btn-sm btn-info noedit" data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-sm btn-success edit col-sm-5" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+											<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
+										</td>
+									</tr>
+									<tr id="nick" class="noedit">
+										<th class="index" scope="row">Nickname</th>
+										<td>
+											<span class="noedit">Max</span>
+											<input class="edit" type="text" placeholder="Max">
+										</td>
+										<td>
+											<button class="btn btn-sm btn-info noedit" data-panel="nick"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-sm btn-success edit col-sm-5" data-panel="nick"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+											<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="nick"><span class="glyphicon glyphicon-remove"></span></button>
+										</td>
+									</tr>
+									<tr id="password" class="noedit">
+										<th class="index" scope="row">Password</th>
+										<td>
+											<span class="noedit glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+											<input class="edit" type="password" placeholder="1234">
+										</td>
+										<td>
+											<button class="btn btn-sm btn-info noedit" data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-sm btn-success edit col-sm-5" data-panel="password"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+											<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="password"><span class="glyphicon glyphicon-remove"></span></button>
+										</td>
+									</tr>
+									<tr id="email" class="noedit">
+										<th class="index" scope="row">E-Mail</th>
+										<td>
+											<span class="noedit">maxmusterm@mail.de</span>
+											<input class="edit" type="email" placeholder="maxmusterm@mail.de">
+										</td>
+										<td>
+											<button class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
+											<button class="btn btn-sm btn-success edit col-sm-5" data-panel="email"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+											<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="email"><span class="glyphicon glyphicon-remove"></span></button>
+										</td>
+									</tr>
+									<tr id="leaderboard">
+										<th class="index" scope="row">Leaderboard</th>
+										<td><small class="text-muted">Do you want to appear in the Leaderboard-Section?</small></td>
+										<td><input type="checkbox" checked></td>
+									</tr>
+								</tbody>
+							</table>
+						</div> <!-- panel-body -->
+					</div> <!-- panel -->
+				</div> <!-- container -->
+			</div> <!-- drinks-bg -->
 		</div> <!-- close wrap -->
 		<footer id="footer" class="text-center">
 			<div class="container">
@@ -138,6 +186,8 @@
 		<script src="javascript/jquery-1.11.2.js"></script>
 		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
 		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="apis/cookies/jquery.cookie.js"></script>
 		<script src="javascript/main.js"></script>
+		<script src="javascript/settings.js"></script>
 	</body>
 </html>

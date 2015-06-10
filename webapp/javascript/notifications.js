@@ -16,6 +16,7 @@ $(function(){
 		list = $('.alert');
 		if( list.length <= 1  ) {
 			$no_notifications.slideDown(500);
+			$('.badge').html("0");
 		}
 	}
 
@@ -29,6 +30,7 @@ $(function(){
 		'</div>'
 		$no_notifications.slideUp(500);
 		$('.panel-notifications').append(adminNote);
+		$('.badge').html("3");
 	}
 
 	function good(){

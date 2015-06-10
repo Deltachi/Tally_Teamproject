@@ -13,10 +13,11 @@
 		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
 
 		<!--main.css Stylesheet for optimizations -->
-		<link rel="stylesheet" href="styles/menu.css">
+		
+		<link rel="stylesheet" href="styles/main.css">
 		<link rel="stylesheet" href="styles/navbar.css">
 		<link rel="stylesheet" href="styles/footer.css">
-		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/menu.css">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
@@ -50,33 +51,25 @@
 										</a>
 							  		</li>
 									<li class="active"><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
-									<li>
+									<li class="loggedOut">
 										<!-- Button trigger modal -->
 										<a href="#"  data-toggle="modal" data-target="#myModal">
 											Log in <span class="glyphicon glyphicon-user"></span>
 										</a>
 									</li>
-									<li class="dropdown">
+									<li class="dropdown loggedIn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="notifications.html">Notifications <span class="badge">6</span></a></li>
+											<li><a href="notifications.html">Notifications <span class="badge">2</span></a></li>
 											<li><a href="lb.html">Leader Board</a></li>
 											<li class="divider"></li>
-											<li><a class="not-available" href="#">Settings</a></li>
+											<li><a class="" href="settings.html">Settings</a></li>
 											<li><a class="" href="favorites.html">Favorites</a></li>
 											<li class="divider"></li>
 											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left menu-search not-available" role="search">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
-										<span class="input-group-btn">
-											<button type="submit" class="btn btn-default">Go!</button>
-										</span>
-									</div>
-								</form>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>	
@@ -111,91 +104,43 @@
 						<div class="modal-footer">
 							<a class="not-available" href="#">For got your password?</a>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary not-available">Register now <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+							<button type="button" class="btn btn-primary register">Register now <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="color-bg">
+			<div class="color-bg topic-padding">
 				<div class="container">
 					<div class="jumbotron inline-text lil-jumbo">
 						<h2>Getr&auml;nke</h2>
 					</div>
 				</div>
 			</div>
-			<div class="drinks-bg">
+			<div class="drinks-bg topic-padding">
 				<div class="container">
 					<div class="panel panel-default menuTable">
 						<table class="table panel-body">
-							<tbody>
-								<tr>
-									<th scope="row">Kaffee L</th>
-									<td>Gro&szlig;e Tasse</td>
-									<td>1,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Kaffee M</th>
-									<td>Normale Tasse</td>
-									<td>1,00&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Kaffee S</th>
-									<td>Kleine Tasse</td>
-									<td>0,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Cappuchino</th>
-									<td>Espresso, Milch und Milchschaum</td>
-									<td>2,00&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Latte Machiato</th>
-									<td>Milch und Espresso</td>
-									<td>1,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Tee</th>
-									<td>pro Beutel</td>
-									<td>0,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Milch</th>
-									<td>200ml</td>
-									<td>0,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Frappuchino</th>
-									<td>Eis, Espresso und Milch</td>
-									<td>2,00&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Iced Coffee</th>
-									<td>Kaffee ges&uuml;&szlig;t mit Eisw&uuml;rfeln</td>
-									<td>1,50&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Softdrinks</th>
-									<td>Cola, Fanta, Sprite etc. 0,33l</td>
-									<td>1,00&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">hei&szlig;es Wasser</th>
-									<td>500ml</td>
-									<td>0,00&euro;</td>
-								</tr>
+							<tbody id="drink-list">
+								<template id="drink-template">
+									<tr>
+										<th scope="row">{{name}}</th>
+										<td>{{description}}</td>
+										<td>{{price}} &euro;</td>
+									</tr>
+								</template>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div> <!-- coffee-bg -->
-			<div class="color-bg">
+			<div class="color-bg topic-padding">
 				<div class="container">
 					<div class="jumbotron inline-text lil-jumbo">
 						<h2>Snacks</h2>
 					</div>
 				</div>
 			</div> <!-- color-bg -->
-			<div class="chocolate-bg">
+			<div class="chocolate-bg topic-padding">
 				<div class="container">
 					<div class="panel panel-default menuTable">
 						<table class="table panel-body">
@@ -207,56 +152,6 @@
 										<td>{{price}} &euro;</td>
 									</tr>
 								</template>
-								<tr>
-									<th scope="row">Twix</th>
-									<td>[placeholder]</td>
-									<td>0,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Snickers</th>
-									<td>Kann Spuren von N&uuml;ssen enthalten</td>
-									<td>0,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Mars</th>
-									<td>[placeholder]</td>
-									<td>0,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Bounty</th>
-									<td>Cocos-Snack</td>
-									<td>0,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Kitcat</th>
-									<td>[placeholder]</td>
-									<td>0,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Rittersport</th>
-									<td>nach Wahl</td>
-									<td>1,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Gummib&auml;rchen</th>
-									<td>100g Packung</td>
-									<td>1,00&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">M&amp;M's</th>
-									<td>Jeder will sie haben</td>
-									<td>1,15&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Skittles</th>
-									<td>Try the rainbow, taste the rainbow!</td>
-									<td>1,25&euro;</td>
-								</tr>
-								<tr>
-									<th scope="row">Zuckerw&uuml;rfel</th>
-									<td>Energy to go</td>
-									<td>0,05&euro;</td>
-								</tr>
 							</tbody>
 						</table>
 					</div>
@@ -284,8 +179,10 @@
 		<script src="javascript/jquery-1.11.2.js"></script>
 		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
 		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="apis/cookies/jquery.cookie.js"></script>
 		<script src="mustache/mustache.js"></script>
 		<script src="javascript/main.js"></script>
+		<script type="text/javascript" language="javascript" src="json/menu.json"></script> 
 		<script src="javascript/menu.js"></script>
 	</body>
 </html>

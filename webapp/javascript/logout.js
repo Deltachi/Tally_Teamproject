@@ -1,10 +1,17 @@
 $(document).ready(function() {
     function redirect(){
-		window.location.href = 'index.html';
+    	if ($.cookie('session') == null){
+			console.log('NO COOKIE THERE >.>')
+		}
+		else{
+			$.removeCookie('session');
+			console.log('Successfully removed the session-cookie');
+			window.location.href = 'index.html';
+		}
+		
 	}
 
-    setTimeout(function(){
-
+	setTimeout(function(){
 		$('.progress .bar').each(function() {
 			var me = $(this);
 			var perc = me.attr("data-percentage");
@@ -19,13 +26,11 @@ $(document).ready(function() {
 					current_perc +=4;
 					me.css('width', (current_perc)+'%');
 				}
-
-				// me.text((current_perc)+'%');
-
+				
 			}, 50);
 			
 		});
 
 	},300);
-	
-});
+
+});// me.text((current_perc)+'%');

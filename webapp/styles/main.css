@@ -19,7 +19,6 @@ body.color-bg{
 
 .color-bg {
 	background: #E3D4C3;
-	padding-top: 20px;
 }
 .index-bg{
 	background: url("images/backgrounds/sweets-rasp-coffee.jpg");
@@ -28,7 +27,6 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
 }
@@ -39,7 +37,6 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
 }
@@ -50,7 +47,6 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
 	background-position: 0 200px;
@@ -62,7 +58,6 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
 }
@@ -73,7 +68,6 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
 }
@@ -84,9 +78,16 @@ body.color-bg{
 	display: inline-block;
 	margin-left: auto; 
 	margin-right: auto;
-	padding-top: 20px;	
 	position: relative;
 	width: 100%;
+}
+.bg-75perc-white{
+	background-color: rgba(255, 255, 255, 0.75);
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.topic-padding{
+	padding-top: 20px;	
 }
 .lil-jumbo{
 	padding-top: 10;

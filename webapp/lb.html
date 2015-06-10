@@ -13,10 +13,11 @@
 		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
 
 		<!--main.css Stylesheet for optimizations -->
-		<link rel="stylesheet" href="styles/lb.css">
+		<link rel="stylesheet" href="styles/main.css">
 		<link rel="stylesheet" href="styles/navbar.css">
 		<link rel="stylesheet" href="styles/footer.css">
-		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/lb.css">
+
 
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	</head>
@@ -50,53 +51,45 @@
 										</a>
 							  		</li>
 									<li><a href="menu.html">On the Menu</a></li><!--  <span class="sr-only">(current)</span> -->
-									<li>
+									<li class="loggedOut">
 										<!-- Button trigger modal -->
 										<a href="#"  data-toggle="modal" data-target="#myModal">
 											Log in <span class="glyphicon glyphicon-user"></span>
 										</a>
 									</li>
-									<li class="dropdown">
+									<li class="dropdown loggedIn">
 										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="notifications.html">Notifications <span class="badge">6</span></a></li>
+											<li><a href="notifications.html">Notifications <span class="badge">2</span></a></li>
 											<li class="active"><a href="lb.html">Leader Board</a></li>
 											<li class="divider"></li>
-											<li><a class="not-available" href="#">Settings</a></li>
+											<li><a class="" href="settings.html">Settings</a></li>
 											<li><a class="" href="favorites.html">Favorites</a></li>
 											<li class="divider"></li>
 											<li><a class="" href="logout.html"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 										</ul>
 									</li>
 								</ul>
-								<form class="navbar-form navbar-left menu-search not-available" role="search">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search for Sweets&amp;Drinks">
-										<span class="input-group-btn">
-											<button type="submit" class="btn btn-default">Go!</button>
-										</span>
-									</div>
-								</form>
 							</div><!-- /.navbar-collapse -->
 						</div><!-- /.container-fluid -->
 					</nav>	
 				</div><!-- container -->
 			</div> <!-- navbar -->
-			<div class="color-bg">
+			<div class="color-bg topic-padding">
 				<div class="container">
 					<div class="jumbotron inline-text lil-jumbo">
 						<h1>Leaderboard</h1>
 					</div>
 				</div>
 			</div>
-			<div class="dark-coffee-bg">
+			<div class="dark-coffee-bg topic-padding">
 				<div class="container">
 					<!-- <div class="panel panel-default"> -->
 						<div class="panel panel-default menuTable">
 							<div class="panel-heading">
 								<div class="row inline-text">
 									<div class="col-md-6">
-										<h2>Nachteule</h2>
+										<h2>Nightowl</h2>
 									</div>
 									<div class="col-md-6">
 										<img class="lb-symbol" src="styles/images/symbols/owl.png" alt="">
@@ -109,7 +102,7 @@
 										<tr>
 											<th></th>
 											<th></th>
-											<th>Koffein</th>
+											<th>Caffein</th>
 										</tr>
 									</thead>	
 									<tbody>
@@ -140,7 +133,7 @@
 					<!-- </div> -->
 				</div>
 			</div> <!-- coffee-bg -->
-			<div class="color-bg">
+			<div class="color-bg topic-padding">
 				<div class="container">
 					<!-- <div class="jumbotron inline-text">
 						<h1>Snacks</h1>
@@ -148,7 +141,7 @@
 					<br>
 				</div>
 			</div> <!-- color-bg -->
-			<div class="chocolate-bg">
+			<div class="chocolate-bg topic-padding">
 				<div class="container">
 					<!-- <div class="panel panel-default"> -->
 						<div class="panel panel-default menuTable">
@@ -168,7 +161,7 @@
 										<tr>
 											<th></th>
 											<th></th>
-											<th>Joule</th>
+											<th>Joules</th>
 										</tr>
 									</thead>	
 									<tbody>
@@ -221,6 +214,7 @@
 		<script src="javascript/jquery-1.11.2.js"></script>
 		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
 		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="apis/cookies/jquery.cookie.js"></script>
 		<script src="javascript/main.js"></script>
 	</body>
 </html>
