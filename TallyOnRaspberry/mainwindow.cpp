@@ -136,9 +136,16 @@ void MainWindow::updateCartFromScanWidget(){
 void MainWindow::setLogoutButton(bool a){
     ui->pushButton_logout->setEnabled(a);
 }
-void MainWindow::showBuyWidget(){
+void MainWindow::showSweetsWidget(){
     buywidget *myBuyWidget = new buywidget();
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems);
+
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false);
+    ui->gridLayout_port->addWidget(myBuyWidget);
+}
+void MainWindow::showCoffeeWidget(){
+    buywidget *myBuyWidget = new buywidget();
+
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){

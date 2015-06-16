@@ -10,11 +10,13 @@ SqlZugriff::SqlZugriff()
 {
 }
 
-void SqlZugriff::initGetGroceries(){
-
-    query.exec("Select Grocery_ID, Name, Nick, Barcode, Amount, Price, Image from Groceries");
+void SqlZugriff::initGetGroceries(bool sweets){
+    if(sweets){
+        query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""1""'");
+    }else{
+        query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""0""'");
+    }
 }
-
 void SqlZugriff::initGetUser(){
 
     query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users");

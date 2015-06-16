@@ -25,7 +25,6 @@ public:
     void removeWidget();
     void setLogoutButton(bool a);
     void showCoffeeSweetWidget();
-    void showBuyWidget();
     void showScanWidget();
     void getUserIDFromLoginScreen();
     QString getUserID();
@@ -33,6 +32,8 @@ public:
     void setQListCart(QList<QListWidgetItem> item);
     void updateCartFromBuyWidget();
     void updateCartFromScanWidget();
+    void showSweetsWidget();
+    void showCoffeeWidget();
 
 private slots:
 
