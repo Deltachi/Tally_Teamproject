@@ -12,8 +12,6 @@ buywidget::buywidget(QWidget *parent) :
 
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Data.setDatabaseName("C:/SQLite/database.sqlite");
-
-    update_label();
 }
 
 buywidget::~buywidget()
@@ -43,6 +41,7 @@ void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *car
         cart->addItem(temp);
         loop++;
     }
+    update_label();
 }
 QList<QListWidgetItem> buywidget::getItems(){
     Shoppingcart *temp = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
@@ -65,4 +64,11 @@ void buywidget::update_label(){
     }
     Data.close();
 
+}
+
+void buywidget::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    Shoppingcart *temp = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
+    temp->addItem(item);
+    qDebug() << "Test";
 }

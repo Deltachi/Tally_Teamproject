@@ -33,7 +33,10 @@ void Shoppingcart::addSomething(QString text){
     ui->listWidget->addItem(item);
 }
 void Shoppingcart::addItem(QListWidgetItem *item){
-    ui->listWidget->addItem(item);
+    QListWidgetItem *tempItem = new QListWidgetItem();
+    *tempItem = *item;
+    ui->listWidget->addItem(tempItem);
+    qDebug() << tempItem->text();
 }
 
 QList<QListWidgetItem> Shoppingcart::getItems(){

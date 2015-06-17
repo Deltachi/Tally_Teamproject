@@ -24,6 +24,8 @@ public:
 
 private slots:
 
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::buywidget *ui;
     QSqlDatabase Data;

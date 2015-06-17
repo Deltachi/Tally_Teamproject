@@ -139,13 +139,13 @@ void MainWindow::setLogoutButton(bool a){
 void MainWindow::showSweetsWidget(){
     buywidget *myBuyWidget = new buywidget();
 
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false);
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showCoffeeWidget(){
     buywidget *myBuyWidget = new buywidget();
 
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true);
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){
