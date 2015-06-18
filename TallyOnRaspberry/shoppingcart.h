@@ -22,14 +22,17 @@ public:
     QList<QListWidgetItem> getItems();
     void addItem(QListWidgetItem *item);
     void disableBackButton();
+    void updatePrice();
 
 private slots:
     void on_pushButton_back_clicked();
 
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
 private:
     Ui::Shoppingcart *ui;
     QApplication *MainWindowPointer;
-    double kosten;
+    double price;
 };
 
 #endif // SHOPPINGCART_H

@@ -21,6 +21,18 @@ bool Shoppingcart::isEmpyt(){
         return false;
     }
 }
+void Shoppingcart::updatePrice(){
+    int loop = 0;
+    QListWidgetItem *tempItem;
+    price = 0;
+    while(ui->listWidget->item(loop) != NULL){
+       tempItem = ui->listWidget->item(loop);
+       price = price + tempItem->data(5).toDouble();
+       loop++;
+    }
+    QString tempString = QString::number(price);
+    ui->label_2->setText(tempString);
+}
 
 void Shoppingcart::on_pushButton_back_clicked()
 {
@@ -36,12 +48,7 @@ void Shoppingcart::addItem(QListWidgetItem *item){
     QListWidgetItem *tempItem = new QListWidgetItem();
     *tempItem = *item;
     ui->listWidget->addItem(tempItem);
-    if(kosten == NULL){
-        kosten = 0;
-    }
-    kosten = tempItem->data(5).toDouble() + kosten;
-    QString test = QString::number(kosten);
-    ui->label_2->setText(test);
+    updatePrice();
 }
 
 QList<QListWidgetItem> Shoppingcart::getItems(){
@@ -62,4 +69,10 @@ void Shoppingcart::clear(){
 }
 void Shoppingcart::disableBackButton(){
     ui->pushButton_back->setEnabled(false);
+}
+
+void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    delete item;
+    updatePrice();
 }

@@ -53,7 +53,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,1">
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,1,1,2">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -83,10 +83,25 @@
           </font>
          </property>
          <property name="text">
-          <string>0 €</string>
+          <string>0</string>
          </property>
          <property name="alignment">
-          <set>Qt::AlignCenter</set>
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="font">
+          <font>
+           <pointsize>25</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string> €</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
          </property>
         </widget>
        </item>
