@@ -57,9 +57,10 @@ void buywidget::update_label(){
     QString tmp;
     while(Database.next()){
         QListWidgetItem *item = new QListWidgetItem();
-        item->setData(4,Database.getString(0).toInt());
         item->setIcon(Database.getPixmap());
         item->setText(Database.getString(2));
+        item->setData(4,Database.getString(0).toInt());
+        item->setData(5,Database.getString(6).toDouble());
         ui->listWidget->addItem(item);
     }
     Data.close();
@@ -70,5 +71,4 @@ void buywidget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     Shoppingcart *temp = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
     temp->addItem(item);
-    qDebug() << "Test";
 }

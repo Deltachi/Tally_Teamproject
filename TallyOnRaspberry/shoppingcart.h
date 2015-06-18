@@ -29,6 +29,7 @@ private slots:
 private:
     Ui::Shoppingcart *ui;
     QApplication *MainWindowPointer;
+    double kosten;
 };
 
 #endif // SHOPPINGCART_H

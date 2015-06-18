@@ -36,7 +36,12 @@ void Shoppingcart::addItem(QListWidgetItem *item){
     QListWidgetItem *tempItem = new QListWidgetItem();
     *tempItem = *item;
     ui->listWidget->addItem(tempItem);
-    qDebug() << tempItem->text();
+    if(kosten == NULL){
+        kosten = 0;
+    }
+    kosten = tempItem->data(5).toDouble() + kosten;
+    QString test = QString::number(kosten);
+    ui->label_2->setText(test);
 }
 
 QList<QListWidgetItem> Shoppingcart::getItems(){
