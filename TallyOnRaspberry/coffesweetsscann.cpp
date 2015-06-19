@@ -29,8 +29,9 @@ void CoffeSweetsScann::on_pushButton_scan_clicked()
 {
     mainWindowPointer->exit(33);
 }
-void CoffeSweetsScann::setMainWindowPointer(QApplication *a){
+void CoffeSweetsScann::setMainWindowPointer(QApplication *a,QString gUserId){
     mainWindowPointer = a;
+    userId = gUserId;
 }
 void CoffeSweetsScann::setQWidget(QWidget *a){
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);

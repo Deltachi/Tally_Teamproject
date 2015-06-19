@@ -28,11 +28,12 @@ void buywidget::removeWidget(){
         delete oldWidget;
     }
 }
-void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive){
+void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId){
+    userId = gUserId;
     sweetsActive = gSweetsActive;
     removeWidget();
     Shoppingcart *cart = new Shoppingcart();
-    cart->setMainWindowPointer(a);
+    cart->setMainWindowPointer(a,userId);
     ui->gridLayout_port->addWidget(cart);
     int loop = 0;
     while(cartItems->length() > loop){

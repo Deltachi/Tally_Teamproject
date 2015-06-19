@@ -18,7 +18,7 @@ public:
     explicit buywidget(QWidget *parent = 0);
     ~buywidget();
     void removeWidget();
-    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive);
+    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId);
     QList<QListWidgetItem> getItems();
     void update_label();
 
@@ -30,6 +30,7 @@ private:
     Ui::buywidget *ui;
     QSqlDatabase Data;
     bool sweetsActive;
+    QString userId;
 };
 
 #endif // BUYWIDGET_H

@@ -15,7 +15,7 @@ class CoffeSweetsScann : public QWidget
 public:
     explicit CoffeSweetsScann(QWidget *parent = 0);
     ~CoffeSweetsScann();
-    void setMainWindowPointer(QApplication *a);
+    void setMainWindowPointer(QApplication *a,QString gUserId);
     void setQWidget(QWidget *a);
     Shoppingcart *getShoppingcart();
     void enableBackButtonOnShoppingcart(bool enable);
@@ -30,6 +30,7 @@ private slots:
 private:
     Ui::CoffeSweetsScann *ui;
     QApplication *mainWindowPointer;
+    QString userId;
 };
 
 #endif // COFFESWEETSSCANN_H

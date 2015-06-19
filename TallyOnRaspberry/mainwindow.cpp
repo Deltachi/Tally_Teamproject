@@ -8,6 +8,7 @@
 #include "coffesweetsscann.h"
 #include "scanwidget.h"
 #include "favcart.h"
+#include "afterbuyscreen.h"
 #include <QTime>
 #include <QDate>
 
@@ -37,13 +38,23 @@ MainWindow::~MainWindow()
 //reset time and date
 void MainWindow::timerEvent(QTimerEvent *event)
 {
-QTime qtime = QTime::currentTime();
-QString stime = qtime.toString(Qt::LocalDate);
-ui->label_Time->setText(stime);
+    QTime qtime = QTime::currentTime();
+    QString stime = qtime.toString(Qt::LocalDate);
+    ui->label_Time->setText(stime);
 
-QDate qdate = QDate::currentDate();
-QString sdate = qdate.toString(Qt::LocalDate);
-ui->label_Date->setText(sdate);
+    QDate qdate = QDate::currentDate();
+    QString sdate = qdate.toString(Qt::LocalDate);
+    ui->label_Date->setText(sdate);
+
+
+    if(counter == -1){
+        //do nothing
+    }else if(counter <= 3){
+        counter++;
+    }else if(counter > 3){ //was the after buy screen shown for more than 3 seconds?
+        counter = -1;
+        mainWindowPointer->exit(100);
+    }
 
 }
 
@@ -90,7 +101,7 @@ void MainWindow::showLoginPasswordWidget(){
 void MainWindow::showCoffeeSweetWidget(){
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);
-    myCoffeeWidget->setMainWindowPointer(mainWindowPointer);
+    myCoffeeWidget->setMainWindowPointer(mainWindowPointer,userID);
 
     Shoppingcart *cart = new Shoppingcart;
     if(showFavCart){
@@ -101,6 +112,7 @@ void MainWindow::showCoffeeSweetWidget(){
         myCoffeeWidget->setQWidget(myFavCart);
         showFavCart = false;
         favCartVisible = true;
+        myCartItems.clear();
     }else{
         myCoffeeWidget->setQWidget(cart);
         int loop = 0;
@@ -139,23 +151,27 @@ void MainWindow::setLogoutButton(bool a){
 void MainWindow::showSweetsWidget(){
     buywidget *myBuyWidget = new buywidget();
 
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true);
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
+}
+void MainWindow::showAfterBuyScreen(){
+    AfterBuyScreen *myAfterBuyScreen = new AfterBuyScreen();
+    ui->gridLayout_port->addWidget(myAfterBuyScreen);
+    counter = 0;
 }
 void MainWindow::showCoffeeWidget(){
     buywidget *myBuyWidget = new buywidget();
 
-    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false);
+    myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){
     ScanWidget *myScanWidget = new ScanWidget();
     ui->gridLayout_port->addWidget(myScanWidget);
-    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems);
+    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID);
 }
 void MainWindow::on_pushButton_logout_clicked()
 {
-    //shoppingcart.clear();
     showFavCart = true;
     mainWindowPointer->exit(100);
 }

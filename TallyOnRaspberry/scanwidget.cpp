@@ -13,10 +13,11 @@ ScanWidget::~ScanWidget()
 {
     delete ui;
 }
-void ScanWidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems){
+void ScanWidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,QString gUserId){
+    userId = gUserId;
     MainWindowPointer = a;
     Shoppingcart *cart = new Shoppingcart();
-    cart->setMainWindowPointer(a);
+    cart->setMainWindowPointer(a,userId);
     ui->gridLayout_port->addWidget(cart);
     int loop = 0;
     while(cartItems->length() > loop){

@@ -68,6 +68,9 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showScanWidget();
                     state = 5;
+                }else if(exitcode == 99){ //buy was clicked
+                    w.removeWidget();
+                    w.showAfterBuyScreen();
                 }else if(exitcode != 100){ //logout == 100
                     return 0;
                 }
@@ -78,6 +81,9 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showCoffeeSweetWidget();
                     state = 2;
+                }else if(exitcode == 99){ //buy was clicked
+                    w.removeWidget();
+                    w.showAfterBuyScreen();
                 }
             }break;
             case 4: { //buy sweets
@@ -86,6 +92,9 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showCoffeeSweetWidget();
                     state = 2;
+                }else if(exitcode == 99){ //buy was clicked
+                    w.removeWidget();
+                    w.showAfterBuyScreen();
                 }
             }break;
             case 5: { //user wants to scan things
@@ -93,6 +102,9 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showCoffeeSweetWidget();
                     state = 2;
+                }else if(exitcode == 99){ //buy was clicked
+                    w.removeWidget();
+                    w.showAfterBuyScreen();
                 }
             }break;
             default: {//something went wrong...

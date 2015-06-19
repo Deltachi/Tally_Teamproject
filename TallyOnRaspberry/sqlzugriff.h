@@ -20,7 +20,10 @@ public:
     bool checkPassword(QString username, QString password);
     QPixmap getPixmap();
     void initGetGroceries(bool sweets);
-    void update(int ID);
+    void update(QString tab, QString column, QString value, QString id ,QString number);
+    void updateCredits(QString userId ,QString newCredits);
+    void selectAll(QString tab, QString id ,QString number);
+    void getCredit(QString userId);
 
 private:
      QSqlQuery query;

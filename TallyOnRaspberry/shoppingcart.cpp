@@ -61,8 +61,10 @@ QList<QListWidgetItem> Shoppingcart::getItems(){
     }
     return itemList;
 }
-void Shoppingcart::setMainWindowPointer(QApplication *a){
+void Shoppingcart::setMainWindowPointer(QApplication *a,QString gUserId){
     MainWindowPointer = a;
+    userId = gUserId;
+
 }
 void Shoppingcart::clear(){
     ui->listWidget->clear();
@@ -75,4 +77,25 @@ void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     delete item;
     updatePrice();
+}
+
+void Shoppingcart::on_pushButton_buy_clicked()
+{
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Data.setDatabaseName("C:/SQLite/database.sqlite");
+    Data.open();
+    SqlZugriff Database;
+    Database.getCredit(userId);
+    QString credits;
+    credits = Database.getString(0);
+    if(credits != NULL){
+        if(credits.toDouble() >= price){
+            Database.updateCredits(userId,QString::number(credits.toDouble()-price));
+            Data.close();
+            MainWindowPointer->exit(99);
+        }else{
+            qDebug() << "Not enough money";
+        }
+    }
+    Data.close();
 }

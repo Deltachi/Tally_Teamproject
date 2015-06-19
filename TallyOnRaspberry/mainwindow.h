@@ -34,6 +34,7 @@ public:
     void updateCartFromScanWidget();
     void showSweetsWidget();
     void showCoffeeWidget();
+    void showAfterBuyScreen();
 
 private slots:
 
@@ -50,6 +51,7 @@ private:
     bool showFavCart; //is the user fresh logged in? should he see when going into coffesweetsscan widget the favcart?
     bool favCartVisible; //is the favcart visible now?
     QString userID;
+    int counter; //counts up to 3 so that you can see the after buy screen for 3 seconds!
 };
 
 #endif // MAINWINDOW_H

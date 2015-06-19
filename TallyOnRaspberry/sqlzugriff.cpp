@@ -35,6 +35,7 @@ QString SqlZugriff::getName(QString ID){
     query.exec("Select Username from Users where User_ID = '"+ID+"'");
 
     QString ausgabe;
+    query.first();
     ausgabe = query.value(0).toString();
     return ausgabe;
 }
@@ -48,8 +49,24 @@ bool SqlZugriff::checkPassword(QString username, QString password){
     return false;
 }
 
-void SqlZugriff::update(int ID){
-    query.exec("UPDATE Users SET Password = "+ID+" WHERE User_ID = 1 ");
+//waring, not working...
+void SqlZugriff::update(QString tab, QString column, QString value, QString id ,QString number){
+    query.exec("UPDATE '"+tab+"' SET '"+column+"' = '"+value+"' WHERE '"+id+"'=\\ '"+number+"'");
+}
+
+void SqlZugriff::updateCredits(QString userId ,QString newCredits){
+    query.exec("UPDATE Users SET Credits = '"+newCredits+"' WHERE User_ID=\ '"+userId+"'");
+}
+
+void SqlZugriff::getCredit(QString userId){
+    query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'");
+    query.first();
+}
+
+//warning, not working...
+void SqlZugriff::selectAll(QString tab, QString id ,QString number){
+    query.exec("SELECT ALL FROM '"+tab+"' WHERE '"+id+"'=\\ '"+number+"'");
+    query.first();
 }
 
 QPixmap SqlZugriff::getPixmap(){

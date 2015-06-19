@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include <QListWidgetItem>
+#include "sqlzugriff.h"
+#include <QtDebug>
+#include <QtSql>
+#include <QFileInfo>
 
 namespace Ui {
 class Shoppingcart;
@@ -16,7 +20,7 @@ public:
     explicit Shoppingcart(QWidget *parent = 0);
     ~Shoppingcart();
     bool isEmpyt();
-    void setMainWindowPointer(QApplication *a);
+    void setMainWindowPointer(QApplication *a,QString gUserId);
     void addSomething(QString text);
     void clear();
     QList<QListWidgetItem> getItems();
@@ -29,10 +33,14 @@ private slots:
 
     void on_listWidget_itemClicked(QListWidgetItem *item);
 
+    void on_pushButton_buy_clicked();
+
 private:
     Ui::Shoppingcart *ui;
     QApplication *MainWindowPointer;
     double price;
+    QSqlDatabase Data;
+    QString userId;
 };
 
 #endif // SHOPPINGCART_H
