@@ -48,6 +48,10 @@ bool SqlZugriff::checkPassword(QString username, QString password){
     return false;
 }
 
+void SqlZugriff::update(int ID){
+    query.exec("UPDATE Users SET Password = "+ID+" WHERE User_ID = 1 ");
+}
+
 QPixmap SqlZugriff::getPixmap(){
     QPixmap icon;
     QByteArray imagedata;

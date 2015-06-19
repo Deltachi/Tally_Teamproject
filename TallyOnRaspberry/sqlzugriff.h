@@ -20,6 +20,7 @@ public:
     bool checkPassword(QString username, QString password);
     QPixmap getPixmap();
     void initGetGroceries(bool sweets);
+    void update(int ID);
 
 private:
      QSqlQuery query;

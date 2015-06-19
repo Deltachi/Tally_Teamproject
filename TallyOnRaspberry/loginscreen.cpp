@@ -17,7 +17,6 @@ LoginScreen::LoginScreen(QWidget *parent) :
     update_name_label();
     update_name_label();
 
-
 }
 
 LoginScreen::~LoginScreen()
@@ -36,6 +35,7 @@ void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
     Data.open();
     SqlZugriff Database;
+    Database.update(1);
     Database.initGetUser();
     QString tempID;
     while(Database.next()){
