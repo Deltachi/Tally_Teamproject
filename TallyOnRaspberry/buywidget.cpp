@@ -11,7 +11,7 @@ buywidget::buywidget(QWidget *parent) :
     ui->setupUi(this);
 
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("C:/SQLite/database.sqlite");
+    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
 }
 
 buywidget::~buywidget()

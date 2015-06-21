@@ -82,7 +82,7 @@ void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
 void Shoppingcart::on_pushButton_buy_clicked()
 {
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("C:/SQLite/database.sqlite");
+    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     Data.open();
     SqlZugriff Database;
     Database.getCredit(userId);

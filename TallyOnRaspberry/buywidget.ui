@@ -20,14 +20,17 @@
       <widget class="QListWidget" name="listWidget">
        <property name="font">
         <font>
-         <pointsize>25</pointsize>
+         <pointsize>18</pointsize>
         </font>
        </property>
        <property name="iconSize">
         <size>
-         <width>200</width>
-         <height>200</height>
+         <width>55</width>
+         <height>55</height>
         </size>
+       </property>
+       <property name="sortingEnabled">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

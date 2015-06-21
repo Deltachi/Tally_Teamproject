@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     int state = 0;
 
     w.setWindowTitle("Tally");
-    w.show();
+    w.showFullScreen();
     w.setMainWindowPointer(&a);
     int exitcode = 100;
     bool exit = false;
