@@ -5,6 +5,7 @@
 #include <QFileInfo>
 #include <QString>
 #include "sqlzugriff.h"
+#include "mainwindow.h"
 
 LoginScreen::LoginScreen(QWidget *parent) :
     QWidget(parent),
@@ -12,7 +13,7 @@ LoginScreen::LoginScreen(QWidget *parent) :
 {
     ui->setupUi(this);
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
+    Database_Link
 
     update_name_label();
     update_name_label();

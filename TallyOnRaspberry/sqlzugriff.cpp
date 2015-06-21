@@ -49,7 +49,7 @@ bool SqlZugriff::checkPassword(QString username, QString password){
     return false;
 }
 
-//waring, not working...
+//warning, not working...
 void SqlZugriff::update(QString tab, QString column, QString value, QString id ,QString number){
     query.exec("UPDATE '"+tab+"' SET '"+column+"' = '"+value+"' WHERE '"+id+"'=\\ '"+number+"'");
 }

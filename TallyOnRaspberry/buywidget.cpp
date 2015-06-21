@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QString>
 #include "sqlzugriff.h"
+#include "mainwindow.h"
 
 buywidget::buywidget(QWidget *parent) :
     QWidget(parent),
@@ -11,7 +12,8 @@ buywidget::buywidget(QWidget *parent) :
     ui->setupUi(this);
 
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
+    Database_Link
+
 }
 
 buywidget::~buywidget()

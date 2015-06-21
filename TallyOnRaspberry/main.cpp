@@ -5,6 +5,7 @@
 #include <QFileInfo>
 #include <QString>
 
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -12,7 +13,7 @@ int main(int argc, char *argv[])
     int state = 0;
 
     w.setWindowTitle("Tally");
-    w.showFullScreen();
+    w.show();
     w.setMainWindowPointer(&a);
     int exitcode = 100;
     bool exit = false;

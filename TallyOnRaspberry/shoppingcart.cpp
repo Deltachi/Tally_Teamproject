@@ -2,6 +2,7 @@
 #include "ui_shoppingcart.h"
 #include <QDebug>
 #include <QString>
+#include "mainwindow.h"
 
 Shoppingcart::Shoppingcart(QWidget *parent) :
     QWidget(parent),
@@ -82,7 +83,7 @@ void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
 void Shoppingcart::on_pushButton_buy_clicked()
 {
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
+    Database_Link
     Data.open();
     SqlZugriff Database;
     Database.getCredit(userId);

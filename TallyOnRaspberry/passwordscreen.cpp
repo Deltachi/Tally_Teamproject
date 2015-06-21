@@ -1,6 +1,7 @@
 #include "passwordscreen.h"
 #include "ui_passwordscreen.h"
 #include "sqlzugriff.h"
+#include "mainwindow.h"
 
 
 passwordscreen::passwordscreen(QWidget *parent) :
@@ -9,7 +10,7 @@ passwordscreen::passwordscreen(QWidget *parent) :
 {
     ui->setupUi(this);
     Data = QSqlDatabase::addDatabase("QSQLITE");
-    Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
+    Database_Link
 }
 
 passwordscreen::~passwordscreen()
