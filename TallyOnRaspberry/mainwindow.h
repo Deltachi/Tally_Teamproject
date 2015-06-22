@@ -37,6 +37,7 @@ public:
     void showAfterBuyScreen();
     //#define Database_Linke Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
+    QString timestamp;
 
 private slots:
 

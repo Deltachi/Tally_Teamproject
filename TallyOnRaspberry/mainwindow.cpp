@@ -11,6 +11,7 @@
 #include "afterbuyscreen.h"
 #include <QTime>
 #include <QDate>
+#include <QDebug>
 
 //constructer
 MainWindow::MainWindow(QWidget *parent) :
@@ -28,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QDate qdate = QDate::currentDate();
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
+    timestamp = stime + ";" + sdate;
+    qDebug() << timestamp;
 }
 //delete MainWindow
 MainWindow::~MainWindow()

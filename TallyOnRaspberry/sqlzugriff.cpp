@@ -69,6 +69,7 @@ void SqlZugriff::selectAll(QString tab, QString id ,QString number){
     query.first();
 }
 
+//void SqlZugriff::makeTimeStamp()
 QPixmap SqlZugriff::getPixmap(){
     QPixmap icon;
     QByteArray imagedata;

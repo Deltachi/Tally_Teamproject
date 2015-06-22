@@ -131,7 +131,7 @@ void LoginScreen::on_pushButton_Weiter_clicked()
     }
 }
 
-void LoginScreen::on_listWidget_doubleClicked(const QModelIndex &index)
+void LoginScreen::on_listWidget_clicked(const QModelIndex &index)
 {
     if( ui->listWidget->selectedItems().length() > 0){
         Username = ui->listWidget->selectedItems().first()->text();

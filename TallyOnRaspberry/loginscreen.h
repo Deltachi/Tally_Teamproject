@@ -52,7 +52,7 @@ private slots:
 
     void on_pushButton_Weiter_clicked();
 
-    void on_listWidget_doubleClicked(const QModelIndex &index);
+    void on_listWidget_clicked(const QModelIndex &index);
 
 private:
     Ui::LoginScreen *ui;
