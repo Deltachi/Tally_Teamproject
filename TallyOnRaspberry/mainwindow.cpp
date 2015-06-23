@@ -9,6 +9,7 @@
 #include "scanwidget.h"
 #include "favcart.h"
 #include "afterbuyscreen.h"
+#include "sqlzugriff.h"
 #include <QTime>
 #include <QDate>
 #include <QDebug>
@@ -30,6 +31,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
     timestamp = stime + ";" + sdate;
+/*
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
+    Data.open();
+    SqlZugriff Database;
+    time = Database.getWatchDogtime();
+    Data.close();
+*/
 }
 
 QString MainWindow::getTimestamp(){
@@ -54,6 +63,15 @@ void MainWindow::timerEvent(QTimerEvent *event)
     ui->label_Date->setText(sdate);
 
 
+    if(watchdogtime == time.toInt()){
+        mainWindowPointer->exit(100);
+        watchdogtime = 0;
+    }else
+    {
+        watchdogtime++;
+    }
+
+
     if(counter == -1){
         //do nothing
     }else if(counter <= 3){
@@ -63,6 +81,19 @@ void MainWindow::timerEvent(QTimerEvent *event)
         mainWindowPointer->exit(100);
     }
 
+}
+
+void MainWindow::getWatchDogTime_Database(){
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
+    Data.open();
+    SqlZugriff Database;
+    time = Database.getWatchDogtime();
+    Data.close();
+}
+
+void MainWindow::setWatchDog(){
+    watchdogtime = 0;
 }
 
 //sets the pointer to the window generated from qt

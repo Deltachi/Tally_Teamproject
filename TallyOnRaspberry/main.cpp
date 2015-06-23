@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 
     w.setWindowTitle("Tally");
     w.show();
+    w.setWatchDog();
+    w.getWatchDogTime_Database();
     w.setMainWindowPointer(&a);
     int exitcode = 100;
     bool exit = false;

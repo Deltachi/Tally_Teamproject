@@ -25,6 +25,7 @@ public:
     void selectAll(QString tab, QString id ,QString number);
     void getCredit(QString userId);
     void timestamp(QString userId,int granted);
+    QString getWatchDogtime();
 
 private:
      QSqlQuery query;

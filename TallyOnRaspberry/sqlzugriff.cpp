@@ -11,6 +11,14 @@ SqlZugriff::SqlZugriff()
 {
 }
 
+QString SqlZugriff::getWatchDogtime(){
+    query.exec("Select Value from Settings WHERE Setting_ID = '""1""'");
+    QString value = "";
+    query.first();
+    value = query.value(0).toString();
+    return value;
+}
+
 void SqlZugriff::initGetGroceries(bool sweets){
     if(sweets){
         query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""1""'");
