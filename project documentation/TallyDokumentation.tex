@@ -100,13 +100,40 @@ Mitarbeiter, beziehungsweise die Administratoren, k\"onnen eine Strichliste 'dig
 Personengruppen und Unternehmen bei denen Getr\"anke und Snacks privat f\"ur alle angeboten und privat bezahlt werden, jedoch Schwierigkeiten mit der Handhabung einer herk\"ommlichen Strichliste haben und den Bestand an Getr\"anken und Snacks erfassen wollen.
 
 \subsubsection{Betriebsbedingungen}
-Die Strichliste soll m\"oglichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie t\"aglich vierundzwanzig Stunden laufen.
+Die Strichliste soll m\"o
+glichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie t\"aglich vierundzwanzig Stunden laufen.
 
 \subsection{Produktumgebung}
 Das Produkt kann unabh\"angig an jedem Ort betrieben werden, solange eine Stromquelle in der n\"ahe ist.
 
 \subsubsection{Software}
+Die einzige Software die vom Benutzer ben\"otigt wird ist ein aktueller Webbrowser.
 
+\subsubsection{Hardware}
+Der Benutzer kann mit jedem Internetf\"ahigen Ger\"at die Weboberfl\"ache erreichen.
+
+\subsubsection{Orgware}
+Der Administrator kann die Betriebsparameter konfigurieren.
+
+\subsection{Produktfunktion}
+\subsubsection{Benutzerfunktion}
+Ein im System registrierter Benutzer kann das System erst nutzen, wenn er angemeldet ist.
+Nur ein Administrator kann einen Benutzer anlegen und ihm einen Benutzernamen sowie Passwort zuwesien. Sobald ein Benutzer registriert ist kann er sich sowohl am Raspberry als auch an der Weboberfl\"ache anmelden. Daf\"ur ben\"otigt er seinen Benutzernamen und sein Passwort. Abmelden ist bei beiden Oberfl\"achen jederzeit m\"oglich.
+\par
+Der Administrator kann \"uber die Weboberfl\"ache Produkte hinzuf\"ugen,entfernen und deren Details \"andern. Benutzer k\"onnen \"uber die Weboberfl\"ache Favoriten einrichten und Statistiken einsehen.
+\par
+Am Raspberry kann der registrierte und angemeldete Benutzer ein Produkt aus einer Liste w\"ahlen oder mithilfe eines Barcodescanners ein Prdoukt einscannen, welches im Warenkorb erscheint. Desweiteren kann er die Anzahl der Produkte erh\"ohen und seinen gesamten Warenkorb einsehen. Wenn er alle Waren im Warenkorb hat, kann er zur Kasse und die Waren durch einen Klick bezahlen, wodurch sein Konto belastet wird. Ein Abbruch oder das erreichen des Hauptmen\"us ist jederzeit m\"oglich.
+
+\subsection{Programmfunktion}
+Beim Kauf eines Produktes aktualisiert das Programm automatisch den Warenbestand. Bei geringem Warenbestand wird eine Warnmeldung ausgegeben und bei fehlen des Artikels wird dieser entfernt.
+
+\subsection{Serverfunktion}
+Auf dem Raspberry soll ein Apache 2 Server mit PHP Unterst\"utzung laufen.
+\subsubsection{Datenbank}
+Als Datenbank soll die resourcenschonendere SQLite Datenbank verwendet werden
+
+\subsection{Benutzerschnittstelle}
+Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Raspberry. Au\ss()erdem wird ein Barcodescanner installiert um Produkte einscannen zu k\"onnen.
 
 \begin{center}
 \begin{large}
