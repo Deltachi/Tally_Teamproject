@@ -35,7 +35,7 @@
 
 \title{Tally\\ digitale Strichliste am Raspberry Pi}
 \author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philipp Frieling \\ Sebastian Reinke}
-\date{Ein Datum}
+\date{23.06.2015}
 
 
 %------------------------------------------------------------------------------------------------
@@ -55,30 +55,35 @@
 
 %------------------------------------------------------------------------------------------------
 
-Da das benutzen einer Strichliste auf Papier und das anschliessende einfuegen der Daten in eine Datenbank sehr aufwendig ist, entwickeln wir eine Art 'digitale' Strichliste auf der Grundlagen eine Raspberry Pi 2 mit einem integrierten Webserver.
+In kleineren Unternehmen und Arbeitsgruppen gibt es oft eine zentralen Kaffee/ Getr\"anke -automaten und Snacks, an der sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt. Hier passiert es jedoch oft das die Strichliste nicht sehr leserlich ist, und es bei der \"Ubertragung zu fehlern kommen kann, so dass ein Minus in der Kasse entsteht. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig.
+\par
+Um diesem Problem entgegen zu wirken, erarbeiten wird eine neue Methode um diese Daten 'digital' speichern zu k\"onnen.
+
+
+\section{Projektziele }
 
 \subsection{Aufgaben der neuen Kaffeestrichliste}
 \label{SchriftAnpassen}
+
+Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
+\par
+Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Administration von jedem Computer im selben Netzwerk \"uber eine Weboberfl\"ache m\"oglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und \"andern k\"onnen. Dazu wird ein MySQL/ SQLite Datenbank, sowie PHP Unterst\"utzung ben\"otigt. Mittels eines Barcodescanners soll es m\"oglich sein am Raspberry Produkte ein zu scannen.
 
 Hier sehen wir, wie wir die Schrift \emph{hervorheben} k�nnen. Daf�r wird automatisch Kursivdruck gew�hlt.\footnote{Die gew�hlte Schrift f�r die Hervorhebung h�ngt von der Dokumentenklasse ab.} \textit{Verwendet man allerdings schon Kursivdruck, so wird durch \emph{Normaldruck} hervorgehoben}. Man kann auch die Hervorhebungsart, wie \textbf{Fettdruck}, \textit{Kursivdruck} oder \underline{Unterstreichen} auch direkt w�hlen. \texttt{Quellcode} wird oft durch eine Schrift gesetzt, in der jeder Buchstabe gleich viel Platz einnimmt. Das ist somit eine \texttt{Nichtproportionalschrift}. Schreibmaschinen haben fr�her stets solche Schriften verwendet. Im Druck sind sie wegen der schlechten Lesbarkeit eher verp�nt. Weitere Hervorhebungsm�glicheiten ergeben sich durch \textsc{kleine Kapit�lchen} oder durch \textsf{serifenlose Schrift}. Auf manuelle Schriftgr��enanpassung sollte man weitestgehend verzichten. Aber \begin{tiny} ein kleines Beispiel ist sicher nicht verkehrt.\end{tiny}
 
 \subsection{Anforderungen an die neue Kaffeestrichliste}
 \label{Ausrichtung}
 
-\subsubsection{Linksb�ndiger Text}
-
 \begin{flushleft}
-Es gibt die M�glichkeit die Ausrichtung zu steuern. In der Regel sollte man an der Ausrichtung nichts �ndern, da der Blocksatz von \LaTeX\ zuverl�ssig gute Ergebnisse liefert. Trotzdem braucht man manchmal linksb�ndiger Text.
+Die neue Kaffeestrichliste soll eine einfacherere Handhabung in Bezug auf das Getr\"anke und S\"u\ss{}igkeiten kaufen bieten. Zur Verwaltung soll lediglich der Raspberry mit passender Hardware und ein Pc im selben Netzwerk dienen. Desweiteren sollen Statistiken eingesehen werden k\"onnen, Produkte mittels Barcodescanner gescannt werden und eine Eingabe \"uber Touchscreen am Raspberry selbst erfolgen.
 \end{flushleft}
 
-\section{Projektziele\ }
-
-\begin{flushright}
-Rechtsb�ndiger Text ist schon eher exotisch. Wof�r ist der eigentlich gut? Egal, \LaTeX\ bietet auch diese M�glichkeit an. Vielleicht braucht man das auch manchmal?
-\end{flushright}
+\begin{flushleft}
+SOLL-IST-Vergleich
+\end{flushleft}
 
 
-\section{Zeitplanung\ Meilenstein}
+\section{Zeitplanung und Meilenstein}
 
 \begin{center}
 \begin{large}
@@ -87,7 +92,7 @@ Rechtsb�ndiger Text ist schon eher exotisch. Wof�r ist der eigentlich gut? E
 \end{center}
 
 
-\subsection{Umbr�che}
+\subsection{Zeitplanung}
 \label{Umbrueche}
 
 Wie wir im vorangegangen Text gesehen haben, sind die Zeilenumbr�che automatisch ganz gut. Neue Abschnitte werden durch eine Leerzeile erzeugt. Wenn man trotzdem eine Zeile in einem Absatz abbrechen will, so geht das nat�rlich auch. \\  Aber eigentlich sehen diese Umbr�che seltsam aus und man sollte sie vermeiden. Da ist es doch in der Regel besser, gleich einen neuen Absatz zu beginnen. In Abschnitt \ref{Sonderzeichen} sehen wir, wie eine gute Absatzstruktur aussieht. �brigens k�nnen wir auch einen neuen Seitenbeginn erzwingen.
