@@ -1,0 +1,42 @@
+<html ng-app="app">
+	<head>
+		<title>Tally C&amp;S</title>		
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap.css">
+		<!-- Optional theme (locally saved) -->
+		<link rel="stylesheet" href="styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css">
+
+		<!--main.css Stylesheet for optimizations -->
+		<link rel="stylesheet" href="styles/main.css">
+		<link rel="stylesheet" href="styles/index.css">
+		<link rel="stylesheet" href="styles/navbar.css">
+		<link rel="stylesheet" href="styles/footer.css">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body class="color-bg"> <!-- class="color-bg" -->
+		<div id="wrap">
+			<my-navbar></my-navbar>
+			<login></login>
+			<div ui-view></div>
+		</div> <!-- close wrap -->
+		<footer id="footer" class="text-center">
+			<my-footer></my-footer>
+		</footer>
+		
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+		<script src="javascript/jquery-1.11.2.js"></script>
+		<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+		<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+		<script src="mustache/mustache.js"></script>
+		<script src="angular/angular.js"></script>
+		<script src="angular-ui-router/build/angular-ui-router.js"></script>
+		<!--  
+		<script src="apis/cookies/jquery.cookie.js"></script>
+		-->
+		<script src="javascript/main.js"></script>
+		<script src="javascript/app.js"></script>
+
+	</body>
+</html>

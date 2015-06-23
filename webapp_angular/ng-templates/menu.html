@@ -1,0 +1,50 @@
+<div>
+	<div class="color-bg topic-padding">
+		<div class="container">
+			<div class="jumbotron inline-text lil-jumbo">
+				<h2>Drinks</h2>
+			</div>
+		</div>
+	</div>
+	<div class="drinks-bg topic-padding">
+		<div class="container">
+			<div class="panel panel-default menuTable">
+				<table class="table panel-body">
+					<tbody id="drink-list">
+						<template id="drink-template">
+							<tr>
+								<th scope="row">{{name}}</th>
+								<td>{{description}}</td>
+								<td>{{price}} &euro;</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div> <!-- coffee-bg -->
+	<div class="color-bg topic-padding">
+		<div class="container">
+			<div class="jumbotron inline-text lil-jumbo">
+				<h2>Snacks</h2>
+			</div>
+		</div>
+	</div> <!-- color-bg -->
+	<div class="chocolate-bg topic-padding">
+		<div class="container">
+			<div class="panel panel-default menuTable">
+				<table class="table panel-body">
+					<tbody id="item-list">
+						<template id="item-template">
+							<tr>
+								<th scope="row">{{name}}</th>
+								<td>{{description}}</td>
+								<td>{{price}} &euro;</td>
+							</tr>
+						</template>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div> <!-- chocolate-bg -->
+</div>
