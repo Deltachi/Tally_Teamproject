@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  23 JUN 2015 15:44
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  23 JUN 2015 17:37
 entering extended mode
 **C:/Users/Nico/Documents/GitHub/Tally_Teamproject/project*documentation/Tally1
 .tex
@@ -113,18 +113,18 @@ LaTeX Info: Redefining \frq on input line 304.
 )
 ("C:\Users\Nico\Documents\GitHub\Tally_Teamproject\project documentation\Tally1
 .aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
+LaTeX Font Info:    ... okay on input line 44.
  (C:\Users\Nico\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count89
@@ -140,116 +140,96 @@ LaTeX Font Info:    ... okay on input line 43.
 \everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 47.
+(Font)              <12> on input line 53.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 47.
+(Font)              <8> on input line 53.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 47.
+(Font)              <6> on input line 53.
+ <TallyLogo.png, id=1, 481.8pt x 321.2pt>
+File: TallyLogo.png Graphic file (type png)
+ <use TallyLogo.png>
+Package pdftex.def Info: TallyLogo.png used on input line 54.
+(pdftex.def)             Requested size: 341.43306pt x 227.6272pt.
  [1
 
-{C:/Users/Nico/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/Nico/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Nic
+o/Documents/GitHub/Tally_Teamproject/project documentation/TallyLogo.png>] [1]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 72.
+(Font)              <10.95> on input line 93.
+ [2] [3]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 72.
+(Font)              <9> on input line 125.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 72.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 72.
+(Font)              <5> on input line 125.
 
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 72.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmss.fd"
-File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-Overfull \hbox (16.81958pt too wide) in paragraph at lines 72--73
-\T1/cmr/m/n/10.95 sta-be gleich viel Platz ein-nimmt. Das ist so-mit ei-ne \T1/
-cmtt/m/n/10.95 Nichtproportionalschrift\T1/cmr/m/n/10.95 .
- []
-
-
-Overfull \hbox (80.53384pt too wide) in paragraph at lines 72--73
-\T1/cmr/m/n/10.95 sind sie we-gen der schlech-ten Les-bar-keit eher verpï¾$[]$n
-t. Wei-te-re Hervorhebungsmï¾$[]$glicheiten
- []
-
-[2] [3]
-Overfull \hbox (8.30333pt too wide) in paragraph at lines 111--112
+Overfull \hbox (8.30333pt too wide) in paragraph at lines 134--135
 []\T1/cmr/m/n/10.95 Deutsche, franzï¾$[]$sische und ``eng-li-sche'' Anfï¾$[
 ]$hrungszeichen sind manch-
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 115.
+(Font)              <14.4> on input line 138.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 115.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 123.
+(Font)              <7> on input line 138.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 146.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 146.
  [4]
-Overfull \hbox (19.4344pt too wide) in paragraph at lines 174--175
+Overfull \hbox (19.4344pt too wide) in paragraph at lines 197--198
 \T1/cmr/m/n/10.95 Grafiken kï¾$[]$nnen an Ort und Stel-le eingefï¾$[]$gt wer-de
 n. Ge-ra-de bei grï¾$[]$ï¾$[]$eren
  []
 
 
-Overfull \hbox (8.17978pt too wide) in paragraph at lines 174--175
+Overfull \hbox (8.17978pt too wide) in paragraph at lines 197--198
 \T1/cmr/m/n/10.95 dies aber oft unschï¾$[]$ne Seitenumbrï¾$[]$che oder der Plat
 z zwi-schen Absï¾$[]$tzen
  []
 
-<bild.pdf, id=31, 291.0875pt x 291.0875pt>
-File: bild.pdf Graphic file (type pdf)
- <use bild.pdf>
-Package pdftex.def Info: bild.pdf used on input line 177.
-(pdftex.def)             Requested size: 291.08678pt x 291.08678pt.
- [5] [6 <C:/Users/Nico/AppData/Roaming/MiKTeX/2.9/tex/latex/IMTEKda/figures/bil
-d.pdf>]
+File: TallyLogo.png Graphic file (type png)
+<use TallyLogo.png>
+Package pdftex.def Info: TallyLogo.png used on input line 200.
+(pdftex.def)             Requested size: 341.43306pt x 227.6272pt.
+ [5] [6] <bild.pdf, id=41, 291.0875pt x 291.0875pt>
 File: bild.pdf Graphic file (type pdf)
 
 <use bild.pdf>
-Package pdftex.def Info: bild.pdf used on input line 224.
+Package pdftex.def Info: bild.pdf used on input line 247.
 (pdftex.def)             Requested size: 291.08678pt x 291.08678pt.
- [7]
+ [7 <C:/Users/Nico/AppData/Roaming/MiKTeX/2.9/tex/latex/IMTEKda/figures/bild.pd
+f>]
 ("C:\Users\Nico\Documents\GitHub\Tally_Teamproject\project documentation\Tally1
 .aux") ) 
 Here is how much of TeX's memory you used:
- 1958 strings out of 493921
- 25646 string characters out of 3144879
- 80871 words of memory out of 3000000
- 5243 multiletter control sequences out of 15000+200000
- 19267 words of font info for 46 fonts, out of 3000000 for 9000
+ 1922 strings out of 493921
+ 24449 string characters out of 3144879
+ 80879 words of memory out of 3000000
+ 5214 multiletter control sequences out of 15000+200000
+ 17592 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,8n,24p,1222b,251s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,24p,793b,257s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dp
 i600\ecrm0900.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknap
 pen\ec\dpi600\ecrm0600.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljf
-our\jknappen\ec\dpi600\ecss1095.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fon
-ts\pk\ljfour\jknappen\ec\dpi600\eccc1095.pk> <C:\Users\Nico\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\Nico\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Nico\A
-ppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk> <C:\Use
-rs\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk
+our\jknappen\ec\dpi600\ecrm0800.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fon
+ts\pk\ljfour\jknappen\ec\dpi600\ecbx1095.pk> <C:\Users\Nico\AppData\Local\MiKTe
+X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk> <C:\Users\Nico\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Nico\A
+ppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1095.pk> <C:\Use
+rs\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk
 > <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
-bx1200.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\
-dpi600\ecrm1095.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jkn
-appen\ec\dpi600\ecbx1440.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\l
-jfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\f
-onts\pk\ljfour\jknappen\ec\dpi600\ecrm1728.pk><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmsy10.pfb>
-Output written on Tally1.pdf (7 pages, 191326 bytes).
+bx1728.pk><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb
+><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
+/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Tally1.pdf (8 pages, 200689 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
+ 399 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

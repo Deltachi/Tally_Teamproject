@@ -33,7 +33,8 @@
 %\pagestyle{headings}                  % Aktivieren f�r Kopf- und Fu�zeilen
 
 
-\title{Tally\\ digitale Strichliste am Raspberry Pi}
+
+\title{\normalfont\bfseries{Tally\\ digitale Strichliste am Raspberry Pi}\\---}
 \author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philipp Frieling \\ Sebastian Reinke}
 \date{23.06.2015}
 
@@ -44,46 +45,68 @@
 
 %------------------------------------------------------------------------------------------------
 
-\maketitle  % Titel erzeugen, verwendet die Angaben aus \title, \author und \date
+%\maketitle  % Titel erzeugen, verwendet die Angaben aus \title, \author und \date
 
 %\tableofcontents % Um Inhaltsverzeichnis zu erzeugen
 
+\begin{titlepage}
+	\maketitle
+	\includegraphics[width=12cm]{TallyLogo.png}
+\end{titlepage}
 %------------------------------------------------------------------------------------------------
 
-\section{Projektvorfeld\ Kaffeestrichliste bisher }
+\section{Projektvorfeld}
 \label{Grundlagen}
 
-%------------------------------------------------------------------------------------------------
+
+\subsection{Kaffeestrichliste bisher}
 
 In kleineren Unternehmen und Arbeitsgruppen gibt es oft eine zentralen Kaffee/ Getr\"anke -automaten und Snacks, an der sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt. Hier passiert es jedoch oft das die Strichliste nicht sehr leserlich ist, und es bei der \"Ubertragung zu fehlern kommen kann, so dass ein Minus in der Kasse entsteht. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig.
 \par
 Um diesem Problem entgegen zu wirken, erarbeiten wird eine neue Methode um diese Daten 'digital' speichern zu k\"onnen.
 
+%------------------------------------------------------------------------------------------------
 
-\section{Projektziele }
+\section{Rahmenbedingungen}
 
-\subsection{Aufgaben der neuen Kaffeestrichliste}
+
+\subsection{Aufgabe - die neue Kaffeestrichliste}
 \label{SchriftAnpassen}
 
-Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
+Um eine m\"oglichst Energiesparende und handliche L\"osung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
 \par
 Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Administration von jedem Computer im selben Netzwerk \"uber eine Weboberfl\"ache m\"oglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und \"andern k\"onnen. Dazu wird ein MySQL/ SQLite Datenbank, sowie PHP Unterst\"utzung ben\"otigt. Mittels eines Barcodescanners soll es m\"oglich sein am Raspberry Produkte ein zu scannen.
 
-Hier sehen wir, wie wir die Schrift \emph{hervorheben} k�nnen. Daf�r wird automatisch Kursivdruck gew�hlt.\footnote{Die gew�hlte Schrift f�r die Hervorhebung h�ngt von der Dokumentenklasse ab.} \textit{Verwendet man allerdings schon Kursivdruck, so wird durch \emph{Normaldruck} hervorgehoben}. Man kann auch die Hervorhebungsart, wie \textbf{Fettdruck}, \textit{Kursivdruck} oder \underline{Unterstreichen} auch direkt w�hlen. \texttt{Quellcode} wird oft durch eine Schrift gesetzt, in der jeder Buchstabe gleich viel Platz einnimmt. Das ist somit eine \texttt{Nichtproportionalschrift}. Schreibmaschinen haben fr�her stets solche Schriften verwendet. Im Druck sind sie wegen der schlechten Lesbarkeit eher verp�nt. Weitere Hervorhebungsm�glicheiten ergeben sich durch \textsc{kleine Kapit�lchen} oder durch \textsf{serifenlose Schrift}. Auf manuelle Schriftgr��enanpassung sollte man weitestgehend verzichten. Aber \begin{tiny} ein kleines Beispiel ist sicher nicht verkehrt.\end{tiny}
 
-\subsection{Anforderungen an die neue Kaffeestrichliste}
+\section{Ziele des Projekts}
+Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwickelt, um die alte Strichliste abzul\"osen
+\subsection{Zielbestimmung}
 \label{Ausrichtung}
 
-\begin{flushleft}
-Die neue Kaffeestrichliste soll eine einfacherere Handhabung in Bezug auf das Getr\"anke und S\"u\ss{}igkeiten kaufen bieten. Zur Verwaltung soll lediglich der Raspberry mit passender Hardware und ein Pc im selben Netzwerk dienen. Desweiteren sollen Statistiken eingesehen werden k\"onnen, Produkte mittels Barcodescanner gescannt werden und eine Eingabe \"uber Touchscreen am Raspberry selbst erfolgen.
-\end{flushleft}
+\subsubsection{Der Benutzer Account}
+\"Uber den Benutzer Account soll der Benutzer sich am Raspberry selbst und an der Weboberfl\"ache anmelden. Am Raspberry selbst k\"onnen Getr\"anke und Snacks gekauft werden. Mithilfe der Weboberfl\"ache kann der Benutzer Statistiken einsehen und sein Passwort \"andern.
 
-\begin{flushleft}
-SOLL-IST-Vergleich
-\end{flushleft}
+\subsubsection{Das Programm}
+Das Programm das auf dem Raspberry l\"auft aktualisiert die Anzahl der Produkte im Lagerbestand automatisch, gibt Meldungen bei zu geringem Warebestand aus und gibt generelle Fehlermeldungen aus
 
+\subsubsection{Der Administrator Account}
+Die Administration mithilfe des Administrator Accounts findet ausschliesslich über die Weboberfl\"ache statt. Hier kann der Administrator Accounts hinzuf\"ugen und verwalten, Waren hinzuf\"ugen und verwalten und den Lagerbestand verwalten.
 
-\section{Zeitplanung und Meilenstein}
+\subsection{Produkteinsatz}
+\subsubsection{Anwendungsbereiche}
+Mitarbeiter, beziehungsweise die Administratoren, k\"onnen eine Strichliste 'digital' anlegen. Diese fasst den zu bezahlenden Betrag f\"ur die Mitarbeiter zusammen.
+
+\subsubsection{Zielgruppen}
+Personengruppen und Unternehmen bei denen Getr\"anke und Snacks privat f\"ur alle angeboten und privat bezahlt werden, jedoch Schwierigkeiten mit der Handhabung einer herk\"ommlichen Strichliste haben und den Bestand an Getr\"anken und Snacks erfassen wollen.
+
+\subsubsection{Betriebsbedingungen}
+Die Strichliste soll m\"oglichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie t\"aglich vierundzwanzig Stunden laufen.
+
+\subsection{Produktumgebung}
+Das Produkt kann unabh\"angig an jedem Ort betrieben werden, solange eine Stromquelle in der n\"ahe ist.
+
+\subsubsection{Software}
+
 
 \begin{center}
 \begin{large}
@@ -174,7 +197,7 @@ Offensichtlich kann man hier ziemlich tief schachteln. Ob das allerdings immer s
 Grafiken k�nnen an Ort und Stelle eingef�gt werden. Gerade bei gr��eren Grafiken, die auf der laufenden Seite keinen Platz mehr haben, verursacht dies aber oft unsch�ne Seitenumbr�che oder der Platz zwischen Abs�tzen wird in die L�nge gezogen. Deswegen ist es besser, Grafiken als Gleitobjekte, als sogenannte \glqq Floats\grqq, zu setzen. Dann findet \LaTeX\ f�r die Grafik einen geeigneten Platz. Dies sehen wir sp�ter, vgl. Abschnitt \ref{Floats}\footnote{Man beachte, dass die Nummer des Abschnitts, den wir hier zitieren, automatisch erzeugt wird. Werden sp�ter weitere Abschnitte eingef�gt, so wird diese Referenz automatisch angepasst.}
 
 \begin{center}
-\includegraphics[angle=-90,width=12cm]{bild.pdf}
+\includegraphics[width=12cm]{TallyLogo.png}
 \end{center}
 
 Hier hatten wir Gl�ck. Die vorherige Seite war voll, so dass es ganz in Ordnung ist, wenn diese Grafik am Beginn dieser Seite ist. Aber was ist, wenn das mal nicht per Zufall so g�nstig kommt?
