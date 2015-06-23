@@ -1,0 +1,58 @@
+.navbar-inverse {
+	background-image: -webkit-linear-gradient(top, #423424 0%, #241E18 100%);
+	background-image:      -o-linear-gradient(top, #423424 0%, #241E18 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#423424), to(#241E18));
+	background-image:         linear-gradient(to bottom, #423424 0%, #241E18 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff423424', endColorstr='#ff241E18', GradientType=0);
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background-repeat: repeat-x;
+}
+.navbar .navbar-nav{
+	display: inline-block;
+	float: none;
+	vertical-align: top;
+}
+
+.navbar .navbar-collapse {
+	text-align: center;
+}
+.navbar{
+	margin-bottom: 5px; 
+	margin-top: 10px; 
+}
+
+#my-brand{
+	padding: 0;
+	padding-right: 20px;
+}
+#my-brand-mobile{
+	padding: 0;
+	padding-right: 20px;
+	margin: auto;
+	margin-left: calc(100% / 2 - 80px);  /*calc and place the pic in the middle*/
+}
+
+
+@media (min-width: 768px)  {
+	.mobile-brand{
+		display: none;
+	}
+	.desktop-brand{
+		display: block;
+	}
+}
+@media (max-width: 767px) { 
+	.mobile-brand{
+		display: block;
+		padding-bottom: 10px;
+	}
+	.desktop-brand #my-brand{
+		display: none;
+	}
+	.navbar-fixed-top{
+		position: relative;
+	}
+	body, body.color-bg {
+		padding-top: 0px;
+	}
+}

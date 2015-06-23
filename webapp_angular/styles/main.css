@@ -1,0 +1,176 @@
+/*Padding for Navbar fixed-top*/
+body { 
+	padding-top: 90px; 
+	height: 100%;
+}
+body.color-bg{
+	background: #E3D4C3;
+	padding-top: 65px; 
+}
+
+.important-alert {
+  position: absolute;
+  top: 80px;
+  left: 120px;
+  right: 120px;
+  text-align: center;
+  overflow: visible;
+}
+
+.color-bg {
+	background: #E3D4C3;
+}
+.index-bg{
+	background: url("images/backgrounds/sweets-rasp-coffee.jpg");
+	background-attachment: fixed;
+	background-size: 110%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+}
+.coffee-bg{
+	background: url("images/backgrounds/coffee-bg.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+}
+.chocolate-bg{
+	background: url("images/backgrounds/sweets-tea.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+	background-position: 0 200px;
+}
+.night-coffee-bg{
+	background: url("images/backgrounds/night-coffee.jpg");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+}
+.dark-coffee-bg{
+	background: url("images/backgrounds/Coffee_Mix_Night.png");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+}
+.drinks-bg{
+	background: url("images/backgrounds/Coffee_Mix.png");
+	background-attachment: fixed;
+	background-size: 100%;
+	display: inline-block;
+	margin-left: auto; 
+	margin-right: auto;
+	position: relative;
+	width: 100%;
+}
+.bg-75perc-white{
+	background-color: rgba(255, 255, 255, 0.75);
+	background: rgba(255, 255, 255, 0.75);
+}
+
+.topic-padding{
+	padding-top: 20px;	
+}
+.lil-jumbo{
+	padding-top: 10;
+	padding-bottom: 2;
+	margin-bottom: 15;
+}
+
+
+ .boxShadow {
+ 	box-shadow: 3px 3px 5px rgba(0,0,0,0.25);
+ }
+.inline-text{
+	text-align: center;
+}
+
+.inline-block{
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+header h1 {
+	background: #666;
+	color: white;
+	padding: 5px;
+	margin: 0;
+}
+
+/*.logoMargin {
+	margin: -5% 0;
+}*/
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto;
+	/* Negative indent footer by its height */
+	margin: 0 auto -50px;
+	/* Pad bottom by footer height */
+	padding: 0 0 50px;
+}
+
+
+
+/* Large desktop // 1200*/
+@media (min-width: 1200px) { 
+	.navbar-header{
+		min-height: 55px;
+	}
+}
+@media (max-width: 991px) and (min-width: 767px) { 
+	.menu-search{
+		display: none;
+	}
+}
+/* Portrait tablet to landscape and desktop // 768 - 979 */
+/*and (max-width: 979px)*/
+@media (min-width: 768px)  {
+	.navbar-header{
+		min-height: 55px;
+	}
+}
+ 
+/* Landscape phone to portrait tablet // 767 */
+@media (max-width: 767px) { 
+	body { 
+		padding-top: 60px; 
+	}
+	
+	/*Offset collapsed menu for mobile*/
+	/*.collapse {
+		margin-top: 25px; 
+	}
+
+	.collapsing{
+		margin-top: 25px; 
+	}*/
+	#wrap {
+		/* Negative indent footer by its height */
+		margin: 0 auto -100px;
+		padding: 0 0 100px;
+	}
+	#footer {
+		height: 100px;
+	}
+}
