@@ -35,9 +35,9 @@ public:
     void showSweetsWidget();
     void showCoffeeWidget();
     void showAfterBuyScreen();
+    QString getTimestamp();
     //#define Database_Linke Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
-    QString timestamp;
 
 private slots:
 
@@ -55,6 +55,7 @@ private:
     bool favCartVisible; //is the favcart visible now?
     QString userID;
     int counter; //counts up to 3 so that you can see the after buy screen for 3 seconds!
+    QString timestamp;
 };
 
 #endif // MAINWINDOW_H

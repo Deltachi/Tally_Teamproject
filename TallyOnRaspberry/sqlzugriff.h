@@ -24,6 +24,7 @@ public:
     void updateCredits(QString userId ,QString newCredits);
     void selectAll(QString tab, QString id ,QString number);
     void getCredit(QString userId);
+    void timestamp(QString userId,int granted);
 
 private:
      QSqlQuery query;

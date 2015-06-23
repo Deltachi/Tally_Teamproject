@@ -4,6 +4,7 @@
 #include <QFileInfo>
 #include <QString>
 #include <QtSql>
+#include "mainwindow.h"
 
 
 SqlZugriff::SqlZugriff()
@@ -39,8 +40,18 @@ QString SqlZugriff::getName(QString ID){
     ausgabe = query.value(0).toString();
     return ausgabe;
 }
-bool SqlZugriff::checkPassword(QString username, QString password){
-    if(query.exec("SELECT USER_ID FROM Users WHERE Username=\'" + username +
+void SqlZugriff::timestamp(QString UserId,int granted){
+    MainWindow w;
+    QString timestamp = w.getTimestamp();
+    if(granted){
+        query.exec("INSERT INTO Login_Requests(User_ID,Granted,Timestamp)" "VALUES('" +UserId+"','true','" +timestamp+ "')");
+    }else{
+        query.exec("INSERT INTO Login_Requests(User_ID,Granted,Timestamp)" "VALUES('" +UserId+"','false','" +timestamp+ "')");
+    }
+}
+
+bool SqlZugriff::checkPassword(QString userId, QString password){
+    if(query.exec("SELECT Username FROM Users WHERE User_ID=\'" + userId +
                "\' AND Password=\'" + password + "\'")){
         if(query.next()){
             return true;
@@ -69,7 +80,6 @@ void SqlZugriff::selectAll(QString tab, QString id ,QString number){
     query.first();
 }
 
-//void SqlZugriff::makeTimeStamp()
 QPixmap SqlZugriff::getPixmap(){
     QPixmap icon;
     QByteArray imagedata;

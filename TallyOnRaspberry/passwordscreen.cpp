@@ -26,7 +26,8 @@ void passwordscreen::updatePasswordField(){
 
     Data.open();
     SqlZugriff database;
-    if(database.checkPassword(userName,password)){
+    if(database.checkPassword(userId,password)){
+        database.timestamp(userId,1);
         mainWindowPointer->exit(21);
     }
     Data.close();
@@ -38,7 +39,9 @@ void passwordscreen::setMainWindowPointer(QApplication *a){
 void passwordscreen::setUsername(QString name){
     userName = name;
 }
-
+void passwordscreen::setUserId(QString gUserId){
+    userId = gUserId;
+}
 void passwordscreen::updateAccoutPicture(QString id){
     Data.open();
     SqlZugriff database;
@@ -114,6 +117,10 @@ void passwordscreen::on_pushButton_9_clicked()
 void passwordscreen::on_pushButton_back_clicked()
 {
     password.clear();
+    Data.open();
+    SqlZugriff database;
+    database.timestamp(userId,0);
+    Data.close();
     updatePasswordField();
 }
 

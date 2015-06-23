@@ -30,8 +30,12 @@ MainWindow::MainWindow(QWidget *parent) :
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
     timestamp = stime + ";" + sdate;
-    qDebug() << timestamp;
 }
+
+QString MainWindow::getTimestamp(){
+    return timestamp;
+}
+
 //delete MainWindow
 MainWindow::~MainWindow()
 {
@@ -99,8 +103,13 @@ void MainWindow::showLoginPasswordWidget(){
     ui->gridLayout_port->addWidget(myPwScreen);
     myPwScreen->updateAccoutPicture(userID);
     myPwScreen->setUsername(ui->label_username->text());
+    myPwScreen->setUserId(userID);
     showFavCart = true;
 }
+QString MainWindow::getUserID(){
+    return userID;
+}
+
 void MainWindow::showCoffeeSweetWidget(){
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);

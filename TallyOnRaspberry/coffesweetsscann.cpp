@@ -46,7 +46,6 @@ void CoffeSweetsScann::setQWidget(QWidget *a){
 void CoffeSweetsScann::enableBackButtonOnShoppingcart(bool enable){
     Shoppingcart *cart = (Shoppingcart*)ui->gridLayout_port->itemAt(0);
     cart->disableBackButton();
-    qDebug() << "test03";
 }
 Shoppingcart *CoffeSweetsScann::getShoppingcart(){
     QLayoutItem *temp = ui->gridLayout_port->itemAt(0);

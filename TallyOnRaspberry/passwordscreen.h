@@ -22,6 +22,7 @@ public:
     void setMainWindowPointer(QApplication *a);
     void setUsername(QString name);
     void updateAccoutPicture(QString id);
+    void setUserId(QString gUserId);
 
 private slots:
     void on_pushButton_1_clicked();
@@ -52,6 +53,7 @@ private:
     Ui::passwordscreen *ui;
     QApplication *mainWindowPointer;
     QString userName;
+    QString userId;
     QString password;
     QSqlDatabase Data;
 };
