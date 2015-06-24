@@ -72,6 +72,8 @@ void buywidget::update_label(){
                 item->setTextColor(QColor(255,51,51,255)); //red
             }else if(amount > 1 && amount <= 6){
                 item->setTextColor(QColor(255,128,0,255)); //yellow
+            }else if(amount == 0){
+                item->setHidden(true);
             }else{
                 item->setTextColor(QColor(0,0,0,255)); //black
             }
@@ -88,9 +90,21 @@ void buywidget::updateAmount(){
             Data.open();
             SqlZugriff Database;
             Database.getAmount(QString::number(tempCart->getLatestDeletedItemId()));
-            ui->listWidget->item(i)->setData(6,Database.getString(0).toInt());
-            qDebug() << "blabla";
+            int amount = Database.getString(0).toInt();
             Data.close();
+            ui->listWidget->item(i)->setData(6,amount);
+            if(amount == 1){
+                ui->listWidget->item(i)->setTextColor(QColor(255,51,51,255)); //red
+                ui->listWidget->item(i)->setHidden(false);
+            }else if(amount > 1 && amount <= 6){
+                ui->listWidget->item(i)->setTextColor(QColor(255,128,0,255)); //yellow
+                ui->listWidget->item(i)->setHidden(false);
+            }else if(amount == 0){
+                ui->listWidget->item(i)->setHidden(true);
+            }else{
+                ui->listWidget->item(i)->setTextColor(QColor(0,0,0,255)); //black
+                ui->listWidget->item(i)->setHidden(false);
+            }
             break;
         }
     }
@@ -110,6 +124,15 @@ void buywidget::on_listWidget_itemClicked(QListWidgetItem *item)
 
         item->setData(6,backupInt);
         item->setText(backupString);
+        if(backupInt == 1){
+            item->setTextColor(QColor(255,51,51,255)); //red
+        }else if(backupInt > 1 && backupInt <= 6){
+            item->setTextColor(QColor(255,128,0,255)); //yellow
+        }else if(backupInt == 0){
+            item->setHidden(true);
+        }else{
+            item->setTextColor(QColor(0,0,0,255)); //black
+        }
     }else{
         qDebug() << "not so many Items there..";
     }

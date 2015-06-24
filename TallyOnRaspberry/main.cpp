@@ -96,7 +96,6 @@ int main(int argc, char *argv[])
                     w.showAfterBuyScreen();
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
-                    qDebug() << "updating...";
                     w.updateBuyscreenAmount();
                 }
             }break;
@@ -112,7 +111,6 @@ int main(int argc, char *argv[])
                     w.showAfterBuyScreen();
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
-                    qDebug() << "updating...";
                     w.updateBuyscreenAmount();
                 }
             }break;

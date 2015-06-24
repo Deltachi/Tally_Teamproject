@@ -131,7 +131,7 @@ void Shoppingcart::on_pushButton_buy_clicked()
                tempItem = ui->listWidget->item(loop);
                Database.getAmount(tempItem->data(4).toString());
                qDebug() << "Id: " << tempItem->data(4).toString() << " Amount: " << Database.getString(0);
-               Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - 1));
+               Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
                loop++;
             }
 
