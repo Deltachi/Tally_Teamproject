@@ -51,6 +51,8 @@ void LoginScreen::update_name_label(){
     }
    ui->lineEdit->setText(NameField);
    Data.close();
+   MainWindow w;
+   w.setWatchDog();
 }
 
 void LoginScreen::on_pushButton_1_clicked()

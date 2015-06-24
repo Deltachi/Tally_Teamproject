@@ -2,6 +2,7 @@
 #include "ui_coffesweetsscann.h"
 #include <QDebug>
 #include <QString>
+#include "mainwindow.h"
 
 CoffeSweetsScann::CoffeSweetsScann(QWidget *parent) :
     QWidget(parent),
@@ -17,16 +18,22 @@ CoffeSweetsScann::~CoffeSweetsScann()
 
 void CoffeSweetsScann::on_pushButton_coffee_clicked()
 {
+    MainWindow w;
+    w.setWatchDog();
     mainWindowPointer->exit(31);
 }
 
 void CoffeSweetsScann::on_pushButton_sweets_clicked()
 {
+    MainWindow w;
+    w.setWatchDog();
     mainWindowPointer->exit(32);
 }
 
 void CoffeSweetsScann::on_pushButton_scan_clicked()
 {
+    MainWindow w;
+    w.setWatchDog();
     mainWindowPointer->exit(33);
 }
 void CoffeSweetsScann::setMainWindowPointer(QApplication *a,QString gUserId){

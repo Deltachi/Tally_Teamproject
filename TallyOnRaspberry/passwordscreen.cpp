@@ -31,6 +31,8 @@ void passwordscreen::updatePasswordField(){
         mainWindowPointer->exit(21);
     }
     Data.close();
+    MainWindow w;
+    w.setWatchDog();
 
 }
 void passwordscreen::setMainWindowPointer(QApplication *a){
