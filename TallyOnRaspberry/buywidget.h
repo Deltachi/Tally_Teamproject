@@ -21,6 +21,7 @@ public:
     void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId);
     QList<QListWidgetItem> getItems();
     void update_label();
+    void updateAmount();
 
 private slots:
 

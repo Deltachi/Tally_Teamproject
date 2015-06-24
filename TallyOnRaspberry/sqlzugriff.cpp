@@ -76,6 +76,13 @@ void SqlZugriff::update(QString tab, QString column, QString value, QString id ,
 void SqlZugriff::updateCredits(QString userId ,QString newCredits){
     query.exec("UPDATE Users SET Credits = '"+newCredits+"' WHERE User_ID=\ '"+userId+"'");
 }
+void SqlZugriff::updateAmount(QString itemId ,QString newAmount){
+    query.exec("UPDATE Groceries SET Amount = '"+newAmount+"' WHERE Grocery_ID=\ '"+itemId+"'");
+}
+void SqlZugriff::getAmount(QString itemId){
+    query.exec("SELECT Amount FROM Groceries WHERE Grocery_ID=\ '"+itemId+"'");
+    query.first();
+}
 
 void SqlZugriff::getCredit(QString userId){
     query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'");

@@ -27,6 +27,7 @@ public:
     void addItem(QListWidgetItem *item);
     void disableBackButton();
     void updatePrice();
+    int getLatestDeletedItemId();
 
 private slots:
     void on_pushButton_back_clicked();
@@ -41,6 +42,7 @@ private:
     double price;
     QSqlDatabase Data;
     QString userId;
+    int latestDeletedItemId;
 };
 
 #endif // SHOPPINGCART_H

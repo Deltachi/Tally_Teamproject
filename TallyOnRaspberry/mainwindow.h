@@ -38,6 +38,7 @@ public:
     void setWatchDog();
     void getWatchDogTime_Database();
     QString getTimestamp();
+    void updateBuyscreenAmount();
     //#define Database_Linke Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
 

@@ -24,6 +24,8 @@ public:
     void updateCredits(QString userId ,QString newCredits);
     void selectAll(QString tab, QString id ,QString number);
     void getCredit(QString userId);
+    void getAmount(QString itemId);
+    void updateAmount(QString itemId ,QString newAmount);
     void timestamp(QString userId,int granted);
     QString getWatchDogtime();
 

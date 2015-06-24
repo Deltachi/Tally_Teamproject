@@ -213,6 +213,10 @@ void MainWindow::showScanWidget(){
     ui->gridLayout_port->addWidget(myScanWidget);
     myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID);
 }
+void MainWindow::updateBuyscreenAmount(){
+    buywidget *myBuyWidget = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();
+    myBuyWidget->updateAmount();
+}
 void MainWindow::on_pushButton_logout_clicked()
 {
     showFavCart = true;
