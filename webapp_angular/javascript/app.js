@@ -19,13 +19,13 @@ app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $
 }]);
 
 //CONTROLLER
-app.controller('loginCtrl', function(){
+app.controller('loginCtrl', [$scope, function($scope){
 	this.loggedIn = false;
-	switchMode = function(){
+	this.switchMode = function(){
 		this.loggedIn = !this.loggedIn;
 		console.log("test");
 	}
-});
+}]);
 
 //DIRECTIVES
 app.directive('myNavbar', function(){
