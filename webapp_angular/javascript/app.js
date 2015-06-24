@@ -1,5 +1,6 @@
 var app = angular.module('app',['ui.router']);
 
+//UI-ROUTER
 app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
@@ -17,10 +18,21 @@ app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $
 		})
 }]);
 
+//CONTROLLER
+app.controller('loginCtrl', function(){
+	this.loggedIn = false;
+	switchMode = function(){
+		this.loggedIn = !this.loggedIn;
+		console.log("test");
+	}
+});
+
+//DIRECTIVES
 app.directive('myNavbar', function(){
 	return {
 		restrict: 'E',
-		templateUrl: '/ng-templates/navbar.html'
+		templateUrl: '/ng-templates/navbar.html',
+		controller: 'loginCtrl'
 	};
 });	
 app.directive('login', function(){
@@ -35,3 +47,4 @@ app.directive('myFooter', function(){
 		templateUrl: '/ng-templates/footer.html'
 	};
 });	
+
