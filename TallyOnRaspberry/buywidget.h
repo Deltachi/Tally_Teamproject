@@ -22,6 +22,7 @@ public:
     QList<QListWidgetItem> getItems();
     void update_label();
     void updateAmount();
+    void updateAmountEveryItem();
 
 private slots:
 

@@ -10,10 +10,8 @@ buywidget::buywidget(QWidget *parent) :
     ui(new Ui::buywidget)
 {
     ui->setupUi(this);
-
-    Data = QSqlDatabase::addDatabase("QSQLITE");
-    Database_Link
-
+    //Data = QSqlDatabase::addDatabase("QSQLITE");
+    //Database_Link
 }
 
 buywidget::~buywidget()
@@ -54,6 +52,8 @@ QList<QListWidgetItem> buywidget::getItems(){
 
 void buywidget::update_label(){
     ui->listWidget->clear();
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
     Data.open();
     SqlZugriff Database;
     Database.initGetGroceries(sweetsActive);
@@ -81,12 +81,14 @@ void buywidget::update_label(){
         }
     }
     Data.close();
-
+    updateAmountEveryItem();
 }
 void buywidget::updateAmount(){
     Shoppingcart *tempCart = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
     for(int i=0;i<ui->listWidget->count();i++){
         if(ui->listWidget->item(i)->data(4).toInt() == tempCart->getLatestDeletedItemId()){
+            Data = QSqlDatabase::addDatabase("QSQLITE");
+            Database_Link
             Data.open();
             SqlZugriff Database;
             Database.getAmount(QString::number(tempCart->getLatestDeletedItemId()));
@@ -106,6 +108,31 @@ void buywidget::updateAmount(){
                 ui->listWidget->item(i)->setHidden(false);
             }
             break;
+        }
+    }
+}
+void buywidget::updateAmountEveryItem(){
+    Shoppingcart *tempCart = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
+    QList<QListWidgetItem> testList = tempCart->getItems();
+    for(int a=0;a<testList.length();a++){
+        for(int i=0;i<ui->listWidget->count();i++){
+            if(ui->listWidget->item(i)->data(4).toInt() == testList.at(a).data(4).toInt()){
+                int amount = ui->listWidget->item(i)->data(6).toInt() - testList.at(a).data(6).toInt();
+                ui->listWidget->item(i)->setData(6,amount);
+                if(amount == 1){
+                    ui->listWidget->item(i)->setTextColor(QColor(255,51,51,255)); //red
+                    ui->listWidget->item(i)->setHidden(false);
+                }else if(amount > 1 && amount <= 6){
+                    ui->listWidget->item(i)->setTextColor(QColor(255,128,0,255)); //yellow
+                    ui->listWidget->item(i)->setHidden(false);
+                }else if(amount == 0){
+                    ui->listWidget->item(i)->setHidden(true);
+                }else{
+                    ui->listWidget->item(i)->setTextColor(QColor(0,0,0,255)); //black
+                    ui->listWidget->item(i)->setHidden(false);
+                }
+                break;
+            }
         }
     }
 }

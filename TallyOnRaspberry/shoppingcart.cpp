@@ -112,24 +112,28 @@ void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
 
 void Shoppingcart::on_pushButton_buy_clicked()
 {
-    MainWindow w;
-    w.setWatchDog();
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
     Data.open();
+    qDebug() << "open";
     SqlZugriff Database;
     Database.getCredit(userId);
+    qDebug() << "afterGetCredit";
     QString credits;
     credits = Database.getString(0);
+    qDebug() << "afterGetCreditString";
     if(credits != NULL){
         if(credits.toDouble() >= price){
             Database.updateCredits(userId,QString::number(credits.toDouble()-price));
+            qDebug() << "updateCredits";
 
             int loop = 0;
             QListWidgetItem *tempItem;
             while(ui->listWidget->item(loop) != NULL){
                tempItem = ui->listWidget->item(loop);
+               qDebug() << "before get Amount";
                Database.getAmount(tempItem->data(4).toString());
+               qDebug() << "after get anount";
                qDebug() << "Id: " << tempItem->data(4).toString() << " Amount: " << Database.getString(0);
                Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
                loop++;

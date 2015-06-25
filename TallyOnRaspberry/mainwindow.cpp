@@ -103,6 +103,7 @@ void MainWindow::setMainWindowPointer(QApplication *a){
 }
 //inits the mainwindow with loginscreen
 void MainWindow::init(){
+    counter = -1;
     ui->label_username->setText("");
     myLoginScreen = new LoginScreen();
     ui->gridLayout_port->addWidget(myLoginScreen);
@@ -146,17 +147,15 @@ void MainWindow::showCoffeeSweetWidget(){
     ui->gridLayout_port->addWidget(myCoffeeWidget);
     myCoffeeWidget->setMainWindowPointer(mainWindowPointer,userID);
 
-    Shoppingcart *cart = new Shoppingcart;
     if(showFavCart){
         FavCart *myFavCart = new FavCart();
-        QListWidgetItem temp;
-        temp.setText("Test");
-        cart->addSomething("test");
         myCoffeeWidget->setQWidget(myFavCart);
         showFavCart = false;
         favCartVisible = true;
         myCartItems.clear();
     }else{
+        Shoppingcart *cart = new Shoppingcart;
+        cart->setMainWindowPointer(mainWindowPointer,userID);
         myCoffeeWidget->setQWidget(cart);
         int loop = 0;
         favCartVisible = false;
