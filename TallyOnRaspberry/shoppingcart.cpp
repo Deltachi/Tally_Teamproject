@@ -33,6 +33,17 @@ void Shoppingcart::updatePrice(){
     }
     QString tempString = QString::number(price);
     ui->label_2->setText(tempString);
+    if(hasEnoughCredit(userId,price)){
+        QPalette palette = ui->label_2->palette();
+        palette.setColor(ui->label_2->backgroundRole(), Qt::yellow);
+        palette.setColor(ui->label_2->foregroundRole(), Qt::black);
+        ui->label_2->setPalette(palette);
+    }else{
+        QPalette palette = ui->label_2->palette();
+        palette.setColor(ui->label_2->backgroundRole(), Qt::yellow);
+        palette.setColor(ui->label_2->foregroundRole(), Qt::red);
+        ui->label_2->setPalette(palette);
+    }
 }
 
 void Shoppingcart::on_pushButton_back_clicked()
@@ -109,41 +120,46 @@ void Shoppingcart::on_listWidget_itemClicked(QListWidgetItem *item)
     updatePrice();
     MainWindowPointer->exit(98);
 }
-
-void Shoppingcart::on_pushButton_buy_clicked()
-{
+bool Shoppingcart::hasEnoughCredit(QString userId,double price){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
     Data.open();
-    qDebug() << "open";
     SqlZugriff Database;
     Database.getCredit(userId);
-    qDebug() << "afterGetCredit";
-    QString credits;
-    credits = Database.getString(0);
-    qDebug() << "afterGetCreditString";
-    if(credits != NULL){
-        if(credits.toDouble() >= price){
-            Database.updateCredits(userId,QString::number(credits.toDouble()-price));
-            qDebug() << "updateCredits";
-
-            int loop = 0;
-            QListWidgetItem *tempItem;
-            while(ui->listWidget->item(loop) != NULL){
-               tempItem = ui->listWidget->item(loop);
-               qDebug() << "before get Amount";
-               Database.getAmount(tempItem->data(4).toString());
-               qDebug() << "after get anount";
-               qDebug() << "Id: " << tempItem->data(4).toString() << " Amount: " << Database.getString(0);
-               Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
-               loop++;
-            }
-
-            Data.close();
-            MainWindowPointer->exit(99);
-        }else{
-            qDebug() << "Not enough money";
-        }
-    }
+    QString credits = Database.getString(0);
+    double maxOverdraw = Database.getMaxOverdrawValue();
     Data.close();
+    if(credits.toDouble() - maxOverdraw >= price){
+        return true;
+    }
+    return false;
+}
+
+void Shoppingcart::on_pushButton_buy_clicked()
+{
+    if(hasEnoughCredit(userId,price)){
+        Data = QSqlDatabase::addDatabase("QSQLITE");
+        Database_Link
+        Data.open();
+        SqlZugriff Database;
+        Database.getCredit(userId);
+        QString credits = Database.getString(0);
+        Database.updateCredits(userId,QString::number(credits.toDouble()-price));
+
+        int loop = 0;
+        QListWidgetItem *tempItem;
+        while(ui->listWidget->item(loop) != NULL){
+            tempItem = ui->listWidget->item(loop);
+            Database.getAmount(tempItem->data(4).toString());
+            Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
+            Database.addSell(userId,tempItem->data(4).toString(),tempItem->data(6).toString(),tempItem->data(5).toString());
+            Database.updateConsumeIndex(userId,tempItem->data(4).toString(),tempItem->data(6).toString());
+            loop++;
+        }
+
+        Data.close();
+        MainWindowPointer->exit(99);
+    }else{
+        qDebug() << "Not enough money";
+    }
 }

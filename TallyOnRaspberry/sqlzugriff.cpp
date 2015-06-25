@@ -83,7 +83,25 @@ void SqlZugriff::getAmount(QString itemId){
     query.exec("SELECT Amount FROM Groceries WHERE Grocery_ID=\ '"+itemId+"'");
     query.first();
 }
-
+void SqlZugriff::updateConsumeIndex(QString userId,QString Grocery_Id,QString count){
+    query.exec("SELECT Count FROM Consum_Index WHERE User_ID=\'"+userId+"\' AND Grocery_ID=\'"+Grocery_Id+"\'");
+    if(!query.next()){
+        query.exec("INSERT INTO Consum_Index (User_ID, Grocery_ID, Count)" "VALUES('"+userId+"','"+Grocery_Id+"','"+count+"')");
+    }else{
+        QString amount = QString::number(count.toInt() + query.value(0).toString().toInt());
+        query.exec("UPDATE Consum_Index SET Count = '"+amount+"' WHERE User_ID=\'"+userId+"\' AND Grocery_ID=\'"+Grocery_Id+"\'");
+    }
+}
+void SqlZugriff::addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc){
+    MainWindow w;
+    QString timestamp = w.getTimestamp();
+    query.exec("INSERT INTO Sell_History (User_ID, Grocery_ID, Amount, Price_per_piece, Timestamp)" "VALUES('"+userId+"','"+Grocery_Id+"','"+Amount+"','"+price_per_pc+"','"+timestamp+"')");
+}
+double SqlZugriff::getMaxOverdrawValue(){
+    query.exec("SELECT Value FROM Settings WHERE Setting_ID='2'");
+    query.first();
+    return query.value(0).toDouble();
+}
 void SqlZugriff::getCredit(QString userId){
     query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'");
     query.first();

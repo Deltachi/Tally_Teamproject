@@ -43,6 +43,7 @@ private:
     QSqlDatabase Data;
     QString userId;
     int latestDeletedItemId;
+    bool hasEnoughCredit(QString userId,double price);
 };
 
 #endif // SHOPPINGCART_H

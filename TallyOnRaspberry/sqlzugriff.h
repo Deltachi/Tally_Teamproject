@@ -28,6 +28,9 @@ public:
     void updateAmount(QString itemId ,QString newAmount);
     void timestamp(QString userId,int granted);
     QString getWatchDogtime();
+    void addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc);
+    void updateConsumeIndex(QString userId,QString Grocery_Id,QString count);
+    double getMaxOverdrawValue();
 
 private:
      QSqlQuery query;
