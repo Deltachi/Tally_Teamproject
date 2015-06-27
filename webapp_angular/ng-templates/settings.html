@@ -1,0 +1,97 @@
+<div ng-controller="userCtrl as user">
+	<div class="color-bg topic-padding">
+		<div class="container">
+			<div class="jumbotron lil-jumbo boxShadow">
+				<h2>{{userData.nick}}, <small>edit your settings here.</small></h2>
+			</div>
+		</div>
+	</div>
+	<div class="drinks-bg topic-padding">
+		<div class="container">
+			<div class="panel panel-default  boxShadow">
+				<div class="panel-heading">
+					<div class="row inline-text">
+						<div class="">
+							<h3><small>Settings of: </small> {{userData.firstname}} {{userData.lastname}} <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h3>
+						</div>
+						<div class="">
+							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<table class="table panel-body">
+						<thead>
+							<tr class="text-muted">
+								<th class="width-title"></th>
+								<th class="width-details">Details</th>
+								<th class="width-buttonbar">Edit</th>
+							</tr>
+						</thead>	
+						<tbody id="settings">
+							<tr id="name" class="noedit">
+								<th class="index" scope="row">Username</th>
+								<td>
+									<span class="noedit">{{userData.firstname}} 
+									</span>
+									<span class="noedit">
+										{{userData.lastname}}</span>
+									<input class="edit" type="text" placeholder="{{userData.firstname}}
+									">
+									<input class="edit" type="text" placeholder="
+									{{userData.lastname}}">
+								</td>
+								<td>
+									<button class="btn btn-sm btn-info noedit" data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
+								</td>
+							</tr>
+							<tr id="nick" class="noedit">
+								<th class="index" scope="row">Nickname</th>
+								<td>
+									<span class="noedit">{{userData.nick}}</span>
+									<input class="edit" type="text" placeholder="{{userData.nick}}">
+								</td>
+								<td>
+									<button class="btn btn-sm btn-info noedit" data-panel="nick"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="nick"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="nick"><span class="glyphicon glyphicon-remove"></span></button>
+								</td>
+							</tr>
+							<tr id="password" class="noedit">
+								<th class="index" scope="row">Password</th>
+								<td>
+									<span class="noedit glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+									<input class="edit" type="password" placeholder="1234">
+								</td>
+								<td>
+									<button class="btn btn-sm btn-info noedit" data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="password"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="password"><span class="glyphicon glyphicon-remove"></span></button>
+								</td>
+							</tr>
+							<tr id="email" class="noedit">
+								<th class="index" scope="row">E-Mail</th>
+								<td>
+									<span class="noedit">maxmusterm@mail.de</span>
+									<input class="edit" type="email" placeholder="maxmusterm@mail.de">
+								</td>
+								<td>
+									<button class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="email"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="email"><span class="glyphicon glyphicon-remove"></span></button>
+								</td>
+							</tr>
+							<tr id="leaderboard">
+								<th class="index" scope="row">Leaderboard</th>
+								<td><small class="text-muted">Do you want to appear in the Leaderboard-Section?</small></td>
+								<td><input type="checkbox" checked></td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <!-- panel-body -->
+			</div> <!-- panel -->
+		</div> <!-- container -->
+	</div> <!-- drinks-bg -->
+</div>

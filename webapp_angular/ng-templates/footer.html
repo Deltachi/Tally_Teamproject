@@ -1,10 +1,9 @@
 <div>
 	<div class="container">
 		<div class="col-sm-4">
-			<span id="updated" class="text-muted">
-				<!--  
-				<script src="javascript/templates/updated.js"></script>
-				-->
+			<span id="updated" class="text-muted" ng-controller="updatedCtrl as updated">
+				Zuletzt aktualisiert: <br>
+				{{date}} <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{time}}
 			</span>
 		</div>
 		<div class="col-sm-4"><a class="footerLinks"href="404.html">Impressum</a></div>

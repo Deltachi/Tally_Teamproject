@@ -13,6 +13,10 @@
 	vertical-align: top;
 }
 
+.dropdown-menu li {
+	cursor: default;
+}
+
 .navbar .navbar-collapse {
 	text-align: center;
 }

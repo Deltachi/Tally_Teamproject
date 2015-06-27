@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="styles/menu.css">
 <div>
 	<div class="color-bg topic-padding">
 		<div class="container">
@@ -6,45 +7,43 @@
 			</div>
 		</div>
 	</div>
-	<div class="drinks-bg topic-padding">
-		<div class="container">
-			<div class="panel panel-default menuTable">
-				<table class="table panel-body">
-					<tbody id="drink-list">
-						<template id="drink-template">
-							<tr>
-								<th scope="row">{{name}}</th>
-								<td>{{description}}</td>
-								<td>{{price}} &euro;</td>
+	<div ng-controller="menuCtrl as menu">
+		<div class="dark-coffee-bg topic-padding">
+			<div class="container">
+				<div class="panel panel-default menuTable">
+					<table class="table panel-body">
+						<tbody id="drink-list">
+							<tr ng-repeat="drink in drinks">
+								<th>{{drink.name}}</th>
+								<td>{{drink.description}}</td>
+								<td>{{drink.price}} &euro;</td>
 							</tr>
-						</template>
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
-	</div> <!-- coffee-bg -->
-	<div class="color-bg topic-padding">
-		<div class="container">
-			<div class="jumbotron inline-text lil-jumbo">
-				<h2>Snacks</h2>
+		</div> <!-- coffee-bg -->
+		<div class="color-bg topic-padding">
+			<div class="container">
+				<div class="jumbotron inline-text lil-jumbo">
+					<h2>Snacks</h2>
+				</div>
 			</div>
-		</div>
-	</div> <!-- color-bg -->
-	<div class="chocolate-bg topic-padding">
-		<div class="container">
-			<div class="panel panel-default menuTable">
-				<table class="table panel-body">
-					<tbody id="item-list">
-						<template id="item-template">
-							<tr>
-								<th scope="row">{{name}}</th>
-								<td>{{description}}</td>
-								<td>{{price}} &euro;</td>
+		</div> <!-- color-bg -->
+		<div class="chocolate-bg topic-padding">
+			<div class="container">
+				<div class="panel panel-default menuTable">
+					<table class="table panel-body">
+						<tbody id="item-list">
+							<tr ng-repeat="sweet in sweets">
+								<th>{{sweet.name}}</th>
+								<td>{{sweet.description}}</td>
+								<td>{{sweet.price}} &euro;</td>
 							</tr>
-						</template>
-					</tbody>
-				</table>
+						</tbody>
+					</table>
+				</div>
 			</div>
-		</div>
-	</div> <!-- chocolate-bg -->
+		</div> <!-- chocolate-bg -->
+	</div>
 </div>

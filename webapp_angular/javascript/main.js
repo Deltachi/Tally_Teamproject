@@ -8,6 +8,5 @@ $(function(){
 	var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
 	if(isMobile) {
 		$('#footer').addClass('mobileFooter');
-	} else {
-	}
+	} 
 });

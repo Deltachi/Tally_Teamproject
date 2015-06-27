@@ -26,23 +26,23 @@
 									<img alt="Brand" src="styles/images/tally_logo.png" class="logoMargin">
 								</a>
 					  		</li>
-							<li>
-								<a ui-sref="menu">On the Menu</a>
+							<li ui-sref-active="active">
+								<a href ui-sref="menu">On the Menu</a>
 							</li>
-							<li class="loggedOut" ng-show="!login.loggedIn">
+							<li ng-show="!login.loggedIn" >
 								<!-- Button trigger modal -->
 								<a href="#"  data-toggle="modal" data-target="#myModal">
 									Log in <span class="glyphicon glyphicon-user"></span>
 								</a>
 							</li>
-							<li class="dropdown loggedIn" ng-show="login.loggedIn">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Max Mustermann <span class="glyphicon glyphicon-cog"></span></a>
+							<li class="dropdown" ng-show="login.loggedIn" ng-controller="userCtrl as user">
+								<a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{userData.nick}} <span class="glyphicon glyphicon-cog"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a ui-sref="notifications">Notifications <span class="badge">2</span></a></li>
-									<li><a class="not-available" ui-sref="lb">Leader Board</a></li>
+									<li ui-sref-active="active"><a ui-sref="notifications">Notifications <span class="badge">{{userData.feeds}}</span></a></li>
+									<li ui-sref-active="active"><a ui-sref="leaderboard">Leader Board</a></li>
 									<li class="divider"></li>
-									<li><a class="" ui-sref="settings">Settings</a></li>
-									<li><a class="" ui-sref="favorites">Favorites</a></li>
+									<li ui-sref-active="active"><a class="" ui-sref="settings">Settings</a></li>
+									<li ui-sref-active="active"><a class="" ui-sref="favorites">Favorites</a></li>
 									<li class="divider"></li>
 									<li><a class="" ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 								</ul>

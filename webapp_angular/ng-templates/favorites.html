@@ -1,0 +1,90 @@
+<div ng-controller="userCtrl as user">
+	<div class="color-bg topic-padding">
+		<div class="container">
+			<div class="jumbotron lil-jumbo boxShadow">
+				<h2>{{userData.nick}}, <small>choose your favorites here.</small></h2>
+			</div>
+		</div>
+	</div>
+	<div class="drinks-bg topic-padding">
+		<div class="container">
+			<div class="panel panel-default  boxShadow">
+				<div class="panel-heading">
+					<div class="row inline-text">
+						<div class="col-md-6">
+							<h3>Your current favorites<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h3>
+						</div>
+						<div class="col-md-6">
+							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<table id="favorites" class="table panel-body">
+						<thead>
+							<tr class="text-muted">
+								<th></th>
+								<th>Item</th>
+								<th>Delete</th>
+							</tr>
+						</thead>	
+						<tbody>
+							<tr>
+								<th class="index" scope="row">1</th>
+								<td>Cappuchino</td>
+								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+							</tr>
+							<tr>
+								<th class="index" scope="row">2</th>
+								<td>Snickers</td>
+								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+							</tr>
+							<tr>
+								<th class="index" scope="row">3</th>
+								<td>Twix</td>
+								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+							</tr>
+							<tr>
+								<th class="index" scope="row">4</th>
+								<td>Latte Machiato</td>
+								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <!-- panel-body -->
+			</div> <!-- panel -->
+			<div class="panel panel-default boxShadow">
+				<div class="panel-heading">
+					<div class="row inline-text">
+						<div class="col-md-6">
+							<h3>Add a favorite here!</h3>
+						</div>
+						<div class="col-md-6">
+							
+						</div>
+					</div>
+				</div>
+				<div class="panel-body">
+					<div class="input-group">
+						<select id="itemList" class="form-control">
+							<option value="Coffee L" class="topic">Coffee L</option>
+							<option value="Coffee M" class="topic">Coffee M</option>
+							<option value="Coffee S" class="topic">Coffee S</option>
+							<option value="Cappuchino" class="topic">Cappuchino</option>
+							<option value="Machiato" class="topic">Machiato</option>
+							<option value="Latte" class="topic">Latte</option>
+							<option value="Tea" class="topic">Tea</option>
+							<option value="Snickers" class="topic">Snickers</option>
+							<option value="Mars" class="topic">Mars</option>
+							<option value="Twix" class="topic">Twix</option>
+							<option value="M&amp;M's" class="topic">M&amp;M's</option>
+							<option value="Haribo" class="topic">Haribo</option>
+							<option value="Skittles" class="topic">Skittles</option>
+						</select>
+						<span class="input-group-btn"><div id="addBtn" class="btn btn-success">Add to list</div></span>
+					</div>	<!-- group -->
+				</div> 	<!-- panel-body -->				
+			</div> <!-- panel-default -->
+		</div> <!-- container -->
+	</div> <!-- drinks-bg -->
+</div>
