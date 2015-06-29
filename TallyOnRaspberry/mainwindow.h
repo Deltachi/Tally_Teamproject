@@ -39,6 +39,7 @@ public:
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();
+    QString getScanString();
     //#define Database_Linke Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
 
@@ -49,6 +50,8 @@ private slots:
     void on_pushButton_clicked();
 
     void timerEvent(QTimerEvent *event);
+
+    void keyPressEvent(QKeyEvent *ev);
 private:
     Ui::MainWindow *ui;
     QApplication *mainWindowPointer;
@@ -62,6 +65,7 @@ private:
     int watchdogtime;
     QSqlDatabase Data;
     QString time;
+    QString scanString;
 };
 
 #endif // MAINWINDOW_H

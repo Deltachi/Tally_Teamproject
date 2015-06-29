@@ -13,6 +13,7 @@
 #include <QTime>
 #include <QDate>
 #include <QDebug>
+#include <QKeyEvent>
 
 //constructer
 MainWindow::MainWindow(QWidget *parent) :
@@ -31,14 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
     timestamp = stime + ";" + sdate;
-/*
-    Data = QSqlDatabase::addDatabase("QSQLITE");
-    Database_Link
-    Data.open();
-    SqlZugriff Database;
-    time = Database.getWatchDogtime();
-    Data.close();
-*/
+
 }
 
 QString MainWindow::getTimestamp(){
@@ -82,7 +76,16 @@ void MainWindow::timerEvent(QTimerEvent *event)
     }
 
 }
-
+void MainWindow::keyPressEvent(QKeyEvent *ev)
+{
+    if(ev->text().at(0) == 0xD){
+        mainWindowPointer->exit(34);
+    }
+    else scanString = scanString + ev->text();
+}
+QString getScanString(){
+    return scanString;
+}
 void MainWindow::getWatchDogTime_Database(){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
@@ -143,6 +146,7 @@ QString MainWindow::getUserID(){
 }
 
 void MainWindow::showCoffeeSweetWidget(){
+    scanString = "";
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);
     myCoffeeWidget->setMainWindowPointer(mainWindowPointer,userID);
@@ -208,9 +212,12 @@ void MainWindow::showCoffeeWidget(){
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
 void MainWindow::showScanWidget(){
+    //create QListWidget Item;
+    //search for item with barcode = scanString;
+    //create this item and give it to myScanWidget;
     ScanWidget *myScanWidget = new ScanWidget();
     ui->gridLayout_port->addWidget(myScanWidget);
-    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID);
+    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID,NULL);
 }
 void MainWindow::updateBuyscreenAmount(){
     buywidget *myBuyWidget = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();

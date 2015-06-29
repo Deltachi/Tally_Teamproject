@@ -16,13 +16,20 @@ class ScanWidget : public QWidget
 public:
     explicit ScanWidget(QWidget *parent = 0);
     ~ScanWidget();
-    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,QString gUserId);
+    void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,QString gUserId,QListWidgetItem *item);
     QList<QListWidgetItem> getItems();
+
+private slots:
+    void on_pushButton_plus_clicked();
+
+    void on_pushButton_minus_clicked();
 
 private:
     Ui::ScanWidget *ui;
     QApplication *MainWindowPointer;
     QString userId;
+    int count;
+    QString itemId;
 };
 
 #endif // SCANWIDGET_H
