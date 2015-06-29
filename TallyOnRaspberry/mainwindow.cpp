@@ -83,9 +83,6 @@ void MainWindow::keyPressEvent(QKeyEvent *ev)
     }
     else scanString = scanString + ev->text();
 }
-QString getScanString(){
-    return scanString;
-}
 void MainWindow::getWatchDogTime_Database(){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
@@ -211,13 +208,48 @@ void MainWindow::showCoffeeWidget(){
     myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
-void MainWindow::showScanWidget(){
-    //create QListWidget Item;
-    //search for item with barcode = scanString;
-    //create this item and give it to myScanWidget;
+bool MainWindow::showScanWidget(){
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
+    QListWidgetItem *item = new QListWidgetItem();
+    Data.open();
+    SqlZugriff database;
+    bool valid = false;
+    if(database.findGroceriesWithBarcode(scanString)){
+        qDebug() << "true" << " " << scanString;
+        item->setData(4,database.getString(0));
+        item->setData(5,database.getString(5));
+        item->setData(6,database.getString(4));
+        item->setText(database.getString(2));
+        int amount = database.getString(4).toInt();
+        item->setIcon(database.getPixmap(7));
+        Data.close();
+        valid = true;
+        if(amount == 1){
+            item->setTextColor(QColor(255,51,51,255)); //red
+         item->setHidden(false);
+        }else if(amount > 1 && amount <= 6){
+            item->setTextColor(QColor(255,128,0,255)); //yellow
+            item->setHidden(false);
+        }else if(amount == 0){
+            item->setHidden(true);
+            qDebug() << "Amount is == 0...";
+            valid = false;
+        }else{
+            item->setTextColor(QColor(0,0,0,255)); //black
+            item->setHidden(false);
+        }
+    }
     ScanWidget *myScanWidget = new ScanWidget();
     ui->gridLayout_port->addWidget(myScanWidget);
-    myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID,NULL);
+    scanString = "";
+    if(valid){
+        myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID,item);
+        return true;
+    }else{
+        myScanWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,userID,NULL);
+        return false;
+    }
 }
 void MainWindow::updateBuyscreenAmount(){
     buywidget *myBuyWidget = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();

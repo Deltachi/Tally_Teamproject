@@ -50,3 +50,16 @@ void ScanWidget::on_pushButton_minus_clicked()
         ui->label_anzahl->setText(QString::number(count));
     }
 }
+
+void ScanWidget::on_pushButton_add_clicked()
+{
+    ui->listWidget->item(0)->setData(6,count);
+    if(count < 10){
+        ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,"x0" + QString::number(count) + " "));
+    }else{
+        ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,"x" + QString::number(count) + " "));
+    }
+    Shoppingcart *temp = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
+    temp->addItem(ui->listWidget->item(0));
+    MainWindowPointer->exit(51);
+}

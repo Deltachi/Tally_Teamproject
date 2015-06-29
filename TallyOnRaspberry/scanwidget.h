@@ -24,6 +24,8 @@ private slots:
 
     void on_pushButton_minus_clicked();
 
+    void on_pushButton_add_clicked();
+
 private:
     Ui::ScanWidget *ui;
     QApplication *MainWindowPointer;

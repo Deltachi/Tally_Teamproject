@@ -18,7 +18,7 @@ public:
     QString getName(QString ID);
     QString getString(int x);
     bool checkPassword(QString username, QString password);
-    QPixmap getPixmap();
+    QPixmap getPixmap(int x);
     void initGetGroceries(bool sweets);
     void update(QString tab, QString column, QString value, QString id ,QString number);
     void updateCredits(QString userId ,QString newCredits);
@@ -31,6 +31,7 @@ public:
     void addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc);
     void updateConsumeIndex(QString userId,QString Grocery_Id,QString count);
     double getMaxOverdrawValue();
+    bool findGroceriesWithBarcode(QString code);
 
 private:
      QSqlQuery query;

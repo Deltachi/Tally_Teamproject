@@ -25,7 +25,7 @@ public:
     void removeWidget();
     void setLogoutButton(bool a);
     void showCoffeeSweetWidget();
-    void showScanWidget();
+    bool showScanWidget();
     void getUserIDFromLoginScreen();
     QString getUserID();
     void updateQListCart();
@@ -39,7 +39,6 @@ public:
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();
-    QString getScanString();
     //#define Database_Linke Data.setDatabaseName("/home/pi/TallyProject/Tally_Teamproject/SQLite/database.sqlite");
     #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
 

@@ -26,6 +26,11 @@ void SqlZugriff::initGetGroceries(bool sweets){
         query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""0""'");
     }
 }
+bool SqlZugriff::findGroceriesWithBarcode(QString code){
+    query.exec("SELECT * FROM Groceries WHERE Barcode=\ '"+code+"'");
+    return query.next();
+}
+
 void SqlZugriff::initGetUser(){
 
     query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users");
@@ -113,10 +118,10 @@ void SqlZugriff::selectAll(QString tab, QString id ,QString number){
     query.first();
 }
 
-QPixmap SqlZugriff::getPixmap(){
+QPixmap SqlZugriff::getPixmap(int x){
     QPixmap icon;
     QByteArray imagedata;
-    imagedata = query.value(3).toByteArray();
+    imagedata = query.value(x).toByteArray();
     icon.loadFromData(imagedata);
     return icon;
 }

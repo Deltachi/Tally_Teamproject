@@ -53,7 +53,7 @@ void passwordscreen::updateAccoutPicture(QString id){
     database.initGetUser();
     while(database.next()){
         if(database.getString(0) == id){
-            icon = database.getPixmap();
+            icon = database.getPixmap(3);
             money = database.getString(4);
         }
     }
