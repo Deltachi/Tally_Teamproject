@@ -1,0 +1,30 @@
+{
+	"caffein":[
+		{
+			"name": "User1",
+			"value": "800"
+		},
+		{
+			"name": "User2",
+			"value": "600"
+		},
+		{
+			"name": "User3",
+			"value": "300"
+		}
+	],
+	"sugar":[
+		{
+			"name": "User2",
+			"value": "1200"
+		},
+		{
+			"name": "User3",
+			"value": "500"
+		},
+		{
+			"name": "User1",
+			"value": "285"
+		}
+	]
+}
