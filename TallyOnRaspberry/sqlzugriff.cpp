@@ -134,7 +134,7 @@ QPixmap SqlZugriff::getPixmap(int x){
     icon.loadFromData(imagedata);
     return icon;
 }
-
+/*
 void SqlZugriff::get_timestamp(QString userId){
     query.exec("SELECT Timestamp FROM Login_Requests WHERE User_ID = '"+iserId+"' AND Granted = 'true'");
     query.first();
@@ -145,7 +145,7 @@ void SqlZugriff::get_timestamp(QString userId){
 
     }
 }
-
+*/
 SqlZugriff::~SqlZugriff()
 {
 }
