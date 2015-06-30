@@ -10,8 +10,6 @@ buywidget::buywidget(QWidget *parent) :
     ui(new Ui::buywidget)
 {
     ui->setupUi(this);
-    //Data = QSqlDatabase::addDatabase("QSQLITE");
-    //Database_Link
 }
 
 buywidget::~buywidget()
@@ -62,7 +60,7 @@ void buywidget::update_label(){
         int amount = Database.getString(5).toInt();
         if(amount > 0){
             QListWidgetItem *item = new QListWidgetItem();
-            item->setIcon(Database.getPixmap());
+            item->setIcon(Database.getPixmap(3));
             tmp = Database.getString(2) + " " + Database.getString(6) + QChar(8364);
             item->setText(tmp);
             item->setData(4,Database.getString(0).toInt());

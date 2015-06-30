@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
             w.removeWidget();
             w.init();
             w.setLogoutButton(false);
+            w.getWatchDogTime_Database();
         }
         switch(state){
             case 0: {//Loginscreen (showing Name list)
@@ -76,6 +77,20 @@ int main(int argc, char *argv[])
                     w.showScanWidget();
                     state = 5;
                     w.setWatchDog();
+                }else if(exitcode == 34){ //scan
+                    w.updateQListCart();
+                    w.removeWidget();
+                    if(w.showScanWidget()){
+                        state = 5;
+                    }else{
+                        state = 2;
+                        w.updateCartFromScanWidget();
+                        w.removeWidget();
+                        w.showCoffeeSweetWidget();
+                        state = 2;
+                        w.setWatchDog();
+                    }
+                    w.setWatchDog();
                 }else if(exitcode == 99){ //buy was clicked
                     w.removeWidget();
                     w.showAfterBuyScreen();
@@ -115,7 +130,8 @@ int main(int argc, char *argv[])
                 }
             }break;
             case 5: { //user wants to scan things
-                if(exitcode == 51){ //back was clicked
+                if(exitcode == 51){ //back was clicked or item added
+                    w.updateCartFromScanWidget();
                     w.removeWidget();
                     w.showCoffeeSweetWidget();
                     state = 2;

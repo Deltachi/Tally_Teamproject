@@ -43,7 +43,7 @@ void LoginScreen::update_name_label(){
         if(tempID.contains(NameField)){
             QListWidgetItem *item = new QListWidgetItem();
             item->setData(4,Database.getString(0).toInt());
-            item->setIcon(Database.getPixmap());
+            item->setIcon(Database.getPixmap(3));
             item->setText(Database.getString(2));
             ui->listWidget->addItem(item);
 

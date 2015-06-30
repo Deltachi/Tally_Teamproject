@@ -25,7 +25,7 @@ public:
     void removeWidget();
     void setLogoutButton(bool a);
     void showCoffeeSweetWidget();
-    void showScanWidget();
+    bool showScanWidget();
     void getUserIDFromLoginScreen();
     QString getUserID();
     void updateQListCart();
@@ -49,6 +49,8 @@ private slots:
     void on_pushButton_clicked();
 
     void timerEvent(QTimerEvent *event);
+
+    void keyPressEvent(QKeyEvent *ev);
 private:
     Ui::MainWindow *ui;
     QApplication *mainWindowPointer;
@@ -62,6 +64,7 @@ private:
     int watchdogtime;
     QSqlDatabase Data;
     QString time;
+    QString scanString;
 };
 
 #endif // MAINWINDOW_H

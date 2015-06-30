@@ -14,26 +14,35 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout" columnstretch="1,1" columnminimumwidth="1,1">
+   <item row="0" column="1">
+    <layout class="QGridLayout" name="gridLayout_port"/>
+   </item>
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QListWidget" name="listWidget">
          <property name="font">
           <font>
-           <pointsize>25</pointsize>
+           <pointsize>18</pointsize>
           </font>
          </property>
-         <property name="text">
-          <string>Anzahl:</string>
+         <property name="iconSize">
+          <size>
+           <width>55</width>
+           <height>55</height>
+          </size>
          </property>
         </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="pushButton_minus">
            <property name="font">
             <font>
              <pointsize>25</pointsize>
@@ -45,7 +54,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="label_anzahl">
            <property name="font">
             <font>
              <pointsize>25</pointsize>
@@ -60,7 +69,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="pushButton_plus">
            <property name="font">
             <font>
              <pointsize>25</pointsize>
@@ -74,11 +83,14 @@
         </layout>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QPushButton" name="pushButton_add">
          <property name="font">
           <font>
            <pointsize>25</pointsize>
           </font>
+         </property>
+         <property name="text">
+          <string>add</string>
          </property>
         </widget>
        </item>
@@ -86,15 +98,11 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <layout class="QGridLayout" name="gridLayout_port"/>
-   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>lineEdit</tabstop>
-  <tabstop>pushButton</tabstop>
-  <tabstop>pushButton_2</tabstop>
+  <tabstop>pushButton_minus</tabstop>
+  <tabstop>pushButton_plus</tabstop>
  </tabstops>
  <resources/>
  <connections/>
