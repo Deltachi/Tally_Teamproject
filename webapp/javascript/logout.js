@@ -8,7 +8,6 @@ $(document).ready(function() {
 			console.log('Successfully removed the session-cookie');
 			window.location.href = 'index.html';
 		}
-		
 	}
 
 	setTimeout(function(){
