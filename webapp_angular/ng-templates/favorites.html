@@ -12,7 +12,7 @@
 				<div class="panel-heading">
 					<div class="row inline-text">
 						<div class="col-md-6">
-							<h3>Your current favorites<span class="glyphicon glyphicon-heart" aria-hidden="true"></span></h3>
+							<h3>Your current favorites:</h3>
 						</div>
 						<div class="col-md-6">
 							
@@ -29,24 +29,10 @@
 							</tr>
 						</thead>	
 						<tbody>
-							<tr>
-								<th class="index" scope="row">1</th>
-								<td>Cappuchino</td>
-								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
-							</tr>
-							<tr>
-								<th class="index" scope="row">2</th>
-								<td>Snickers</td>
-								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
-							</tr>
-							<tr>
-								<th class="index" scope="row">3</th>
-								<td>Twix</td>
-								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
-							</tr>
-							<tr>
-								<th class="index" scope="row">4</th>
-								<td>Latte Machiato</td>
+							<tr ng-repeat="item in userData.favorites">
+								<th class="index" scope="row">{{$index+1}}</th>
+								<td>{{item.title}}</td>
+								<td>{{item.price | number:2}} &euro;</td>
 								<td><button class="btn btn-sm btn-danger deleteBtn"><span class="glyphicon glyphicon-trash"></span></button></td>
 							</tr>
 						</tbody>

@@ -37,12 +37,12 @@
 						<!-- <div class="jumbotron lil-jumbo"> -->
 						<div class="panel panel-default" style="border-radius:0 15px 15px 0;">
 							<div class="panel-heading inline-text" style="border-radius:0 15px 0 0;">
-								<h3>You got {{userData.feeds}} notification(s):</h3>
+								<h3>You got {{userData.feeds()}} notification(s):</h3>
 							</div>
 							<div class="panel-body panel-notifications" style="margin:0 20px;">
 								<div class="row" ng-repeat="message in userData.messages">
-									<div class="alert alert-dismissible" ng-class="message.type" role="alert">
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close" ng-click="delete();"><span aria-hidden="true">&times;</span></button>
+									<div class="alert" ng-class="message.type" role="alert">
+										<button type="button" class="close" aria-label="Close" ng-click="delete($index);"><span aria-hidden="true">&times;</span></button>
 										<strong>{{message.title}}:</strong> {{message.msg}}</a>
 									</div>
 								</div>

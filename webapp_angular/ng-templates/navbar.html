@@ -1,4 +1,4 @@
-<div ng-controller="loginCtrl as login">
+<div ng-controller="loginCtrl as login" >
 	<div class="navbar-inverse navbar-fixed-top boxShadow">
 		<div class="container">
 			<nav class="navbar">
@@ -29,26 +29,26 @@
 							<li ui-sref-active="active">
 								<a href ui-sref="menu">On the Menu</a>
 							</li>
-							<li ng-show="!login.loggedIn" >
+							<li ng-show="!getLogin();" >
 								<!-- Button trigger modal -->
 								<a href="#"  data-toggle="modal" data-target="#myModal">
 									Log in <span class="glyphicon glyphicon-user"></span>
 								</a>
 							</li>
-							<li class="dropdown" ng-show="login.loggedIn" ng-controller="userCtrl as user">
-								<a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{userData.nick}} <span class="glyphicon glyphicon-cog"></span></a>
+							<li class="dropdown" ng-show="getLogin();" ng-controller="userCtrl as user">
+								<a href class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{userData.nick}} <span class="glyphicon glyphicon-home"></span></a>
 								<ul class="dropdown-menu" role="menu">
-									<li ui-sref-active="active"><a ui-sref="notifications">Notifications <span class="badge">{{userData.feeds}}</span></a></li>
+									<li ui-sref-active="active"><a ui-sref="notifications">Notifications <span class="badge">{{userData.feeds()}}</span></a></li>
 									<li ui-sref-active="active"><a ui-sref="leaderboard">Leader Board</a></li>
 									<li class="divider"></li>
-									<li ui-sref-active="active"><a class="" ui-sref="settings">Settings</a></li>
-									<li ui-sref-active="active"><a class="" ui-sref="favorites">Favorites</a></li>
+									<li ui-sref-active="active"><a class="" ui-sref="settings"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+									<li ui-sref-active="active"><a class="" ui-sref="favorites"><span class="glyphicon glyphicon-star"></span> Favorites</a></li>
 									<li class="divider"></li>
-									<li><a class="" ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
+									<li ui-sref-active="active"><a class="" ui-sref="logout"><span class="glyphicon glyphicon-off"></span> Log out</a></li>
 								</ul>
 							</li>
 							<li>
-								<button id="switch" class="btn btn-warning" ng-click="login.switchMode();">Switch Mode</button>
+								<button id="switch" class="btn btn-warning" ng-click="switchMode();">Switch Mode</button>
 							</li>
 						</ul>
 						<!-- <form class="navbar-form navbar-left menu-search not-available" role="search">

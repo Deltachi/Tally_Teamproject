@@ -8,11 +8,11 @@
 	</div>
 	<div class="drinks-bg topic-padding">
 		<div class="container">
-			<div class="panel panel-default  boxShadow">
+			<div class="panel panel-default boxShadow">
 				<div class="panel-heading">
 					<div class="row inline-text">
 						<div class="">
-							<h3><small>Settings of: </small> {{userData.firstname}} {{userData.lastname}} <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h3>
+							<h3><small>Settings of: </small> {{userData.firstname}} {{userData.lastname}} <span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
 						</div>
 						<div class="">
 							
@@ -63,7 +63,7 @@
 								<th class="index" scope="row">Password</th>
 								<td>
 									<span class="noedit glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-									<input class="edit" type="password" placeholder="1234">
+									<input class="edit" type="password" placeholder="{{userData.password}}">
 								</td>
 								<td>
 									<button class="btn btn-sm btn-info noedit" data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -74,8 +74,8 @@
 							<tr id="email" class="noedit">
 								<th class="index" scope="row">E-Mail</th>
 								<td>
-									<span class="noedit">maxmusterm@mail.de</span>
-									<input class="edit" type="email" placeholder="maxmusterm@mail.de">
+									<span class="noedit">{{userData.mail}}</span>
+									<input class="edit" type="email" placeholder="{{userData.mail}}">
 								</td>
 								<td>
 									<button class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
@@ -86,7 +86,7 @@
 							<tr id="leaderboard">
 								<th class="index" scope="row">Leaderboard</th>
 								<td><small class="text-muted">Do you want to appear in the Leaderboard-Section?</small></td>
-								<td><input type="checkbox" checked></td>
+								<td><input type="checkbox" ng-checked="userData.leaderboard"></td>
 							</tr>
 						</tbody>
 					</table>
