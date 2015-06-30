@@ -1,5 +1,12 @@
 var app = angular.module('app',['ui.router']);
 
+app.factory("myService", function(){
+
+  return {sharedObject: {data: false } }
+
+});
+
+
 //UI-ROUTER
 app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $stateProvider) {
 	$urlRouterProvider.otherwise('/');
@@ -14,35 +21,46 @@ app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $
 		})
 		.state('menu', {
 			url: '/menu',
-			templateUrl: 'ng-templates/menu.html',
+			templateUrl: 'ng-templates/menu.html'
 			// controller: 'menuCtrl'
 		})
 		.state('notifications', {
 			url: '/notifications',
-			templateUrl: 'ng-templates/notifications.html',
+			templateUrl: 'ng-templates/notifications.html'
 		})
 		.state('leaderboard', {
 			url: '/leaderboard',
-			templateUrl: 'ng-templates/leaderboard.html',
+			templateUrl: 'ng-templates/leaderboard.html'
 		})
 		.state('settings', {
 			url: '/settings',
-			templateUrl: 'ng-templates/settings.html',
+			templateUrl: 'ng-templates/settings.html'
 		})
 		.state('favorites', {
 			url: '/favorites',
-			templateUrl: 'ng-templates/favorites.html',
+			templateUrl: 'ng-templates/favorites.html'
+		})
+		.state('logout', {
+			url: '/logout',
+			templateUrl: 'ng-templates/logout.html',
+			controller: 'logoutCtrl'
 		})
 }]);
 
 //CONTROLLER
-app.controller('loginCtrl', function(){
-	this.loggedIn = false;
-	this.switchMode = function(){
-		this.loggedIn = !this.loggedIn;
-		console.log("Client logged in: "+this.loggedIn);
+app.controller('loginCtrl', ['$scope','myService', function($scope,myService){
+	$scope.loggedIn = myService.sharedObject.data;
+	$scope.switchMode = function(){
+		myService.sharedObject.data = !myService.sharedObject.data;
+		$scope.loggedIn = myService.sharedObject.data;
+		console.log("Client logged in: "+$scope.loggedIn);
+		console.log("myService variable: "+myService.sharedObject.data);
+
 	}
-});
+	$scope.getLogin = function(){
+		return myService.sharedObject.data;
+	}
+}]);
 
 //User-Controller der Daten fetcht und das Dropdownmenü 
 //und alle weiteren user-relevanten Seiten aktuell hält,
@@ -50,16 +68,21 @@ app.controller('loginCtrl', function(){
 app.controller('userCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.userData = null;
 	$scope.userData = {
-		"nick": "Custom Nick",
-		"firstname": "MyFirstname",
-		"lastname": "MyLastname",
+		"firstname": "Angelika",
+		"lastname": "Lipp",
+		"nick": "Geli",
+		"password": "abcd1234",
+		"mail": "gelismail@me.com",
+		"leaderboard": true,
+		"balance": 25.50,
 		"messages": [
 			{"title": "System", "type":"alert-success","msg": "Did you check out our new menu?"},
 			{"title": "System", "type":"alert-info","msg": "Just today 10% off, for Snickers and Twix!"},
 			{"title": "Shop", "type":"alert-warning","msg": "Last 3 Twix, get them now!"},
 			{"title": "Admin", "type":"alert-danger","msg": "Pay your bills!"},
 			{"title": "Angyinski", "type":"alert-success","msg": "Let's watch POI"},
-			{"title": "Samaritan", "type":"alert-danger","msg": "I am watching you."}
+			{"title": "Samaritan", "type":"alert-danger","msg": "I am watching you."},
+			{"title": "Samaritan", "type":"alert-danger","msg": "JK."}
 		],
 		"history": [
 			{"title": "Kaffee L", "price":"1.50","date": "1435356176000"},
@@ -71,12 +94,18 @@ app.controller('userCtrl', ['$scope', '$http', function($scope, $http){
 			{"title": "Snickers", "price":"0.50","date": "1435313176000"},
 			{"title": "Kaffee M", "price":"1","date": "1435313176000"}
 		],
-		"balance": 25.50
+		"favorites": [
+			{"title": "Kaffee L", "price":"1.50"},
+			{"title": "Cappuchino", "price":"1.20"},
+			{"title": "Snickers", "price":"0.50"},
+			{"title": "Kaffee M", "price":"1"},
+			{"title": "Macchiato", "price":"1.50"}
+		]
 	};
-	$scope.userData.feeds = $scope.userData.messages.length;
-	$scope.delete = function(){
-		console.log("Gonna delete this msg: " + $scope.userData.messages[3].msg);
-		$scope.userData.messages[3] = null;
+	$scope.userData.feeds = function(){ return $scope.userData.messages.length;}
+	$scope.delete = function(index){
+		console.log("Gonna delete this msg: " + $scope.userData.messages[index].msg);
+		$scope.userData.messages.splice(index, 1);
 	};
 }])
 app.controller('menuCtrl',['$scope','$http', function($scope,$http){
@@ -98,6 +127,24 @@ app.controller('menuCtrl',['$scope','$http', function($scope,$http){
 		$scope.list = [{name:"Error",description:"Could not load json data"}];
 	});
 }]);
+app.controller('lbCtrl', ['$scope','$http', function($scope,$http){
+	$scope.caffein = null;
+	$scope.sugar = null;
+
+	$scope.data = null;
+	$http.get('/json/leaderboard.json')
+	.success(function(res) {
+		$scope.data = res;
+		$scope.caffein = $scope.data.caffein;
+		$scope.sugar = $scope.data.sugar;
+		console.log($scope.data.caffein);
+		console.log($scope.data.sugar);
+	})
+	.error(function(res,status,error,config){
+		$scope.date = "Error";
+		$scope.time = "Error";
+	});
+}])
 
 app.controller('updatedCtrl', ['$scope','$http', function($scope,$http){
 	$scope.date = null;
@@ -117,6 +164,43 @@ app.controller('updatedCtrl', ['$scope','$http', function($scope,$http){
 		$scope.time = "Error";
 	});
 }])
+app.controller('logoutCtrl', ['$scope','$location', '$state', 'myService', function($scope,$location,$state,myService){
+	function redirect(){
+  //   	if ($.cookie('session') == null){
+		// 	console.log('NO COOKIE THERE >.>')
+		// }
+		// else{
+			// $.removeCookie('session');
+			myService.sharedObject.data = false;
+			console.log('myService variable: '+myService.sharedObject.data);
+
+			$state.go('home')
+		// }
+	}
+
+	setTimeout(function(){
+		$('.progress .bar').each(function() {
+			var me = $(this);
+			var perc = me.attr("data-percentage");
+			console.log(perc);
+			var current_perc = 0;
+
+			var progress = setInterval(function() {
+				if (current_perc>=perc) {
+					clearInterval(progress);
+					setTimeout(redirect,1000);
+				} else {
+					current_perc +=4;
+					me.css('width', (current_perc)+'%');
+				}
+				
+			}, 50);
+			
+		});
+
+	},300);
+}])
+
 
 //DIRECTIVES
 app.directive('myNavbar', function(){
