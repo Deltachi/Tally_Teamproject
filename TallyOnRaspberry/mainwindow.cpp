@@ -10,6 +10,7 @@
 #include "favcart.h"
 #include "afterbuyscreen.h"
 #include "sqlzugriff.h"
+#include "showipscreen.h"
 #include <QTime>
 #include <QDate>
 #include <QDebug>
@@ -22,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     showFavCart = true;
+    counter = -1;
 
     QTime qtime = QTime::currentTime();
     QString stime = qtime.toString(Qt::LocalDate);
@@ -103,7 +105,6 @@ void MainWindow::setMainWindowPointer(QApplication *a){
 }
 //inits the mainwindow with loginscreen
 void MainWindow::init(){
-    counter = -1;
     ui->label_username->setText("");
     myLoginScreen = new LoginScreen();
     ui->gridLayout_port->addWidget(myLoginScreen);
@@ -122,6 +123,11 @@ void MainWindow::removeWidget(){
         oldWidget->setVisible(false);
         delete oldWidget;
     }
+}
+void MainWindow::showIpScreen(QString text){
+    ShowIpScreen *myIpScreen = new ShowIpScreen();
+    myIpScreen->setMainWindowPointer(mainWindowPointer,text);
+    ui->gridLayout_port->addWidget(myIpScreen);
 }
 
 void MainWindow::getUserIDFromLoginScreen(){

@@ -35,6 +35,7 @@ public:
     void showSweetsWidget();
     void showCoffeeWidget();
     void showAfterBuyScreen();
+    void showIpScreen(QString text);
     void setWatchDog();
     void getWatchDogTime_Database();
     QString getTimestamp();

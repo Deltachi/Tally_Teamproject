@@ -4,6 +4,11 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QString>
+#include <QList>
+#include <QtNetwork/QNetworkInterface>
+#include <QtNetwork/QNetworkConfigurationManager>
+#include <QtNetwork/QNetworkSession>
+#include <QtNetwork/QTcpSocket>
 
 
 int main(int argc, char *argv[])
@@ -17,7 +22,22 @@ int main(int argc, char *argv[])
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
-    int exitcode = 100;
+
+    QTcpSocket socket;
+    QString ip;
+    socket.connectToHost("8.8.8.8", 53); // google DNS, or something else reliable
+    if (socket.waitForConnected()) {
+        ip = socket.localAddress().toString();
+    } else {
+        ip = socket.errorString();
+    }
+    w.showIpScreen(ip);
+    int exitcode;
+    exitcode = a.exec();
+    w.removeWidget();
+
+    exitcode = 100;
+
     bool exit = false;
 
     while(!exit){
@@ -150,4 +170,3 @@ int main(int argc, char *argv[])
     }
     return exitcode;
 }
-

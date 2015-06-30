@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui sql
+QT+=network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -22,7 +23,8 @@ SOURCES += main.cpp\
     shoppingcart.cpp \
     scanwidget.cpp \
     favcart.cpp \
-    afterbuyscreen.cpp
+    afterbuyscreen.cpp \
+    showipscreen.cpp
 
 HEADERS  += mainwindow.h \
     loginscreen.h \
@@ -33,7 +35,8 @@ HEADERS  += mainwindow.h \
     shoppingcart.h \
     scanwidget.h \
     favcart.h \
-    afterbuyscreen.h
+    afterbuyscreen.h \
+    showipscreen.h
 
 FORMS    += mainwindow.ui \
     loginscreen.ui \
@@ -43,7 +46,8 @@ FORMS    += mainwindow.ui \
     shoppingcart.ui \
     scanwidget.ui \
     favcart.ui \
-    afterbuyscreen.ui
+    afterbuyscreen.ui \
+    showipscreen.ui
 
 RESOURCES += \
     myressources.qrc
