@@ -11,6 +11,7 @@ passwordscreen::passwordscreen(QWidget *parent) :
     ui->setupUi(this);
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
+
 }
 
 passwordscreen::~passwordscreen()
@@ -26,7 +27,7 @@ void passwordscreen::updatePasswordField(){
 
     Data.open();
     SqlZugriff database;
-    if(database.checkPassword(userId,password)){
+    if(database.checkPassword(userId,password) && blocked != "1"){
         database.timestamp(userId,1);
         mainWindowPointer->exit(21);
     }
@@ -35,8 +36,9 @@ void passwordscreen::updatePasswordField(){
     w.setWatchDog();
 
 }
-void passwordscreen::setMainWindowPointer(QApplication *a){
+void passwordscreen::setMainWindowPointer(QApplication *a,QString tuserId){
     mainWindowPointer = a;
+    userId = tuserId;
 }
 void passwordscreen::setUsername(QString name){
     userName = name;
@@ -59,6 +61,16 @@ void passwordscreen::updateAccoutPicture(QString id){
     }
     ui->label_pic->setPixmap(icon);
     ui->label_credit->setText(money);
+
+    qDebug() << id << "id";
+    blocked = database.blocked(id);
+    qDebug() << blocked;
+    if(blocked == "1"){
+        ui->label_credit->setVisible(false);
+        ui->label_2->setVisible(false);
+        ui->label_name->setText("User blocked");
+    }
+
     Data.close();
 }
 

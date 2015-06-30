@@ -32,6 +32,7 @@ public:
     void updateConsumeIndex(QString userId,QString Grocery_Id,QString count);
     double getMaxOverdrawValue();
     bool findGroceriesWithBarcode(QString code);
+    QString blocked(QString userId);
 
 private:
      QSqlQuery query;

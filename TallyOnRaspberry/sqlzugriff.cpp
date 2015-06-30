@@ -45,6 +45,15 @@ bool SqlZugriff::next(){
     return query.next();
 }
 
+QString SqlZugriff::blocked(QString userId){
+    query.exec("SELECT Blocked from Users WHERE User_ID = '"+userId+"'");
+
+    QString blocked;
+    query.first();
+    blocked = query.value(0).toString();
+    return blocked;
+}
+
 QString SqlZugriff::getName(QString ID){
     query.exec("Select Username from Users where User_ID = '"+ID+"'");
 
@@ -124,6 +133,17 @@ QPixmap SqlZugriff::getPixmap(int x){
     imagedata = query.value(x).toByteArray();
     icon.loadFromData(imagedata);
     return icon;
+}
+
+void SqlZugriff::get_timestamp(QString userId){
+    query.exec("SELECT Timestamp FROM Login_Requests WHERE User_ID = '"+iserId+"' AND Granted = 'true'");
+    query.first();
+    QString timestamp;
+    int count = 5;
+
+    while(query.next() && count > 0){
+
+    }
 }
 
 SqlZugriff::~SqlZugriff()

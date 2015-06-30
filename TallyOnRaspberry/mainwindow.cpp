@@ -68,9 +68,9 @@ void MainWindow::timerEvent(QTimerEvent *event)
 
     if(counter == -1){
         //do nothing
-    }else if(counter <= 3){
+    }else if(counter <= 1){
         counter++;
-    }else if(counter > 3){ //was the after buy screen shown for more than 3 seconds?
+    }else if(counter > 1){ //was the after buy screen shown for more than 3 seconds?
         counter = -1;
         mainWindowPointer->exit(100);
     }
