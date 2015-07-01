@@ -76,30 +76,30 @@ app.controller('userCtrl', ['$scope', '$http', function($scope, $http){
 		"leaderboard": true,
 		"balance": 25.50,
 		"messages": [
-			{"title": "System", "type":"alert-success","msg": "Did you check out our new menu?"},
-			{"title": "System", "type":"alert-info","msg": "Just today 10% off, for Snickers and Twix!"},
-			{"title": "Shop", "type":"alert-warning","msg": "Last 3 Twix, get them now!"},
-			{"title": "Admin", "type":"alert-danger","msg": "Pay your bills!"},
-			{"title": "Angyinski", "type":"alert-success","msg": "Let's watch POI"},
-			{"title": "Samaritan", "type":"alert-danger","msg": "I am watching you."},
-			{"title": "Samaritan", "type":"alert-danger","msg": "JK."}
+			{"msg_id":"0", "title": "System", "type":"alert-default","msg": "Did you check out our new menu?"},
+			{"msg_id":"1", "title": "System", "type":"alert-info","msg": "Just today 10% off, for Snickers and Twix!"},
+			{"msg_id":"2", "title": "Shop", "type":"alert-warning","msg": "Last 3 Twix, get them now!"},
+			{"msg_id":"3", "title": "Admin", "type":"alert-danger","msg": "Pay your bills!"},
+			{"msg_id":"4", "title": "Angyinski", "type":"alert-success","msg": "Let's watch POI"},
+			{"msg_id":"5", "title": "Samaritan", "type":"alert-danger","msg": "I am watching you."},
+			{"msg_id":"6", "title": "Samaritan", "type":"alert-danger","msg": "JK."}
 		],
 		"history": [
-			{"title": "Kaffee L", "price":"1.50","date": "1435356176000"},
-			{"title": "Cappuchino", "price":"1.20","date": "1435356176000"},
-			{"title": "Snickers", "price":"0.50","date": "1435356176000"},
-			{"title": "Kaffee M", "price":"1","date": "1435356176000"},
-			{"title": "Kaffee L", "price":"1.50","date": "1435313176000"},
-			{"title": "Cappuchino", "price":"1.20","date": "1435313176000"},
-			{"title": "Snickers", "price":"0.50","date": "1435313176000"},
-			{"title": "Kaffee M", "price":"1","date": "1435313176000"}
+			{"history_id":"0", "title": "Kaffee L", "price":"1.50","date": "1435356176000"},
+			{"history_id":"1", "title": "Cappuchino", "price":"1.20","date": "1435356176000"},
+			{"history_id":"2", "title": "Snickers", "price":"0.50","date": "1435356176000"},
+			{"history_id":"3", "title": "Kaffee M", "price":"1","date": "1435356176000"},
+			{"history_id":"4", "title": "Kaffee L", "price":"1.50","date": "1435313176000"},
+			{"history_id":"5", "title": "Cappuchino", "price":"1.20","date": "1435313176000"},
+			{"history_id":"6", "title": "Snickers", "price":"0.50","date": "1435313176000"},
+			{"history_id":"7", "title": "Kaffee M", "price":"1","date": "1435313176000"}
 		],
 		"favorites": [
-			{"title": "Kaffee L", "price":"1.50"},
-			{"title": "Cappuchino", "price":"1.20"},
-			{"title": "Snickers", "price":"0.50"},
-			{"title": "Kaffee M", "price":"1"},
-			{"title": "Macchiato", "price":"1.50"}
+			{"favorite_id":"0", "title": "Kaffee L", "price":"1.50"},
+			{"favorite_id":"1", "title": "Cappuchino", "price":"1.20"},
+			{"favorite_id":"2", "title": "Snickers", "price":"0.50"},
+			{"favorite_id":"3", "title": "Kaffee M", "price":"1"},
+			{"favorite_id":"4", "title": "Macchiato", "price":"1.50"}
 		]
 	};
 	$scope.userData.feeds = function(){ return $scope.userData.messages.length;}
