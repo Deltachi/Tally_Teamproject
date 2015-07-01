@@ -12,8 +12,6 @@ LoginScreen::LoginScreen(QWidget *parent) :
     ui(new Ui::LoginScreen)
 {
     ui->setupUi(this);
-    Data = QSqlDatabase::addDatabase("QSQLITE");
-    Database_Link
 
     update_name_label();
     update_name_label();
@@ -34,13 +32,15 @@ QString LoginScreen::getUsername(){
 
 void LoginScreen::update_name_label(){
     ui->listWidget->clear(); //clears the listwidget
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
     Data.open();
     SqlZugriff Database;
     Database.initGetUser();
     QString tempID;
     while(Database.next()){
         tempID = Database.getString(1);
-        if(tempID.contains(NameField)){
+        if(tempID.contains(NameField) || NameField.length() == 0){
             QListWidgetItem *item = new QListWidgetItem();
             item->setData(4,Database.getString(0).toInt());
             item->setIcon(Database.getPixmap(3));
