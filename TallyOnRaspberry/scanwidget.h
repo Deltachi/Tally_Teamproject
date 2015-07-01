@@ -18,6 +18,7 @@ public:
     ~ScanWidget();
     void setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,QString gUserId,QListWidgetItem *item);
     QList<QListWidgetItem> getItems();
+    void updateAmountEveryItem();
 
 private slots:
     void on_pushButton_plus_clicked();
@@ -31,6 +32,7 @@ private:
     QApplication *MainWindowPointer;
     QString userId;
     int count;
+    int maxAmount;
     QString itemId;
 };
 

@@ -222,7 +222,6 @@ bool MainWindow::showScanWidget(){
     SqlZugriff database;
     bool valid = false;
     if(database.findGroceriesWithBarcode(scanString)){
-        qDebug() << "true" << " " << scanString;
         item->setData(4,database.getString(0));
         item->setData(5,database.getString(5));
         item->setData(6,database.getString(4));
@@ -239,7 +238,6 @@ bool MainWindow::showScanWidget(){
             item->setHidden(false);
         }else if(amount == 0){
             item->setHidden(true);
-            qDebug() << "Amount is == 0...";
             valid = false;
         }else{
             item->setTextColor(QColor(0,0,0,255)); //black
