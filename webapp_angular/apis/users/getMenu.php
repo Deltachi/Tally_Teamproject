@@ -1,24 +1,18 @@
 <?php
 	try {
-	    // Use database file "database.sqlite" or create a new one if not exists:
+	    // Use database file "database.sqlite" 
 	    $db = new PDO('sqlite:../../sqlite/database.sqlite');
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    // Create tables, if not exists:
-	    //$sql = "CREATE TABLE IF NOT EXISTS SensorValues (VID INTEGER PRIMARY KEY, TStamp TEXT, SName TEXT,	Value INTEGER, Sync INTEGER)";
-	    //$db->exec($sql);
-	    // Place INSERT, UPDATE or SELECT statements here!
+	    $type_string = $_POST["request"];	//must be User_ID
 
-	    $name = $_POST["username"];
-
-	    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
+	    $query = "SELECT * FROM Groceries WHERE Type_Group = '".$type_string."'";
 		$results = $db->query($query);
 		$rows = $results->fetchAll(PDO::FETCH_ASSOC);
 		$data = array();
 		foreach ($rows as $rowKey => $row) {
-			$data[] = $row;
-			break;
+			array_push($data,$row);
 		}
 		echo json_encode($data);
 		// http_response_code(404);
@@ -29,4 +23,4 @@
 	    echo $e->getMessage();
 	    echo $e->getTraceAsString();
 	}
-?>		
+?>

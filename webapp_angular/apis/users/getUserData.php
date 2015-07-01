@@ -1,16 +1,11 @@
 <?php
 	try {
-	    // Use database file "database.sqlite" or create a new one if not exists:
+	    // Use database file "database.sqlite" 
 	    $db = new PDO('sqlite:../../sqlite/database.sqlite');
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    // Create tables, if not exists:
-	    //$sql = "CREATE TABLE IF NOT EXISTS SensorValues (VID INTEGER PRIMARY KEY, TStamp TEXT, SName TEXT,	Value INTEGER, Sync INTEGER)";
-	    //$db->exec($sql);
-	    // Place INSERT, UPDATE or SELECT statements here!
-
-	    $name = $_POST["username"];
+	    $name = $_POST["request"];	//must be Username
 
 	    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
 		$results = $db->query($query);
@@ -18,7 +13,7 @@
 		$data = array();
 		foreach ($rows as $rowKey => $row) {
 			$data[] = $row;
-			break;
+			break;	//Break after 1 result. Should do that automatically, since Username is UNIQUE
 		}
 		echo json_encode($data);
 		// http_response_code(404);
@@ -29,4 +24,4 @@
 	    echo $e->getMessage();
 	    echo $e->getTraceAsString();
 	}
-?>		
+?>	

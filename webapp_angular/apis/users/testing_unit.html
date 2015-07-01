@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Ajax Backend Testing Unit</title>
+		<!--Online sources -->
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> 
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"> 
+		<link rel="stylesheet" href="testing_unit.css"> 
+		
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="page-header">Ajax Backend Testing Unit</h1>
+			<div class="panel panel-info">
+				<div class="panel-heading">Post Data to the Backend API</div>
+				<div class="panel-body">
+					<label for="service">Select your service:</label> 
+					<div class="form-group">
+						<select id="service" class="form-control">
+							<option value="getUserData.php">(get) User Data API [use: Username]</option>
+							<option value="getMessages.php">(get) Message Router [use: User_ID]</option>
+							<option value="getMenu.php">(get) Menu API [use: "Drinks" or "Sweets"]</option>
+							<option value="getFavorites.php">(get) Favorites API [use: User_ID]</option>
+							<option value="login.php">(get) Login API [use: Username + Password]</option>
+
+						</select>
+					</div>
+					<br>
+					<br>
+					<hr>
+					<form id="idForm" method="post">
+						<div class="form-group">
+							<label for="request">Type your request here:</label> 
+							<input type="text" id="request" name="request" maxlength="12" class="form-control">
+							<br>
+							<label for="request_2">Type your second request here <span class="text-muted">(if neccesary)</span>:</label> 
+							<input type="text" id="request_2" name="request_2" maxlength="12" class="form-control">
+							<hr>
+							<button type="reset" class="btn btn-warning">Reset</button>
+							<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			
+			<div id="response_panel" class="panel panel-default">
+				<div class="panel-heading">Backend Response <span class="text-muted"> [green = success, red = failure]</span></div>
+				<div id="response"class="panel-body" style="word-break: break-all;"></div>
+			</div>
+		</div>
+		<!-- These sources stay in the clouds and are not availabe in intranet-only-mode -->
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+		<script src="control.js"></script>
+	</body>
+</html>
