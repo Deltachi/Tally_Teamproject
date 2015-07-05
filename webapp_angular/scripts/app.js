@@ -9,7 +9,8 @@ var app = angular.module('app',[
 	'app.controllers.updatedCtrl',
 	'app.controllers.logoutCtrl',
 	'app.controllers.lbCtrl',
-	'app.services.myService'
+	'app.services.myService',
+	'app.services.userDataService'
 	]);
 
 //UI-ROUTER
@@ -51,3 +52,13 @@ app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $
 			controller: 'logoutCtrl'
 		})
 }]);
+
+app.filter('positive', function() {
+        return function(input) {
+            if (!input) {
+                return 0;
+            }
+
+            return Math.abs(input);
+        };
+    })
