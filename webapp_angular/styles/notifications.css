@@ -1,0 +1,18 @@
+.jumbotron.purchases{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.jumbotron.purchases h3{
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.balancePanel{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.alert hr{
+	margin: 10px auto;
+}
