@@ -3,27 +3,26 @@
 //btw. alle relevanten Funktionen zur Aktualisierung bereithält
 angular.module('app.controllers.userCtrl', []) 
 
-	.controller('userCtrl', ['$scope', '$http', function($scope, $http){
-		$scope.userData = null;
-		
+	.controller('userCtrl', ['$scope', 'userDataService', function($scope, userDataService){
+		$scope.loading = true;
 
-
-		$scope.userData = {
+		userDataService.userData = null;
+		userDataService.userData = {
 			"firstname": "Angelika",
 			"lastname": "Lipp",
 			"nick": "Geli",
 			"password": "abcd1234",
 			"mail": "gelismail@me.com",
 			"leaderboard": true,
-			"balance": 25.50,
+			"balance": 0,
 			"messages": [
-				{"msg_id":"0", "title": "System", "type":"alert-default","msg": "Did you check out our new menu?"},
-				{"msg_id":"1", "title": "System", "type":"alert-info","msg": "Just today 10% off, for Snickers and Twix!"},
-				{"msg_id":"2", "title": "Shop", "type":"alert-warning","msg": "Last 3 Twix, get them now!"},
-				{"msg_id":"3", "title": "Admin", "type":"alert-danger","msg": "Pay your bills!"},
-				{"msg_id":"4", "title": "Angyinski", "type":"alert-success","msg": "Let's watch POI"},
-				{"msg_id":"5", "title": "Samaritan", "type":"alert-danger","msg": "I am watching you."},
-				{"msg_id":"6", "title": "Samaritan", "type":"alert-danger","msg": "JK."}
+				{"Message_ID":"0", "Sender": "System", "Title": "MsgTitle", "Type":"alert-default","Message": "Did you check out our new menu?"},
+				{"Message_ID":"1", "Sender": "System", "Title": "MsgTitle", "Type":"alert-info","Message": "Just today 10% off, for Snickers and Twix!"},
+				{"Message_ID":"2", "Sender": "Shop", "Title": "MsgTitle", "Type":"alert-warning","Message": "Last 3 Twix, get them now!"},
+				{"Message_ID":"3", "Sender": "Admin", "Title": "MsgTitle", "Type":"alert-danger","Message": "Pay your bills!"},
+				{"Message_ID":"4", "Sender": "Angyinski", "Title": "MsgTitle", "Type":"alert-success","Message": "Let's watch POI"},
+				{"Message_ID":"5", "Sender": "Samaritan", "Title": "MsgTitle", "Type":"alert-danger","Message": "I am watching you."},
+				{"Message_ID":"6", "Sender": "Samaritan", "Title": "MsgTitle", "Type":"alert-danger","Message": "JK."}
 			],
 			"history": [
 				{"history_id":"0", "title": "Kaffee L", "price":"1.50","date": "1435356176000"},
@@ -43,37 +42,57 @@ angular.module('app.controllers.userCtrl', [])
 				{"favorite_id":"4", "title": "Macchiato", "price":"1.50"}
 			]
 		};
-		$scope.userData.feeds = function(){ return $scope.userData.messages.length;}
-		$scope.delete = function(index){
-			console.log("Gonna delete this msg: " + $scope.userData.messages[index].msg);
-			$scope.userData.messages.splice(index, 1);
-		};
-		// $("#idForm").submit(function() {
 
-			var service_msg = "getMessages.php"; // the script where you handle the form input.
-			var service_userData = "/apis/users/getUserData.php";
-			var url;
-			var postData = {};
-			postData['request'] = "Geli";
-			var responseData;
-			$.ajax({
-				type: "POST",
-				url: service_userData,
-				data: postData, // serializes the form's elements.
-				success: function(data)
-				{
-					// alert(data); // show response from the php script.
-					console.log(data);
-					responseData = jQuery.parseJSON(data);
-					console.log(responseData);
+		var postData = {};
+		var postMail = {};
+		postData['request'] = "Geli";
+		postMail['request'] = 6;
+		var responseData;
+		var responseMail;
 
-					$scope.userData.balance = responseData[0].Credits;
-				},
-				error: function(jqXHR, status, errors){
-					console.log(status);
-				}
+		//load userData from server
+		userDataService.getUserDataSync(postData).then(
+			function(data){
+				responseData = jQuery.parseJSON(data);
+				console.log(data);
+				console.log(responseData);
+				userDataService.userData.balance = responseData[0].Credits;
+				$scope.loading = false;
 			});
 
-			// return false; // avoid to execute the actual submit of the form.
-		// });
+		//Load mails from server
+		userDataService.getUserMailSync(postMail).then(
+			function(data){
+				responseMail = jQuery.parseJSON(data);
+				console.log(data);
+				console.log(responseMail);
+				userDataService.userData.messages = responseMail;
+				$scope.loading = false;
+				console.log(userDataService.userData);
+			});
+
+		userDataService.userData.feeds = function(){ return userDataService.userData.messages.length;}
+		$scope.barColor = function(){
+			var color;
+			var balance = userDataService.userData.balance;
+			if (balance < 0){
+				color = "danger";
+			}
+			else{
+				if(balance <= 10.0){
+					color = "warning";
+				}
+				else{
+					color = "success";
+				}
+			}
+			return color;
+		};
+		$scope.delete = function(index, Message_ID){
+			console.log("Gonna delete this msg: " + userDataService.userData.messages[index].Message + " -> msg_id = " + Message_ID);
+			userDataService.userData.messages.splice(index, 1);
+		};
+
+		$scope.userData = userDataService.userData;
+
 	}])
