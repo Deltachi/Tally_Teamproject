@@ -79,7 +79,7 @@ Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Adm
 
 
 \section{Ziele des Projekts}
-Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwickelt, um die alte Strichliste abzul\"osen
+Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwickelt, um die alte Strichliste abzul\"osen. Dazu wurden folgende zu erreichende Ziele festgelegt:
 \subsection{Zielbestimmung}
 \label{Ausrichtung}
 
@@ -142,8 +142,23 @@ Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Rasp
 \end{center}
 
 
-\subsection{Zeitplanung}
+\section{Meilensteine des Projektes}
 \label{Umbrueche}
+
+\subsection{Raspberry Pi 2 - Die Hardware mit der passenden Software}
+Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gelegt. Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln und wird komplett vom Raspberry mit Strom versorgt.
+\par
+Als erster Schritt wurde in Bezug auf die Hardware und die Software die auf dem Raspberry laufen soll entschieden das es von Vorteil ist das speziell f\"ur den Raspberry zugeschnittene Raspbian Betriebssystem zu verwenden. Als Alternative stand eine Ubuntu Version ,speziell f\"ur ARM-Prozessoren entwickelt, zu Verf\"ugung. Hier stellte sich aber schnell nach einigen Recherchen heraus das Raspbian durch die Optimierung auf den Raspberry und den guten Support am besten f\"ur das Projekt geeignet ist. Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert. Damit ist eine einfache Remote Desktopverbindung zum Raspberry m\"oglich.
+\par
+Als n\"achster Schritt wurde ein vollst\"andiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zun\"achst ein Apache Server der Version 2 installiert der \"uber eine hohe Stabilit\"at und Geschwindigkeit verf\"ugt und serverseitig die Skriptsprache PHP unterst\"utzt. Im Anschluss wurde das PHP5 Paket installiert um eine volle Unterst\"utzung f\"ur die kommende Website zu gew\"ahrleisten.
+\par
+Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauff\"ahig ist aber keine hohe Stabilit\"at und sehr resourcenlastig auf dem Raspberry l\"auft. Daher wurde das SQLite Datenbanksystem ausgew\"ahlt. SQLite ist eine relationale Datenbank und ben\"otigt im Gegensatz zu MySQL keine st\"andig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht.
+\par
+Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es weniger gut als Prim\"ares Display geeignet ist da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display  ausgegeben wird. Starke Verz\"ogerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren davon ein Ausdruck.
+Um dem Problem entegegen zu wirken musste ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer h\"oheren Bildwiederholungsrate gesucht werden. Dabei kam die Idee auf ein 7 Zoll resistiven Touchscreen von Pollin zu verwenden das durch seine Gr\"osse viel Platz f\"ur das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateerm\"oglicht  und ein externer USB- Touchcontroller. Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel f\"ur den Raspberry und eins f\"ur das Display ben\"otigt, damit \"are eine Energiesparende L\"osung ebenfalls nicht m\"oglich.
+Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus. Der Touchscreen besitzt eine Aufl\"osung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten erm\"oglicht.
+Die Vorteile bei diesem Display waren die kleine Bauform und keine zus\"atzlich ben\"otigte Stromquelle. Ausserdem wird vom Hersteller direkt ein passender Kernel f\"ur Raspbian zur Verf\"ugung gestellt, mit dem die Einrichtung einfach von statten ging. Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren werden,  das Display an den GPIO-Ports angebracht werden und wieder hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich. Dadurch das das Display direkt als Prim\"ares Display erkannt wird ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
+
 
 Wie wir im vorangegangen Text gesehen haben, sind die Zeilenumbr�che automatisch ganz gut. Neue Abschnitte werden durch eine Leerzeile erzeugt. Wenn man trotzdem eine Zeile in einem Absatz abbrechen will, so geht das nat�rlich auch. \\  Aber eigentlich sehen diese Umbr�che seltsam aus und man sollte sie vermeiden. Da ist es doch in der Regel besser, gleich einen neuen Absatz zu beginnen. In Abschnitt \ref{Sonderzeichen} sehen wir, wie eine gute Absatzstruktur aussieht. �brigens k�nnen wir auch einen neuen Seitenbeginn erzwingen.
 

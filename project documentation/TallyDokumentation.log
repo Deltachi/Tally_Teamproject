@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  23 JUN 2015 20:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  6 JUL 2015 03:26
 entering extended mode
 **C:/Users/Nico/Documents/GitHub/Tally_Teamproject/project*documentation/TallyD
 okumentation.tex
@@ -163,52 +163,52 @@ Overfull \hbox (12.0789pt too wide) in paragraph at lines 123--124
 uk-te hin-zu-fü-gen,entfernen
  []
 
-[3] [4]
+[3] [4] [5] [6]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 152.
+(Font)              <9> on input line 167.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 152.
+(Font)              <5> on input line 167.
 
-Overfull \hbox (8.30333pt too wide) in paragraph at lines 161--162
+Overfull \hbox (8.30333pt too wide) in paragraph at lines 176--177
 []\T1/cmr/m/n/10.95 Deutsche, franzï¾$[]$sische und ``eng-li-sche'' Anfï¾$[
 ]$hrungszeichen sind manch-
  []
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 165.
+(Font)              <14.4> on input line 180.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 165.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
+(Font)              <7> on input line 180.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 188.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
- [5]
-Overfull \hbox (19.4344pt too wide) in paragraph at lines 224--225
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 188.
+ [7]
+Overfull \hbox (19.4344pt too wide) in paragraph at lines 239--240
 \T1/cmr/m/n/10.95 Grafiken kï¾$[]$nnen an Ort und Stel-le eingefï¾$[]$gt wer-de
 n. Ge-ra-de bei grï¾$[]$ï¾$[]$eren
  []
 
 
-Overfull \hbox (8.17978pt too wide) in paragraph at lines 224--225
+Overfull \hbox (8.17978pt too wide) in paragraph at lines 239--240
 \T1/cmr/m/n/10.95 dies aber oft unschï¾$[]$ne Seitenumbrï¾$[]$che oder der Plat
 z zwi-schen Absï¾$[]$tzen
  []
 
 File: TallyLogo.png Graphic file (type png)
 <use TallyLogo.png>
-Package pdftex.def Info: TallyLogo.png used on input line 227.
+Package pdftex.def Info: TallyLogo.png used on input line 242.
 (pdftex.def)             Requested size: 341.43306pt x 227.6272pt.
- [6] [7] <bild.pdf, id=44, 291.0875pt x 291.0875pt>
+ [8] [9] <bild.pdf, id=50, 291.0875pt x 291.0875pt>
 File: bild.pdf Graphic file (type pdf)
 
 <use bild.pdf>
-Package pdftex.def Info: bild.pdf used on input line 274.
+Package pdftex.def Info: bild.pdf used on input line 289.
 (pdftex.def)             Requested size: 291.08678pt x 291.08678pt.
- [8 <C:/Users/Nico/AppData/Roaming/MiKTeX/2.9/tex/latex/IMTEKda/figures/bild.pd
-f>]
+ [10 <C:/Users/Nico/AppData/Roaming/MiKTeX/2.9/tex/latex/IMTEKda/figures/bild.p
+df>]
 ("C:\Users\Nico\Documents\GitHub\Tally_Teamproject\project documentation\TallyD
 okumentation.aux") ) 
 Here is how much of TeX's memory you used:
@@ -218,7 +218,7 @@ Here is how much of TeX's memory you used:
  5214 multiletter control sequences out of 15000+200000
  17592 words of font info for 43 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 27i,8n,24p,805b,257s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,8n,24p,962b,257s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jk
 nappen\ec\dpi600\ecrm0900.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\fonts\pk\
 ljfour\jknappen\ec\dpi600\ecrm0600.pk> <C:\Users\Nico\AppData\Local\MiKTeX\2.9\
@@ -235,9 +235,9 @@ nts/cm/cmr10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmr6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb>
-Output written on TallyDokumentation.pdf (9 pages, 206757 bytes).
+Output written on TallyDokumentation.pdf (11 pages, 212845 bytes).
 PDF statistics:
- 413 PDF objects out of 1000 (max. 8388607)
+ 423 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
