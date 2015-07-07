@@ -1,5 +1,8 @@
 #include "showipscreen.h"
 #include "ui_showipscreen.h"
+#include <QFileInfo>
+#include <QDebug>
+#include <QString>
 
 ShowIpScreen::ShowIpScreen(QWidget *parent) :
     QWidget(parent),

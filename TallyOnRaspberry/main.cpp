@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     int state = 0;
 
     w.setWindowTitle("Tally");
-    w.showFullScreen();
+    w.show();
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
@@ -97,6 +97,12 @@ int main(int argc, char *argv[])
                     w.showScanWidget();
                     state = 5;
                     w.setWatchDog();
+                }else if(exitcode == 51){ //back was clicked -> logout
+                    state = 0;
+                    w.removeWidget();
+                    w.init();
+                    w.setLogoutButton(false);
+                    w.getWatchDogTime_Database();
                 }else if(exitcode == 34){ //scan
                     w.updateQListCart();
                     w.removeWidget();
