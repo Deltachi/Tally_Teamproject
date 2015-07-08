@@ -40,8 +40,8 @@ public:
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();
-    #define Database_Link Data.setDatabaseName("/var/www/sqlitetest/database.sqlite");
-    //#define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
+    //#define Database_Link Data.setDatabaseName("/var/www/sqlitetest/database.sqlite");
+    #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
 
 private slots:
 

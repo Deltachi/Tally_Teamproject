@@ -129,9 +129,8 @@ void SqlZugriff::selectAll(QString tab, QString id ,QString number){
 
 QPixmap SqlZugriff::getPixmap(int x){
     QPixmap icon;
-    QByteArray imagedata;
-    imagedata = query.value(x).toByteArray();
-    icon.loadFromData(imagedata);
+    QString path = query.value(x).toString();
+    icon.load(path);
     return icon;
 }
 /*
