@@ -220,6 +220,7 @@ bool MainWindow::showScanWidget(){
     QListWidgetItem *item = new QListWidgetItem();
     Data.open();
     SqlZugriff database;
+    database.getPicturePath();
     bool valid = false;
     if(database.findGroceriesWithBarcode(scanString)){
         item->setData(4,database.getString(0));

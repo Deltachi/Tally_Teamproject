@@ -52,6 +52,7 @@ void passwordscreen::updateAccoutPicture(QString id){
     QPixmap icon;
     QString money;
 
+    database.getPicturePath();
     database.initGetUser();
     while(database.next()){
         if(database.getString(0) == id){
