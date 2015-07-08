@@ -3,6 +3,7 @@ var app = angular.module('app',[
 	'app.directives.myNavbar',
 	'app.directives.myFooter',
 	'app.directives.login',
+	'app.directives.menuModal',
 	'app.controllers.userCtrl',
 	'app.controllers.menuCtrl',
 	'app.controllers.loginCtrl',
@@ -10,7 +11,8 @@ var app = angular.module('app',[
 	'app.controllers.logoutCtrl',
 	'app.controllers.lbCtrl',
 	'app.services.myService',
-	'app.services.userDataService'
+	'app.services.userDataService',
+	'app.services.menuService'
 	]);
 
 //UI-ROUTER

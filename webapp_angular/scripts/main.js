@@ -2,8 +2,12 @@
 // Main .js file for main functions
 
 $(function(){
-	$('[data-toggle="tooltip"]').tooltip();
-	
+	$(window).load(function(){
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+
+
+	// console.log("Activate tooltips");
 
 	var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
 	if(isMobile) {
