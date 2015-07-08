@@ -6,42 +6,7 @@ angular.module('app.controllers.userCtrl', [])
 	.controller('userCtrl', ['$scope', 'userDataService', function($scope, userDataService){
 		$scope.loading = true;
 
-		userDataService.userData = null;
-		userDataService.userData = {
-			"firstname": "Angelika",
-			"lastname": "Lipp",
-			"nick": "Geli",
-			"password": "abcd1234",
-			"mail": "gelismail@me.com",
-			"leaderboard": true,
-			"balance": 0,
-			"messages": [
-				{"Message_ID":"0", "Sender": "System", "Title": "MsgTitle", "Type":"alert-default","Message": "Did you check out our new menu?"},
-				{"Message_ID":"1", "Sender": "System", "Title": "MsgTitle", "Type":"alert-info","Message": "Just today 10% off, for Snickers and Twix!"},
-				{"Message_ID":"2", "Sender": "Shop", "Title": "MsgTitle", "Type":"alert-warning","Message": "Last 3 Twix, get them now!"},
-				{"Message_ID":"3", "Sender": "Admin", "Title": "MsgTitle", "Type":"alert-danger","Message": "Pay your bills!"},
-				{"Message_ID":"4", "Sender": "Angyinski", "Title": "MsgTitle", "Type":"alert-success","Message": "Let's watch POI"},
-				{"Message_ID":"5", "Sender": "Samaritan", "Title": "MsgTitle", "Type":"alert-danger","Message": "I am watching you."},
-				{"Message_ID":"6", "Sender": "Samaritan", "Title": "MsgTitle", "Type":"alert-danger","Message": "JK."}
-			],
-			"history": [
-				{"history_id":"0", "title": "Kaffee L", "price":"1.50","date": "1435356176000"},
-				{"history_id":"1", "title": "Cappuchino", "price":"1.20","date": "1435356176000"},
-				{"history_id":"2", "title": "Snickers", "price":"0.50","date": "1435356176000"},
-				{"history_id":"3", "title": "Kaffee M", "price":"1","date": "1435356176000"},
-				{"history_id":"4", "title": "Kaffee L", "price":"1.50","date": "1435313176000"},
-				{"history_id":"5", "title": "Cappuchino", "price":"1.20","date": "1435313176000"},
-				{"history_id":"6", "title": "Snickers", "price":"0.50","date": "1435313176000"},
-				{"history_id":"7", "title": "Kaffee M", "price":"1","date": "1435313176000"}
-			],
-			"favorites": [
-				{"favorite_id":"0", "title": "Kaffee L", "price":"1.50"},
-				{"favorite_id":"1", "title": "Cappuchino", "price":"1.20"},
-				{"favorite_id":"2", "title": "Snickers", "price":"0.50"},
-				{"favorite_id":"3", "title": "Kaffee M", "price":"1"},
-				{"favorite_id":"4", "title": "Macchiato", "price":"1.50"}
-			]
-		};
+		
 
 		var postData = {};
 		var postMail = {};
@@ -57,6 +22,10 @@ angular.module('app.controllers.userCtrl', [])
 				console.log(data);
 				console.log(responseData);
 				userDataService.userData.balance = responseData[0].Credits;
+				userDataService.userData.firstname = responseData[0].Firstname;
+				userDataService.userData.lastname = responseData[0].Lastname;
+				userDataService.userData.nick = responseData[0].Username;
+
 				$scope.loading = false;
 			});
 

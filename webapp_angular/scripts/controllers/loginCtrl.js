@@ -11,4 +11,9 @@ angular.module('app.controllers.loginCtrl', [])
 		$scope.getLogin = function(){
 			return myService.sharedObject.data;
 		}
+		$scope.tooltips = function(){
+			setTimeout(function(){
+				$('[data-toggle="tooltip"]').tooltip();
+			},300);
+		} 
 	}]);
