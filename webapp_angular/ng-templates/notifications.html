@@ -26,6 +26,25 @@
 					<div class="jumbotron inline-text" ng-show="loading">
 						<h3>loading...</h3>
 					</div>
+					<div class="col-md-8">
+						<!-- <div class="jumbotron lil-jumbo"> -->
+						<div class="panel panel-default messagePanel">
+							<div class="panel-heading inline-text">
+								<h3>You got {{userData.feeds()}} message<span ng-show="userData.feeds() >1">s</span>:</h3>
+							</div>
+							<div class="panel-body panel-notifications">
+								<div class="row" ng-repeat="message in userData.messages">
+									<div class="alert" ng-class="message.Type" role="alert">
+										<button type="button" class="close" aria-label="Close" ng-click="delete($index, message.Message_ID);"><span aria-hidden="true">&times;</span></button>
+										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>{{message.Sender}}<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> {{message.Title}} </strong>
+										<hr>
+										{{message.Message}}</a>
+									</div>
+								</div>
+								<!-- <a class="alert-link" href="menu.html"> menu?</a> -->
+							</div> <!-- panel-body -->
+						</div> <!-- panel -->
+					</div> <!-- Messages col-md-4 -->
 					<div class="col-md-4">
 						<div class="jumbotron lil-jumbo inline-text purchases">
 							<h3>Latest purchases:</h3>
@@ -39,26 +58,7 @@
 								</tbody>
 							</table>
 						</div>
-					</div>
-					<div class="col-md-8">
-						<!-- <div class="jumbotron lil-jumbo"> -->
-						<div class="panel panel-default" style="border-radius:0 15px 15px 0;">
-							<div class="panel-heading inline-text" style="border-radius:0 15px 0 0;">
-								<h3>You got {{userData.feeds()}} message<span ng-show="userData.feeds() >1">s</span>:</h3>
-							</div>
-							<div class="panel-body panel-notifications" style="margin:0 20px;">
-								<div class="row" ng-repeat="message in userData.messages">
-									<div class="alert" ng-class="message.Type" role="alert">
-										<button type="button" class="close" aria-label="Close" ng-click="delete($index, message.Message_ID);"><span aria-hidden="true">&times;</span></button>
-										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>{{message.Sender}}<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> {{message.Title}} </strong>
-										<hr>
-										{{message.Message}}</a>
-									</div>
-								</div>
-								<!-- <a class="alert-link" href="menu.html"> menu?</a> -->
-							</div> <!-- panel-body -->
-						</div> <!-- panel -->
-					</div> <!-- col-md-8 -->
+					</div> <!-- Latest purchases col-md-4 -->
 				</div>
 			</div>
 		</div> <!-- container -->
