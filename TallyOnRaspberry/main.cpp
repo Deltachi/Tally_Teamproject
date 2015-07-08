@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
                     w.setLogoutButton(true);
                     w.setWatchDog();
                     state = 1;
-                }else if(exitcode != 100){ //logout == 100
+                }else if(exitcode != 100 && exitcode != 34){ //logout == 100   something scanned == 34
                     return 0;
                 }
             }
@@ -74,8 +74,8 @@ int main(int argc, char *argv[])
                     w.showCoffeeSweetWidget();
                     state = 2;
                     w.setWatchDog();
-                }else if(exitcode != 100){ //logout == 100
-                    return 0;
+                }else if(exitcode != 100 && exitcode != 34){ //logout == 100   something scanned == 34
+                    return exitcode;
                 }
             }break;
             case 2: {//coffee sweets scan screen
@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
                     w.showAfterBuyScreen();
                     w.setWatchDog();
                 }else if(exitcode != 100 && exitcode != 98){ //logout == 100
-                    return 0;
+                    return exitcode;
                 }
             }break;
             case 3: { //buy coffee
@@ -138,6 +138,8 @@ int main(int argc, char *argv[])
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
                     w.updateBuyscreenAmount();
+                }else if(exitcode != 34 && exitcode != 100){
+                    return exitcode;
                 }
             }break;
             case 4: { //buy sweets
@@ -153,6 +155,8 @@ int main(int argc, char *argv[])
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
                     w.updateBuyscreenAmount();
+                }else if(exitcode != 34 && exitcode != 100){
+                    return exitcode;
                 }
             }break;
             case 5: { //user wants to scan things
@@ -166,6 +170,8 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showAfterBuyScreen();
                     w.setWatchDog();
+                }else if(exitcode != 34 && exitcode != 100){
+                    return exitcode;
                 }
             }break;
             default: {//something went wrong...
