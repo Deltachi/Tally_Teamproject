@@ -1,0 +1,12 @@
+.input-group-addon{
+	min-width: 120px;
+}
+.input-group-addon.postfix{
+	min-width: 0;
+}
+
+.modal-footer .btn + .btn{
+	margin: 10px auto;
+	margin-left: 5px;
+
+}

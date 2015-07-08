@@ -16,3 +16,31 @@
 .alert hr{
 	margin: 10px auto;
 }
+
+.messagePanel{
+	border-radius:20px 5px 5px 20px ;
+	background-color: #EEEEEE;
+
+}
+
+.messagePanel .panel-heading{
+	border-radius: 20px 5px 5px 5px;
+}
+
+.messagePanel .panel-body{
+	margin:0 20px;
+}
+
+.messagePanel .panel-body div .alert{
+	margin-bottom: 10px;
+}
+
+@media (max-width: 991px) {
+	.messagePanel{
+		border-radius:8px;
+	}
+
+	.messagePanel .panel-heading{
+		border-radius:8px;
+	}
+}
