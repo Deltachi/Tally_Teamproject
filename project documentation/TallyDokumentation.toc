@@ -30,10 +30,14 @@
 \contentsline {subsubsection}{\numberline {4.1.5}Produkte scannen}{9}
 \contentsline {subsubsection}{\numberline {4.1.6}Wlan f\IeC {\"u}r den Raspberry}{9}
 \contentsline {subsubsection}{\numberline {4.1.7}angepasster Bootscreen}{10}
-\contentsline {subsubsection}{\numberline {4.1.8}Backups einrichten}{11}
-\contentsline {subsection}{\numberline {4.2}Sonderzeichen}{12}
-\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{12}
-\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{13}
-\contentsline {subsection}{\numberline {6.1}Grafiken}{13}
-\contentsline {subsection}{\numberline {6.2}Tabellen}{14}
-\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{14}
+\contentsline {subsubsection}{\numberline {4.1.8}Backups einrichten und versenden per Mail}{11}
+\contentsline {subsection}{\numberline {4.2}QT Creator - Das Tally programm}{14}
+\contentsline {subsubsection}{\numberline {4.2.1}Die Benutzeroberfl\"ache}{15}
+\contentsline {subsubsection}{\numberline {4.2.2}Aufbau des Programmes}{17}
+\contentsline {subsubsection}{\numberline {4.2.3}Funktionen des Programmes}{19}
+\contentsline {subsection}{\numberline {4.3}Sonderzeichen}{20}
+\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{20}
+\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{21}
+\contentsline {subsection}{\numberline {6.1}Grafiken}{21}
+\contentsline {subsection}{\numberline {6.2}Tabellen}{22}
+\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{22}
