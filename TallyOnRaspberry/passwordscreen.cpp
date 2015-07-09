@@ -11,7 +11,6 @@ passwordscreen::passwordscreen(QWidget *parent) :
     ui->setupUi(this);
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
-
 }
 
 passwordscreen::~passwordscreen()
@@ -29,6 +28,7 @@ void passwordscreen::updatePasswordField(){
     SqlZugriff database;
     if(database.checkPassword(userId,password) && blocked != "1"){
         database.timestamp(userId,1);
+        Data.close();
         mainWindowPointer->exit(21);
     }
     Data.close();
@@ -36,9 +36,12 @@ void passwordscreen::updatePasswordField(){
     w.setWatchDog();
 
 }
-void passwordscreen::setMainWindowPointer(QApplication *a,QString tuserId){
+void passwordscreen::setMainWindowPointer(QApplication *a,QString gUserId){
     mainWindowPointer = a;
-    userId = tuserId;
+    userId = gUserId;
+    password.clear();
+    updateAccoutPicture(userId);
+    updatePasswordField();
 }
 void passwordscreen::setUsername(QString name){
     userName = name;
@@ -52,6 +55,7 @@ void passwordscreen::updateAccoutPicture(QString id){
     QPixmap icon;
     QString money;
 
+    database.getPicturePath();
     database.initGetUser();
     while(database.next()){
         if(database.getString(0) == id){
@@ -61,10 +65,7 @@ void passwordscreen::updateAccoutPicture(QString id){
     }
     ui->label_pic->setPixmap(icon);
     ui->label_credit->setText(money);
-
-    qDebug() << id << "id";
     blocked = database.blocked(id);
-    qDebug() << blocked;
     if(blocked == "1"){
         ui->label_credit->setVisible(false);
         ui->label_2->setVisible(false);
@@ -146,10 +147,15 @@ void passwordscreen::on_pushButton_0_clicked()
 
 void passwordscreen::on_pushButton_login_clicked()
 {
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
     Data.open();
     SqlZugriff database;
+    qDebug() << userName << " " << password << " " << userId;
     if(database.checkPassword(userName,password)){
+        Data.close();
         mainWindowPointer->exit(21);
     }
     Data.close();
+    updatePasswordField();
 }

@@ -33,8 +33,11 @@ public:
     double getMaxOverdrawValue();
     bool findGroceriesWithBarcode(QString code);
     QString blocked(QString userId);
+    void getPicturePath();
+    void selectFavorites(QString userId);
 
 private:
      QSqlQuery query;
+     QString picPath;
 };
 #endif // SQLZUGRIFF_H

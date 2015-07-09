@@ -54,6 +54,8 @@ void buywidget::update_label(){
     Database_Link
     Data.open();
     SqlZugriff Database;
+
+    Database.getPicturePath();
     Database.initGetGroceries(sweetsActive);
     QString tmp;
     while(Database.next()){

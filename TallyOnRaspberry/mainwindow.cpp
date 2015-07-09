@@ -8,6 +8,7 @@
 #include "coffesweetsscann.h"
 #include "scanwidget.h"
 #include "favcart.h"
+#include "favwidget.h"
 #include "afterbuyscreen.h"
 #include "sqlzugriff.h"
 #include "showipscreen.h"
@@ -138,28 +139,33 @@ void MainWindow::getUserIDFromLoginScreen(){
 
 void MainWindow::showLoginPasswordWidget(){
     passwordscreen *myPwScreen = new passwordscreen();
-    ui->gridLayout_port->addWidget(myPwScreen);
-    myPwScreen->updateAccoutPicture(userID);
     myPwScreen->setUsername(ui->label_username->text());
-    myPwScreen->setUserId(userID);
+    myPwScreen->setMainWindowPointer(mainWindowPointer,userID);
+    ui->gridLayout_port->addWidget(myPwScreen);
     showFavCart = true;
 }
 QString MainWindow::getUserID(){
     return userID;
 }
-
+void MainWindow::updateFavScreenAmount(){
+    FavWidget *temp = (FavWidget*)ui->gridLayout_port->itemAt(0)->widget();
+    temp->forceFavCartUpdate();
+}
 void MainWindow::showCoffeeSweetWidget(){
     scanString = "";
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
     ui->gridLayout_port->addWidget(myCoffeeWidget);
     myCoffeeWidget->setMainWindowPointer(mainWindowPointer,userID);
-
     if(showFavCart){
+        myCartItems.clear();
+    }
+    if(myCartItems.length() == 0){
         FavCart *myFavCart = new FavCart();
+        myFavCart->setMainWindowPointer(mainWindowPointer,userID);
+        myFavCart->updateItems();
         myCoffeeWidget->setQWidget(myFavCart);
         showFavCart = false;
         favCartVisible = true;
-        myCartItems.clear();
     }else{
         Shoppingcart *cart = new Shoppingcart;
         cart->setMainWindowPointer(mainWindowPointer,userID);
@@ -194,6 +200,10 @@ void MainWindow::updateCartFromScanWidget(){
     ScanWidget *temp = (ScanWidget*)ui->gridLayout_port->itemAt(0)->widget();
     myCartItems = temp->getItems();
 }
+void MainWindow::updateCartFromFavWidget(){
+    FavWidget *temp = (FavWidget*)ui->gridLayout_port->itemAt(0)->widget();
+    myCartItems = temp->getItems();
+}
 void MainWindow::setLogoutButton(bool a){
     ui->pushButton_logout->setEnabled(a);
 }
@@ -202,6 +212,16 @@ void MainWindow::showSweetsWidget(){
 
     myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
+}
+void MainWindow::showFavWidget(){
+    CoffeSweetsScann *c = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
+    QListWidgetItem item = *(c->getFavSelectedItem());
+    item.setData(6,1);
+    item.setText("x01 " + item.text());
+    this->removeWidget();
+    FavWidget *myFavWidget = new FavWidget();
+    myFavWidget->setMainWindowPointer(mainWindowPointer,userID,&item);
+    ui->gridLayout_port->addWidget(myFavWidget);
 }
 void MainWindow::showAfterBuyScreen(){
     AfterBuyScreen *myAfterBuyScreen = new AfterBuyScreen();
@@ -220,6 +240,7 @@ bool MainWindow::showScanWidget(){
     QListWidgetItem *item = new QListWidgetItem();
     Data.open();
     SqlZugriff database;
+    database.getPicturePath();
     bool valid = false;
     if(database.findGroceriesWithBarcode(scanString)){
         item->setData(4,database.getString(0));

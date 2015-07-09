@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     scanwidget.cpp \
     favcart.cpp \
     afterbuyscreen.cpp \
-    showipscreen.cpp
+    showipscreen.cpp \
+    favwidget.cpp
 
 HEADERS  += mainwindow.h \
     loginscreen.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     scanwidget.h \
     favcart.h \
     afterbuyscreen.h \
-    showipscreen.h
+    showipscreen.h \
+    favwidget.h
 
 FORMS    += mainwindow.ui \
     loginscreen.ui \
@@ -47,7 +49,8 @@ FORMS    += mainwindow.ui \
     scanwidget.ui \
     favcart.ui \
     afterbuyscreen.ui \
-    showipscreen.ui
+    showipscreen.ui \
+    favwidget.ui
 
 RESOURCES += \
     myressources.qrc
