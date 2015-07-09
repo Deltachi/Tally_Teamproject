@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QString>
 #include "mainwindow.h"
+#include "favcart.h"
 
 CoffeSweetsScann::CoffeSweetsScann(QWidget *parent) :
     QWidget(parent),
@@ -29,13 +30,6 @@ void CoffeSweetsScann::on_pushButton_sweets_clicked()
     w.setWatchDog();
     mainWindowPointer->exit(32);
 }
-
-void CoffeSweetsScann::on_pushButton_scan_clicked()
-{
-    MainWindow w;
-    w.setWatchDog();
-    mainWindowPointer->exit(33);
-}
 void CoffeSweetsScann::setMainWindowPointer(QApplication *a,QString gUserId){
     mainWindowPointer = a;
     userId = gUserId;
@@ -53,6 +47,10 @@ void CoffeSweetsScann::setQWidget(QWidget *a){
 void CoffeSweetsScann::enableBackButtonOnShoppingcart(bool enable){
     Shoppingcart *cart = (Shoppingcart*)ui->gridLayout_port->itemAt(0);
     cart->disableBackButton();
+}
+QListWidgetItem *CoffeSweetsScann::getFavSelectedItem(){
+    FavCart *fCart = (FavCart*)ui->gridLayout_port->itemAt(0)->widget();
+    return fCart->getSelectedItem();
 }
 Shoppingcart *CoffeSweetsScann::getShoppingcart(){
     QLayoutItem *temp = ui->gridLayout_port->itemAt(0);

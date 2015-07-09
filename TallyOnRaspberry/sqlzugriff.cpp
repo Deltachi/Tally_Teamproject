@@ -125,6 +125,9 @@ void SqlZugriff::getCredit(QString userId){
     query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'");
     query.first();
 }
+void SqlZugriff::selectFavorites(QString userId){
+    query.exec("SELECT * FROM Favorites INNER JOIN Groceries ON Favorites.Grocery_ID=Groceries.Grocery_ID WHERE Favorites.User_ID = '"+userId+"'");
+}
 
 //warning, not working...
 void SqlZugriff::selectAll(QString tab, QString id ,QString number){

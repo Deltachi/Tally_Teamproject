@@ -121,6 +121,9 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showAfterBuyScreen();
                     w.setWatchDog();
+                }else if(exitcode == 35){ //favourite was selected! Go to Favwidget
+                    w.showFavWidget();
+                    state = 6;
                 }else if(exitcode != 100 && exitcode != 98){ //logout == 100
                     return exitcode;
                 }
@@ -173,6 +176,21 @@ int main(int argc, char *argv[])
                 }else if(exitcode != 34 && exitcode != 100){
                     return exitcode;
                 }
+            }break;
+            case 6: { //Favwidget
+                 if(exitcode == 99){ //buy was clicked
+                    w.removeWidget();
+                    w.showAfterBuyScreen();
+                    w.setWatchDog();
+                 }else if(exitcode == 51){ //back was clicked
+                    w.updateCartFromFavWidget();
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                    w.setWatchDog();
+                 }else if(exitcode == 98){
+                    w.updateFavScreenAmount();
+                 }
             }break;
             default: {//something went wrong...
 

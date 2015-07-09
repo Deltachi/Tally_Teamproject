@@ -19,7 +19,7 @@ public:
     explicit passwordscreen(QWidget *parent = 0);
     ~passwordscreen();
     void updatePasswordField();
-    void setMainWindowPointer(QApplication *a,QString tuserId);
+    void setMainWindowPointer(QApplication *a,QString gUserId);
     void setUsername(QString name);
     void updateAccoutPicture(QString id);
     void setUserId(QString gUserId);

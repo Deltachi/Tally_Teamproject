@@ -19,13 +19,12 @@ public:
     void setQWidget(QWidget *a);
     Shoppingcart *getShoppingcart();
     void enableBackButtonOnShoppingcart(bool enable);
+    QListWidgetItem *getFavSelectedItem();
 
 private slots:
     void on_pushButton_coffee_clicked();
 
     void on_pushButton_sweets_clicked();
-
-    void on_pushButton_scan_clicked();
 
 private:
     Ui::CoffeSweetsScann *ui;
