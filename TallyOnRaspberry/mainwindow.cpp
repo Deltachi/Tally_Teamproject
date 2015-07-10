@@ -12,6 +12,7 @@
 #include "afterbuyscreen.h"
 #include "sqlzugriff.h"
 #include "showipscreen.h"
+#include "settingswidget.h"
 #include <QTime>
 #include <QDate>
 #include <QDebug>
@@ -144,6 +145,13 @@ void MainWindow::showLoginPasswordWidget(){
     ui->gridLayout_port->addWidget(myPwScreen);
     showFavCart = true;
 }
+void MainWindow::showSettingsWidget(){
+    this->removeWidget();
+    SettingsWidget *mySettingsWidget = new SettingsWidget();
+    mySettingsWidget->setMainWindowPointer(mainWindowPointer);
+    ui->gridLayout_port->addWidget(mySettingsWidget);
+}
+
 QString MainWindow::getUserID(){
     return userID;
 }

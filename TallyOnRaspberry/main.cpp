@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
                     w.setLogoutButton(true);
                     w.setWatchDog();
                     state = 1;
-                }else if(exitcode != 100 && exitcode != 34){ //logout == 100   something scanned == 34
+                }else if(exitcode != 34 && exitcode != 100){ //something scanned == 34
                     return 0;
                 }
             }
@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
                     w.showCoffeeSweetWidget();
                     state = 2;
                     w.setWatchDog();
-                }else if(exitcode != 100 && exitcode != 34){ //logout == 100   something scanned == 34
+                }else if(exitcode != 34){ //logout == 100   something scanned == 34
                     return exitcode;
                 }
             }break;
@@ -91,18 +91,17 @@ int main(int argc, char *argv[])
                     w.showSweetsWidget();
                     state = 4;
                     w.setWatchDog();
-                }else if(exitcode == 33){ //scan was clicked
-                    w.updateQListCart();
-                    w.removeWidget();
-                    w.showScanWidget();
-                    state = 5;
-                    w.setWatchDog();
                 }else if(exitcode == 51){ //back was clicked -> logout
                     state = 0;
                     w.removeWidget();
                     w.init();
                     w.setLogoutButton(false);
                     w.getWatchDogTime_Database();
+                }else if(exitcode == 36){ //settings was clicked
+                    w.removeWidget();
+                    w.showSettingsWidget();
+                    w.setWatchDog();
+                    state = 7;
                 }else if(exitcode == 34){ //scan
                     w.updateQListCart();
                     w.removeWidget();
@@ -123,8 +122,9 @@ int main(int argc, char *argv[])
                     w.setWatchDog();
                 }else if(exitcode == 35){ //favourite was selected! Go to Favwidget
                     w.showFavWidget();
+                    w.setWatchDog();
                     state = 6;
-                }else if(exitcode != 100 && exitcode != 98){ //logout == 100
+                }else if(exitcode != 98){ //logout == 100
                     return exitcode;
                 }
             }break;
@@ -141,7 +141,7 @@ int main(int argc, char *argv[])
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
                     w.updateBuyscreenAmount();
-                }else if(exitcode != 34 && exitcode != 100){
+                }else if(exitcode != 34){
                     return exitcode;
                 }
             }break;
@@ -158,7 +158,7 @@ int main(int argc, char *argv[])
                     w.setWatchDog();
                 }else if(exitcode == 98){ //item was remove from shoppingcart
                     w.updateBuyscreenAmount();
-                }else if(exitcode != 34 && exitcode != 100){
+                }else if(exitcode != 34){
                     return exitcode;
                 }
             }break;
@@ -173,7 +173,7 @@ int main(int argc, char *argv[])
                     w.removeWidget();
                     w.showAfterBuyScreen();
                     w.setWatchDog();
-                }else if(exitcode != 34 && exitcode != 100){
+                }else if(exitcode != 34){
                     return exitcode;
                 }
             }break;
@@ -192,6 +192,16 @@ int main(int argc, char *argv[])
                     w.updateFavScreenAmount();
                  }
             }break;
+            case 7: { //settings screen
+                if(exitcode == 71){
+                    w.removeWidget();
+                    w.showCoffeeSweetWidget();
+                    state = 2;
+                    w.setWatchDog();
+                }else if(exitcode != 34){
+                    return exitcode;
+                }
+            }
             default: {//something went wrong...
 
             }break;
