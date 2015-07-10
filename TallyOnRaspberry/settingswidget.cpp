@@ -3,12 +3,14 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QProcess>
 
 SettingsWidget::SettingsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SettingsWidget)
 {
     ui->setupUi(this);
+    dirty = false;
 }
 
 SettingsWidget::~SettingsWidget()
@@ -323,6 +325,8 @@ void SettingsWidget::on_pushButton_forward_clicked()
 
 void SettingsWidget::on_pushButton_accept_clicked()
 {
+    dirty = true;
+    ui->pushButton_back->setText("Res LAN");
     if(countSetting == 0){
         this->replaceLineWithText("wpa-ssid \"",text);
     }else{
@@ -342,6 +346,10 @@ void SettingsWidget::on_pushButton_delete_clicked()
 
 void SettingsWidget::on_pushButton_back_clicked()
 {
+    if(dirty){
+        QProcess process;
+        process.start("sudo service networking restart");
+    }
     MainWindowPointer->exit(71);
 }
 

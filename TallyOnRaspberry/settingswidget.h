@@ -63,6 +63,7 @@ private:
     int count;
     int countSetting;
     bool shiftActive;
+    bool dirty;
 };
 
 #endif // SETTINGSWIDGET_H
