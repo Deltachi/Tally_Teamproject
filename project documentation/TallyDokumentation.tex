@@ -622,14 +622,239 @@ Jul 15 16:32:30 raspberrypi sendEmail[4163]: Email was sent successfully!
 \end{lstlisting}
 \end{frame}
 \par
+Damit auch Anh\"ange mit versandt werden k\"onnen muss lediglich das Skript etwas ver\"andert werden
+Hinzu kommt folgender Ausdruck.
+\begin{frame}
 
+\begin{lstlisting}
+# Use third argument as attachment
+if [ -n "$3" ]; then
+  ATTACHMENT="$3"
+else
+  # No attachment specified
+  ATTACHMENT=""
+fi
 
+\end{lstlisting}
+\end{frame}
 
+Somit sieht das Skript wie folgt aus
+\begin{frame}
 
+\begin{lstlisting}
+#!/bin/bash
 
+# Sender of the mail
+SENDER="absender@domain.de"
 
+# Recipient of the mail
+RECIPIENT="empfaenger@domain.de"
 
+# SMTP server
+SMTPSERVER="smtp.domain.de"
 
+# User name on the SMTP server
+SMTPUSERNAME="MeinMailAccount"
+
+# Password on the SMTP server
+SMTPPASSWORD="MeinMailPasswort"
+
+# Enable TLS for the SMTP connection
+USETLS=1
+
+###################################################################
+# NORMALLY THERE IS NO NEED TO CHANGE ANYTHING BELOW THIS COMMENT #
+###################################################################
+
+# Use first argument as mail subject
+if [ -n "$1" ]; then
+  SUBJECT="$1"
+else
+  # No subject specified
+  SUBJECT=""
+fi
+
+# Use second argument as mail body
+if [ -n "$2" ]; then
+  BODY="$2"
+else
+  # No mail body specified
+  BODY=""
+fi
+
+# Use third argument as attachment
+if [ -n "$3" ]; then
+  ATTACHMENT="$3"
+else
+  # No attachment specified
+  ATTACHMENT=""
+fi
+
+# Generate the options list for sendEmail
+OPTIONS=""
+
+if [ -n "${SMTPSERVER}" ]; then
+  OPTIONS="${OPTIONS} -s ${SMTPSERVER}"
+fi
+
+if [ -n "${SMTPUSERNAME}" ]; then
+  OPTIONS="${OPTIONS} -xu ${SMTPUSERNAME}"
+fi
+
+if [ -n "${SMTPPASSWORD}" ]; then
+  OPTIONS="${OPTIONS} -xp ${SMTPPASSWORD}"
+fi
+
+if [ -n "${USETLS}" ]; then
+  if [ ${USETLS} == 1 ]; then
+    OPTIONS="${OPTIONS} -o tls=yes"
+  else
+    OPTIONS="${OPTIONS} -o tls=no"
+  fi
+fi
+
+if [ -n "${ATTACHMENT}" ]; then
+  OPTIONS="${OPTIONS} -a ${ATTACHMENT}"
+fi
+
+# Send the mail with sendEmail
+sendEmail -f ${SENDER} -t ${RECIPIENT} -u "${SUBJECT}" -m "${BODY}" ${OPTIONS}
+
+exit 0
+\end{lstlisting}
+\end{frame}
+Im Befehl zum senden wird nun ein drittes Argument hinzugef\"ugt das den Pfad mit der Datei die zu versenden ist enth\"alt.
+\begin{frame}
+
+\begin{lstlisting}
+mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.tar.gz
+
+\end{lstlisting}
+\end{frame}
+
+\subsubsection{Tally autostarten}
+Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart f\"ur das Programm konfiguriert werden.
+\par
+Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Daf\"ur musste zun\"achst ein kleines Skript geschrieben werden damit das Programm autostarten kann, welches dann in einem cronjob nach jedem hochfahren ausgef\"uhrt wird.
+\begin{frame}
+
+\begin{lstlisting}
+sudo nano /etc/init.d/NameDesSkripts
+\end{lstlisting}
+\end{frame}
+\begin{frame}
+
+\begin{lstlisting}
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides: NAME DES PROGRAMMES
+# Required-Start: $syslog
+# Required-Stop: $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description:
+# Description:
+### END INIT INFO
+ 
+case "$1" in
+  start)
+    echo "NAME DES PROGRAMMES wird gestartet"
+    # Starte Programm
+    /pfad/des/programmes
+    ;;
+  stop)
+    echo "NAME DES PROGRAMMES wird beendet"
+    # Beende Programm
+    killall noip2
+    ;;
+  *)
+    echo "Benutzt: /pfad/des/programmes {start|stop}"
+    exit 1
+    ;;
+esac
+ 
+exit 0
+\end{lstlisting}
+\end{frame}
+
+Danach wird das Skript ausf\"uhrbar gemacht
+\begin{frame}
+
+\begin{lstlisting}
+sudo chmod 755 /etc/init.d/NameDesSkripts
+\end{lstlisting}
+\end{frame}
+Um zu testen ob das Skript auch richtig funktioniert wird es mit folgendem Befehl aufgerufen
+\begin{frame}
+
+\begin{lstlisting}
+sudo /etc/init.d/NameDesSkripts start
+\end{lstlisting}
+\end{frame}
+
+und wieder gestoppt
+\begin{frame}
+
+\begin{lstlisting}
+sudo /etc/init.d/NameDesSkripts stop
+\end{lstlisting}
+\end{frame}
+
+Damit der Raspberry das Skript beim booten l\"adt wird noch folgender Befehl ausgef\"uhrt der das Programm in den passenden Runlevel bringt
+\begin{frame}
+
+\begin{lstlisting}
+sudo update-rc.d NameDesSkripts defaults
+\end{lstlisting}
+\end{frame}
+\par
+
+Als n\"achstes wird das Skript durch einen cronjob jedes mal beim starten des Raspberrys ausgef\"uhrt
+
+\begin{frame}
+
+\begin{lstlisting}
+sudo crontab -e
+\end{lstlisting}
+\end{frame}
+Dazu wurde folgende zeile eingef\"ugt
+\begin{frame}
+
+\begin{lstlisting}
+@reboot \bin\bash .....
+\end{lstlisting}
+\end{frame}
+Das '@reboot' steht f\"ur das ausf\"uhren der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole ge\"offnet wurde startete der cronjob das Skript und somit das Programm.
+\par
+Die beschriebene Methode war lediglich daf\"ur gedacht Programme auszuf\"uhren die keine GUI ben\"otigen. Alle Programme die autostarten sollen und eine GUI ben\"otigen m\"ussen \"uber die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden.
+Dazu erstellt man in folgendem Pfad
+\begin{frame}
+
+\begin{lstlisting}
+/etc/xdg/autostart/
+\end{lstlisting}
+\end{frame}
+eine Datei die wie folgt lauten muss 'NamedesProgramm.desktop'. Wichtig ist das .desktop da sonst das Programm nicht nach dem hochfahren gestartet wird.
+\begin{frame}
+
+\begin{lstlisting}
+[Desktop Entry]
+Name=NamedesProgramm
+Comment=
+Exec=NamedesProgramm -forever -rfbport 5900 -rfbauth ~/.vnc/x11vnc.pass -o ~/.vnc/x11vnc.log -display :0
+Terminal=false
+Type=Application
+\end{lstlisting}
+\end{frame}
+
+Diese Datei wieder ausf\"uhrbar machen
+\begin{frame}
+
+\begin{lstlisting}
+chmod +x x11vnc.desktop
+\end{lstlisting}
+\end{frame}
+Und das gew\"unschte Programm startet nachdem die GUI geladen ist.
 
 
 
