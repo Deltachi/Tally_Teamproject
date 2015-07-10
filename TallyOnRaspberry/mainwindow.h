@@ -35,6 +35,7 @@ public:
     void showSweetsWidget();
     void showCoffeeWidget();
     void showFavWidget();
+    void showSettingsWidget();
     void updateFavWidget();
     void updateCartFromFavWidget();
     void showAfterBuyScreen();

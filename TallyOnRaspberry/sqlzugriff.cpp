@@ -40,6 +40,10 @@ void SqlZugriff::initGetUser(){
 
     query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users");
 }
+void SqlZugriff::initGetUser(QString userId){
+    query.exec("Select * FROM Users WHERE User_ID = '"+userId+"'");
+    query.first();
+}
 
 QString SqlZugriff::getString(int x){
     QString value = "";

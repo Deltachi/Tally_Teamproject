@@ -10,6 +10,7 @@ CoffeSweetsScann::CoffeSweetsScann(QWidget *parent) :
     ui(new Ui::CoffeSweetsScann)
 {
     ui->setupUi(this);
+    ui->pushButton_preferences->setHidden(true);
 }
 
 CoffeSweetsScann::~CoffeSweetsScann()
@@ -33,6 +34,18 @@ void CoffeSweetsScann::on_pushButton_sweets_clicked()
 void CoffeSweetsScann::setMainWindowPointer(QApplication *a,QString gUserId){
     mainWindowPointer = a;
     userId = gUserId;
+
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
+    Data.open();
+    SqlZugriff Database;
+    Database.initGetUser(userId);
+    if(Database.getString(11).toInt() == 4){
+        ui->pushButton_preferences->setHidden(false);
+    }else{
+        ui->pushButton_preferences->setHidden(true);
+    }
+    Data.close();
 }
 void CoffeSweetsScann::setQWidget(QWidget *a){
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
@@ -55,4 +68,9 @@ QListWidgetItem *CoffeSweetsScann::getFavSelectedItem(){
 Shoppingcart *CoffeSweetsScann::getShoppingcart(){
     QLayoutItem *temp = ui->gridLayout_port->itemAt(0);
     return (Shoppingcart*)temp->widget();
+}
+
+void CoffeSweetsScann::on_pushButton_preferences_clicked()
+{
+    mainWindowPointer->exit(36);
 }

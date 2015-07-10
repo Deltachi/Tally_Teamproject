@@ -14,6 +14,7 @@ public:
     SqlZugriff();
     ~SqlZugriff();
     void initGetUser();
+    void initGetUser(QString userId);
     bool next();
     QString getName(QString ID);
     QString getString(int x);
