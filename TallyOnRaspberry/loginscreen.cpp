@@ -36,6 +36,7 @@ void LoginScreen::update_name_label(){
     Database_Link
     Data.open();
     SqlZugriff Database;
+    Database.getPicturePath();
     Database.initGetUser();
     QString tempID;
     while(Database.next()){

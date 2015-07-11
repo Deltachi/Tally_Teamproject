@@ -34,9 +34,14 @@ public:
     void updateCartFromScanWidget();
     void showSweetsWidget();
     void showCoffeeWidget();
+    void showFavWidget();
+    void showSettingsWidget();
+    void updateFavWidget();
+    void updateCartFromFavWidget();
     void showAfterBuyScreen();
     void showIpScreen(QString text);
     void setWatchDog();
+    void updateFavScreenAmount();
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();

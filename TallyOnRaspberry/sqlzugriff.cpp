@@ -11,6 +11,11 @@ SqlZugriff::SqlZugriff()
 {
 }
 
+void SqlZugriff::getPicturePath(){
+    query.exec("SELECT Value from Settings WHERE Setting_ID = '""3""'");
+    query.first();
+    picPath = query.value(0).toString();
+}
 QString SqlZugriff::getWatchDogtime(){
     query.exec("Select Value from Settings WHERE Setting_ID = '""1""'");
     QString value = "";
@@ -34,6 +39,10 @@ bool SqlZugriff::findGroceriesWithBarcode(QString code){
 void SqlZugriff::initGetUser(){
 
     query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users");
+}
+void SqlZugriff::initGetUser(QString userId){
+    query.exec("Select * FROM Users WHERE User_ID = '"+userId+"'");
+    query.first();
 }
 
 QString SqlZugriff::getString(int x){
@@ -120,6 +129,9 @@ void SqlZugriff::getCredit(QString userId){
     query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'");
     query.first();
 }
+void SqlZugriff::selectFavorites(QString userId){
+    query.exec("SELECT * FROM Favorites INNER JOIN Groceries ON Favorites.Grocery_ID=Groceries.Grocery_ID WHERE Favorites.User_ID = '"+userId+"'");
+}
 
 //warning, not working...
 void SqlZugriff::selectAll(QString tab, QString id ,QString number){
@@ -129,7 +141,7 @@ void SqlZugriff::selectAll(QString tab, QString id ,QString number){
 
 QPixmap SqlZugriff::getPixmap(int x){
     QPixmap icon;
-    QString path = query.value(x).toString();
+    QString path = picPath + query.value(x).toString();
     icon.load(path);
     return icon;
 }

@@ -36,6 +36,12 @@
        <pointsize>20</pointsize>
       </font>
      </property>
+     <property name="iconSize">
+      <size>
+       <width>55</width>
+       <height>55</height>
+      </size>
+     </property>
     </widget>
    </item>
    <item row="0" column="0">

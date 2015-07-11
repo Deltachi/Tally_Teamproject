@@ -82,7 +82,10 @@ void Shoppingcart::addItem(QListWidgetItem *item){
         ui->listWidget->item(i)->setText(newText);
     }else{
         QListWidgetItem *tempItem = new QListWidgetItem();
-        *tempItem = *item;
+        tempItem->setData(4,item->data(4));
+        tempItem->setData(5,item->data(5));
+        tempItem->setData(6,item->data(6));
+        tempItem->setText(item->text());
         tempItem->setTextColor(QColor(0,0,0,255));
         ui->listWidget->addItem(tempItem);
     }
