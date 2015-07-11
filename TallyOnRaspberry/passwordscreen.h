@@ -57,6 +57,7 @@ private:
     QString password;
     QSqlDatabase Data;
     QString blocked;
+    bool tempBlocked;
 };
 
 #endif // PASSWORDSCREEN_H

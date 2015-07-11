@@ -4,6 +4,8 @@
 #include <QFileInfo>
 #include <QString>
 #include <QtSql>
+#include <QTime>
+#include <QDate>
 #include <QMessageBox>
 #include "mainwindow.h"
 
@@ -88,18 +90,36 @@ QString SqlZugriff::getName(QString ID){
     return ausgabe;
 }
 bool SqlZugriff::checkUserLoginCount(QString userId){
-    if(query.exec("SELECT Count, Timestamp FROM Login_Requests WHERE User_ID = '"+userId+"'"));
+    if(query.exec("SELECT Login_Attempts, Timestamp FROM Users WHERE User_ID = '"+userId+"'"));
     else throwError();
+    bool valid;
     if(query.next()){
         if(query.value(0).toInt() < 3){
-            return true;
+            valid = true;
         }else{
-            query.exec("UPDATE Login_Requests SET Timestamp");
+            QDateTime date = query.value(1).toDateTime();
+            if(date.time().msecsTo(QDateTime::currentDateTime().time()) > 60000){ //wait some time
+                valid = true;
+            }else{
+                valid = false;
+            }
         }
+    }else{
+        valid = true;
     }
-
-    return false;
+    return valid;
 }
+void SqlZugriff::updateLoginAttempt(QString userId, bool valid){
+    QString date(QDate::currentDate().toString(Qt::ISODate));
+    date.append(' ' + QTime::currentTime().toString());
+    query.exec("UPDATE Users SET Timestamp ='"+date+"' WHERE User_ID='"+userId+"'");
+    if(valid){
+        query.exec("UPDATE Users SET Login_Attempts ='0' WHERE User_ID='"+userId+"'");
+    }else{
+        query.exec("UPDATE Users SET Login_Attempts = Login_Attempts + '1' WHERE User_ID='"+userId+"'");
+    }
+}
+
 bool SqlZugriff::checkPassword(QString userId, QString password){
     if(query.exec("SELECT Username FROM Users WHERE User_ID=\'" + userId +
                "\' AND Password=\'" + password + "\'")){

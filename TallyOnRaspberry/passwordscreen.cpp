@@ -9,6 +9,7 @@ passwordscreen::passwordscreen(QWidget *parent) :
     ui(new Ui::passwordscreen)
 {
     ui->setupUi(this);
+    tempBlocked = false;
 }
 
 passwordscreen::~passwordscreen()
@@ -26,9 +27,21 @@ void passwordscreen::updatePasswordField(){
     Database_Link
     Data.open();
     SqlZugriff database;
-    if(database.checkPassword(userId,password) && blocked != "1"){
-        Data.close();
-        mainWindowPointer->exit(21);
+    if(database.checkUserLoginCount(userId)){
+        if(tempBlocked){ //was user blocked before?
+            ui->label_credit->setText(" ");
+            ui->label_name->setText(" ");
+            tempBlocked = false;
+        }
+        if(database.checkPassword(userId,password) && blocked != "1" && database.checkUserLoginCount(userId)){
+            database.updateLoginAttempt(userId,true);
+            Data.close();
+            mainWindowPointer->exit(21);
+        }
+    }else{
+        ui->label_name->setText("Error:");
+        ui->label_credit->setText("Temp blocked.");
+        ui->label_2->setVisible(false);
     }
     Data.close();
     MainWindow w;
@@ -135,6 +148,20 @@ void passwordscreen::on_pushButton_back_clicked()
 {
     password.clear();
     updatePasswordField();
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
+    Data.open();
+    SqlZugriff database;
+    database.updateLoginAttempt(userId,false);
+    if(!database.checkUserLoginCount(userId)){
+        Data.close();
+        ui->label_name->setText("Wrong login!");
+        ui->label_credit->setText("Temp blocked.");
+        ui->label_2->setVisible(false);
+        tempBlocked = true;
+        return;
+    }
+    Data.close();
 }
 
 void passwordscreen::on_pushButton_0_clicked()
@@ -151,9 +178,18 @@ void passwordscreen::on_pushButton_login_clicked()
     SqlZugriff database;
     qDebug() << userName << " " << password << " " << userId;
     if(database.checkPassword(userName,password)){
-        Data.close();
-        mainWindowPointer->exit(21);
+        if(database.checkUserLoginCount(userId)){
+            database.updateLoginAttempt(userId,true);
+            Data.close();
+            mainWindowPointer->exit(21);
+        }else{
+            ui->label_name->setText("Wrong login!");
+            ui->label_credit->setText("Temp blocked.");
+            ui->label_2->setVisible(false);
+            tempBlocked = true;
+        }
     }
+    database.updateLoginAttempt(userId,false);
     Data.close();
     updatePasswordField();
 }

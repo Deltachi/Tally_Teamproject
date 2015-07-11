@@ -35,6 +35,7 @@ public:
     QString blocked(QString userId);
     void getPicturePath();
     bool checkUserLoginCount(QString userId);
+    void updateLoginAttempt(QString userId, bool valid);
     void selectFavorites(QString userId);
     void throwError();
 
