@@ -33,7 +33,7 @@ void passwordscreen::updatePasswordField(){
             ui->label_name->setText(" ");
             tempBlocked = false;
         }
-        if(database.checkPassword(userId,password) && blocked != "1" && database.checkUserLoginCount(userId)){
+        if(database.checkPassword(userId,password) && blocked != "1" && database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
             database.updateLoginAttempt(userId,true);
             Data.close();
             mainWindowPointer->exit(21);

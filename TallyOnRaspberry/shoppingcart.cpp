@@ -162,7 +162,5 @@ void Shoppingcart::on_pushButton_buy_clicked()
 
         Data.close();
         MainWindowPointer->exit(99);
-    }else{
-        qDebug() << "Not enough money";
     }
 }

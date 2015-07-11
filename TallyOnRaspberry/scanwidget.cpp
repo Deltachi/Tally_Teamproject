@@ -41,7 +41,6 @@ QList<QListWidgetItem> ScanWidget::getItems(){
 void ScanWidget::on_pushButton_plus_clicked()
 {
     if(count < maxAmount){
-        qDebug() << count;
         count++;
         ui->label_anzahl->setText(QString::number(count));
     }

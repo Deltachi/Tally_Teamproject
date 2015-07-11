@@ -1,0 +1,286 @@
+4.X 
+Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt.
+Qt ist eine Klassenbibliothek von C++ und bietet die Programmierung für  graphische Benutzeroberfläche und Datenbankfunktionen.
+Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel sind.
+Als Debugger haben wir GNU gdb 7.8 für MinGW 4.9.1 gewählt.
+
+Programmiert wird hauptsächlich auf einem PC, da dieser schneller debuggen kann.
+Darüber hinaus musste der Raspberry PI 2 noch konfiguriert werden, wie in 4.1 beschrieben, wodurch ein zeitgleiches arbeiten erschwert wäre.
+Es wurde sich darauf geeinigt das Programm zu Demonstrationszwecke, während den Teammeetings, auf dem Raspberry PI 2 laufen zu lassen.
+Zum Ende des Projekts, sobald die Konfiguration beendet ist, sollten wir denn Raspberry PI 2 bekommen um die Benutzeroberfläche letztendlich anpassen zu können.
+
+Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir eine herausgearbeitet, welche in dem Plichtenheft zu sehen ist.
+Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
+Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
+Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
+Außerdem ist uns Aufgefallen das  sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was Benutzerunfreundlich ist.
+Aus diesen beiden Gründen wurde die komplette Benutzeroberfläche überarbeitet.
+Die Knopfgröße und die Schriftgröße mussten vergrößert werden als auch das Knöpfe, aufgrund Platzmangels, weggelassen werden mussten.
+Die Screens sollten aber erst beim Programmieren festgelegt werden  um evtl. Hürden zu meistern.
+Außerdem wussten wir zu diesem Zeitpunkt noch nicht, welches Display für den Raspberry Pi 2 gewählt wird.
+Die endgültige Benutzeroberfläche befindet sich unter dem Unterpunkt Funktionen des Programmes.
+
+Nach dem die ersten Funktionen des Login-Screens und des Passwort-Screen implementiert wurden, wurde begonnen die Datenbank mit einzuarbeiten.
+Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen welche Tabellen angelegt werden  und womit diese befüllt werden.
+Eine genaue Beschreibung der Datenbank befindet sich unter Abschnitt 5.XXX .
+Nachdem wir uns auf die Datenbank geeinigt haben, wurde diese in das Programm implementiert.
+Zu diesem Zeitpunkt wurde noch nicht mit einer eindeutigen ID jedes Benutzer gearbeitet sondern mit seinem Namen, was später zu Komplikationen führen würde.
+Zeitgleich zum Login-Screen und dem Passwort-Screen wurden alle, die bis zu diesem Zeitpunkt erarbeitete Screen oberflächlich implementiert.
+So konnten man zu diesem Zeitpunkt sich anmelden, (die Daten dafür wurden aus der Datenbank genommen) und konnte sich über alle Screens klicken, auch wenn die meisten keine Funktionen hatten.
+
+Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID die der eingeloggten Person global im Programm bekannt gemacht werden .
+Dies haben wird entweder über get-Funktionen realisiert oder beim Erzeugen eines neuen Screens mitgegeben.
+Daraufhin konnten die restlichen Funktionen implementieren werden.
+Als erstes wurden die Tabellen implementiert in welche alle kaufbaren Artikel aufgelistet werden.
+Die Information über die Artikel konnten über die Datenbank in Erfahrung gebracht werden.
+Nachdem die Tabellen mit Artikeln vorhanden waren, wurde mit dem Hauptaspekt des Programmes begonnen, dem Kaufvorgang.
+
+Für den Kaufvorgang ist hauptsächlich das Shoppingcart verantwortlich. Sobald ein Artikel dort liegt, wird es immer auf dem rechten Teil des Bildschirmes angezeigt.
+Außerdem ist es dafür verantwortlich, dass wenn Artikel gekauft werden, den Kaufvorgang abzuschließen.
+Dies bedeutet vor allem, dass die Datenbank mit neuen Informationen gefüllt wird. Einerseits wird die Anzahl der entsprechenden Artikel geändert und das Konto des Käufers belastet.
+Dies bürgte eine große Hürde. Das Problem mit der Synchronität des Shoppingcart über den gesamten Einkauf.
+Jedes Mal wenn der Zustannd gewechselt wurde(siehe Aufbau des Programmes), wurde das Shoppingcart gelöscht und damit auch der Inhalt.
+Das Shoppingcart ist ein eigenständiges Teil Programmes und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
+Dies tut es allerdings nicht und wird jedes Mal gelöscht, wenn sich der Zustand ändert.
+Da wir das Problem nicht finden konnten, warum es sich jedes Mal mit löscht, wird nun beim Verlassen des Zustandes eine Liste mitgegeben in der alle Artikel gespeichert sind die im Shoppingcart lagen.
+Mit dieser Liste wird ein neues Shoppingcart erzeugt in der diese Artikel liegen.
+
+Nachdem diese Hürde genommen wurde, gab es nur noch wenige Funktionen die noch implementiert werden mussten.
+Bis zu diesem Zeitpunkt wurde das Programm fast ausschließlich auf einem PC programmiert, debugt und auch die Größen wurden auf diesen angepasst, wie bereits anfangs erwähnt.
+Deswegen war der nächste Schritt die Benutz Oberfläche, mit dem Raspberry PI 2 und dem neuen Display, anzupassen.
+Zusätzlich wurde auch der Barcode Scanner implementiert, was kein Problem dargestellt hat, da sich das Signal des Barcode Scanners verhält wie ein Tastendruck mit der Tastatur. Qt stellt für solche Signale bereits Funktionen.
+Somit war das Programm so gut wie fertig. Es fehlten nur noch ein paar kleine Funktionen und vor allem musste noch eventuelle Bugs entfernt werden.
+Alle Funktionen des Programmes wurden nicht während dieses Abschnittes erfasst, da dies den Umfang dieser Dokumentation sprengen würde.
+Alle wichtigen Funktionen wurde erwähnt und gegebenenfalls erläutert, vor allem in dem Abschnitt Funktionen des Programmes werden alle wichtigen erwähnt und was das Programm leistet.
+
+
+
+4.XXX Aufbau des Programmes
+Das Programm wurde in 13 Klassen und einer main unterteilt.Im folgendem werden die einzelnen Klassen erläutert.
+Allgemein läuft das Programm nach einem Automaten ab. Der Bildschirm wurde in zwei Bereiche unterteilt, wodurch nicht bei jedem Zustandswechsel der komplette Bildschirm neu geladen werden muss, sondern nur der betreffende Teil.
+Dadurch Teilen wir den Bildschirm in die Kopfzeile und der Automatenbereich. Näheres dazu wird in den dementsprechenden Klassen erläutert.
+main.cpp :
+	Die main.cpp ist verantwortlich für den Ablauf des Programmes. Die Struktur dafür ist aufgebaut wie ein Mealy-Automat.Die Zustände geben an welcher Bildschirm gerade angezeigt wird. Die Übergänge sind die Exitcodes.
+	Die Ausgaben der kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.-->(MEALYAUTOMATBILD)<--
+	Exitcodes erlaubt es Programmen bei bestimmten Events(z.B. ein Knopf wurde geklickt) wieder zurück in die main.cpp zu erlangen.
+	 -->mainWindowPointer->exit(21); (EINGERÜCKT)<--
+	Es wird Anfangs die Ip ermittelt und diese auf einem eigenen Screen angezeigt.
+	-->QTcpSocket socket;
+    QString ip;
+    socket.connectToHost("8.8.8.8", 53); // google DNS, or something else reliable
+    if (socket.waitForConnected()) {
+        ip = socket.localAddress().toString();
+    } else {
+        ip = socket.errorString();
+    }
+    w.showIpScreen(ip);(EINGERÜCKT)<--
+	Zustände:
+		0 : Es wird der Login-Screen auf dem Bildschirm gezeigt.
+			Exitcode: 
+				10 : Es wurde der Benutzer gewählt und möchte sich nun mit dem Account anmelden.
+				!10 & !100 % !34 : Das Programm beendet sich.
+				
+		1 : Es wird der Passwort-Screen auf dem Bildschirm angezeigt.
+			Exitcode:
+				20 : Es wurde auf den "Back" Knopf gedrückt gelangt in Zustand 0.
+				21 : Das Passwort wurde korrekt eingegeben und man gelangt zum Coffee/Sweet/Scan Menü.
+				!20 & !21 & !100 & !34 : Das Programm beendet sich.
+				
+		2 : Es gibt die Auswahlpunkte zwischen Coffee/Sweets/Scan als auch die Favoriten oder das Shoppingcart.
+			Exitcode:
+				31 : Es wurde auf "Coffee" geklickt und man gelangt zur Getränkeliste mit dem Shoppingcart.
+				32 : Es wurde auf "Sweets" geklickt und man gelangt zur Süßigkeitenliste mit dem Shoppingcart.
+				34 : Es wurde ein Artikel gescannt und wird in das Scan_Menue geleitet mit dem Shoppingcart.
+				35 : Es wurde auf "Favoriten" geklickt und man gelangt in den Favoriten-Screen.
+				36 : Es wurde auf "Settings" geklickt und wird in das Settingsmenue geschickt.
+				51 : Es wurde auf "Back" geklickt und man wird automatisch ausgeloggt.
+				99 : Es wurde auf "Buy" geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen Sekunden dann wieder in den Login-Screen.
+				!31 & !32 & !33 ! & !34 & !99 & !100 & !98 : Das Programm beendet sich.
+				
+		3 : Es wird die Getränkeliste mit dem Shoppingcart gezeigt.
+			Exitcode:
+				51 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
+				99 : Es wurde auf "Buy" geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen Sekunden dann wieder in den Login-Screen.
+				98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Getränkeliste aufgelistet.
+				
+		4 : Es wird die Süßigkeitenliste mit dem Shoppingcart gezeigt. 
+			Exitcode:
+				51 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
+				99 : Es wurde auf "Buy" geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen Sekunden dann wieder in den Login-Screen.
+				98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Süßigkeitenliste angezeigt.
+			
+		5 : Es wird das Scan-Menue angezeigt.
+				51 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
+				99 : Es wurde auf "Buy" geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen Sekunden dann wieder in den Login-Screen.
+		
+		6 : Es wird das Shoppingcart als auch die Favoriten angezeigt.
+				99 : Es wurde auf "Buy" geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen Sekunden dann wieder in den Login-Screen.
+				51 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
+				98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Favoritenliste angezeigt.
+				
+		7 : Es werden die Settings angezeigt(Nur als Admin)
+				71 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
+
+mainwindow.cpp :
+	Wie bereits erwähnt haben wir die Oberfläche in zwei Teile unterteilt, in welche dann Widget hinzugefügt und entfertn werden könnemn. 
+	Für diese Unterteilung ist die mainwindow.cpp verantwortlich als auch noch für andere Funktionen.-->(BILD1)<--
+	Die Kopfzeile wird erzeigt und dann nur noch verändert, bezüglich Datum,Zeit,Name und ob der Logout-Button aktiv ist.
+	Der Automatenbereich wird mit jedem Zustanswechsel verändert.
+	Durch die Funktion -->removeWidget()(EINGERÜCKT)<-- werden alle Widget die sich im Automatenbereich befindet entfernt, wodurch neue Widget dort gesetzt werden können.
+	Jeder Screen besitzt eine Funktion names setMainWindowPointer. In diesem wird der Bezug zwischen dem Screen und dem mainwindow hergestellt.
+	Außerdem wird dieser Funktion auch die User_Id mitübergeben, damit in der Klasse die User_id des angemeldeten Benutzers bekannt ist.
+	-->setMainWindowPointer(QApplication *a,QString gUserId)(EINGERÜCKT)<--
+	Alle Funktionen die mit -->show(EINGERÜCKT)<-- beginnen, sind dafür da die entsprechenden Widget in dem Fenster zu erstmalig zu zeigen.
+	Die Funktionen die mit -->update(EINGERÜCKT)<-- beginne, updaten die entsprechend widget, damit man diese nicht erst löschen muss und dann wieder neue erzeugen.
+	Im Konstruktor der Klasse wird erstmalig die Uhrzeit und das Datum ermittelt. Dies funktioniert über die von Qt zur verfügung gestellten Klassen QTime und QDate.
+	Diese Funktionen ermitteln die aktuelle Zeiten über das Betreibssystem, über welches Qt momentan läuft und gibt dieses in einem, vom Programmierer gewählten Format, zurück.
+	-->QTime qtime = QTime::currentTime();(EINGERÜCKT)<--
+	-->QString stime = qtime.toString(Qt::LocalDate);(EINGERÜCKT)<--
+	Zusätzlich bietet QTime noch die Funktion -->timerEvent(QTimerEvent *event)(EINGERÜCKT)<--.
+	Diese Funktion wird jede Sekunde ausgeführt. Dadurch wird ein Zähler erzeugt denn wir für mehrere Funktionen genutzt haben.
+	Einerseits wird die Zeit jede Sekunde aktualisiert um die aktuelle Uhrzeit auf der Oberfläche anzeigen zu lassen.
+	Andererseits nutzten wir den Zähler auch für den Watchdog. Diese wird jede Sekunde einen hochgesetzt. Wenn eine gewisse Anzahl, welche in den Setting(Datenbank) angegeben ist, erreicht, 
+	wird der Benutzer automatisch abgemeldet und man landet wider in dem Login-Screen. Bei jedem Tastendruck, unabhängig in welchem Screen man sich befindet, wird der Watchdog wieder zurückgestellt.
+	
+	Zusätzlich wird auch die, von Qt zur Verfügung gestellt Klasse QKeyEvent verwendet. In der Funktion -->keyPressEvent(QKeyEvent *ev)(EINGERÜCKT)<-- wird ein Tastendruck der Tastur erfasst und wird an einen String angehangen.
+	Sobald "Enter" gedrückt wird wird ein Exitcode geworfen. Diese Funktion realisiert den Barcode-Scanner. 
+	Das Signals des Barcode_Scanners verhält sich wie ein Signal von der Tastatur und beendet den eingelesen Code mit einem "Enter". Mit dieser Funktion ist der Barcode_scanner implementiert.
+	
+loginscreen.cpp : 
+	Im Login-Screen werden auf der Linken Seite alle Benutzer aufgelistet die in der Datenbank vorhanden sind. Dies geschieht über eine QListWidget in welche QListWidgetItem's hinzugefügt wird.
+	In den QListWidgetItem's werden die Werte der Benutzer gespeichert, wlche über die Datenbank eingefortdert wurden. 
+	-->QListWidgetItem *item = new QListWidgetItem();      //Erzeugen eines Benutzers
+       item->setData(4,Database.getString(0).toInt());     //User_Id wird an vierter Position gespeichert
+       item->setIcon(Database.getPixmap(3));               //Bild des Benutzers wird gespeichert
+       item->setText(Database.getString(2));               //Nichname des Benutzers wird gespeichert
+       ui->listWidget->addItem(item);                      //Neuer Benutzer wird in die Tabelle hinzugefügt(EINGERÜCKT)<--
+
+	Auf der rechten Seite erscheint eine Tastatur. Auf den 8 Knöpfen verteilt stehen die Buchstaben des Alpabhets. Jeweils 3 oder 4 Buchstaben pro Knopf.
+	Nun kann man seinen Account in der Liste suchen. Entweder man scrollt in der Liste so lange bis man sich gefunden hat oder man gibt seinen Namen, rechts auf der Tastatur ein.
+	Auf der Tastatur muss man seinem Namen mitHilfe seines T9 Codes eingeben. Dies bedeuted jeder Buchstabe in seinem Namen wird durch eine Zahl ersetzt(Zahl laut Tastatur), 
+	wodurch die Namen auf der rechten Seite verschwinden, die keine Teil des bisher Eingegebenen Codes sind.
+	Realisiert haben wir dies, indem von jedem Benutzer der T9_Code in der Datenbank gespeichert ist und nun mitHIlfe des compare()Befehls von QString verglichen wird.
+	-->if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank  (EINGERÜCKT)<--
+	
+	Wenn der Benutzer seinen Account gefunden hat kann er auf diesen klicken und gelangt automatisch in denn Passwort-Screen.
+	Auserdem wird bei diesem Befehl, die User_Id gespeichert, womit andere Funktionen wissen welcher Bemnutzer sich anmelden möchte ´	
+	
+passwordscreen.cpp : 
+	Im PasswordScreen erscheint auf der linken Seite, das Bild als auch der Credit des Benutzers. Auf der Rechten Seite befindet sich eine Tastatur mit den Zahlen von 0 bis 9, wodurch der Benutzer sich anmelden kann.
+	Wenn der Benutzer sein Passwort korrekt eingegeben hat, wird bei der Datenbankabfrage bezüglich Benutzer und Passwort , den Wert true zurückgeben und man wird automatisch in den den Coffee/Sweet/Scan -Screen weitergeleitet.
+	-->if(database.checkPassword(userId,password) && blocked != "1" && database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
+            database.updateLoginAttempt(userId,true);
+            Data.close();
+            mainWindowPointer->exit(21);<--(EINGERÜCKT)<--
+			
+	Außerdem wurde der Zeitstempel für den User gesetzt. 
+	Falss sich der Benutzer drei mal mit dem Falschen Passwort anmelden wollte wird dieser Account für 60 Sekunden geblocket.
+	Dies geschieht in dem wir, bei den letzten misslungten einloggen den Zeitstempel speichern und einen Zähler erhöhen(beide Werte werden in der Datenbank gespeichert).
+	Nun wird bei jedem misslungten einloggen der Zähler erhöht. Wenn dieser die drei erreicht, wird der account für 60 Sekunden gespeert.
+	Sobald man sich einmal richtig einloggt wird der Zeitstempel aktualisiert und der Zähler wider auf 0 gesetzt. Die Funktion für die Datenbankänderung gibnt die Klasse sqlzugriff, wobei die Abfrage über eine if-Anweisung geklärt wird.
+	-->if(database.checkPassword(userName,password))(EINGERÜCKT)<--
+	
+	Falls der Benutzer gesperrt ist, wird anstelle des Credits, die Nachricht angezeigt "User blocked" angezeigt.
+	-->ui->label_name->setText("User blocked");(EINGERÜCKT)<--
+	Falls der Benutzer nur kurzeitig gespeert ist aufgrund zu häufiger Eingabe des falschen Passwortes, wird dieser auch geblockt.
+	Dann erscheint ansttele des Credits "Wrong login!" und "Temp blocked."
+	Es wird eine Loginversuch immer dann als gescheitert definiert, wenn der Benutzer Login drückt und ein falsches Passwort eingegeben wurde und dann, wenn auf delete gedrückt wurde.
+	
+favwidget.cpp :
+	Diese Klasse beinhaltet den Screen der Favoriten.Diese enthält die Funktion setMainWindowPointer wodurch es die Schnittstelle liefert zwischen mainwindow.cpp und der favcart.cpp.
+	
+favcart.cpp & buywidget.cpp :
+	favcart.cpp zeigt die Favoriten an des jeweiligen Benutzers. buywidget.cpp zeigt entweder die Getränkeliste oder die Süßigkeitenlsite an.
+	Welcher der beiden Liste gezeigt wird, wird dem der Funktion über die setMainwindowPointer Funktion bekanntgegeben.
+	-->setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId)(EINGERÜCKT)<--
+	Wenn der bool Wert true ist wird die Süßigkeitenliste angezeigt, andernfalls die Getränkeliste. Die Werte dafür werden jeweils aus der Datenbank gezogen.
+	
+	Beiden Klassen sind gleich Aufgebaut. Sie besitzen ein Tabelle wo alle Artikel aufgelistet sind. Dies wird über eine QListWidget organisiert wie bereits die Namen im Login-Screen.
+	In den QListWidgetItem's sind folgende Werte an deren Position gespeichert:
+	- Der Name der Artikels wird der Name des QListWidgetItem's (item->setText(name);)
+	- Das Bild des Artikels hat einen extra Platz im QListWidgetItem (item->setIcon(picture);)
+	- An der vierten Stelle wird die Artikel ID gespeichert (item->setData(4,itmeID);)
+	- An der fünften Stelle wird der Preis des Artikels gespeichert (item->setData(5,price);)
+	- An der sechsten Stelle wird die Menge gespeichert die noch vorrätig ist (item->setData(5,amount);)
+
+	An den ersten drei Stellen sind wir uns nicht sicher was dort gespeichert wird.
+	Wir können nichts darauf expliziet speichern und wenn wir ausgeben lassen was dort gespeichert ist, bekommen wir einen leeren String zurück.
+	
+	Zusätzlich verändert sich die Farbe bei unterscheidlichen Beständen. Bei nur noch einem vorhanden Element wird der Name Rot angezeigt und bei unter 6 Elementen ändert sich die Farbe des Testes auf Gelb.
+	
+coffesweetsscann.cpp :
+	In diesem Screen hat an die Möglichkeit zu wählen, zwischen der Getränkeliste und der Süßigkeitenliste. Gegebenenfalls bei Adminrechte auch den Button für die Settings.
+	Diese Auswahlmoglichkeiten stehen auf der Rechten Seite und können durch anklicken ausgewählt werden. 
+	Auf der linken Seite befindet sich entweder das Shoppingcart, falls in diesem Items liegen oder falls das Shoppingcart leer ist, steht dort die Favoriten.
+	
+shoppingcart.cpp :
+	Das shoppingcart ist verantwortlich für den eigentlichen kauf. Es kombinbiert die Einkäufe aus den beiden Einkaufslisten, den eingescannten Artikeln und die aus dem Favoriten.
+	Das Shoppingcart selber ist wider eine QListWidget mit QListWidgetItem's, wie bereits mehrmals verwendet.
+	Mit der Funktion -->void Shoppingcart::updatePrice()(EINGERÜCKT)<-- wird der Preis aller Artikel im Shoppingcart aktualisiert. 
+	-->while(ui->listWidget->item(loop) != NULL){
+       tempItem = ui->listWidget->item(loop);
+       price = price + (tempItem->data(5).toDouble() * tempItem->data(6).toInt());
+       loop++;
+    }(EINGERÜCKT)<--
+	Falls der angemeldete Account nicht genügend Guthaben zur Verfügung steht wird der Preis rot markiert und es kann auch nicht eingekauft werden.
+	Guthaben wird über die Datenbank ermittelt und in der Settings-Tabelle der Datenbank steht die Information um wie viel man sein Konto überziehen darf.
+	Dies geschieht über die Funktion -->bool Shoppingcart::hasEnoughCredit(QString userId,double price)(EINGERÜCKT)<--
+	Über die Funktion -->void Shoppingcart::addItem(QListWidgetItem *item)(EINGERÜCKT)<-- wird ein Elemt in das Shoppingcart hinzugefügt.Außerdem wird Anzahl an ausgewählten Artikel auch in den Liste verringern .
+	Dadurch synchronität der Lsiten, wodurch es nicht mehr Artikel existieren als in der Datenbak angegeben.(Frieling bitte Fuüge hier die dementsprechenden CodeZeilen ein!!!)
+	Die Funktion-->void Shoppingcart::on_pushButton_buy_clicked()(Eingabe)<--  wickelt die kaufabwicklung ab. Diese öffnet die Datenbank. ändert den Credit des Benutzers
+	--> Database.updateCredits(userId,QString::number(credits.toDouble()-price));(EINGERÜCKT)<--. 
+	Außerdem reduziert es die Artikelmenge in der Datenbank um die Anzahl, wie viele gekauft wurden und trägt die Käufe in den ConsumIndex-Tabelle, als auch in die Sell-History ein.
+	-->Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
+	   Database.addSell(userId,tempItem->data(4).toString(),tempItem->data(6).toString(),tempItem->data(5).toString());
+       Database.updateConsumeIndex(userId,tempItem->data(4).toString(),tempItem->data(6).toString());(EINGERÜCKT)<--
+	   
+scanwidget.cpp :
+	Das Klasse wird erzeugt sobald ein Artikel eingescannt wurde, währrend man in Zustand 2 sich befindet.
+	Bei dieser MainWindowPointer Funktion wird noch zusätzlich der eingescannte Artikel, bereits als QListWidgetItem, mit übergeben, als auch das Shoppingcart.
+	Der Eingescannte Artikel erscheit auf der linken Seite in einem QListWidget, wähhrend auf der rechten Seite das Shoppingcart angezeigt wird.
+	Durch die Funktionen -->void ScanWidget::on_pushButton_plus_clicked()(EINGERÜCKT)<-- und -->void ScanWidget::on_pushButton_minus_clicked()(EINGERÜCKT)<-- wird die Anzahl des Artikel erhöht bzz verringert.
+	Durch die Funktion -->void ScanWidget::updateAmountEveryItem()(EINGERÜCKT)<-wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
+	Durch die Funktion -->void ScanWidget::on_pushButton_add_clicked()(EINGERÜCKT)<-- wir der eingescannte Artikel in das Shoppigcart hinzugefügt.
+	-->ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,"x0" + QString::number(count) + " "));(EINGERÜCKT)<--	
+		
+sqlzugriff.cpp : 
+	Diese Klasse ist verantwortlich für die Datenbankzugriffe.
+	Ein Zugriff funktioniert wie folgt:
+	Man erzeugt zuerst eine Schlange vom Typ QSqlQuery . In diese werden später die gefunden Elemente aus der Datenbank gespeichert. Nun kann man mit der Funktion .exec auf bestimmte Teile der Datenbank zugreifen.
+	-->QSqlQuery query;(EINGERÜCKT)<--
+	-->query.exec("SELECT Value from Settings WHERE Setting_ID = '""3""'");(EINGERÜCKT) <--
+	An der Stelle wo im Beispiel "Settings" steht, kommt der Name der Tabelle geschrieben, in welcher man suchen möchte.
+	An der Stelle wo im Beispiel "Value" steht, kommt der Spaltenname geschrieben, welchen man suchen möchte.
+	An der Stelle wo im Beispiel "Setting_ID = '""3""'"" steht, steht eine Bedingung die die gesuchten Werte erfüllebn muss. Dieser Befehl muss nicht geschrieben wenn keine Bedingung vorhanden ist.
+	-->picPath = query.value(0);(EINGERÜCKT)<--
+	Mit diesem Befehl, speichert man ein Element, welches in der Datenbank gefunden wurde. Falls es mehrer Werte geben sollte, benutzt man die Funktion -->query.next()(EINGERÜCKT)<--. 
+	Falls es ein nächstes Element existiert, wird das erste Elemnt der Schlange entfernt, wodurch das Element als nächstes ausgewertet werden kann. Falls kein Elemt mehr vorhanden ist, gibt die Funktion FALSE zurück.
+	
+	Außerdem kann die Klasse auch in Datenbank schreiben. Einamla kann eine neue Splate erzeugt werden durch
+	-->query.exec("INSERT INTO Consum_Index (User_ID, Grocery_ID, Count)" "VALUES('"+userId+"','"+Grocery_Id+"','"+count+"')");(EINGERÜCKT)<--
+	Zuerst wird die Tabelle mit den Spalten, die gefüllt werden sollen genannt "Consum_Index (User_ID, Grocery_ID, Count)" und dann werden die einzufügenden Werte genannt "('"+userId+"','"+Grocery_Id+"','"+count+"')".
+	
+	Um nun in einer Klasse auf die Datenbank zugreifen zu können, muss zuerst ein Objekt vom Typ QSqlDatabase erzeugt werden. Dann muss dem Objekt gesagt werden, das es mit einer SQL Datenbank arbeiten soll,
+	auch die Stelle, an der man die Datenbank findet.
+	-->Data = QSqlDatabase::addDatabase("QSQLITE");(EINGERÜCKT)<--
+	-->Data.setDatabaseName(C:/SQLite/database.sqlite);(EINGERÜCKT)<--
+	
+	Letztendlich muus die Datenbank geöffnet werden durch
+	-->Data.open();(EINGERÜCKT)<--
+	Ab nun kann man ein Objekt erzeugen von sqlzugriff und mit deren Funktionen auf die Datenbank zugreifen.
+	Am Ende muss die Datenbank noch geschlossen werden durch
+	-->Data.close();(EINGERÜCKT)<--
+	
+settingswidget.cpp :
+	In diesem Screen kann man zwei Eigenschaften bestimmen. Einerseits welches WLAN man wählen möchte und damit das dazugehörige Passwort außerdem (Frieling bitte kommentier du das :D)
+	
+	
+afterbuyscreen.cpp :
+	Diese Klasse wird Aufgerufen, sobald der Warenkorb gekauft wurde. Sie enthält jediglich die Eigenschaft, mehrere Sekunden ein Screen zu zeigen auf dem der Benutzer erkennen kann, das der Kauf durchgeführt wurde.
+	Danach wird diese wieder gelöscht und man gelangt in den Login-Screen.
+
+showIpScreen.cpp :
+		Diese Klasse wird nur beim Start des Programmes erzeugt. Sie dient dazu die IP-Adresse anzuzeigen.
+	
+
+4.XXX Funktionen des Programmes

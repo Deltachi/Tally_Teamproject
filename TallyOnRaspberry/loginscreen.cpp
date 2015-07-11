@@ -41,12 +41,12 @@ void LoginScreen::update_name_label(){
     QString tempID;
     while(Database.next()){
         tempID = Database.getString(1);
-        if(tempID.contains(NameField) || NameField.length() == 0){
-            QListWidgetItem *item = new QListWidgetItem();
-            item->setData(4,Database.getString(0).toInt());
-            item->setIcon(Database.getPixmap(3));
-            item->setText(Database.getString(2));
-            ui->listWidget->addItem(item);
+        if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank
+            QListWidgetItem *item = new QListWidgetItem();      //Erzeugen eines Benutzers
+            item->setData(4,Database.getString(0).toInt());     //User_Id wird an vierter Position gespeichert
+            item->setIcon(Database.getPixmap(3));               //Bild des Benutzers wird gespeichert
+            item->setText(Database.getString(2));               //Nichname des Benutzers wird gespeichert
+            ui->listWidget->addItem(item);                      //Neuer Benutzer wird in die Tabelle hinzugefügt
 
         }
     }
