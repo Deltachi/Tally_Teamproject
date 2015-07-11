@@ -9,8 +9,6 @@ passwordscreen::passwordscreen(QWidget *parent) :
     ui(new Ui::passwordscreen)
 {
     ui->setupUi(this);
-    Data = QSqlDatabase::addDatabase("QSQLITE");
-    Database_Link
 }
 
 passwordscreen::~passwordscreen()
@@ -24,10 +22,11 @@ void passwordscreen::updatePasswordField(){
         ui->lineEdit_password->setText(ui->lineEdit_password->text() + "*");
     }
 
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
     Data.open();
     SqlZugriff database;
     if(database.checkPassword(userId,password) && blocked != "1"){
-        database.timestamp(userId,1);
         Data.close();
         mainWindowPointer->exit(21);
     }
@@ -50,6 +49,9 @@ void passwordscreen::setUserId(QString gUserId){
     userId = gUserId;
 }
 void passwordscreen::updateAccoutPicture(QString id){
+
+    Data = QSqlDatabase::addDatabase("QSQLITE");
+    Database_Link
     Data.open();
     SqlZugriff database;
     QPixmap icon;
@@ -132,10 +134,6 @@ void passwordscreen::on_pushButton_9_clicked()
 void passwordscreen::on_pushButton_back_clicked()
 {
     password.clear();
-    Data.open();
-    SqlZugriff database;
-    database.timestamp(userId,0);
-    Data.close();
     updatePasswordField();
 }
 

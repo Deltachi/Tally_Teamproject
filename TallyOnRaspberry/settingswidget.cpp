@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QProcess>
+#include <QMessageBox>
 
 SettingsWidget::SettingsWidget(QWidget *parent) :
     QWidget(parent),
@@ -11,13 +12,14 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     dirty = false;
+    error = false;
 }
 
 SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
-void SettingsWidget::setMainWindowPointer(QApplication *a){
+bool SettingsWidget::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
     text = " ";
     count = 0;
@@ -28,6 +30,7 @@ void SettingsWidget::setMainWindowPointer(QApplication *a){
     countSetting = 0;
     count = text.length()-1;
     ui->lineEdit->setSelection(count,count);
+    return !error;
 }
 QString SettingsWidget::findLineWithText(QString findThis){
     QString filename = "/etc/network/interfaces";
@@ -51,8 +54,12 @@ QString SettingsWidget::findLineWithText(QString findThis){
                 return s;
             }
         }
+        file.close();
+    }else{
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::warning(NULL, QObject::tr("Warning"), QObject::tr(qPrintable("Could not find:\r\n \"" + filename + "\"\r\nWLAN configuration wont work.\r\n:(")),QMessageBox::Close);
+        error = true;
     }
-    file.close();
     return s;
 }
 void SettingsWidget::replaceLineWithText(QString replaceHere,QString writeThis){
@@ -72,8 +79,12 @@ void SettingsWidget::replaceLineWithText(QString replaceHere,QString writeThis){
         }
         file.resize(0);
         stream << s;
+        file.close();
+    }else{
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::warning(NULL, QObject::tr("Warning"), QObject::tr(qPrintable("Could not find:\r\n \"" + filename + "\"\r\nWLAN configuration wont work.\r\n:(")),QMessageBox::Close);
+        error = true;
     }
-    file.close();
 }
 
 void SettingsWidget::on_pushButton_1_clicked()

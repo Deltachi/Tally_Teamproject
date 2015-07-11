@@ -14,7 +14,7 @@ class SettingsWidget : public QWidget
 public:
     explicit SettingsWidget(QWidget *parent = 0);
     ~SettingsWidget();
-    void setMainWindowPointer(QApplication *a);
+    bool setMainWindowPointer(QApplication *a);
     QString findLineWithText(QString findThis);
     void replaceLineWithText(QString replaceHere,QString writeThis);
 
@@ -64,6 +64,7 @@ private:
     int countSetting;
     bool shiftActive;
     bool dirty;
+    bool error;
 };
 
 #endif // SETTINGSWIDGET_H

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     int state = 0;
 
     w.setWindowTitle("Tally");
-    w.show();
+    w.showFullScreen();
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
@@ -99,16 +99,20 @@ int main(int argc, char *argv[])
                     w.getWatchDogTime_Database();
                 }else if(exitcode == 36){ //settings was clicked
                     w.removeWidget();
-                    w.showSettingsWidget();
                     w.setWatchDog();
-                    state = 7;
+                    if(w.showSettingsWidget()){//could the WLAN file be read?
+                        state = 7;
+                    }else{ //return to coffesweetsscan widget, config file was missing...
+                        w.removeWidget();
+                        w.showCoffeeSweetWidget();
+                        state = 2;
+                    }
                 }else if(exitcode == 34){ //scan
                     w.updateQListCart();
                     w.removeWidget();
                     if(w.showScanWidget()){
                         state = 5;
                     }else{
-                        state = 2;
                         w.updateCartFromScanWidget();
                         w.removeWidget();
                         w.showCoffeeSweetWidget();

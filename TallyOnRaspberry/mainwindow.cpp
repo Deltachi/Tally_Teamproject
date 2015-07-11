@@ -17,6 +17,7 @@
 #include <QDate>
 #include <QDebug>
 #include <QKeyEvent>
+#include <QMessageBox>
 
 //constructer
 MainWindow::MainWindow(QWidget *parent) :
@@ -145,11 +146,14 @@ void MainWindow::showLoginPasswordWidget(){
     ui->gridLayout_port->addWidget(myPwScreen);
     showFavCart = true;
 }
-void MainWindow::showSettingsWidget(){
+bool MainWindow::showSettingsWidget(){
     this->removeWidget();
     SettingsWidget *mySettingsWidget = new SettingsWidget();
-    mySettingsWidget->setMainWindowPointer(mainWindowPointer);
-    ui->gridLayout_port->addWidget(mySettingsWidget);
+    if(mySettingsWidget->setMainWindowPointer(mainWindowPointer)){
+        ui->gridLayout_port->addWidget(mySettingsWidget);
+        return true;
+    }
+    return false;
 }
 
 QString MainWindow::getUserID(){

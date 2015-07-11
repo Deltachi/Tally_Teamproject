@@ -27,7 +27,6 @@ public:
     void getCredit(QString userId);
     void getAmount(QString itemId);
     void updateAmount(QString itemId ,QString newAmount);
-    void timestamp(QString userId,int granted);
     QString getWatchDogtime();
     void addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc);
     void updateConsumeIndex(QString userId,QString Grocery_Id,QString count);
@@ -35,7 +34,9 @@ public:
     bool findGroceriesWithBarcode(QString code);
     QString blocked(QString userId);
     void getPicturePath();
+    bool checkUserLoginCount(QString userId);
     void selectFavorites(QString userId);
+    void throwError();
 
 private:
      QSqlQuery query;

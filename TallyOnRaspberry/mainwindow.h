@@ -35,7 +35,7 @@ public:
     void showSweetsWidget();
     void showCoffeeWidget();
     void showFavWidget();
-    void showSettingsWidget();
+    bool showSettingsWidget();
     void updateFavWidget();
     void updateCartFromFavWidget();
     void showAfterBuyScreen();
@@ -45,8 +45,11 @@ public:
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();
-    //#define Database_Link Data.setDatabaseName("/var/www/sqlitetest/database.sqlite");
-    #define Database_Link Data.setDatabaseName("C:/SQLite/database.sqlite");
+
+    #define Database_Path QString("C:/SQLite/database.sqlite")
+    //#define Database_Path qPrintable(QString("/var/www/sqlitetest/database.sqlite"))
+
+    #define Database_Link Data.setDatabaseName(Database_Path);
 
 private slots:
 
