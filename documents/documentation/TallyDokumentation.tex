@@ -79,7 +79,11 @@
 
 \begin{titlepage}
 	\maketitle
-	\includegraphics[width=12cm]{TallyLogo.png}
+	\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=15cm]{TallyLogo.png}}
+	\caption{Tally Logo}
+	\end{figure}
 \end{titlepage}
 %------------------------------------------------------------------------------------------------
 
@@ -92,9 +96,9 @@
 
 \subsection{Kaffeestrichliste bisher}
 
-In kleineren Unternehmen und Arbeitsgruppen gibt es oft eine zentralen Kaffee/ Getr\"anke -automaten und Snacks, an der sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt. Hier passiert es jedoch oft das die Strichliste nicht sehr leserlich ist, und es bei der \"Ubertragung zu fehlern kommen kann, so dass ein Minus in der Kasse entsteht. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig.
+In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getr\"anke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird meistens eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch h\''aufig das die Strichliste sehr unleserlich wird und es bei der \"Ubertragung in die Datenbank auf den PC zu Fehlern kommt. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig da alles per Hand \''ubertragen werden muss.
 \par
-Um diesem Problem entgegen zu wirken, erarbeiten wird eine neue Methode um diese Daten 'digital' speichern zu k\"onnen.
+Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu k\"onnen.
 
 %------------------------------------------------------------------------------------------------
 
@@ -104,9 +108,9 @@ Um diesem Problem entgegen zu wirken, erarbeiten wird eine neue Methode um diese
 \subsection{Aufgabe - die neue Kaffeestrichliste}
 \label{SchriftAnpassen}
 
-Um eine m\"oglichst Energiesparende und handliche L\"osung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
+Um eine m\"oglichst energiesparende und handliche L\"osung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
 \par
-Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Administration von jedem Computer im selben Netzwerk \"uber eine Weboberfl\"ache m\"oglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und \"andern k\"onnen. Dazu wird ein MySQL/ SQLite Datenbank, sowie PHP Unterst\"utzung ben\"otigt. Mittels eines Barcodescanners soll es m\"oglich sein am Raspberry Produkte ein zu scannen.
+Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Administration von jedem Computer im selben Netzwerk \"uber eine Weboberfl\"ache m\"oglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und \"andern k\"onnen. Dazu wird eine MySQL/ SQLite Datenbank, sowie PHP Unterst\"utzung ben\"otigt. Mittels eines Barcodescanners soll es m\"oglich sein am Raspberry Produkte ein zu scannen.
 
 
 \section{Ziele des Projekts}
@@ -115,10 +119,10 @@ Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwic
 \label{Ausrichtung}
 
 \subsubsection{Der Benutzer Account}
-\"Uber den Benutzer Account soll der Benutzer sich am Raspberry selbst und an der Weboberfl\"ache anmelden. Am Raspberry selbst k\"onnen Getr\"anke und Snacks gekauft werden. Mithilfe der Weboberfl\"ache kann der Benutzer Statistiken einsehen und sein Passwort \"andern.
+\"Uber den Benutzer Account soll der Benutzer sich am Raspberry selbst und an der Weboberfl\"ache anmelden k\''onnen. Am Raspberry selbst k\"onnen Getr\"anke und Snacks gekauft werden. Mithilfe der Weboberfl\"ache kann der Benutzer Statistiken einsehen und sein Passwort \"andern.
 
 \subsubsection{Das Programm}
-Das Programm das auf dem Raspberry l\"auft aktualisiert die Anzahl der Produkte im Lagerbestand automatisch, gibt Meldungen bei zu geringem Warebestand aus und gibt generelle Fehlermeldungen aus
+Das Programm das auf dem Raspberry l\"auft aktualisiert die Anzahl der Produkte im Lagerbestand automatisch, gibt Meldungen bei zu geringem Warebestand aus und gibt generelle Fehlermeldungen aus.
 
 \subsubsection{Der Administrator Account}
 Die Administration mithilfe des Administrator Accounts findet ausschliesslich \"uber die Weboberfl\"ache statt. Hier kann der Administrator Accounts hinzuf\"ugen und verwalten, Waren hinzuf\"ugen und verwalten und den Lagerbestand verwalten.
@@ -176,11 +180,24 @@ Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Rasp
 \section{Meilensteine des Projektes}
 \label{Umbrueche}
 
-\subsection{Raspberry Pi 2 - Die Hardware mit der passenden Software}
-Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gelegt. Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln und wird komplett vom Raspberry mit Strom versorgt.
+\subsection{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}
+Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einen Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
+\par
+Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
+
+	\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{RaspberryPi.png}}
+	\caption{Der Raspberry Pi 2}
+	\end{figure}
+\newpage
 \par
 \subsubsection{Betriebssystem und Verbindung zu anderen Rechnern}
-Als erster Schritt wurde in Bezug auf die Hardware und die Software die auf dem Raspberry laufen soll entschieden das es von Vorteil ist das speziell f\"ur den Raspberry zugeschnittene Raspbian Betriebssystem zu verwenden. Als Alternative stand eine Ubuntu Version ,speziell f\"ur ARM-Prozessoren entwickelt, zu Verf\"ugung. Hier stellte sich aber schnell nach einigen Recherchen heraus das Raspbian durch die Optimierung auf den Raspberry und den guten Support am besten f\"ur das Projekt geeignet ist. Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert.
+Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest das ein Linuxderivat auf dem Raspberry laufen sollte. Hierbei fiel die Wahl auf das speziell f\''ur den Raspberry optimierte Debianderivat `Raspbian'.
+\par
+'Raspbian' wurde so optimiert das es mit der geringen Hardware zurecht kommt und den ARM-Prozessor des Raspberrys unterst\''utzt. Als Alternative stand eine Ubuntu Version ,speziell f\"ur ARM-Prozessoren entwickelt, zu Verf\"ugung die jedoch noch nicht voll ausgereift und funktionst\''uchtig ist.
+\par
+ Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert.
 \begin{frame}
 
 \begin{lstlisting}
@@ -188,7 +205,7 @@ sudo apt-get install xrdp
 \end{lstlisting}
 
 \end{frame}
-Damit ist eine einfache Remote Desktopverbindung zum Raspberry m\"oglich.
+Damit ist eine einfache Remote Desktopverbindung zum Raspberry m\"oglich und die komplette Verwaltung kann \''uber einen Windows, Mac oder Linux Computer erfolgen. 
 \par
 \subsubsection{Der Webserver}
 Als n\"achster Schritt wurde ein vollst\"andiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zun\"achst ein Apache Server der Version 2 installiert
@@ -199,10 +216,20 @@ sudo apt-get install apache2
 \end{lstlisting}
 
 \end{frame}
- der \"uber eine hohe Stabilit\"at und Geschwindigkeit verf\"ugt und serverseitig die Skriptsprache PHP unterst\"utzt. Im Anschluss wurde das PHP5 Paket installiert um eine volle Unterst\"utzung f\"ur die kommende Website zu gew\"ahrleisten.
+ der \"uber eine hohe Stabilit\"at und Geschwindigkeit verf\"ugt und serverseitig die Skriptsprache PHP unterst\"utzt. Im Anschluss wurde das PHP5 Paket installiert
+ \begin{frame}
+
+\begin{lstlisting}
+sudo apt-get install php5
+\end{lstlisting}
+
+\end{frame}
+ um eine volle Unterst\"utzung f\"ur die kommende Websites zu gew\"ahrleisten.
+ \par
+ PHP ist eine Open Source-Skriptsprache die speziell f\''ur die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgef\''uhrt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
 \par
 \subsubsection{Die passende Datenbank}
-Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauff\"ahig ist aber keine hohe Stabilit\"at und sehr resourcenlastig auf dem Raspberry l\"auft. Daher wurde das SQLite Datenbanksystem ausgew\"ahlt.
+Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauff\"ahig ist aber keine hohe Stabilit\"at besitzt und sehr resourcenlastig auf dem Raspberry l\"auft. Daher wurde das SQLite Datenbanksystem ausgew\"ahlt.
 \begin{frame}
 
 \begin{lstlisting}
@@ -211,7 +238,7 @@ apt-get install php5-sqlite
 \end{lstlisting}
 
 \end{frame}
- SQLite ist eine relationale Datenbank und ben\"otigt im Gegensatz zu MySQL keine st\"andig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht.
+ SQLite ist eine relationale Datenbank und ben\"otigt im Gegensatz zu MySQL keine st\"andig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
 \par
 \subsubsection{Der Touchscreen}
 Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert
@@ -228,7 +255,7 @@ sudo make install
 \end{lstlisting}
 
 \end{frame}
-und im anschluss die Beispielsoftware zum anzeigen von Bildern installiert
+und im Anschluss die Beispielsoftware zum anzeigen von Bildern installiert
 \begin{frame}
 
 \begin{lstlisting}
@@ -241,11 +268,11 @@ sudo ./tft_test
 
 \end{frame}
 
-Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es weniger gut als Prim\"ares Display geeignet ist da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display  ausgegeben wird. Starke Verz\"ogerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge.
+Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Prim\"ares Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verz\"ogerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daf\''uhr gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
 \par
-Um dem Problem entegegen zu wirken musste ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer h\"oheren Bildwiederholungsrate gesucht werden. Dabei kam die Idee auf ein 7 Zoll resistiven Touchscreen von Pollin zu verwenden das durch seine Gr\"osse viel Platz f\"ur das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateerm\"oglicht  und ein externer USB- Touchcontroller. 
+Damit war der Touchscreen ungeeignet f\''ur das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer h\"oheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin zu verwenden das durch seine Gr\"osse viel Platz f\"ur das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateerm\"oglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausf\''uhren soll.
 \par
-Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel f\"ur den Raspberry und eins f\"ur das Display ben\"otigt, damit \"are eine Energiesparende L\"osung ebenfalls nicht m\"oglich.
+Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel f\"ur den Raspberry und eins f\"ur das Display ben\"otigt, damit w\"are eine Energiesparende L\"osung ebenfalls nicht m\"oglich.
 \par
 Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus. Der Touchscreen besitzt eine Aufl\"osung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten erm\"oglicht.
 Die Vorteile bei diesem Display waren die kleine Bauform und keine zus\"atzlich ben\"otigte Stromquelle. Ausserdem wird vom Hersteller direkt ein passender Kernel f\"ur Raspbian zur Verf\"ugung gestellt.
@@ -259,12 +286,12 @@ sudo dpkg -i kernel4dpi_1.3-3_pi2.deb
 
 \end{frame}
 
- Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren werden,  das Display an den GPIO-Ports angebracht werden und der Raspberry wieder hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich. Dadurch das das Display direkt als Prim\"ares Display erkannt wird ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
+ Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren werden,  das Display an den GPIO-Ports angebracht werden und der Raspberry wieder hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich da der Raspberry das Display als prim\''ares Display erkennt und direkt auf den Desktop bootet. Dadurch ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
 \par
 \subsubsection{Produkte scannen}
 Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handesl\"ublicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
 \par
- Da jedoch das vorhandene Barcodescannermodul nur mit 3V betrieben werden kann, des Raspberry aber 5V an den GPIO's zur Verf\"ugung stellt, wurde überlegt eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen. Die Wahl fiel allerdings auf das Scannen mittels USB Barcodescanner, das dies eine einfacherere Handhabung mit sich bringt und der Barcodescanner direkt als USB Tastatur erkannt wird.
+ Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verf\"ugung stellt, wurde überlegt eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen. Die Wahl fiel allerdings auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung mit verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
 \par
 \subsubsection{Wlan für den Raspberry}
 Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss, wurde der Edimax WLAN USB Stick am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen m\"ochte. Zun\"achst wurde in der automatische 'Power Saving' Modus abgeschaltet. Hierzu wurde eine Konfigurationsdatei f\"ur den Treiber des WLAN Sticks erstellt.
@@ -326,9 +353,11 @@ sudo service networking restart
 
 \end{frame}
 der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen WLAN Netz wird hergestellt.
+\par
+Da diese M\''oglichkeit jedoch relativ umst\''andlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN konfiguration eingebaut in der man den WLAN-Namen un das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
-Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein Bild an zu zeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer'.
+Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild w\''ahrend des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer l\''adt das w\''ahrend des hochfahrens angezeigt werden kann.
 \begin{frame}
 
 \begin{lstlisting}
@@ -392,7 +421,7 @@ esac
 
 \end{frame}
 
-Dieses Skript wird nun in den Ordner verschoben damit es beim Start ausgeführt werden kann
+Dieses Skript wird nun in den passenden Ordner verschoben damit es beim Start ausgeführt werden kann
 \begin{frame}
 
 \begin{lstlisting}
@@ -409,10 +438,12 @@ sudo insserv /etc/init.d/asplashscreen
 \end{lstlisting}
 \end{frame}
 
+Nun wird w\''ahrend des Bootvorgangs das Tally Logo angezeigt.
+
 \subsubsection{Backups einrichten und versenden per Mail}
-Als m\"ogliche Backupvarianten standen ein komplettes Backup der Speicherkarte des Raspberrys oder ein Backup der Datenbank.
+Als m\"ogliche Backupvarianten standen ein komplettes Backup der Speicherkarte des Raspberrys oder ein Backup der Datenbank zur Wahl.
 \par
-Der Entschluss fiel auf ein Backup der Datenbank, da diese dann auch per Mail an den jeweiligen Administrator geschickt werden soll. Dazu wird Rsync verwendet, das mit folgendem Befehl installiert wird:
+Der Entschluss fiel auf ein Backup der Datenbank, da diese auch per Mail an den jeweiligen Administrator geschickt werden soll. Dazu wird Rsync verwendet, das mit folgendem Befehl installiert wird:
 \begin{frame}
 
 \begin{lstlisting}
@@ -421,7 +452,7 @@ sudo apt-get install rsync
 \end{frame}
  Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu \"uberpr\"uft es zun\"achst ob die zu kopierende Datei ge\"ander wurde oder nicht, wodurch ein unn\"utzes kopieren von Daten unterbunden wird.
 \par
-Damit die backups autmatisch und t\"aglich erstellt werden, wird wieder ein cronjob hinzugef\"ugt.
+Damit die backups autmatisch und t\"aglich erstellt werden, wird ein cronjob hinzugef\"ugt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu k\''onnen.
 \begin{frame}
 
 \begin{lstlisting}
