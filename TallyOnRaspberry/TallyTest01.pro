@@ -18,7 +18,6 @@ SOURCES += main.cpp\
     loginscreen.cpp \
     sqlzugriff.cpp \
     passwordscreen.cpp \
-    coffesweetsscann.cpp \
     buywidget.cpp \
     shoppingcart.cpp \
     scanwidget.cpp \
@@ -26,7 +25,8 @@ SOURCES += main.cpp\
     afterbuyscreen.cpp \
     showipscreen.cpp \
     favwidget.cpp \
-    settingswidget.cpp
+    settingswidget.cpp \
+    coffeesweetsscan.cpp
 
 HEADERS  += mainwindow.h \
     loginscreen.h \
