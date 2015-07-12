@@ -13,22 +13,20 @@ Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letzte
 Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
 Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
 Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
-Außerdem ist uns Aufgefallen das  sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was benutzerunfreundlich ist.
+Außerdem ist uns Aufgefallen das sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was benutzerunfreundlich ist.
 Aus diesen beiden Gründen wurde die komplette Benutzeroberfläche überarbeitet.
 Die Knopfgröße und die Schriftgröße mussten vergrößert werden als auch das Knöpfe, aufgrund Platzmangels, weggelassen werden mussten.
 Die Screens sollten aber erst beim Programmieren festgelegt werden um evtl. Hürden zu meistern.
 Außerdem wussten wir zu diesem Zeitpunkt noch nicht, welches Display für den Raspberry Pi 2 gewählt wird.
-Die endgültige Benutzeroberfläche befindet sich unter dem Unterpunkt Funktionen des Programmes.
 
 Nach dem die ersten Funktionen des Login-Screens und des Passwort-Screen implementiert wurden, wurde begonnen die Datenbank mit einzuarbeiten.
-Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen welche Tabellen angelegt werden und womit diese befüllt werden.
-Eine genaue Beschreibung der Datenbank befindet sich unter Abschnitt 5.XXX .
+Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen, welche Tabellen angelegt werden und womit diese befüllt werden.
 Nachdem wir uns auf die Datenbank geeinigt haben, wurde diese in das Programm implementiert.
 Zu diesem Zeitpunkt wurde noch nicht mit einer eindeutigen ID jedes Benutzer gearbeitet sondern mit seinem Namen, was später zu Komplikationen führen würde.
 Zeitgleich zum Login-Screen und dem Passwort-Screen wurden alle, die bis zu diesem Zeitpunkt erarbeitete Screen oberflächlich implementiert.
 So konnten man zu diesem Zeitpunkt sich anmelden, (die Daten dafür wurden aus der Datenbank genommen) und konnte sich über alle Screens klicken, auch wenn die meisten keine Funktionen hatten.
 
-Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID die der eingeloggten Person global im Programm bekannt gemacht werden.
+Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID der eingeloggten Person global im Programm bekannt gemacht werden.
 Dies haben wird entweder über get-Funktionen realisiert oder beim Erzeugen eines neuen Screens mitgegeben.
 Daraufhin konnten die restlichen Funktionen implementieren werden.
 Als erstes wurden die Liste implementiert in welche alle kaufbaren Artikel aufgelistet werden.
@@ -41,16 +39,15 @@ Dies bedeutet vor allem, dass die Datenbank mit neuen Informationen gefüllt wird
 Dies bürgte eine große Hürde. Das Problem mit der Synchronität des Shoppingcart über den gesamten Einkauf.
 Jedes Mal wenn der Zustannd gewechselt wurde(siehe Aufbau des Programmes), wurde das Shoppingcart gelöscht und damit auch der Inhalt.
 Das Shoppingcart ist ein eigenständiges Teil Programme und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
-Da wir allerdings keinen Weg gefunden hatten ein Widget auf mehrere Widgets angezeigt zu haben konnten wir das Problem auch nicht anders lösen. Das Soppingcart erstellt nun vor jedem löschen eine Liste mit seinen Items,
+Da wir allerdings keinen Weg gefunden haben ein Widget auf mehrere Widgets angezeigt zu haben, konnten wir das Problem auch nicht anders lösen. Das Soppingcart erstellt nun vor jedem löschen eine Liste mit seinen Items,
 welche dem neu erzeugten Shoppigcart gegeben wird.
 
-Nachdem diese Hürde genommen wurde, gab es nur noch wenige Funktionen die noch implementiert werden mussten.
 Bis zu diesem Zeitpunkt wurde das Programm fast ausschließlich auf einem PC programmiert, debugt und auch die Größen wurden auf diesen angepasst, wie bereits anfangs erwähnt.
 Deswegen war der nächste Schritt die Benutz Oberfläche, mit dem Raspberry PI 2 und dem neuen Display, anzupassen.
 Zusätzlich wurde auch der Barcode Scanner implementiert, was kein Problem dargestellt hat, da sich das Signal des Barcode Scanners verhält wie ein Tastendruck mit der Tastatur. Qt stellt für solche Signale bereits Funktionen.
 Somit war das Programm so gut wie fertig. Es fehlten nur noch ein paar kleine Funktionen und vor allem musste noch eventuelle Bugs entfernt werden.
 Alle Funktionen des Programmes wurden nicht während dieses Abschnittes erfasst, da dies den Umfang dieser Dokumentation sprengen würde.
-Alle wichtigen Funktionen wurde erwähnt und gegebenenfalls erläutert, vor allem in dem Abschnitt Funktionen des Programmes werden alle wichtigen erwähnt und was das Programm leistet.
+Alle wichtigen Funktionen wurde erwähnt und gegebenenfalls erläutert, darüber hinuas werden noch welche in dem Unterpunkt Aufbau des Programmes näheres erklärt.
 
 
 
