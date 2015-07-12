@@ -19,6 +19,7 @@
 \usepackage[utf8x,utf8]{inputenc}
 
 
+
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -99,7 +100,7 @@
 In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getr\"anke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird meistens eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch h\''aufig das die Strichliste sehr unleserlich wird und es bei der \"Ubertragung in die Datenbank auf den PC zu Fehlern kommt. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig da alles per Hand \''ubertragen werden muss.
 \par
 Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu k\"onnen.
-
+\cite{ahu61}
 %------------------------------------------------------------------------------------------------
 
 \section{Rahmenbedingungen}
@@ -178,12 +179,12 @@ Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Rasp
 
 
 \section{Meilensteine des Projektes}
-\label{Umbrueche}
+\label{Meilensteine}
 
 \subsection{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}
 Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einen Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
 \par
-Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
+Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec \cite{zitat01} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
 
 	\begin{figure}[h]
 	\makebox[\textwidth]{
@@ -1132,8 +1133,42 @@ Tina       &   11      &  151    &  43     \\
 \end{center}
 \end{figure}
 
+\bibliographystyle{alphadin}
+\bibliography{literature}
+
+\begin{thebibliography}{999}
+\bibitem {zitat01}
+\bibitem {zitat02}
+\end{thebibliography}
 %------------------------------------------------------------------------------------------------
 
 \end{document}
 
 %------------------------------------------------------------------------------------------------
+@article{ahu61,
+       author={Arrow, Kenneth J. and Leonid Hurwicz and Hirofumi Uzawa},
+       title={Constraint qualifications in maximization problems},
+       journal={Naval Research Logistics Quarterly},
+       volume={8},
+       year = 1961,
+       pages = {175-191}
+     }
+
+@book{ab94,
+       author = {Charalambos D. Aliprantis and Kim C. Border},
+       year = {1994},
+       title = {Infinite Dimensional Analysis},
+       publisher = {Springer},
+       address = {Berlin}
+     }
+
+@incollection{m85,
+       author={Maskin, Eric S.},
+       year={1985},
+       title={The theory of implementation in {N}ash equilibrium: a survey},
+       booktitle={Social Goals and Social Organization},
+       editor={Leonid Hurwicz and David Schmeidler and Hugo Sonnenschein},
+       pages={173-204},
+       publisher={Cambridge University Press},
+       addess={Cambridge}
+     }

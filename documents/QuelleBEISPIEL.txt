@@ -1,0 +1,15 @@
+Die Quelldatei an sich sieht wie folgt aus:
+
+@article{NAME,
+       author={Arrow, Kenneth J. and Leonid Hurwicz and Hirofumi Uzawa},
+       title={Constraint qualifications in maximization problems},
+       journal={Naval Research Logistics Quarterly},
+       address={www.google.de},
+       volume={8},
+       year = 1961,
+       pages = {175-191}
+     }
+
+Da tragt ihr einfach die Sachen ein die ihr bracuht, wenn ihr das Jahr nicht braucht löscht einfach die Zeile. Packt das dann bitte mit in euren Ordner.
+Bei"NAME" müsst ihr die Bezeichnung von der Quelle angeben, wie sie nachher im Text stehen soll.
+Also bei mir mache ich z.b. Berry1, Berry2 usw. und setze das dann nach jedem Paragraphen wo ich eine Quelle benutzt habe.
