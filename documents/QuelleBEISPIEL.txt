@@ -13,3 +13,17 @@ Die Quelldatei an sich sieht wie folgt aus:
 Da tragt ihr einfach die Sachen ein die ihr bracuht, wenn ihr das Jahr nicht braucht löscht einfach die Zeile. Packt das dann bitte mit in euren Ordner.
 Bei"NAME" müsst ihr die Bezeichnung von der Quelle angeben, wie sie nachher im Text stehen soll.
 Also bei mir mache ich z.b. Berry1, Berry2 usw. und setze das dann nach jedem Paragraphen wo ich eine Quelle benutzt habe.
+
+Als Beispiel:
+In die Quelldatei:
+@article{Berry1,
+       author={Raspberry Geek},
+       title={Raspberry Info},
+       address={www.raspberrygeek.com/turorial/bla},
+     }
+
+Im Text sieht es dann so aus:
+Der Raspberry Pi hat einen 900 MHz Prozessor [Berry1]
+
+Und ganz am Schluss der Datei:
+[Berry1] Raspberry Geek; Raspberry Info; www.raspberrygeek.com/turorial/bla
