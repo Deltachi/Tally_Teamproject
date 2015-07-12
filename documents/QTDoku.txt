@@ -1,49 +1,48 @@
 4.X 
 Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt.
-Qt ist eine Klassenbibliothek von C++ und bietet die Programmierung für  graphische Benutzeroberfläche und Datenbankfunktionen.
-Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel sind.
-Als Debugger haben wir GNU gdb 7.8 für MinGW 4.9.1 gewählt.
+Qt ist eine Klassenbibliothek in C++, vereinfacht die Programmierung für graphische Benutzeroberflächen und bietet zahlreiche weitere Funktionen an.
+Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel ist.
+Als Debugger haben wir GNU gdb 7.8 und MinGW 4.9.1 als Compiler gewählt.
 
-Programmiert wird hauptsächlich auf einem PC, da dieser schneller debuggen kann.
+Programmiert wird hauptsächlich auf unseren eigenen PCs, da diese schneller debuggen können.
 Darüber hinaus musste der Raspberry PI 2 noch konfiguriert werden, wie in 4.1 beschrieben, wodurch ein zeitgleiches arbeiten erschwert wäre.
 Es wurde sich darauf geeinigt das Programm zu Demonstrationszwecke, während den Teammeetings, auf dem Raspberry PI 2 laufen zu lassen.
 Zum Ende des Projekts, sobald die Konfiguration beendet ist, sollten wir denn Raspberry PI 2 bekommen um die Benutzeroberfläche letztendlich anpassen zu können.
 
-Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir eine herausgearbeitet, welche in dem Plichtenheft zu sehen ist.
+Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir die GUI herausgearbeitet, welche in dem Plichtenheft zu sehen ist.
 Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
 Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
 Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
-Außerdem ist uns Aufgefallen das  sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was Benutzerunfreundlich ist.
+Außerdem ist uns Aufgefallen das  sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was benutzerunfreundlich ist.
 Aus diesen beiden Gründen wurde die komplette Benutzeroberfläche überarbeitet.
 Die Knopfgröße und die Schriftgröße mussten vergrößert werden als auch das Knöpfe, aufgrund Platzmangels, weggelassen werden mussten.
-Die Screens sollten aber erst beim Programmieren festgelegt werden  um evtl. Hürden zu meistern.
+Die Screens sollten aber erst beim Programmieren festgelegt werden um evtl. Hürden zu meistern.
 Außerdem wussten wir zu diesem Zeitpunkt noch nicht, welches Display für den Raspberry Pi 2 gewählt wird.
 Die endgültige Benutzeroberfläche befindet sich unter dem Unterpunkt Funktionen des Programmes.
 
 Nach dem die ersten Funktionen des Login-Screens und des Passwort-Screen implementiert wurden, wurde begonnen die Datenbank mit einzuarbeiten.
-Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen welche Tabellen angelegt werden  und womit diese befüllt werden.
+Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen welche Tabellen angelegt werden und womit diese befüllt werden.
 Eine genaue Beschreibung der Datenbank befindet sich unter Abschnitt 5.XXX .
 Nachdem wir uns auf die Datenbank geeinigt haben, wurde diese in das Programm implementiert.
 Zu diesem Zeitpunkt wurde noch nicht mit einer eindeutigen ID jedes Benutzer gearbeitet sondern mit seinem Namen, was später zu Komplikationen führen würde.
 Zeitgleich zum Login-Screen und dem Passwort-Screen wurden alle, die bis zu diesem Zeitpunkt erarbeitete Screen oberflächlich implementiert.
 So konnten man zu diesem Zeitpunkt sich anmelden, (die Daten dafür wurden aus der Datenbank genommen) und konnte sich über alle Screens klicken, auch wenn die meisten keine Funktionen hatten.
 
-Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID die der eingeloggten Person global im Programm bekannt gemacht werden .
+Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID die der eingeloggten Person global im Programm bekannt gemacht werden.
 Dies haben wird entweder über get-Funktionen realisiert oder beim Erzeugen eines neuen Screens mitgegeben.
 Daraufhin konnten die restlichen Funktionen implementieren werden.
-Als erstes wurden die Tabellen implementiert in welche alle kaufbaren Artikel aufgelistet werden.
-Die Information über die Artikel konnten über die Datenbank in Erfahrung gebracht werden.
-Nachdem die Tabellen mit Artikeln vorhanden waren, wurde mit dem Hauptaspekt des Programmes begonnen, dem Kaufvorgang.
+Als erstes wurden die Liste implementiert in welche alle kaufbaren Artikel aufgelistet werden.
+Die Information über die Artikel konnten über die Datenbank eingelesen werden.
+Nachdem sich die Listen mit Artikeln befüllten, wurde mit dem Hauptaspekt des Programmes begonnen, dem Kaufvorgang.
 
 Für den Kaufvorgang ist hauptsächlich das Shoppingcart verantwortlich. Sobald ein Artikel dort liegt, wird es immer auf dem rechten Teil des Bildschirmes angezeigt.
-Außerdem ist es dafür verantwortlich, dass wenn Artikel gekauft werden, den Kaufvorgang abzuschließen.
+Außerdem ist es dafür verantwortlich, dass wenn Artikel gekauft werden, der Kaufvorgang korrekt abgeschlossen wird.
 Dies bedeutet vor allem, dass die Datenbank mit neuen Informationen gefüllt wird. Einerseits wird die Anzahl der entsprechenden Artikel geändert und das Konto des Käufers belastet.
 Dies bürgte eine große Hürde. Das Problem mit der Synchronität des Shoppingcart über den gesamten Einkauf.
 Jedes Mal wenn der Zustannd gewechselt wurde(siehe Aufbau des Programmes), wurde das Shoppingcart gelöscht und damit auch der Inhalt.
-Das Shoppingcart ist ein eigenständiges Teil Programmes und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
-Dies tut es allerdings nicht und wird jedes Mal gelöscht, wenn sich der Zustand ändert.
-Da wir das Problem nicht finden konnten, warum es sich jedes Mal mit löscht, wird nun beim Verlassen des Zustandes eine Liste mitgegeben in der alle Artikel gespeichert sind die im Shoppingcart lagen.
-Mit dieser Liste wird ein neues Shoppingcart erzeugt in der diese Artikel liegen.
+Das Shoppingcart ist ein eigenständiges Teil Programme und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
+Da wir allerdings keinen Weg gefunden hatten ein Widget auf mehrere Widgets angezeigt zu haben konnten wir das Problem auch nicht anders lösen. Das Soppingcart erstellt nun vor jedem löschen eine Liste mit seinen Items,
+welche dem neu erzeugten Shoppigcart gegeben wird.
 
 Nachdem diese Hürde genommen wurde, gab es nur noch wenige Funktionen die noch implementiert werden mussten.
 Bis zu diesem Zeitpunkt wurde das Programm fast ausschließlich auf einem PC programmiert, debugt und auch die Größen wurden auf diesen angepasst, wie bereits anfangs erwähnt.
@@ -61,8 +60,8 @@ Allgemein läuft das Programm nach einem Automaten ab. Der Bildschirm wurde in zw
 Dadurch Teilen wir den Bildschirm in die Kopfzeile und der Automatenbereich. Näheres dazu wird in den dementsprechenden Klassen erläutert.
 main.cpp :
 	Die main.cpp ist verantwortlich für den Ablauf des Programmes. Die Struktur dafür ist aufgebaut wie ein Mealy-Automat.Die Zustände geben an welcher Bildschirm gerade angezeigt wird. Die Übergänge sind die Exitcodes.
-	Die Ausgaben der kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.-->(MEALYAUTOMATBILD)<--
-	Exitcodes erlaubt es Programmen bei bestimmten Events(z.B. ein Knopf wurde geklickt) wieder zurück in die main.cpp zu erlangen.
+	Die Ausgaben der Kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.-->(MEALYAUTOMATBILD)<--
+	Exitcodes erlaubt es Programmen bei bestimmten Events(z.B. ein Knopf wurde geklickt) wieder zurück in die main.cpp zu gelangen.
 	 -->mainWindowPointer->exit(21); (EINGERÜCKT)<--
 	Es wird Anfangs die Ip ermittelt und diese auf einem eigenen Screen angezeigt.
 	-->QTcpSocket socket;
@@ -78,7 +77,7 @@ main.cpp :
 		0 : Es wird der Login-Screen auf dem Bildschirm gezeigt.
 			Exitcode: 
 				10 : Es wurde der Benutzer gewählt und möchte sich nun mit dem Account anmelden.
-				!10 & !100 % !34 : Das Programm beendet sich.
+				!10 & !100 & !34 : Das Programm beendet sich.
 				
 		1 : Es wird der Passwort-Screen auf dem Bildschirm angezeigt.
 			Exitcode:
@@ -122,16 +121,16 @@ main.cpp :
 				71 : Es wurde auf "Back" geklickt und man wird in Zustand 2 gesetzt.
 
 mainwindow.cpp :
-	Wie bereits erwähnt haben wir die Oberfläche in zwei Teile unterteilt, in welche dann Widget hinzugefügt und entfertn werden könnemn. 
-	Für diese Unterteilung ist die mainwindow.cpp verantwortlich als auch noch für andere Funktionen.-->(BILD1)<--
-	Die Kopfzeile wird erzeigt und dann nur noch verändert, bezüglich Datum,Zeit,Name und ob der Logout-Button aktiv ist.
+	Wie bereits erwähnt haben wir die Oberfläche in zwei Teile unterteilt, in welche dann Widget hinzugefügt und entfertn werden können. 
+	Für diese Unterteilung ist die mainwindow.cpp verantwortlich, als auch noch für andere Funktionen.-->(BILD1)<--
+	Die Kopfzeile wird erzeugt und dann nur noch verändert, bezüglich Datum,Zeit,Name und ob der Logout-Button aktiv ist.
 	Der Automatenbereich wird mit jedem Zustanswechsel verändert.
-	Durch die Funktion -->removeWidget()(EINGERÜCKT)<-- werden alle Widget die sich im Automatenbereich befindet entfernt, wodurch neue Widget dort gesetzt werden können.
-	Jeder Screen besitzt eine Funktion names setMainWindowPointer. In diesem wird der Bezug zwischen dem Screen und dem mainwindow hergestellt.
+	Durch die Funktion -->removeWidget()(EINGERÜCKT)<-- werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue Widget dort gesetzt werden können.
+	Fast jeder Screen besitzt eine Funktion names setMainWindowPointer. In diesem wird der Bezug zwischen dem Screen und dem mainwindow hergestellt.
 	Außerdem wird dieser Funktion auch die User_Id mitübergeben, damit in der Klasse die User_id des angemeldeten Benutzers bekannt ist.
 	-->setMainWindowPointer(QApplication *a,QString gUserId)(EINGERÜCKT)<--
 	Alle Funktionen die mit -->show(EINGERÜCKT)<-- beginnen, sind dafür da die entsprechenden Widget in dem Fenster zu erstmalig zu zeigen.
-	Die Funktionen die mit -->update(EINGERÜCKT)<-- beginne, updaten die entsprechend widget, damit man diese nicht erst löschen muss und dann wieder neue erzeugen.
+	Die Funktionen die mit -->update(EINGERÜCKT)<-- beginnen, updaten die entsprechend Widgets um auf entsprechende Events zu reagieren.
 	Im Konstruktor der Klasse wird erstmalig die Uhrzeit und das Datum ermittelt. Dies funktioniert über die von Qt zur verfügung gestellten Klassen QTime und QDate.
 	Diese Funktionen ermitteln die aktuelle Zeiten über das Betreibssystem, über welches Qt momentan läuft und gibt dieses in einem, vom Programmierer gewählten Format, zurück.
 	-->QTime qtime = QTime::currentTime();(EINGERÜCKT)<--
@@ -143,7 +142,7 @@ mainwindow.cpp :
 	wird der Benutzer automatisch abgemeldet und man landet wider in dem Login-Screen. Bei jedem Tastendruck, unabhängig in welchem Screen man sich befindet, wird der Watchdog wieder zurückgestellt.
 	
 	Zusätzlich wird auch die, von Qt zur Verfügung gestellt Klasse QKeyEvent verwendet. In der Funktion -->keyPressEvent(QKeyEvent *ev)(EINGERÜCKT)<-- wird ein Tastendruck der Tastur erfasst und wird an einen String angehangen.
-	Sobald "Enter" gedrückt wird wird ein Exitcode geworfen. Diese Funktion realisiert den Barcode-Scanner. 
+	Sobald "Enter" gedrückt ist, wird ein Exitcode geworfen. Diese Funktion realisiert den Barcode-Scanner. 
 	Das Signals des Barcode_Scanners verhält sich wie ein Signal von der Tastatur und beendet den eingelesen Code mit einem "Enter". Mit dieser Funktion ist der Barcode_scanner implementiert.
 	
 loginscreen.cpp : 
@@ -157,16 +156,16 @@ loginscreen.cpp :
 
 	Auf der rechten Seite erscheint eine Tastatur. Auf den 8 Knöpfen verteilt stehen die Buchstaben des Alpabhets. Jeweils 3 oder 4 Buchstaben pro Knopf.
 	Nun kann man seinen Account in der Liste suchen. Entweder man scrollt in der Liste so lange bis man sich gefunden hat oder man gibt seinen Namen, rechts auf der Tastatur ein.
-	Auf der Tastatur muss man seinem Namen mitHilfe seines T9 Codes eingeben. Dies bedeuted jeder Buchstabe in seinem Namen wird durch eine Zahl ersetzt(Zahl laut Tastatur), 
+	Auf der Tastatur muss man seinem Namen mithilfe seines T9 Codes eingeben. Dies bedeuted jeder Buchstabe in seinem Namen wird durch eine Zahl ersetzt(Zahl laut Tastatur), 
 	wodurch die Namen auf der rechten Seite verschwinden, die keine Teil des bisher Eingegebenen Codes sind.
-	Realisiert haben wir dies, indem von jedem Benutzer der T9_Code in der Datenbank gespeichert ist und nun mitHIlfe des compare()Befehls von QString verglichen wird.
+	Realisiert haben wir dies, indem von jedem Benutzer der T9_Code in der Datenbank gespeichert ist und nun mitHilfe des compare()Befehls von QString verglichen wird.
 	-->if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank  (EINGERÜCKT)<--
 	
 	Wenn der Benutzer seinen Account gefunden hat kann er auf diesen klicken und gelangt automatisch in denn Passwort-Screen.
 	Auserdem wird bei diesem Befehl, die User_Id gespeichert, womit andere Funktionen wissen welcher Bemnutzer sich anmelden möchte ´	
 	
 passwordscreen.cpp : 
-	Im PasswordScreen erscheint auf der linken Seite, das Bild als auch der Credit des Benutzers. Auf der Rechten Seite befindet sich eine Tastatur mit den Zahlen von 0 bis 9, wodurch der Benutzer sich anmelden kann.
+	Im PasswordScreen erscheint auf der linken Seite, das Bild als auch der Credit des Benutzers. Auf der Rechten Seite befindet sich eine Tastatur mit den Zahlen von 0 bis 9, wodmit der Benutzer sich anmelden kann.
 	Wenn der Benutzer sein Passwort korrekt eingegeben hat, wird bei der Datenbankabfrage bezüglich Benutzer und Passwort , den Wert true zurückgeben und man wird automatisch in den den Coffee/Sweet/Scan -Screen weitergeleitet.
 	-->if(database.checkPassword(userId,password) && blocked != "1" && database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
             database.updateLoginAttempt(userId,true);
@@ -174,10 +173,10 @@ passwordscreen.cpp :
             mainWindowPointer->exit(21);<--(EINGERÜCKT)<--
 			
 	Außerdem wurde der Zeitstempel für den User gesetzt. 
-	Falss sich der Benutzer drei mal mit dem Falschen Passwort anmelden wollte wird dieser Account für 60 Sekunden geblocket.
+	Falls sich der Benutzer drei mal mit dem Falschen Passwort anmelden wollte wird dieser Account für 60 Sekunden geblocket.
 	Dies geschieht in dem wir, bei den letzten misslungten einloggen den Zeitstempel speichern und einen Zähler erhöhen(beide Werte werden in der Datenbank gespeichert).
-	Nun wird bei jedem misslungten einloggen der Zähler erhöht. Wenn dieser die drei erreicht, wird der account für 60 Sekunden gespeert.
-	Sobald man sich einmal richtig einloggt wird der Zeitstempel aktualisiert und der Zähler wider auf 0 gesetzt. Die Funktion für die Datenbankänderung gibnt die Klasse sqlzugriff, wobei die Abfrage über eine if-Anweisung geklärt wird.
+	Nun wird bei jedem misslungenen einloggen der Zähler erhöht. Wenn dieser die drei erreicht, wird der account für 60 Sekunden gespeert.
+	Sobald man sich einmal richtig einloggt wird der Zeitstempel aktualisiert und der Zähler wider auf 0 gesetzt. Die Funktion für die Datenbankänderung gibt die Klasse sqlzugriff, wobei die Abfrage über eine if-Anweisung geklärt wird.
 	-->if(database.checkPassword(userName,password))(EINGERÜCKT)<--
 	
 	Falls der Benutzer gesperrt ist, wird anstelle des Credits, die Nachricht angezeigt "User blocked" angezeigt.
@@ -225,8 +224,8 @@ shoppingcart.cpp :
 	Falls der angemeldete Account nicht genügend Guthaben zur Verfügung steht wird der Preis rot markiert und es kann auch nicht eingekauft werden.
 	Guthaben wird über die Datenbank ermittelt und in der Settings-Tabelle der Datenbank steht die Information um wie viel man sein Konto überziehen darf.
 	Dies geschieht über die Funktion -->bool Shoppingcart::hasEnoughCredit(QString userId,double price)(EINGERÜCKT)<--
-	Über die Funktion -->void Shoppingcart::addItem(QListWidgetItem *item)(EINGERÜCKT)<-- wird ein Elemt in das Shoppingcart hinzugefügt.Außerdem wird Anzahl an ausgewählten Artikel auch in den Liste verringern .
-	Dadurch synchronität der Lsiten, wodurch es nicht mehr Artikel existieren als in der Datenbak angegeben.(Frieling bitte Fuüge hier die dementsprechenden CodeZeilen ein!!!)
+	Über die Funktion -->void Shoppingcart::addItem(QListWidgetItem *item)(EINGERÜCKT)<-- wird ein Item in das Shoppingcart hinzugefügt.Außerdem wird Anzahl an ausgewählten Artikel auch in den Liste verringern.
+	Dadurch synchonisieren sich die Listen, wodurch nicht mehr Artikel existieren als es eigentlich gibt.
 	Die Funktion-->void Shoppingcart::on_pushButton_buy_clicked()(Eingabe)<--  wickelt die kaufabwicklung ab. Diese öffnet die Datenbank. ändert den Credit des Benutzers
 	--> Database.updateCredits(userId,QString::number(credits.toDouble()-price));(EINGERÜCKT)<--. 
 	Außerdem reduziert es die Artikelmenge in der Datenbank um die Anzahl, wie viele gekauft wurden und trägt die Käufe in den ConsumIndex-Tabelle, als auch in die Sell-History ein.
@@ -272,8 +271,8 @@ sqlzugriff.cpp :
 	-->Data.close();(EINGERÜCKT)<--
 	
 settingswidget.cpp :
-	In diesem Screen kann man zwei Eigenschaften bestimmen. Einerseits welches WLAN man wählen möchte und damit das dazugehörige Passwort außerdem (Frieling bitte kommentier du das :D)
-	
+	In diesem Screen können die WLAN Einstellungen des Rapsberry Pi verändert werden. Der Admin kann dort die WLAN SSID und das Passwort über die extra dazu implementierte Tastatur GUI angeben/ändern.
+	Klickt er dann auf "accept" wird ein dirty Bit gesetzt, wodurch beim Verlassen des Widgets der WLAN Treiber neu gestartet wird. -->process.start("sudo service networking restart"); (EINGERÜCKT)<--
 	
 afterbuyscreen.cpp :
 	Diese Klasse wird Aufgerufen, sobald der Warenkorb gekauft wurde. Sie enthält jediglich die Eigenschaft, mehrere Sekunden ein Screen zu zeigen auf dem der Benutzer erkennen kann, das der Kauf durchgeführt wurde.
