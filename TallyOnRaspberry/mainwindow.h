@@ -14,7 +14,6 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -45,9 +44,12 @@ public:
     void getWatchDogTime_Database();
     QString getTimestamp();
     void updateBuyscreenAmount();
-
+    void setWatchDogactive(bool value);
     #define Database_Path QString("C:/SQLite/database.sqlite")
     //#define Database_Path qPrintable(QString("/var/www/sqlitetest/database.sqlite"))
+
+    //#define Interface_Path QString filename = "/etc/network/interfaces";
+    #define Interface_Path QString filename = "C:/SQLite/interfaces.txt";
 
     #define Database_Link Data.setDatabaseName(Database_Path);
 
@@ -68,12 +70,12 @@ private:
     bool showFavCart; //is the user fresh logged in? should he see when going into coffesweetsscan widget the favcart?
     bool favCartVisible; //is the favcart visible now?
     QString userID;
-    int counter; //counts up to 3 so that you can see the after buy screen for 3 seconds!
+    int counter; //counts up to 1 so that you can see the after buy screen for 1 second!
     QString timestamp;
-    int watchdogtime;
     QSqlDatabase Data;
     QString time;
     QString scanString;
+    bool watchdogactive;
+    static int watchdogtime;
 };
-
 #endif // MAINWINDOW_H

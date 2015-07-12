@@ -9,11 +9,12 @@
 #include <QMessageBox>
 #include "mainwindow.h"
 
-
+//constructer
 SqlZugriff::SqlZugriff()
 {
 }
 
+//gets the Picture from the Database
 void SqlZugriff::getPicturePath(){
     if(query.exec("SELECT Value from Settings WHERE Setting_ID = '""3""'")){
         query.first();
@@ -22,6 +23,8 @@ void SqlZugriff::getPicturePath(){
     }
     throwError();
 }
+
+//gets the Watchdogtime from the Database
 QString SqlZugriff::getWatchDogtime(){
     if(query.exec("Select Value from Settings WHERE Setting_ID = '""1""'")){
         QString value = "";
@@ -29,47 +32,60 @@ QString SqlZugriff::getWatchDogtime(){
         value = query.value(0).toString();
         return value;
     }
-    throwError();
+    throwError();       //if Database not open
 }
+
+//open window with the message : Database not found
 void SqlZugriff::throwError(){
     QMessageBox::StandardButton reply;
     reply = QMessageBox::critical(NULL, QObject::tr("Critical Error"), QObject::tr(qPrintable("Database not found at:\r\n \"" + Database_Path + "\"\r\nThe Program will not work.\r\n:(")),QMessageBox::Close);
     exit(EXIT_FAILURE);
 }
+
+//selects the Groceries from the Database
 void SqlZugriff::initGetGroceries(bool sweets){
     if(sweets){
-        if(query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""1""'"));
+        if(query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""1""'"));      //Sweets
         else throwError();
     }else{
-        if(query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""0""'"));
+        if(query.exec("Select Grocery_ID, Name, Nick, Image, Barcode, Amount, Price from Groceries WHERE Typ = '""0""'"));      //Drinks
         else throwError();
     }
 }
+
+
 bool SqlZugriff::findGroceriesWithBarcode(QString code){
     if(query.exec("SELECT * FROM Groceries WHERE Barcode=\ '"+code+"'"))
         return query.next();
     else throwError();
 }
 
+//selects the Users from the Database
 void SqlZugriff::initGetUser(){
     if(query.exec("Select User_ID, T9, Username, Image, Credits, Blocked from Users"));
     else throwError();
 }
+
+//selects a special user from the Database
 void SqlZugriff::initGetUser(QString userId){
     if(query.exec("Select * FROM Users WHERE User_ID = '"+userId+"'"))
         query.first();
     else throwError();
 }
 
+//chose 1 value from the query
 QString SqlZugriff::getString(int x){
     QString value = "";
     value = query.value(x).toString();
     return value;
 }
+
+//chose the next value from the query
 bool SqlZugriff::next(){
     return query.next();
 }
 
+//
 QString SqlZugriff::blocked(QString userId){
     if(query.exec("SELECT Blocked from Users WHERE User_ID = '"+userId+"'"));
     else throwError();

@@ -37,7 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
     timestamp = stime + ";" + sdate;
-
 }
 
 QString MainWindow::getTimestamp(){
@@ -49,7 +48,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+int MainWindow::watchdogtime = 0;
 //reset time and date
 void MainWindow::timerEvent(QTimerEvent *event)
 {
@@ -61,8 +60,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
 
-
-    if(watchdogtime == time.toInt()){
+    if(watchdogtime == time.toInt() && watchdogactive){   //watchdog overtime
         mainWindowPointer->exit(100);
         watchdogtime = 0;
     }else
@@ -71,23 +69,31 @@ void MainWindow::timerEvent(QTimerEvent *event)
     }
 
 
-    if(counter == -1){
+    if(counter == -1){                  //timer for the afterbuyscreen
         //do nothing
     }else if(counter <= 1){
         counter++;
-    }else if(counter > 1){ //was the after buy screen shown for more than 3 seconds?
+    }else if(counter > 1){              //was the after buy screen shown for more than 1 second?
         counter = -1;
         mainWindowPointer->exit(100);
     }
 
 }
+
+void MainWindow::setWatchDogactive(bool value){
+    watchdogactive = value;
+}
+
+//read the Barcode-Scanner
 void MainWindow::keyPressEvent(QKeyEvent *ev)
 {
-    if(ev->text().at(0) == 0xD){
+    if(ev->text().at(0) == 0xD){           //if /n/r was pressed
         mainWindowPointer->exit(34);
     }
     else scanString = scanString + ev->text();
 }
+
+//get the Watchdogtime from the Database
 void MainWindow::getWatchDogTime_Database(){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
@@ -97,6 +103,7 @@ void MainWindow::getWatchDogTime_Database(){
     Data.close();
 }
 
+//set the Watchdogtime
 void MainWindow::setWatchDog(){
     watchdogtime = 0;
 }
@@ -106,17 +113,21 @@ void MainWindow::setMainWindowPointer(QApplication *a){
 
     mainWindowPointer = a;
 }
+
 //inits the mainwindow with loginscreen
 void MainWindow::init(){
     ui->label_username->setText("");
     myLoginScreen = new LoginScreen();
     ui->gridLayout_port->addWidget(myLoginScreen);
 }
+
 //updates ists current logged in user
 void MainWindow::getUserFromLoginScreen(){
 
    ui->label_username->setText(myLoginScreen->getUsername());
 }
+
+
 void MainWindow::removeWidget(){
 
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
@@ -127,6 +138,8 @@ void MainWindow::removeWidget(){
         delete oldWidget;
     }
 }
+
+
 void MainWindow::showIpScreen(QString text){
     ShowIpScreen *myIpScreen = new ShowIpScreen();
     myIpScreen->setMainWindowPointer(mainWindowPointer,text);

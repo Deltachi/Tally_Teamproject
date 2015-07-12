@@ -1,6 +1,7 @@
 #include "scanwidget.h"
 #include "ui_scanwidget.h"
 #include "shoppingcart.h"
+#include "mainwindow.h"
 #include <QDebug>
 #include <QString>
 
@@ -69,6 +70,8 @@ void ScanWidget::on_pushButton_add_clicked()
     MainWindowPointer->exit(51);
 }
 void ScanWidget::updateAmountEveryItem(){
+    MainWindow w;
+    w.setWatchDog();
     if(ui->listWidget->item(0) != NULL){
         Shoppingcart *tempCart = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
         QList<QListWidgetItem> testList = tempCart->getItems();

@@ -1,5 +1,6 @@
 #include "settingswidget.h"
 #include "ui_settingswidget.h"
+#include "mainwindow.h"
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
@@ -33,7 +34,8 @@ bool SettingsWidget::setMainWindowPointer(QApplication *a){
     return !error;
 }
 QString SettingsWidget::findLineWithText(QString findThis){
-    QString filename = "/etc/network/interfaces";
+    Interface_Path
+
     QFile file(filename);
     QString s;
     if(file.open(QIODevice::ReadWrite)){
@@ -63,7 +65,7 @@ QString SettingsWidget::findLineWithText(QString findThis){
     return s;
 }
 void SettingsWidget::replaceLineWithText(QString replaceHere,QString writeThis){
-    QString filename = "/etc/network/interfaces";
+   Interface_Path
     QFile file(filename);
     QString s;
     if(file.open(QIODevice::ReadWrite | QIODevice::Text)){

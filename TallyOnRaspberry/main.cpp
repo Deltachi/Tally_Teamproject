@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
+    w.setWatchDogactive(false);
 
     QTcpSocket socket;
     QString ip;
@@ -47,10 +48,12 @@ int main(int argc, char *argv[])
             w.init();
             w.setLogoutButton(false);
             w.getWatchDogTime_Database();
+            w.setWatchDogactive(false);
         }
         switch(state){
             case 0: {//Loginscreen (showing Name list)
                 if(exitcode == 10){ //->login was clicked
+                    w.setWatchDogactive(true);
                     w.getUserFromLoginScreen();
                     w.getUserIDFromLoginScreen();
                     w.removeWidget();
@@ -64,12 +67,7 @@ int main(int argc, char *argv[])
             }
             break;
             case 1: {//password screen
-                if(exitcode == 20){ //->back
-                    w.removeWidget();
-                    w.init();
-                    state = 0;
-                    w.setLogoutButton(false);
-                }else if(exitcode == 21){ //password correct
+                if(exitcode == 21){ //password correct
                     w.removeWidget();
                     w.showCoffeeSweetWidget();
                     state = 2;
