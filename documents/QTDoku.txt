@@ -9,7 +9,7 @@ Darüber hinaus musste der Raspberry PI 2 noch konfiguriert werden, wie in 4.1 be
 Es wurde sich darauf geeinigt das Programm zu Demonstrationszwecke, während den Teammeetings, auf dem Raspberry PI 2 laufen zu lassen.
 Zum Ende des Projekts, sobald die Konfiguration beendet ist, sollten wir denn Raspberry PI 2 bekommen um die Benutzeroberfläche letztendlich anpassen zu können.
 
-Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir die GUI herausgearbeitet, welche in dem Plichtenheft zu sehen ist.
+Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir die GUI herausgearbeitet, welche in dem Plichtenheft zu sehen ist.[Information]
 Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
 Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
 Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
