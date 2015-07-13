@@ -30,7 +30,7 @@ bool SettingsWidget::setMainWindowPointer(QApplication *a){
     ui->label_SettingName->setText("wpa-ssid:");
     countSetting = 0;
     count = text.length()-1;
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
     return !error;
 }
 QString SettingsWidget::findLineWithText(QString findThis){
@@ -95,7 +95,7 @@ void SettingsWidget::on_pushButton_1_clicked()
         default : text.replace(count,1,'1'); break;
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_2_clicked()
@@ -116,7 +116,7 @@ void SettingsWidget::on_pushButton_2_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_3_clicked()
@@ -137,7 +137,7 @@ void SettingsWidget::on_pushButton_3_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_4_clicked()
@@ -158,7 +158,7 @@ void SettingsWidget::on_pushButton_4_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_5_clicked()
@@ -179,7 +179,7 @@ void SettingsWidget::on_pushButton_5_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_6_clicked()
@@ -200,7 +200,7 @@ void SettingsWidget::on_pushButton_6_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_7_clicked()
@@ -223,7 +223,7 @@ void SettingsWidget::on_pushButton_7_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_8_clicked()
@@ -244,7 +244,7 @@ void SettingsWidget::on_pushButton_8_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_9_clicked()
@@ -267,7 +267,7 @@ void SettingsWidget::on_pushButton_9_clicked()
         }
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_Shift_clicked()
@@ -300,11 +300,11 @@ void SettingsWidget::on_pushButton_Shift_clicked()
 void SettingsWidget::on_pushButton_0_clicked()
 {
     switch(text.at(count).toAscii()){
-        case 30: text.replace(count,1,' '); break;
-        default : text.replace(count,1,'0'); break;
+        case 32: text.replace(count,1,'0'); break;
+        default : text.replace(count,1,' '); break;
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_Hashtag_clicked()
@@ -315,7 +315,7 @@ void SettingsWidget::on_pushButton_Hashtag_clicked()
     default : text.replace(count,1,'#'); break;
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_backwards_clicked()
@@ -323,7 +323,7 @@ void SettingsWidget::on_pushButton_backwards_clicked()
     if(count > 0){
         count--;
     }
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_forward_clicked()
@@ -333,7 +333,7 @@ void SettingsWidget::on_pushButton_forward_clicked()
         text.append(32);
     }
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
 
 void SettingsWidget::on_pushButton_accept_clicked()
@@ -353,7 +353,7 @@ void SettingsWidget::on_pushButton_delete_clicked()
         text.remove(text.length()-1,1);
         count--;
         ui->lineEdit->setText(text);
-        ui->lineEdit->setSelection(count,count);
+        ui->lineEdit->setSelection(count,1);
     }
 }
 
@@ -379,5 +379,5 @@ void SettingsWidget::on_pushButton_next_clicked()
     }
     count = text.length()-1;
     ui->lineEdit->setText(text);
-    ui->lineEdit->setSelection(count,count);
+    ui->lineEdit->setSelection(count,1);
 }
