@@ -1,0 +1,32 @@
+Datenbank:
+Wir haben  unns auf 10 Tabellen in der Datenbank geeignet. Im folgenden werden diese gezeigt und kurz erläutert.
+[@Nico, bitte die jeweiligen Bilder hinzufügen von documents/pictures/Datenbank
+Users :
+	In dieser Tablle werden die Daten über die einzelnen Accounts gespeichert. Im Timestamp wird die letzte erfolgreiche Anmeldung gespeichert falls der Weert Login_Attemps = 0 ist.
+	Falls dieser Wert >1 steht im Timestemp der erste erste velgeschlagener Verusch sich anzumelden.
+
+Groceries :
+	In dieser Tabelle werden die Daten über die einzelnen Artikel gespeichert. In Prime_Cost wird der Preis zu dem eingestellt wurde gespeichert.
+	Typ und Typ_Group speichern die selbe Eingenschaft, und zwar ob es sich bei dem Artikel umd Sweets oder Coffe handelt. Dies wird bei Typ als Integer gespeichert, währrend Typ_Group es mit einem String speichert.
+	
+Consum_Index :
+	In dieser Tabelle werden Einkaufe bezüglich der Account gespeichert, für mögliche personalisierten Statistiken.
+
+Favorites :
+	In dieser Tablle werden die Favoriten der einzelnen Accounts gespeichert.
+	
+Messages : 
+	
+Price_History :
+	In dieser Tabelle werden Preisänderungen bei Artikel gespeichert um daraus möglicherweise Statistiken anzeigen zu lassen.
+	
+Sell_History : 
+	In dieser Tabelle werden alle Einkäufe gespeichert, um die Verkaufszahlen der Artikel einsehen zu können.
+	
+Sessions :
+	
+Settings :
+	In dieser Tabelle werden die Einstellungen gespeichert. Einerseites die Watchdogzeit, den Betrag umd ie man sein Konto überziehen kann und der Pfad zu den Bildern.
+	
+swlite_sequence :
+	

@@ -11,7 +11,7 @@ angular.module('app.services.menuService', [])
 							url: "/apis/menu/getMenu.php",
 							data: postData, // serializes the form's elements.
 							success: function(response){
-				  				console.log("Successful service request");
+				  				console.log("Successful service request: getMenuSync");
 				  				// var responseData;
 								// alert(response); // show response from the php script.
 								// console.log(response);
@@ -33,7 +33,7 @@ angular.module('app.services.menuService', [])
 							url: "/apis/menu/getItem.php",
 							data: postData, // serializes the form's elements.
 							success: function(response){
-				  				console.log("Successful service request");
+				  				console.log("Successful service request: getItemAsync");
 				  				// var responseData;
 								// alert(response); // show response from the php script.
 								// console.log(response);

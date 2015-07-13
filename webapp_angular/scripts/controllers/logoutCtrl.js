@@ -1,15 +1,14 @@
 angular.module('app.controllers.logoutCtrl', []) 	
-	.controller('logoutCtrl', ['$scope','$location', '$state', 'myService', function($scope,$location,$state,myService){
+	.controller('logoutCtrl', ['$scope','$location', '$state', 'loginService','userDataService', function($scope,$location,$state,loginService,userDataService){
 		function redirect(){
 	  //   	if ($.cookie('session') == null){
 			// 	console.log('NO COOKIE THERE >.>')
 			// }
 			// else{
 				// $.removeCookie('session');
-				myService.sharedObject.data = false;
-				console.log('myService variable: '+myService.sharedObject.data);
-
-				$state.go('home')
+				loginService.setUser(null);
+				userDataService.setUserData({});
+				$state.go('home');
 			// }
 		}
 
@@ -25,7 +24,7 @@ angular.module('app.controllers.logoutCtrl', [])
 						clearInterval(progress);
 						setTimeout(redirect,1000);
 					} else {
-						current_perc +=4;
+						current_perc +=10;
 						me.css('width', (current_perc)+'%');
 					}
 					

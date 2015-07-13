@@ -27,3 +27,24 @@ Der Raspberry Pi hat einen 900 MHz Prozessor [Berry1]
 
 Und ganz am Schluss der Datei:
 [Berry1] Raspberry Geek; Raspberry Info; www.raspberrygeek.com/turorial/bla
+
+@articel{Information,
+		author={VoidRealms},
+		title={Qt C++ tutorial by Brian},
+		address={https://www.youtube.com/watch?v=6KtOzh0StTc&list=PL3C390B298EDD3F86] },
+		year={2011},
+		}
+		
+@articel{Information,
+		author={ProgrammingKnowledge},
+		title={QT C++ GUI Tutorial},
+		address={https://www.youtube.com/watch?v=8opfd5aYkq8&list=PLS1QulWo1RIZjrD_OLju84cUaUlLRe5jQ&index=1},
+		year={2013},
+		}
+		
+@articel{Information,
+		author={2015 The Qt Company},
+		title={Qt Documents},
+		address={http://www.qt.io/},
+		year={2015},
+		}
