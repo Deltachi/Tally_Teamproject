@@ -10,8 +10,8 @@ angular.module('app.controllers.menuCtrl', [])
 		menuService.getMenuSync(postData).then(
 			function(data){
 				responseDrinks = jQuery.parseJSON(data);
-				console.log(data);
-				console.log(responseDrinks);
+				// console.log(data);
+				// console.log(responseDrinks);
 				menuService.menu.drinks= responseDrinks;
 				
 				$scope.loading = false;
@@ -21,8 +21,8 @@ angular.module('app.controllers.menuCtrl', [])
 		menuService.getMenuSync(postData).then(
 			function(data){
 				responseSweets = jQuery.parseJSON(data);
-				console.log(data);
-				console.log(responseSweets);
+				// console.log(data);
+				// console.log(responseSweets);
 				menuService.menu.sweets = responseSweets;
 
 				$scope.loading = false;
@@ -40,8 +40,8 @@ angular.module('app.controllers.menuCtrl', [])
 			postData['request'] = item_id;
 			menuService.getItemAsync(postData).then(
 								function(data){
-									console.log("Response data:");
-									console.log(jQuery.parseJSON(data)[0]);
+									// console.log("Response data:");
+									// console.log(jQuery.parseJSON(data)[0]);
 									menuService.editItem =  jQuery.parseJSON(data)[0];
 								});
 			console.log(menuService.editItem);
