@@ -45,11 +45,11 @@ public:
     QString getTimestamp();
     void updateBuyscreenAmount();
     void setWatchDogactive(bool value);
-    #define Database_Path QString("C:/SQLite/database.sqlite")
-    //#define Database_Path qPrintable(QString("/var/www/sqlitetest/database.sqlite"))
+    //#define Database_Path QString("C:/SQLite/database.sqlite")
+    #define Database_Path QString("/var/www/sqlite/database.sqlite")
 
-    //#define Interface_Path QString filename = "/etc/network/interfaces";
-    #define Interface_Path QString filename = "C:/SQLite/interfaces.txt";
+    #define Interface_Path QString filename = "/etc/network/interfaces";
+    //#define Interface_Path QString filename = "C:/SQLite/interfaces.txt";
 
     #define Database_Link Data.setDatabaseName(Database_Path);
 
