@@ -17,7 +17,8 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage[utf8x,utf8]{inputenc}
-
+\usepackage{courier}
+\usepackage{url}
 
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -52,11 +53,11 @@
 
 %------------------------------------------------------------------------------------------------
 %
-%  AB HIER SOLLEN �NDERUNGEN VORGENOMMEN WERDEN
+% 
 %
 %------------------------------------------------------------------------------------------------
 
-% Hier sucht man sich den gew�nschten Stil f�r Kopf- bzw. Fu�zeile aus.
+
 %\pagestyle{empty}                     % keine Kopf- und Fu�zeilen
 \pagestyle{plain}                      % nur Seitenzahlen
 %\pagestyle{headings}                  % Aktivieren f�r Kopf- und Fu�zeilen
@@ -100,7 +101,6 @@
 In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getr\"anke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird meistens eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch h\''aufig das die Strichliste sehr unleserlich wird und es bei der \"Ubertragung in die Datenbank auf den PC zu Fehlern kommt. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig da alles per Hand \''ubertragen werden muss.
 \par
 Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu k\"onnen.
-\cite{ahu61}
 %------------------------------------------------------------------------------------------------
 
 \section{Rahmenbedingungen}
@@ -171,11 +171,7 @@ Als Datenbank soll die resourcenschonendere SQLite Datenbank verwendet werden
 \subsection{Benutzerschnittstelle}
 Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Raspberry. Au\ss()erdem wird ein Barcodescanner installiert um Produkte einscannen zu k\"onnen.
 
-\begin{center}
-\begin{large}
-\textbf{Zentrierter Text hingegen ist schon eher nützlich.}
-\end{large}
-\end{center}
+
 
 
 \section{Meilensteine des Projektes}
@@ -184,7 +180,7 @@ Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Rasp
 \subsection{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}
 Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einen Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
 \par
-Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec \cite{zitat01} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
+Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
 
 	\begin{figure}[h]
 	\makebox[\textwidth]{
@@ -198,7 +194,7 @@ Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang
 \par
 'Raspbian' wurde so optimiert das es mit der geringen Hardware zurecht kommt und den ARM-Prozessor des Raspberrys unterst\''utzt. Als Alternative stand eine Ubuntu Version ,speziell f\"ur ARM-Prozessoren entwickelt, zu Verf\"ugung die jedoch noch nicht voll ausgereift und funktionst\''uchtig ist.
 \par
- Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert.
+ Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert. \cite{berry1}
 \begin{frame}
 
 \begin{lstlisting}
@@ -226,8 +222,50 @@ sudo apt-get install php5
 
 \end{frame}
  um eine volle Unterst\"utzung f\"ur die kommende Websites zu gew\"ahrleisten.
+ \cite{berry2}
  \par
  PHP ist eine Open Source-Skriptsprache die speziell f\''ur die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgef\''uhrt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
+ \cite{berry3}
+\par
+\subsubsection{Qt Creator}
+Das Programm an sich, Tally, wird auf einem externen Rechner programmiert und auf richtigkeit überprüft. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf dem Raspberry lauffähig gemacht.
+\par
+Damit das Programm auf dem Raspberry lauffähig gemacht werden kann muss der Qt Creator samt Qt4 Umgebung installiert werden. Dieser kann dann das gespeichert unkompilierte Programm öffnen und passend für den Raspberry kompilieren.
+\par
+Das Programm auf einem anderen Computer zu kompilieren fällt weg, da das Programm speziell für ARM-Prozessoren kompiliert werden muss. Es gibt zwar die Möglichkeit des Cross-Compilierens, wo man auf einem anderen System als dem gedachten das Programm schreibt aber so kompilieren kann das es auf dem Raspberry läuft, diese weist aber noch einige Fehler beim kompilieren für den Raspberry auf, so dass ein fehlerfreies programmieren und kompilieren nicht möglich ist.
+\par
+Für den Qt Creator mit den passenden development Tools füuhrt man folgende Befehle aus
+ \begin{frame}
+
+\begin{lstlisting}
+sudo apt-get install qtcreator
+sudo apt-get install qt4-dev-tools
+sudo apt-get install gcc
+sudo apt-get install xterm
+sudo apt-get install git-core
+sudo apt-get install subversion
+\end{lstlisting}
+
+\end{frame}
+\newpage
+Danach muss man nur noch die passende Toolchain, also den passenden Compiler für den Raspberry, auswählen. Dazu geht man im Qt Creator auf Optionen > build and run > tab tool chains > add und wählt GCC aus. Bei dem Compiler Pfad stellt man folgenden Pfad ein
+\begin{frame}
+
+\begin{lstlisting}
+/usr/bin/arm-linux-gnueabihf-gcc-4.6 
+\end{lstlisting}
+
+\end{frame} 
+beim Debugger
+  \begin{frame}
+
+\begin{lstlisting}
+/usr/bin/gdb
+\end{lstlisting}
+
+\end{frame}
+Danach nur noch bestätigen und der Qt Creator ist einsatzbereit. Nun kann eine Projektdatei mit der Endung .pro geöffnet und kompiliert werden.
+\cite{berry4}
 \par
 \subsubsection{Die passende Datenbank}
 Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauff\"ahig ist aber keine hohe Stabilit\"at besitzt und sehr resourcenlastig auf dem Raspberry l\"auft. Daher wurde das SQLite Datenbanksystem ausgew\"ahlt.
@@ -242,7 +280,7 @@ apt-get install php5-sqlite
  SQLite ist eine relationale Datenbank und ben\"otigt im Gegensatz zu MySQL keine st\"andig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
 \par
 \subsubsection{Der Touchscreen}
-Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert
+Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert \cite{berry5}
 \begin{frame}
 
 \begin{lstlisting}
@@ -275,7 +313,7 @@ Damit war der Touchscreen ungeeignet f\''ur das Projekt und ein neuer Touchscree
 \par
 Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel f\"ur den Raspberry und eins f\"ur das Display ben\"otigt, damit w\"are eine Energiesparende L\"osung ebenfalls nicht m\"oglich.
 \par
-Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus. Der Touchscreen besitzt eine Aufl\"osung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten erm\"oglicht.
+Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus.\cite{berry6} Der Touchscreen besitzt eine Aufl\"osung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten erm\"oglicht.
 Die Vorteile bei diesem Display waren die kleine Bauform und keine zus\"atzlich ben\"otigte Stromquelle. Ausserdem wird vom Hersteller direkt ein passender Kernel f\"ur Raspbian zur Verf\"ugung gestellt.
 \begin{frame}
 
@@ -287,7 +325,7 @@ sudo dpkg -i kernel4dpi_1.3-3_pi2.deb
 
 \end{frame}
 
- Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren werden,  das Display an den GPIO-Ports angebracht werden und der Raspberry wieder hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich da der Raspberry das Display als prim\''ares Display erkennt und direkt auf den Desktop bootet. Dadurch ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
+ Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren und vom Strom getrennt werden. Das Display wird an den GPIO-Ports angebracht und der Raspberry kann wieder mit Strom versorgt und hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich da der Raspberry das Display als primäres Display erkennt und direkt auf den Desktop bootet. Dadurch ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
 \par
 \subsubsection{Produkte scannen}
 Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handesl\"ublicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
@@ -343,6 +381,7 @@ wpa-psk "WLAN-PASSWORT"
 \end{lstlisting}
 
 \end{frame}
+\newpage
 
 damit eine Verbindung mit dem WLAN Netz hergestellt werden kann.
 Anschliessend muss nur noch per
@@ -358,7 +397,7 @@ der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen 
 Da diese M\''oglichkeit jedoch relativ umst\''andlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN konfiguration eingebaut in der man den WLAN-Namen un das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
-Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild w\''ahrend des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer l\''adt das w\''ahrend des hochfahrens angezeigt werden kann.
+Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild w\''ahrend des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer l\''adt das w\''ahrend des hochfahrens angezeigt werden kann. \cite{berry7}
 \begin{frame}
 
 \begin{lstlisting}
@@ -375,7 +414,8 @@ sudo nano asplashscreen
 \end{lstlisting}
 
 \end{frame}
-
+\newpage
+mit folgendem Inhalt
 \begin{frame}
 
 \begin{lstlisting}
@@ -440,6 +480,7 @@ sudo insserv /etc/init.d/asplashscreen
 \end{frame}
 
 Nun wird w\''ahrend des Bootvorgangs das Tally Logo angezeigt.
+\newpage
 
 \subsubsection{Backups einrichten und versenden per Mail}
 Als m\"ogliche Backupvarianten standen ein komplettes Backup der Speicherkarte des Raspberrys oder ein Backup der Datenbank zur Wahl.
@@ -480,7 +521,8 @@ Zum autmatischen versenden der Mails wird folgendes Skript erstellt
 sudo nano /usr/local/bin/mailnotify.sh
 \end{lstlisting}
 \end{frame}
-Das Skript sieht wie folgt aus
+\newpage
+Das Skript sieht wie folgt aus \cite{berry8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -606,6 +648,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht."
 
 \end{lstlisting}
 \end{frame}
+\newpage
 Damit wird das Skript aufgerufen, wobei der text in den ersten Anf\"uhrungszeichen den Betreff, un der zweite den Inhalt der Email.
 Hierbei kam es jedoch zu folgendem Fehler
 \begin{frame}
@@ -655,7 +698,7 @@ Jul 15 16:32:30 raspberrypi sendEmail[4163]: Email was sent successfully!
 \end{frame}
 \par
 Damit auch Anh\"ange mit versandt werden k\"onnen muss lediglich das Skript etwas ver\"andert werden
-Hinzu kommt folgender Ausdruck.
+Hinzu kommt folgender Ausdruck. \cite{berry9}
 \begin{frame}
 
 \begin{lstlisting}
@@ -669,7 +712,7 @@ fi
 
 \end{lstlisting}
 \end{frame}
-
+\newpage
 Somit sieht das Skript wie folgt aus
 \begin{frame}
 
@@ -767,13 +810,15 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.tar.gz
 \subsubsection{Tally autostarten}
 Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart f\"ur das Programm konfiguriert werden.
 \par
-Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Daf\"ur musste zun\"achst ein kleines Skript geschrieben werden damit das Programm autostarten kann, welches dann in einem cronjob nach jedem hochfahren ausgef\"uhrt wird.
+Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Daf\"ur musste zun\"achst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einem cronjob nach jedem hochfahren ausgef\"uhrt wird.
 \begin{frame}
 
 \begin{lstlisting}
 sudo nano /etc/init.d/NameDesSkripts
 \end{lstlisting}
 \end{frame}
+\newpage
+Mit folgendem Inhalt
 \begin{frame}
 
 \begin{lstlisting}
@@ -842,13 +887,13 @@ sudo update-rc.d NameDesSkripts defaults
 \par
 
 Als n\"achstes wird das Skript durch einen cronjob jedes mal beim starten des Raspberrys ausgef\"uhrt
-
 \begin{frame}
 
 \begin{lstlisting}
 sudo crontab -e
 \end{lstlisting}
 \end{frame}
+\newpage
 Dazu wurde folgende zeile eingef\"ugt
 \begin{frame}
 
@@ -890,7 +935,7 @@ Und das gew\"unschte Programm startet nachdem die GUI geladen ist.
 
 
 
-\subsection{QT Creator - Das Tally programm}
+\subsection{QT Creator - Das Tally Programm}
 Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt.
 Qt ist eine Klassenbibliothek von C++ und bietet die Programmierung für  graphische Benutzeroberfläche und Datenbankfunktionen.
 Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel sind.
@@ -1133,42 +1178,12 @@ Tina       &   11      &  151    &  43     \\
 \end{center}
 \end{figure}
 
+\begin{center}
 \bibliographystyle{alphadin}
 \bibliography{literature}
-
-\begin{thebibliography}{999}
-\bibitem {zitat01}
-\bibitem {zitat02}
-\end{thebibliography}
+\end{center}
 %------------------------------------------------------------------------------------------------
 
 \end{document}
 
 %------------------------------------------------------------------------------------------------
-@article{ahu61,
-       author={Arrow, Kenneth J. and Leonid Hurwicz and Hirofumi Uzawa},
-       title={Constraint qualifications in maximization problems},
-       journal={Naval Research Logistics Quarterly},
-       volume={8},
-       year = 1961,
-       pages = {175-191}
-     }
-
-@book{ab94,
-       author = {Charalambos D. Aliprantis and Kim C. Border},
-       year = {1994},
-       title = {Infinite Dimensional Analysis},
-       publisher = {Springer},
-       address = {Berlin}
-     }
-
-@incollection{m85,
-       author={Maskin, Eric S.},
-       year={1985},
-       title={The theory of implementation in {N}ash equilibrium: a survey},
-       booktitle={Social Goals and Social Organization},
-       editor={Leonid Hurwicz and David Schmeidler and Hugo Sonnenschein},
-       pages={173-204},
-       publisher={Cambridge University Press},
-       addess={Cambridge}
-     }
