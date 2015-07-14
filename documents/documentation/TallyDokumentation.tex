@@ -204,7 +204,7 @@ sudo apt-get install xrdp
 Damit ist eine einfache Remote Desktopverbindung zum Raspberry möglich und die komplette Verwaltung kann über einen Windows, Mac oder Linux Computer erfolgen. 
 \par
 \subsubsection{Der Webserver}
-Als n\"achster Schritt wurde ein vollständiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zunächst ein Apache Server der Version 2 installiert
+Als nächstes wurde ein vollständiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zunächst ein Apache Server der Version 2 installiert
 \begin{frame}
 
 \begin{lstlisting}
@@ -220,20 +220,19 @@ sudo apt-get install php5
 \end{lstlisting}
 
 \end{frame}
- um eine volle Unterstützung für die kommende Websites zu gewährleisten.
- \cite{2}
+ um eine volle Unterstützung für die kommende Website zu gewährleisten.
  \par
  PHP ist eine Open Source-Skriptsprache die speziell für die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgeführt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
  \cite{3}
 \par
 \subsubsection{Qt Creator}
-Das Programm an sich, Tally, wird auf einem externen Rechner programmiert und auf richtigkeit überprüft. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf dem Raspberry lauffähig gemacht.
+Das Programm an sich, Tally, wird auf einem externen Rechner in Qt programmiert und auf richtigkeit überprüft, debuggt. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf den Raspberry geladen.
 \par
-Damit das Programm auf dem Raspberry lauffähig gemacht werden kann muss der Qt Creator samt Qt4 Umgebung installiert werden. Dieser kann dann das gespeichert unkompilierte Programm öffnen und passend für den Raspberry kompilieren.
+Damit das Programm auf dem Raspberry lauffähig gemacht werden kann, bzw kompiliert werden kann, muss der Qt Creator\cite{4} samt Qt4 Umgebung installiert werden. Dieser kann dann das gespeichert unkompilierte Programm öffnen und passend für den Raspberry kompilieren.
 \par
-Das Programm auf einem anderen Computer zu kompilieren fällt weg, da das Programm speziell für ARM-Prozessoren kompiliert werden muss. Es gibt zwar die Möglichkeit des Cross-Compilierens, wo man auf einem anderen System als dem gedachten das Programm schreibt aber so kompilieren kann das es auf dem Raspberry läuft, diese weist aber noch einige Fehler beim kompilieren für den Raspberry auf, so dass ein fehlerfreies programmieren und kompilieren nicht möglich ist.
+Das Programm auf einem anderen Computer zu kompilieren fällt weg, da das Programm speziell für ARM-Prozessoren kompiliert werden muss. Es gibt zwar die Möglichkeit des Cross-Compilierens, wo man auf einem anderen System als dem gedachten das Programm schreibt aber so kompilieren kann das es auf dem Raspberry läuft. Diese weist aber noch einige Fehler beim kompilieren für den Raspberry auf, so dass ein fehlerfreies programmieren und kompilieren nicht möglich ist.
 \par
-Für den Qt Creator mit den passenden development Tools füuhrt man folgende Befehle aus
+Für den Qt Creator mit den passenden development Tools führt man folgende Befehle aus
  \begin{frame}
 
 \begin{lstlisting}
@@ -264,7 +263,6 @@ beim Debugger
 
 \end{frame}
 Danach nur noch bestätigen und der Qt Creator ist einsatzbereit. Nun kann eine Projektdatei mit der Endung .pro geöffnet und kompiliert werden.
-\cite{4}
 \par
 \subsubsection{Die passende Datenbank}
 Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauffähig ist aber keine hohe Stabilität besitzt und sehr resourcenlastig auf dem Raspberry läuft. Daher wurde das SQLite Datenbanksystem ausgewählt.
@@ -279,6 +277,7 @@ apt-get install php5-sqlite
  SQLite ist eine relationale Datenbank und benötigt im Gegensatz zu MySQL keine ständig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
 \par
 \subsubsection{Der Touchscreen}
+Wie eingangs erwähnt stand neben dem Raspberry der C-Berry Touchscreen von admatec zur Verfügung. \cite{10}
 Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert \cite{5}
 \begin{frame}
 
@@ -308,7 +307,7 @@ sudo ./tft_test
 
 Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Primäres Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verzögerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daführ gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
 \par
-Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
+Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin \cite{11} zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
 \par
 Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel für den Raspberry und eins für das Display benötigt, damit wäre eine Energiesparende Lösung ebenfalls nicht möglich.
 \par
@@ -336,10 +335,10 @@ sudo dpkg -i kernel4dpi_1.3-3_pi2.deb
 \subsubsection{Produkte scannen}
 Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handelsüblicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
 \par
- Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, wurde überlegt eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen. Die Wahl fiel allerdings auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung mit verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
+ Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, fiel diese Möglichkeit weg. Deshalb war eine weitere Möglichkeit eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen, wobei es allerdings Probleme mit dem Autofokus der Webcams gab. Damit ein Barcode gelesen werden kann muss ein Autofokus vorhanden sein, der sich auch passend scharf stellt. Diese Webcams sind allerdings relativ teuer. Die Wahl fiel deshalb auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
 \par
 \subsubsection{Wlan für den Raspberry}
-Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss, wurde der Edimax WLAN USB Stick am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde in der automatische 'Power Saving' Modus abgeschaltet. 
+Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss und der Raspberry nur einen Stromanschluss benötigt, wurde der Edimax WLAN USB Stick\cite{12} am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde der automatische 'Power Saving' Modus abgeschaltet, da der Wlan Stick sonst immer automatisch in den Ruhemodus geht und der Raspberry somit nicht mehr von aussen erreichbar wäre.
 \newpage
 Hierzu wurde eine Konfigurationsdatei für den Treiber des WLAN Sticks erstellt.
 \begin{frame}
@@ -401,10 +400,17 @@ sudo service networking restart
 \end{frame}
 der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen WLAN Netz wird hergestellt.
 \par
-Da diese Möglichkeit jedoch relativ umständlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN konfiguration eingebaut in der man den WLAN-Namen un das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
+Da diese Möglichkeit jedoch relativ umständlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN Konfiguration eingebaut, in der man den WLAN-Namen und das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
 Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt das während des hochfahrens angezeigt werden kann. \cite{7}
+
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{bootscreen.png}}
+	\caption{Bootlogo}
+	\end{figure}
+
 \begin{frame}
 
 \begin{lstlisting}
@@ -501,7 +507,7 @@ sudo apt-get install rsync
 \end{frame}
  Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu überprüft es zunächst ob die zu kopierende Datei geändert wurde oder nicht, wodurch ein unnützes kopieren von Daten unterbunden wird.
 \par
-Damit die backups autmatisch und täglich erstellt werden, wird ein cronjob hinzugefügt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu können. Zunächst wird die Konfigurationsdatei von cronjob geöffnet
+Damit die backups autmatisch und täglich erstellt werden, wird ein cronjob hinzugefügt. Cron-Daemon ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu lassen, ohne diese aktiv aufrufen zu müssen. Der Befehl dazu wird in der zugehörigen Tabelle, der crontab, gespeichert. Zunächst wird die Tabelle crontab mit dem editier-Befehl geöffnet
 \begin{frame}
 
 \begin{lstlisting}
@@ -509,7 +515,7 @@ sudo crontab -e
 \end{lstlisting}
 \end{frame}
 
-Hier wird folgende Zeile eingef\"ugt
+Hier wird folgende Zeile eingefügt
 \begin{frame}
 
 \begin{lstlisting}
@@ -526,9 +532,9 @@ Dafür wird das Programm sendEmail und zwei Perl- Libraries installiert.
 sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
 \end{lstlisting}
 \end{frame}
-SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird. Die beiden Perl- Libraries dienen dazu damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
+SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird und nur die Zugangsdaten zum SMTP-Server des Email Accounts über den gesendet werden soll hinterlegt werden müssen. Die beiden Perl- Libraries dienen dazu damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
 \par
-Zum autmatischen versenden der Mails wird folgendes Skript erstellt \cite{8}
+Zum autmatischen versenden der Mails wird folgendes Skript erstellt, das vielfach für den Raspberry verwendet wird. Im Code findet sich der Name des Autors \cite{8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -812,6 +818,106 @@ sendEmail -f ${SENDER} -t ${RECIPIENT} -u "${SUBJECT}" -m "${BODY}" ${OPTIONS}
 exit 0
 \end{lstlisting}
 \end{frame}
+Und in unserem Fall
+\begin{frame}
+
+\begin{lstlisting}
+###########################################################################
+                                                                   
+              Sending E-Mail notification with sendEmail               
+                                                                       
+ Creation:    15.08.2013                                              
+ Last Update: 06.04.2015                                               
+ 
+ Copyright (c) 2013-2015 by Georg Kainzbauer <http://www.gtkdb.de>     
+                                                                       
+ This program is free software; you can redistribute it and/or modify  
+ it under the terms of the GNU General Public License as published by  
+ the Free Software Foundation; either version 2 of the License, or     
+ (at your option) any later version.                                   
+                                                                       
+###########################################################################
+#!/bin/bash
+
+# Sender of the mail
+SENDER="tallyupb@gmail.com"
+
+# Recipient of the mail
+RECIPIENT="tallyupb@gmail.com"
+
+# SMTP server
+SMTPSERVER="smtp.gmail.com"
+
+# User name on the SMTP server
+SMTPUSERNAME="tallyupb@gmail.com"
+
+# Password on the SMTP server
+SMTPPASSWORD="kaffee123"
+
+# Enable TLS for the SMTP connection
+USETLS=1
+
+###################################################################
+# NORMALLY THERE IS NO NEED TO CHANGE ANYTHING BELOW THIS COMMENT #
+###################################################################
+
+# Use first argument as mail subject
+if [ -n "$1" ]; then
+  SUBJECT="$1"
+else
+  # No subject specified
+  SUBJECT=""
+fi
+
+# Use second argument as mail body
+if [ -n "$2" ]; then
+  BODY="$2"
+else
+  # No mail body specified
+  BODY=""
+fi
+
+# Use third argument as attachment
+if [ -n "$3" ]; then
+ ATTACHMENT="$3"
+else
+  # No attachment specified
+  ATTACHMENT=""
+fi
+
+# Generate the options list for sendEmail
+OPTIONS=""
+
+if [ -n "${SMTPSERVER}" ]; then
+  OPTIONS="${OPTIONS} -s ${SMTPSERVER}"
+fi
+
+if [ -n "${SMTPUSERNAME}" ]; then
+  OPTIONS="${OPTIONS} -xu ${SMTPUSERNAME}"
+fi
+
+if [ -n "${SMTPPASSWORD}" ]; then
+  OPTIONS="${OPTIONS} -xp ${SMTPPASSWORD}"
+fi
+
+if [ -n "${USETLS}" ]; then
+  if [ ${USETLS} == 1 ]; then
+    OPTIONS="${OPTIONS} -o tls=yes"
+  else
+    OPTIONS="${OPTIONS} -o tls=no"
+  fi
+fi
+
+if [ -n "${ATTACHMENT}" ]; then
+  OPTIONS="${OPTIONS} -a ${ATTACHMENT}"
+fi
+
+# Send the mail with sendEmail
+sendEmail -f ${SENDER} -t ${RECIPIENT} -u "${SUBJECT}" -m "${BODY}" ${OPTIONS}
+
+exit 0
+\end{lstlisting}
+\end{frame}
 Im Befehl zum senden wird nun ein drittes Argument hinzugefügt das den Pfad mit der Datei die zu versenden ist enth\"alt.
 \begin{frame}
 
@@ -821,7 +927,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.txt
 \end{lstlisting}
 \end{frame}
 \par
-Nun muss dieses Skript wieder in Cron eingefügt werden damit es täglich zu einer bestimmten Zeit ausgeführt wird
+Nun muss dieses Skript wieder in die crontab eingefügt werden damit es täglich zu einer bestimmten Zeit ausgeführt wird
 \begin{frame}
 
 \begin{lstlisting}
@@ -842,7 +948,7 @@ Damit wird das Skript mailnotify.sh um 23:45Uhr gestartet und eine Email mit dem
 \subsubsection{Tally autostarten}
 Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart für das Programm konfiguriert werden.
 \par
-Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Dafür musste zunächst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einem cronjob nach jedem hochfahren ausgeführt wird.
+Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Dafür musste zunächst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einer crontab nach jedem hochfahren ausgeführt wird.
 \begin{frame}
 
 \begin{lstlisting}
@@ -918,7 +1024,7 @@ sudo update-rc.d NameDesSkripts defaults
 \end{frame}
 \par
 
-Als nächstes soll das Skript durch einen cronjob jedes mal beim starten des Raspberrys ausgeführt
+Als nächstes soll das Skript durch einen im crontab hinterlegten Befehl jedes mal beim starten des Raspberrys ausgeführt werden
 \begin{frame}
 
 \begin{lstlisting}
@@ -930,12 +1036,12 @@ Dazu wurde folgende zeile eingefügt
 \begin{frame}
 
 \begin{lstlisting}
-@reboot \bin\bash .....
+@reboot \bin\bash /etc/init.d/NameDesSkripts
 \end{lstlisting}
 \end{frame}
-Das '@reboot' steht für das ausführen der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete der cronjob das Skript und somit das Programm.
+Das '@reboot' steht für das ausführen der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete das Skript und somit das Programm.
 \par
-Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden.
+Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden. \cite{13}
 Dazu erstellt man in folgendem Pfad
 \begin{frame}
 
@@ -943,14 +1049,14 @@ Dazu erstellt man in folgendem Pfad
 /etc/xdg/autostart/
 \end{lstlisting}
 \end{frame}
-eine Datei die wie folgt lauten muss 'NamedesProgramm.desktop'. Wichtig ist das .desktop da sonst das Programm nicht nach dem hochfahren gestartet wird.
+eine Datei die wie folgt lauten muss 'NamedesProgramm.desktop'. Wichtig ist das die Datei auf `.desktop' endet da sonst das Programm nicht nach dem hochfahren gestartet wird.
 \begin{frame}
 
 \begin{lstlisting}
 [Desktop Entry]
 Name=NamedesProgramm
 Comment=
-Exec=NamedesProgramm -forever -rfbport 5900 -rfbauth ~/.vnc/x11vnc.pass -o ~/.vnc/x11vnc.log -display :0
+Exec=PfaddesProgramm -forever -rfbport 5900 -rfbauth ~/.vnc/x11vnc.pass -o ~/.vnc/x11vnc.log -display :0
 Terminal=false
 Type=Application
 \end{lstlisting}
@@ -1034,7 +1140,14 @@ Allgemein läuft das Programm nach einem Automaten ab. Der Bildschirm wurde in z
 Dadurch Teilen wir den Bildschirm in die Kopfzeile und der Automatenbereich. Näheres dazu wird in den dementsprechenden Klassen erläutert.
 main.cpp :
 	Die main.cpp ist verantwortlich für den Ablauf des Programmes. Die Struktur dafür ist aufgebaut wie ein Mealy-Automat.Die Zustände geben an welcher Bildschirm gerade angezeigt wird. Die Übergänge sind die Exitcodes.
-	Die Ausgaben der Kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.-->(MEALYAUTOMATBILD)<--
+	Die Ausgaben der Kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.
+	
+	\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{bootscreen.png}}
+	\caption{MEALEY}
+	\end{figure}
+	
 	Exitcodes erlaubt es Programmen bei bestimmten Events(z.B. ein Knopf wurde geklickt) wieder zurück in die main.cpp zu gelangen.
 	 -->mainWindowPointer->exit(21); 
 	Es wird Anfangs die Ip ermittelt und diese auf einem eigenen Screen angezeigt.
@@ -1054,20 +1167,32 @@ main.cpp :
 \end{frame}
 \par
 \paragraph{Zustände:} $\;$ \\
-	
 		0 : Es wird der Login-Screen auf dem Bildschirm gezeigt.
 			Exitcode: 
 \begin{enumerate}
 			\item	10 : Es wurde der Benutzer gewählt und möchte sich nun mit dem Account anmelden.
 			\item	!10 \& !100 \& !34 : Das Programm beendet sich.
 \end{enumerate}
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{2Login-Screen.png}}
+	\caption{Login Screen}
+	\end{figure}
+	
+	\par
 		1 : Es wird der Passwort-Screen auf dem Bildschirm angezeigt.
 			Exitcode:
 \begin{enumerate}			
 			\item	20 : Es wurde auf den `Back' Knopf gedrückt gelangt in Zustand 0.
 			\item	21 : Das Passwort wurde korrekt eingegeben und man gelangt zum Coffee/Sweet/Scan Menü.
 				!20 \& !21 \& !100 \& !34 : Das Programm beendet sich.
-\end{enumerate}			
+\end{enumerate}		
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{3Passwort-Screen.png}}
+	\caption{Passwort Screen}
+	\end{figure}	
+\newpage
 		2 : Es gibt die Auswahlpunkte zwischen Coffee/Sweets/Scan als auch die Favoriten oder das Shoppingcart.
 			Exitcode:
 \begin{enumerate}			
@@ -1079,26 +1204,48 @@ main.cpp :
 			\item	51 : Es wurde auf `Back' geklickt und man wird automatisch ausgeloggt.
 			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
 				!31 \& !32 \& !33 ! \& !34 \& !99 \& !100 \& !98 : Das Programm beendet sich.
-\end{enumerate}			
+\end{enumerate}	
+\newpage
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{4CoffeeSweetsScan-Screen.png}}
+	\caption{Item Screen}
+	\end{figure}		
 		3 : Es wird die Getränkeliste mit dem Shoppingcart gezeigt.
 			Exitcode:
 \begin{enumerate}			
 			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
 			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
 			\item	98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Getränkeliste aufgelistet.
-\end{enumerate}			
+\end{enumerate}
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{5CoffeList-Screen.png}}
+	\caption{Coffe + Cart Screen}
+	\end{figure}			
 		4 : Es wird die Süßigkeitenliste mit dem Shoppingcart gezeigt. 
 			Exitcode:
 \begin{enumerate}			
 			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
 			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
 			\item	98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Süßigkeitenliste angezeigt.
-\end{enumerate}			
+\end{enumerate}	
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{6SweetsList-Screen.png}}
+	\caption{Login Screen}
+	\end{figure}		
 		5 : Es wird das Scan-Menue angezeigt.
 \begin{enumerate}		
 			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
 			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
 \end{enumerate}		
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{8Scan-Screen.png}}
+	\caption{Scan Screen}
+	\end{figure}
+	\newpage
 		6 : Es wird das Shoppingcart als auch die Favoriten angezeigt.
 \begin{enumerate}		
 			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
@@ -1109,6 +1256,11 @@ main.cpp :
 \begin{enumerate}		
 			\item	71 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
 \end{enumerate}
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{7Settings-Screen.png}}
+	\caption{Settings Screen}
+	\end{figure}
 
 \paragraph{mainwindows.cpp:} $\;$ \\
 	Wie bereits erwähnt haben wir die Oberfläche in zwei Teile unterteilt, in welche dann Widget hinzugefügt und entfertn werden können. 
