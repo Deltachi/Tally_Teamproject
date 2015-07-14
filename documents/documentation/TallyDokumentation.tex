@@ -102,7 +102,7 @@
 
 In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getränke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getränke und Snacks kaufen zu können wird meistens eine Strichliste auf Papier, meist in der Nähe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch häaufig das die Strichliste sehr unleserlich wird und es bei der Übertragung in die Datenbank auf den PC zu Fehlern kommt. Außerdem ist diese Methode für den Verantwortlichen sehr zeitaufwendig da alles per Hand übertragen werden muss.
 \par
-Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu k\"onnen.
+Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu können.
 
 
 \section{Rahmenbedingungen}
@@ -186,14 +186,14 @@ Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis für das 
 	\caption{Der Raspberry Pi 2}
 	\end{figure}
 \par
-Ausser dem Raspberry Pi 2 war zunächst ein 3,5 Zoll Touchscreen der Firma admatec \cite{10} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Auflösung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
+Ausser dem Raspberry Pi 2 war zunächst ein 3,5 Zoll Touchscreen der Firma admatec \cite{1} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Auflösung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
 \par
 \subsubsection{Betriebssystem und Verbindung zu anderen Rechnern}
 Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest das ein Linuxderivat auf dem Raspberry laufen soll. Hier fiel die Wahl auf das speziell für den Raspberry entwickelte Raspbian.
 \par
 'Raspbian' ist ein Debianderivat und wurde so optimiert, das es mit den geringen Hardwarespezifikationen zurecht kommt und den ARM-Prozessor des Raspberrys unterstützt. Als Alternative stand eine Ubuntu Version ,speziell für ARM-Prozessoren entwickelt, zu Verfügung, die jedoch noch nicht voll ausgereift ist und somit nicht einwandfrei und resourcenschonend auf dem Raspberry läuft.
 \par
- Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung über ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols (Windows) für Linux Names 'xrdp' installiert. \cite{1}
+ Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung über ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols (Windows) für Linux Names 'xrdp' installiert. \cite{2}
 \begin{frame}
 
 \begin{lstlisting}
@@ -277,7 +277,7 @@ apt-get install php5-sqlite
  SQLite ist eine relationale Datenbank und benötigt im Gegensatz zu MySQL keine ständig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
 \par
 \subsubsection{Der Touchscreen}
-Wie eingangs erwähnt stand neben dem Raspberry der C-Berry Touchscreen von admatec zur Verfügung. \cite{10}
+Wie eingangs erwähnt stand neben dem Raspberry der C-Berry Touchscreen von admatec zur Verfügung. \cite{1}
 Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert \cite{5}
 \begin{frame}
 
@@ -307,11 +307,11 @@ sudo ./tft_test
 
 Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Primäres Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verzögerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daführ gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
 \par
-Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin \cite{11} zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
+Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin \cite{6} zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
 \par
 Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel für den Raspberry und eins für das Display benötigt, damit wäre eine Energiesparende Lösung ebenfalls nicht möglich.
 \par
-Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus.\cite{6} 
+Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus.\cite{7} 
 \begin{figure}[h]
 	\makebox[\textwidth]{
 	\includegraphics[width=9cm]{4dpi.png}}
@@ -338,7 +338,7 @@ Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebr
  Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, fiel diese Möglichkeit weg. Deshalb war eine weitere Möglichkeit eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen, wobei es allerdings Probleme mit dem Autofokus der Webcams gab. Damit ein Barcode gelesen werden kann muss ein Autofokus vorhanden sein, der sich auch passend scharf stellt. Diese Webcams sind allerdings relativ teuer. Die Wahl fiel deshalb auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
 \par
 \subsubsection{Wlan für den Raspberry}
-Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss und der Raspberry nur einen Stromanschluss benötigt, wurde der Edimax WLAN USB Stick\cite{12} am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde der automatische 'Power Saving' Modus abgeschaltet, da der Wlan Stick sonst immer automatisch in den Ruhemodus geht und der Raspberry somit nicht mehr von aussen erreichbar wäre.
+Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss und der Raspberry nur einen Stromanschluss benötigt, wurde der Edimax WLAN USB Stick\cite{8} am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde der automatische 'Power Saving' Modus abgeschaltet, da der Wlan Stick sonst immer automatisch in den Ruhemodus geht und der Raspberry somit nicht mehr von aussen erreichbar wäre.
 \newpage
 Hierzu wurde eine Konfigurationsdatei für den Treiber des WLAN Sticks erstellt.
 \begin{frame}
@@ -403,7 +403,7 @@ der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen 
 Da diese Möglichkeit jedoch relativ umständlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN Konfiguration eingebaut, in der man den WLAN-Namen und das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
-Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt das während des hochfahrens angezeigt werden kann. \cite{7}
+Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt das während des hochfahrens angezeigt werden kann. \cite{9}
 
 \begin{figure}[h]
 	\makebox[\textwidth]{
@@ -534,7 +534,7 @@ sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
 \end{frame}
 SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird und nur die Zugangsdaten zum SMTP-Server des Email Accounts über den gesendet werden soll hinterlegt werden müssen. Die beiden Perl- Libraries dienen dazu damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
 \par
-Zum autmatischen versenden der Mails wird folgendes Skript erstellt, das vielfach für den Raspberry verwendet wird. Im Code findet sich der Name des Autors \cite{8}
+Zum automatischen versenden der Mails wird folgendes Skript erstellt, das vielfach für den Raspberry verwendet wird. Im Code findet sich der Name des Autors \cite{10}
 \begin{frame}
 
 \begin{lstlisting}
@@ -707,7 +707,7 @@ m{^(!?)(?:(SSL(?:v2|v3|v23|v2/3))|(TLSv1[12]?))}i
 \end{lstlisting}
 \end{frame}
 
-ersetzt werden.Nur das Dollar Zeichen am Schluss muss entfernt werden. Anschliessend k\"onnen Emails versendet werden
+ersetzt werden.Nur das Dollar Zeichen am Schluss muss entfernt werden. Anschliessend können Emails versendet werden
 \begin{frame}
 
 \begin{lstlisting}
@@ -718,7 +718,7 @@ Jul 15 16:32:30 raspberrypi sendEmail[4163]: Email was sent successfully!
 \end{frame}
 \par
 Damit auch Anhänge mit versandt werden können muss lediglich das Skript etwas verändert werden.
-Hinzu kommt folgender Ausdruck. \cite{9}
+Hinzu kommt folgender Ausdruck. \cite{11}
 \begin{frame}
 
 \begin{lstlisting}
@@ -733,7 +733,7 @@ fi
 \end{lstlisting}
 \end{frame}
 \newpage
-Somit sieht das Skript wie folgt aus \cite{8}
+Somit sieht das Skript wie folgt aus
 \begin{frame}
 
 \begin{lstlisting}
@@ -1041,7 +1041,7 @@ Dazu wurde folgende zeile eingefügt
 \end{frame}
 Das '@reboot' steht für das ausführen der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete das Skript und somit das Programm.
 \par
-Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden. \cite{13}
+Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden. \cite{12}
 Dazu erstellt man in folgendem Pfad
 \begin{frame}
 
@@ -1074,7 +1074,7 @@ Und das gewünschte Programm startet nachdem die GUI geladen ist.
 \newpage
 
 \subsection{QT Creator - Das Tally Programm}
-Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt.
+Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt. \cite{13}
 Qt ist eine Klassenbibliothek in C++, vereinfacht die Programmierung für graphische Benutzeroberflächen und bietet zahlreiche weitere Funktionen an.
 Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel ist.
 Als Debugger haben wir GNU gdb 7.8 und MinGW 4.9.1 als Compiler gewählt.
@@ -1088,7 +1088,7 @@ Zum Ende des Projekts, sobald die Konfiguration beendet ist, sollten wir denn Ra
 Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir die GUI herausgearbeitet, welche in dem Plichtenheft zu sehen ist.[Information]
 Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
 \par
-Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
+Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert. \cite{14} \cite{15}
 Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
 Außerdem ist uns Aufgefallen das sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was benutzerunfreundlich ist.
 Aus diesen beiden Gründen wurde die komplette Benutzeroberfläche überarbeitet.
@@ -1280,7 +1280,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->setMainWindowPointer(QApplication *a,QString gUserId)
+	setMainWindowPointer(QApplication *a,QString gUserId)
 	\end{lstlisting}
 \end{frame}
 	
@@ -1288,7 +1288,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->show
+	show
 	\end{lstlisting}
 \end{frame}
 	beginnen, sind dafür da die entsprechenden Widget in dem Fenster zu erstmalig zu zeigen.
@@ -1296,7 +1296,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->update
+	update
 	\end{lstlisting}
 \end{frame}
 	beginnen, updaten die entsprechend Widgets um auf entsprechende Events zu reagieren.
@@ -1306,15 +1306,15 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->QTime qtime = QTime::currentTime();
-	-->QString stime = qtime.toString(Qt::LocalDate);
+	QTime qtime = QTime::currentTime();
+	QString stime = qtime.toString(Qt::LocalDate);
 	\end{lstlisting}
 \end{frame}
 	Zusätzlich bietet QTime noch die Funktion 
 	\begin{frame}
 
 \begin{lstlisting}
-	-->timerEvent(QTimerEvent *event)
+	timerEvent(QTimerEvent *event)
 	\end{lstlisting}
 \end{frame}
 	Diese Funktion wird jede Sekunde ausgeführt. Dadurch wird ein Zähler erzeugt denn wir für mehrere Funktionen genutzt haben.
@@ -1326,7 +1326,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->keyPressEvent(QKeyEvent *ev)
+	keyPressEvent(QKeyEvent *ev)
 	\end{lstlisting}
 \end{frame}
 	  wird ein Tastendruck der Tastur erfasst und wird an einen String angehangen.
@@ -1339,7 +1339,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->QListWidgetItem *item = new QListWidgetItem();      //Erzeugen eines Benutzers
+	QListWidgetItem *item = new QListWidgetItem();      //Erzeugen eines Benutzers
        item->setData(4,Database.getString(0).toInt());     //User\_Id wird an vierter Position gespeichert
        item->setIcon(Database.getPixmap(3));               //Bild des Benutzers wird gespeichert
        item->setText(Database.getString(2));               //Nickname des Benutzers wird gespeichert
@@ -1355,7 +1355,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank  
+	if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank  
 	\end{lstlisting}
 \end{frame}
 \par	
@@ -1368,7 +1368,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->if(database.checkPassword(userId,password) \&\& blocked != `1' \&\& database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
+	if(database.checkPassword(userId,password) \&\& blocked != `1' \&\& database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
             database.updateLoginAttempt(userId,true);
             Data.close();
             mainWindowPointer->exit(21);<--
@@ -1384,7 +1384,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
--->if(database.checkPassword(userName,password))
+if(database.checkPassword(userName,password))
 \end{lstlisting}
 \end{frame}
 \par	
@@ -1393,7 +1393,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->ui->label\_name->setText(`User blocked');
+	ui->label\_name->setText(`User blocked');
 	\end{lstlisting}
 \end{frame}
 	Falls der Benutzer nur kurzeitig gespeert ist aufgrund zu häufiger Eingabe des falschen Passwortes, wird dieser auch geblockt.
@@ -1410,7 +1410,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId)
+	setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId)
 	\end{lstlisting}
 \end{frame}
 	Wenn der bool Wert true ist wird die Süßigkeitenliste angezeigt, andernfalls die Getränkeliste. Die Werte dafür werden jeweils aus der Datenbank gezogen.
@@ -1453,7 +1453,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->while(ui->listWidget->item(loop) != NULL){
+	while(ui->listWidget->item(loop) != NULL){
        tempItem = ui->listWidget->item(loop);
        price = price + (tempItem->data(5).toDouble() * tempItem->data(6).toInt());
        loop++;
@@ -1466,14 +1466,14 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	 \begin{frame}
 
 \begin{lstlisting}
-	-->bool Shoppingcart::hasEnoughCredit(QString userId,double price)
+	bool Shoppingcart::hasEnoughCredit(QString userId,double price)
 		\end{lstlisting}
 \end{frame}
 	Über die Funktion 
 	\begin{frame}
 
 \begin{lstlisting}
-	-->void Shoppingcart::addItem(QListWidgetItem *item)
+	void Shoppingcart::addItem(QListWidgetItem *item)
 		\end{lstlisting}
 \end{frame}
 	 wird ein Item in das Shoppingcart hinzugefügt.Außerdem wird Anzahl an ausgewählten Artikel auch in den Liste verringern.
@@ -1482,7 +1482,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	-->void Shoppingcart::on\_pushButton\_buy\_clicked()(Eingabe)<--
+	void Shoppingcart::on\_pushButton\_buy\_clicked()(Eingabe)<--
 	\end{lstlisting}
 \end{frame}
 	    wickelt die kaufabwicklung ab. Diese öffnet die Datenbank. ändert den Credit des Benutzers
@@ -1490,14 +1490,14 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
-	--> Database.updateCredits(userId,QString::number(credits.toDouble()-price));
+	Database.updateCredits(userId,QString::number(credits.toDouble()-price));
 	\end{lstlisting}
 \end{frame}
 	Außerdem reduziert es die Artikelmenge in der Datenbank um die Anzahl, wie viele gekauft wurden und trägt die Käufe in den ConsumIndex-Tabelle, als auch in die Sell-History ein.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
+	Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
 	   Database.addSell(userId,tempItem->data(4).toString(),tempItem->data(6).toString(),tempItem->data(5).toString());
        Database.updateConsumeIndex(userId,tempItem->data(4).toString(),tempItem->data(6).toString());
        \end{lstlisting}
@@ -1512,7 +1512,7 @@ werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue
 	\begin{frame}
 
 \begin{lstlisting}
--->void ScanWidget::updateAmountEveryItem()
+void ScanWidget::updateAmountEveryItem()
 \end{lstlisting}
 \end{frame}
 wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
@@ -1520,14 +1520,14 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->void ScanWidget::on\_pushButton\_add\_clicked()
+	void ScanWidget::on\_pushButton\_add\_clicked()
 	\end{lstlisting}
 \end{frame}
 	  wir der eingescannte Artikel in das Shoppigcart hinzugefügt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,x0 + QString::number(count) +  ));	
+	ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,x0 + QString::number(count) +  ));	
 	\end{lstlisting}
 \end{frame}
 \par		
@@ -1538,8 +1538,8 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
--->QSqlQuery query;
-	-->query.exec(`SELECT Value from Settings WHERE Setting\_ID = `3');
+QSqlQuery query;
+	query.exec(`SELECT Value from Settings WHERE Setting\_ID = `3');
 	\end{lstlisting}
 \end{frame}
 	An der Stelle wo im Beispiel Settings steht, kommt der Name der Tabelle geschrieben, in welcher man suchen möchte.
@@ -1549,7 +1549,7 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->picPath = query.value(0);
+	picPath = query.value(0);
 	\end{lstlisting}
 \end{frame}
 	Mit diesem Befehl, speichert man ein Element, welches in der Datenbank gefunden wurde. Falls es mehrer Werte geben sollte, benutzt man die Funktion -->query.next()
@@ -1560,7 +1560,7 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->query.exec(INSERT INTO Consum\_Index (User\_ID, Grocery\_ID, Count) VALUES(+userId+,+Grocery\_Id+,+count+));
+	query.exec(INSERT INTO Consum\_Index (User\_ID, Grocery\_ID, Count) VALUES(+userId+,+Grocery\_Id+,+count+));
 	Zuerst wird die Tabelle mit den Spalten, die gef\''ullt werden sollen genannt Consum\_Index (User\_ID, Grocery\_ID, Count) und dann werden die einzuf\''ugenden Werte genannt (+userId+,+Grocery\_Id+,+count+).
 	\end{lstlisting}
 \end{frame}
@@ -1570,8 +1570,8 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->Data = QSqlDatabase::addDatabase(QSQLITE);
-	-->Data.setDatabaseName(C:/SQLite/database.sqlite);
+	Data = QSqlDatabase::addDatabase(QSQLITE);
+	Data.setDatabaseName(C:/SQLite/database.sqlite);
 	\end{lstlisting}
 \end{frame}
 \par	
@@ -1579,7 +1579,7 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->Data.open();
+	Data.open();
 		\end{lstlisting}
 \end{frame}
 	Ab nun kann man ein Objekt erzeugen von sqlzugriff und mit deren Funktionen auf die Datenbank zugreifen.
@@ -1587,7 +1587,7 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 		\begin{frame}
 
 \begin{lstlisting}
-	-->Data.close();
+	Data.close();
 	\end{lstlisting}
 \end{frame}
 \par	
@@ -1597,7 +1597,7 @@ wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
 	\begin{frame}
 
 \begin{lstlisting}
-	-->process.start(`sudo service networking restart');
+	process.start(`sudo service networking restart');
 	\end{lstlisting}
 \end{frame}
 \par	
