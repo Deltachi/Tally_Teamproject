@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     int state = 0;
 
     w.setWindowTitle("Tally"); //Init Main Window
-    w.show();
+    w.showFullScreen();
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
