@@ -24,13 +24,9 @@ int main(int argc, char *argv[])
     w.setMainWindowPointer(&a);
     w.setWatchDogactive(false);
 
-    QTcpSocket socket;
     QString ip;
-    socket.connectToHost("8.8.8.8", 53); // google DNS, or something else reliable
-    if (socket.waitForConnected()) {
-        ip = socket.localAddress().toString();
-    } else {
-        ip = socket.errorString();
+    foreach(const QHostAddress &address,QNetworkInterface::allAddresses()){
+        ip.append(address.toString()+"\r\n");
     }
     w.showIpScreen(ip);
     int exitcode;

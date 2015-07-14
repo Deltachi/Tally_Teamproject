@@ -6,13 +6,16 @@
 #include <QDebug>
 #include <QProcess>
 #include <QMessageBox>
+#include <QtNetwork/QNetworkInterface>
+#include <QtNetwork/QNetworkConfigurationManager>
+#include <QtNetwork/QNetworkSession>
+#include <QtNetwork/QTcpSocket>
 
 SettingsWidget::SettingsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SettingsWidget)
 {
     ui->setupUi(this);
-    dirty = false;
     error = false;
 }
 
@@ -338,7 +341,6 @@ void SettingsWidget::on_pushButton_forward_clicked()
 
 void SettingsWidget::on_pushButton_accept_clicked()
 {
-    dirty = true;
     ui->pushButton_back->setText("Res LAN");
     if(countSetting == 0){
         this->replaceLineWithText("wpa-ssid \"",text);
@@ -359,10 +361,6 @@ void SettingsWidget::on_pushButton_delete_clicked()
 
 void SettingsWidget::on_pushButton_back_clicked()
 {
-    if(dirty){
-        QProcess process;
-        process.start("sudo service networking restart");
-    }
     MainWindowPointer->exit(71);
 }
 
@@ -380,4 +378,20 @@ void SettingsWidget::on_pushButton_next_clicked()
     count = text.length()-1;
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,count);
+}
+
+void SettingsWidget::on_pushButton_10_clicked() //showip
+{
+    QString ip;
+    foreach(const QHostAddress &address,QNetworkInterface::allAddresses()){
+        ip.append(address.toString()+"\r\n");
+    }
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::information(NULL, QObject::tr("Ips:"), QObject::tr(qPrintable("Tally found this:\r\n \"" + ip)),QMessageBox::Close);
+}
+
+void SettingsWidget::on_pushButton_clicked()//reset lan
+{
+    QProcess process;
+    process.start("sudo service networking restart");
 }

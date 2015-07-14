@@ -55,6 +55,10 @@ private slots:
 
     void on_pushButton_next_clicked();
 
+    void on_pushButton_10_clicked();
+
+    void on_pushButton_clicked();
+
 private:
     Ui::SettingsWidget *ui;
     QApplication *MainWindowPointer;

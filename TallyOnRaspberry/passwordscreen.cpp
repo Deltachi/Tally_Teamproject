@@ -40,6 +40,10 @@ void passwordscreen::updatePasswordField(){
         }
     }else{
         ui->label_name->setText("Error:");
+        QFont font;
+        font.setPointSize(13);
+        ui->label_name->setFont(font);
+        ui->label_credit->setFont(font);
         ui->label_credit->setText("Temp blocked.");
         ui->label_2->setVisible(false);
     }
@@ -84,6 +88,10 @@ void passwordscreen::updateAccoutPicture(QString id){
     if(blocked == "1"){
         ui->label_credit->setVisible(false);
         ui->label_2->setVisible(false);
+        QFont font;
+        font.setPointSize(13);
+        ui->label_name->setFont(font);
+        ui->label_credit->setFont(font);
         ui->label_name->setText("User blocked");
     }
 
@@ -155,6 +163,10 @@ void passwordscreen::on_pushButton_back_clicked()
     database.updateLoginAttempt(userId,false);
     if(!database.checkUserLoginCount(userId)){
         Data.close();
+        QFont font;
+        font.setPointSize(13);
+        ui->label_name->setFont(font);
+        ui->label_credit->setFont(font);
         ui->label_name->setText("Wrong login!");
         ui->label_credit->setText("Temp blocked.");
         ui->label_2->setVisible(false);
@@ -183,6 +195,10 @@ void passwordscreen::on_pushButton_login_clicked()
             Data.close();
             mainWindowPointer->exit(21);
         }else{
+            QFont font;
+            font.setPointSize(13);
+            ui->label_name->setFont(font);
+            ui->label_credit->setFont(font);
             ui->label_name->setText("Wrong login!");
             ui->label_credit->setText("Temp blocked.");
             ui->label_2->setVisible(false);
