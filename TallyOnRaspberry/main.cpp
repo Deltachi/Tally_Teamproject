@@ -1,3 +1,4 @@
+//Tally main File. This was created by Sebastian Reinke and Philip Frieling. 14.07.2015
 #include "mainwindow.h"
 #include <QApplication>
 #include <QDir>
@@ -17,20 +18,16 @@ int main(int argc, char *argv[])
     MainWindow w;
     int state = 0;
 
-    w.setWindowTitle("Tally");
+    w.setWindowTitle("Tally"); //Init Main Window
     w.show();
     w.getWatchDogTime_Database();
     w.setWatchDog();
     w.setMainWindowPointer(&a);
     w.setWatchDogactive(false);
 
-    QTcpSocket socket;
-    QString ip;
-    socket.connectToHost("8.8.8.8", 53); // google DNS, or something else reliable
-    if (socket.waitForConnected()) {
-        ip = socket.localAddress().toString();
-    } else {
-        ip = socket.errorString();
+    QString ip; //get all Ips and print them onto the IpWindowScreen
+    foreach(const QHostAddress &address,QNetworkInterface::allAddresses()){
+        ip.append(address.toString()+"\r\n");
     }
     w.showIpScreen(ip);
     int exitcode;
@@ -41,7 +38,7 @@ int main(int argc, char *argv[])
 
     bool exit = false;
 
-    while(!exit){
+    while(!exit){ //This is the Main Loop. You can only exit it will be only exited if something went wrong.
         if(exitcode == 100){ //logout was pressed
             state = 0;
             w.removeWidget();
@@ -108,9 +105,9 @@ int main(int argc, char *argv[])
                 }else if(exitcode == 34){ //scan
                     w.updateQListCart();
                     w.removeWidget();
-                    if(w.showScanWidget()){
+                    if(w.showScanWidget()){ //could the Item be located? Then show the ScanWidget
                         state = 5;
-                    }else{
+                    }else{ //if no Item was found, return to the CoffeeSweetsScan-Screen
                         w.updateCartFromScanWidget();
                         w.removeWidget();
                         w.showCoffeeSweetWidget();
@@ -190,7 +187,7 @@ int main(int argc, char *argv[])
                     w.showCoffeeSweetWidget();
                     state = 2;
                     w.setWatchDog();
-                 }else if(exitcode == 98){
+                 }else if(exitcode == 98){ //An Item was removed from the Shoppingcart. The Favcart has to update its amount.
                     w.updateFavScreenAmount();
                  }
             }break;
@@ -208,7 +205,7 @@ int main(int argc, char *argv[])
 
             }break;
         }
-        exitcode = a.exec();
+        exitcode = a.exec(); //Runs the Window Functions. Now the user can Interact with everything.
     }
     return exitcode;
 }

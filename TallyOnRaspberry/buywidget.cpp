@@ -1,21 +1,23 @@
+//This widget is the sweets and the coffee widget. It has a list which displays all the buyable items and will send some exit codes if an item should be added to the shoppingcart
 #include "buywidget.h"
 #include "ui_buywidget.h"
 #include <QDebug>
 #include <QString>
 #include "sqlzugriff.h"
 #include "mainwindow.h"
-
+//inits the GUI
 buywidget::buywidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::buywidget)
 {
     ui->setupUi(this);
 }
-
+//delets the Object
 buywidget::~buywidget()
 {
     delete ui;
 }
+//removes the Widget which was put into gridLayout_port
 void buywidget::removeWidget(){
 
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
@@ -26,6 +28,7 @@ void buywidget::removeWidget(){
         delete oldWidget;
     }
 }
+//inits the Widget. SweetsActive is used to say if this widget should just show sweets or just coffee. Cart items should contain every items which is in the shoppingcart.
 void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId){
     userId = gUserId;
     sweetsActive = gSweetsActive;
@@ -34,7 +37,7 @@ void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *car
     cart->setMainWindowPointer(a,userId);
     ui->gridLayout_port->addWidget(cart);
     int loop = 0;
-    while(cartItems->length() > loop){
+    while(cartItems->length() > loop){//copy every item into the new shoppingcart
         QListWidgetItem *temp = new QListWidgetItem();
         *temp = cartItems->at(loop);
         cart->addItem(temp);
@@ -42,12 +45,13 @@ void buywidget::setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *car
     }
     update_label();
 }
+//returns every item which was in the actual shoppingcart.
 QList<QListWidgetItem> buywidget::getItems(){
     Shoppingcart *temp = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
     QList<QListWidgetItem> test = temp->getItems();
     return test;
 }
-
+//Updates every grocery in the list.
 void buywidget::update_label(){
     ui->listWidget->clear();
     Data = QSqlDatabase::addDatabase("QSQLITE");
@@ -62,12 +66,12 @@ void buywidget::update_label(){
         int amount = Database.getString(5).toInt();
         if(amount > 0){
             QListWidgetItem *item = new QListWidgetItem();
-            item->setIcon(Database.getPixmap(3));
-            tmp = Database.getString(2) + " " + Database.getString(6) + QChar(8364);
+            item->setIcon(Database.getPixmap(3)); //get pixmap
+            tmp = Database.getString(2) + " " + Database.getString(6) + QChar(8364); //get name
             item->setText(tmp);
-            item->setData(4,Database.getString(0).toInt());
-            item->setData(5,Database.getString(6).toDouble());
-            item->setData(6,amount);
+            item->setData(4,Database.getString(0).toInt());//get the id
+            item->setData(5,Database.getString(6).toDouble()); //get the price
+            item->setData(6,amount); //and get the amount.
             if(amount == 1){
                 item->setTextColor(QColor(255,51,51,255)); //red
             }else if(amount > 1 && amount <= 6){
@@ -83,6 +87,7 @@ void buywidget::update_label(){
     Data.close();
     updateAmountEveryItem();
 }
+//If an item was removed in the shoppincart it should be averiable in the buywidget.
 void buywidget::updateAmount(){
     Shoppingcart *tempCart = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
     for(int i=0;i<ui->listWidget->count();i++){
@@ -111,6 +116,7 @@ void buywidget::updateAmount(){
         }
     }
 }
+//looks into the shoppingcart and updates the amount from every items so that it will not show you already bought items.
 void buywidget::updateAmountEveryItem(){
     Shoppingcart *tempCart = (Shoppingcart*)ui->gridLayout_port->itemAt(0)->widget();
     QList<QListWidgetItem> testList = tempCart->getItems();
@@ -136,11 +142,12 @@ void buywidget::updateAmountEveryItem(){
         }
     }
 }
+//event handling if an item was clicked
 void buywidget::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     MainWindow w;
     w.setWatchDog();
-    if(item->data(6).toInt() - 1 >= 0){
+    if(item->data(6).toInt() - 1 >= 0){ //change the item data so that the shoppingcart can use it.
         int backupInt = item->data(6).toInt() - 1;
         QString backupString = item->text();
 
@@ -161,6 +168,6 @@ void buywidget::on_listWidget_itemClicked(QListWidgetItem *item)
             item->setTextColor(QColor(0,0,0,255)); //black
         }
     }else{
-        qDebug() << "not so many Items there..";
+        //not so much items left
     }
 }

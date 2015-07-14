@@ -11,6 +11,9 @@ LISTE aller Quellen die benutzt wurden:
 		jQuery:
 			http://api.jquery.com/
 
+		UI-Bootstrap for Angularjs:
+			https://angular-ui.github.io/bootstrap/
+
 	Blogs & Online Foren für Bugsupport:
 		General:
 			stackoverflow.com
@@ -49,4 +52,3 @@ LISTE aller Quellen die benutzt wurden:
 
 		more tutorials:
 			https://www.youtube.com/user/CDPAdvertising/videos
-			

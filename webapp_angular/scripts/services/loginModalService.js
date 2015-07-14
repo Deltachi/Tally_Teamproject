@@ -8,8 +8,9 @@ angular.module('app.services.loginModalService', [])
 		}
 		return function(){
 			var instance = $modal.open({
-				templateUrl: 'ng-templates/login.html',
-				controller: 'loginModalCtrl'
+				templateUrl: '/ng-templates/denied.html',
+				controller: 'loginModalCtrl',
+				controllerAs: 'loginModalCtrl'
 			})
 			return instance.result.then(assignCurrentUser);
 		};

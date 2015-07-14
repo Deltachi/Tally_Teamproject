@@ -1,5 +1,5 @@
 angular.module('app.controllers.menuCtrl', []) 	
-	.controller('menuCtrl',['$scope','$http','menuService', function($scope,$http,menuService){
+	.controller('menuCtrl',['$scope','$http','menuService','userDataService', function($scope,$http,menuService,userDataService){
 		var loading = true;
 		var postData = {};
 		postData['request'] = "Drinks";
@@ -29,16 +29,18 @@ angular.module('app.controllers.menuCtrl', [])
 			});
 
 
-		
-		$scope.drinks = menuService.menu.drinks;
-		$scope.sweets = menuService.menu.sweets;
+		// menuService.editItem = {"Nick":"Item placeholder"};
+		// console.log("Initialize editItem with: "+menuService.editItem.Nick);
+		$scope.addItem = function(){
+			menuService.editItem = {'Nick': "New Item", 'Typ':"0", "Type_Group": "Drinks", "Visible": "1"};
+			menuService.editMode = 'insert';
+		}
 
-		menuService.editItem = {"Nick":"Item placeholder"};
-		console.log("Initialize editItem with: "+menuService.editItem.Nick);
 		$scope.setNewEditItem = function(item_id){
+			menuService.editMode = 'update';
 			console.log("Change item with id: "+item_id);
 			postData['request'] = item_id;
-			menuService.getItemAsync(postData).then(
+			menuService.getItemSync(postData).then(
 								function(data){
 									// console.log("Response data:");
 									// console.log(jQuery.parseJSON(data)[0]);
@@ -46,16 +48,22 @@ angular.module('app.controllers.menuCtrl', [])
 								});
 			console.log(menuService.editItem);
 		}
-		// $scope.list = null;
-		// $http.get('/json/menuContent.json')
-		// .success(function(res) {
-		// 	$scope.list = res;
-		// 	$scope.drinks = $scope.list.drinks;
-		// 	$scope.sweets = $scope.list.sweets;
-		// 	console.log($scope.list.drinks);
-		// 	console.log($scope.list.sweets);
-		// })
-		// .error(function(res,status,error,config){
-		// 	$scope.list = [{name:"Error",description:"Could not load json data"}];
-		// });
+
+		// $scope.tooltips = function(){
+		setTimeout(function(){
+			console.log("Enable tooltips");
+			$('[data-toggle="tooltip"]').tooltip();
+		},300);
+		// } 
+
+		$scope.$watch(function () { return userDataService.getUserData(); }, function (value) {
+			$scope.userData = value;
+		});
+		$scope.$watch(function () { return menuService.menu.drinks; }, function (value) {
+			$scope.drinks = value;
+		});
+		$scope.$watch(function () { return menuService.menu.sweets; }, function (value) {
+			$scope.sweets = value;
+		});
+		
 	}]);

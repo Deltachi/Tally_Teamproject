@@ -6,6 +6,7 @@ angular.module('app.controllers.logoutCtrl', [])
 			// }
 			// else{
 				// $.removeCookie('session');
+				// $('[data-toggle="tooltip"]').tooltip('hide');
 				loginService.setUser(null);
 				userDataService.setUserData({});
 				$state.go('home');
