@@ -29,58 +29,58 @@
 							</tr>
 						</thead>	
 						<tbody id="settings">
-							<tr id="name" class="noedit">
-								<th class="index" scope="row">Username</th>
+							<tr id="name" ng-hide="editing">
+								<th class="index" scope="row">First and Lastname</th>
 								<td>
-									<span class="noedit">{{userData.firstname}} 
+									<span ng-hide="editing">{{userData.firstname}} 
 									</span>
-									<span class="noedit">
+									<span ng-hide="editing">
 										{{userData.lastname}}</span>
-									<input class="edit" type="text" placeholder="{{userData.firstname}}
+									<input ng-show="editing" type="text" placeholder="{{userData.firstname}}
 									">
-									<input class="edit" type="text" placeholder="
+									<input ng-show="editing" type="text" placeholder="
 									{{userData.lastname}}">
 								</td>
 								<td>
-									<button class="btn btn-sm btn-info noedit" data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
+									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
 								</td>
 							</tr>
-							<tr id="nick" class="noedit">
+							<tr id="nick" ng-hide="editing">
 								<th class="index" scope="row">Username</th>
 								<td>
-									<span class="noedit">{{userData.username}}</span>
-									<input class="edit" type="text" placeholder="{{userData.username}}">
+									<span ng-hide="editing">{{userData.username}}</span>
+									<input ng-show="editing" type="text" placeholder="{{userData.username}}">
 								</td>
 								<td>
-									<button class="btn btn-sm btn-info noedit" data-panel="nick"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="nick"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="nick"><span class="glyphicon glyphicon-remove"></span></button>
+									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="nick"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="nick"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="nick"><span class="glyphicon glyphicon-remove"></span></button>
 								</td>
 							</tr>
-							<tr id="password" class="noedit">
+							<tr id="password" ng-hide="editing">
 								<th class="index" scope="row">Password</th>
 								<td>
-									<span class="noedit glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-									<input class="edit" type="password" placeholder="{{userData.password}}">
+									<span  ng-hide="editing" class=" glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+									<input ng-show="editing" type="password" placeholder="{{userData.password}}">
 								</td>
 								<td>
-									<button class="btn btn-sm btn-info noedit" data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="password"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="password"><span class="glyphicon glyphicon-remove"></span></button>
+									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="password"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="password"><span class="glyphicon glyphicon-remove"></span></button>
 								</td>
 							</tr>
-							<tr id="email" class="noedit">
+							<tr id="email" ng-hide="editing">
 								<th class="index" scope="row">E-Mail</th>
 								<td>
-									<span class="noedit">{{userData.mail}}</span>
-									<input class="edit" type="email" placeholder="{{userData.mail}}">
+									<span ng-hide="editing">{{userData.mail}}</span>
+									<input ng-show="editing" type="email" placeholder="{{userData.mail}}">
 								</td>
 								<td>
-									<button class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button class="btn btn-sm btn-success edit col-sm-5" data-panel="email"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button class="btn btn-sm btn-danger edit col-sm-5 col-sm-offset-1" data-panel="email"><span class="glyphicon glyphicon-remove"></span></button>
+									<button ng-hide="editing" class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="email"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="email"><span class="glyphicon glyphicon-remove"></span></button>
 								</td>
 							</tr>
 							<tr id="leaderboard">

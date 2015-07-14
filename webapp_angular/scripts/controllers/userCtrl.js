@@ -5,6 +5,7 @@ angular.module('app.controllers.userCtrl', [])
 
 	.controller('userCtrl', ['$scope', 'userDataService', function($scope, userDataService){
 		$scope.loading = true;
+		$scope.editing = false;
 		if (userDataService.getUserData() != null) {
 			$scope.loading = false;
 		}
