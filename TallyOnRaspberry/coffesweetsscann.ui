@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,0">
        <property name="spacing">
         <number>0</number>
        </property>
@@ -58,40 +58,45 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_preferences">
-         <property name="enabled">
-          <bool>true</bool>
+        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1">
+         <property name="spacing">
+          <number>0</number>
          </property>
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>25</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-           <strikeout>false</strikeout>
-          </font>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>WLAN settings</string>
-         </property>
-         <property name="autoDefault">
-          <bool>false</bool>
-         </property>
-         <property name="default">
-          <bool>false</bool>
-         </property>
-         <property name="flat">
-          <bool>false</bool>
-         </property>
-        </widget>
+         <item>
+          <widget class="QPushButton" name="pushButton_preferences">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>25</pointsize>
+             <strikeout>false</strikeout>
+            </font>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>WLAN settings</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>

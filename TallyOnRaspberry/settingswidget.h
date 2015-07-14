@@ -55,13 +55,9 @@ private slots:
 
     void on_pushButton_next_clicked();
 
-<<<<<<< HEAD
     void on_pushButton_10_clicked();
 
     void on_pushButton_clicked();
-=======
-    void on_lineEdit_cursorPositionChanged(int arg1, int arg2);
->>>>>>> 4d3d36e254b49d29208d9378047e18cb58552282
 
 private:
     Ui::SettingsWidget *ui;

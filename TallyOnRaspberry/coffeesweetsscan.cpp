@@ -2,6 +2,7 @@
 #include "ui_coffesweetsscann.h"
 #include <QDebug>
 #include <QString>
+#include <QProcess>
 #include "mainwindow.h"
 #include "favcart.h"
 
