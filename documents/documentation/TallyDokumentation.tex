@@ -19,6 +19,8 @@
 \usepackage[utf8x,utf8]{inputenc}
 \usepackage{courier}
 \usepackage{url}
+\usepackage{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
 
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -65,7 +67,7 @@
 
 
 \title{\normalfont\bfseries{Tally\\ digitale Strichliste am Raspberry Pi}\\---}
-\author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philipp Frieling \\ Sebastian Reinke}
+\author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philip Frieling \\ Sebastian Reinke}
 \date{23.06.2015}
 
 
@@ -98,10 +100,10 @@
 
 \subsection{Kaffeestrichliste bisher}
 
-In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getr\"anke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getr\"anke und Snacks kaufen zu k\"onnen wird meistens eine Strichliste auf Papier, meist in der N\"ahe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch h\''aufig das die Strichliste sehr unleserlich wird und es bei der \"Ubertragung in die Datenbank auf den PC zu Fehlern kommt. Au/ss{}erdem ist diese Methode f\"ur den Verantwortlichen sehr zeitaufwendig da alles per Hand \''ubertragen werden muss.
+In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getränke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getränke und Snacks kaufen zu können wird meistens eine Strichliste auf Papier, meist in der Nähe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch häaufig das die Strichliste sehr unleserlich wird und es bei der Übertragung in die Datenbank auf den PC zu Fehlern kommt. Außerdem ist diese Methode für den Verantwortlichen sehr zeitaufwendig da alles per Hand übertragen werden muss.
 \par
 Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu k\"onnen.
-%------------------------------------------------------------------------------------------------
+
 
 \section{Rahmenbedingungen}
 
@@ -109,44 +111,43 @@ Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese D
 \subsection{Aufgabe - die neue Kaffeestrichliste}
 \label{SchriftAnpassen}
 
-Um eine m\"oglichst energiesparende und handliche L\"osung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zun\"achst soll eine passende Benutzeroberfl\"ache f\"ur den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Eink\"aufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von plattformunabh\"angigen C++ Programmen gedacht ist, entwickelt werden.
+Um eine möglichst energiesparende und handliche Lösung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zunächst soll eine passende Benutzeroberfläche für den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Einkäufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von plattformunabhängigen C++ Programmen gedacht ist, entwickelt werden.
 \par
-Mithilfe eines Webservers, der ebenfalls auf dem Raspberry l\"auft, soll die Administration von jedem Computer im selben Netzwerk \"uber eine Weboberfl\"ache m\"oglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und \"andern k\"onnen. Dazu wird eine MySQL/ SQLite Datenbank, sowie PHP Unterst\"utzung ben\"otigt. Mittels eines Barcodescanners soll es m\"oglich sein am Raspberry Produkte ein zu scannen.
+Mithilfe eines Webservers, der ebenfalls auf dem Raspberry läuft, soll die Administration von jedem Computer im selben Netzwerk über eine Weboberfläche möglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und ändern können. Dazu wird eine MySQL/ SQLite Datenbank, sowie PHP Unterstützung benötigt. Mittels eines Barcodescanners soll es möglich sein am Raspberry Produkte ein zu scannen.
 
 
 \section{Ziele des Projekts}
-Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwickelt, um die alte Strichliste abzul\"osen. Dazu wurden folgende zu erreichende Ziele festgelegt:
+Die neue 'digitale Kaffeestrichliste' wird auf Basis eines Raspberry Pi 2 entwickelt, um die alte Strichliste abzulösen. Dazu wurden folgende zu erreichende Ziele festgelegt:
 \subsection{Zielbestimmung}
 \label{Ausrichtung}
 
 \subsubsection{Der Benutzer Account}
-\"Uber den Benutzer Account soll der Benutzer sich am Raspberry selbst und an der Weboberfl\"ache anmelden k\''onnen. Am Raspberry selbst k\"onnen Getr\"anke und Snacks gekauft werden. Mithilfe der Weboberfl\"ache kann der Benutzer Statistiken einsehen und sein Passwort \"andern.
+\"Uber den Benutzer Account soll der Benutzer sich am Raspberry selbst und an der Weboberfläche anmelden können. Am Raspberry selbst können Getränke und Snacks gekauft werden. Mithilfe der Weboberfläche kann der Benutzer Statistiken einsehen und sein Passwort ändern.
 
 \subsubsection{Das Programm}
-Das Programm das auf dem Raspberry l\"auft aktualisiert die Anzahl der Produkte im Lagerbestand automatisch, gibt Meldungen bei zu geringem Warebestand aus und gibt generelle Fehlermeldungen aus.
+Das Programm das auf dem Raspberry läuft aktualisiert die Anzahl der Produkte im Lagerbestand automatisch, gibt Meldungen bei zu geringem Warebestand aus und gibt generelle Fehlermeldungen aus.
 
 \subsubsection{Der Administrator Account}
-Die Administration mithilfe des Administrator Accounts findet ausschliesslich \"uber die Weboberfl\"ache statt. Hier kann der Administrator Accounts hinzuf\"ugen und verwalten, Waren hinzuf\"ugen und verwalten und den Lagerbestand verwalten.
+Die Administration mithilfe des Administrator Accounts findet ausschliesslich über die Weboberfläche statt. Hier kann der Administrator Accounts hinzufügen und verwalten, Waren hinzuf\"ugen und verwalten und den Lagerbestand verwalten.
 
 \subsection{Produkteinsatz}
 \subsubsection{Anwendungsbereiche}
-Mitarbeiter, beziehungsweise die Administratoren, k\"onnen eine Strichliste 'digital' anlegen. Diese fasst den zu bezahlenden Betrag f\"ur die Mitarbeiter zusammen.
+Mitarbeiter, beziehungsweise die Administratoren, können eine Strichliste 'digital' anlegen. Diese fasst den zu bezahlenden Betrag für die Mitarbeiter zusammen.
 
 \subsubsection{Zielgruppen}
-Personengruppen und Unternehmen bei denen Getr\"anke und Snacks privat f\"ur alle angeboten und privat bezahlt werden, jedoch Schwierigkeiten mit der Handhabung einer herk\"ommlichen Strichliste haben und den Bestand an Getr\"anken und Snacks erfassen wollen.
+Personengruppen und Unternehmen bei denen Getränke und Snacks privat für alle angeboten und privat bezahlt werden, jedoch Schwierigkeiten mit der Handhabung einer herk\"ommlichen Strichliste haben und den Bestand an Getränken und Snacks erfassen wollen.
 
 \subsubsection{Betriebsbedingungen}
-Die Strichliste soll m\"o
-glichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie t\"aglich vierundzwanzig Stunden laufen.
+Die Strichliste soll möglichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie täglich vierundzwanzig Stunden laufen.
 
 \subsection{Produktumgebung}
-Das Produkt kann unabh\"angig an jedem Ort betrieben werden, solange eine Stromquelle in der n\"ahe ist.
+Das Produkt kann unabhängig an jedem Ort betrieben werden, solange eine Stromquelle in der nähe ist.
 
 \subsubsection{Software}
-Die einzige Software die vom Benutzer ben\"otigt wird ist ein aktueller Webbrowser.
+Die einzige Software die vom Benutzer benötigt wird ist ein aktueller Webbrowser.
 
 \subsubsection{Hardware}
-Der Benutzer kann mit jedem Internetf\"ahigen Ger\"at die Weboberfl\"ache erreichen.
+Der Benutzer kann mit jedem Internetfähigen Gerät die Weboberfläche erreichen.
 
 \subsubsection{Orgware}
 Der Administrator kann die Betriebsparameter konfigurieren.
@@ -154,47 +155,45 @@ Der Administrator kann die Betriebsparameter konfigurieren.
 \subsection{Produktfunktion}
 \subsubsection{Benutzerfunktion}
 Ein im System registrierter Benutzer kann das System erst nutzen, wenn er angemeldet ist.
-Nur ein Administrator kann einen Benutzer anlegen und ihm einen Benutzernamen sowie Passwort zuwesien. Sobald ein Benutzer registriert ist kann er sich sowohl am Raspberry als auch an der Weboberfl\"ache anmelden. Daf\"ur ben\"otigt er seinen Benutzernamen und sein Passwort. Abmelden ist bei beiden Oberfl\"achen jederzeit m\"oglich.
+Nur ein Administrator kann einen Benutzer anlegen und ihm einen Benutzernamen sowie Passwort zuwesien. Sobald ein Benutzer registriert ist kann er sich sowohl am Raspberry als auch an der Weboberfläche anmelden. Dafür benötigt er seinen Benutzernamen und sein Passwort. Abmelden ist bei beiden Oberflächen jederzeit möglich.
 \par
-Der Administrator kann \"uber die Weboberfl\"ache Produkte hinzuf\"ugen,entfernen und deren Details \"andern. Benutzer k\"onnen \"uber die Weboberfl\"ache Favoriten einrichten und Statistiken einsehen.
+Der Administrator kann über die Weboberfläche Produkte hinzufügen,entfernen und deren Details ändern. Benutzer können über Weboberfläche Favoriten einrichten und Statistiken einsehen.
 \par
-Am Raspberry kann der registrierte und angemeldete Benutzer ein Produkt aus einer Liste w\"ahlen oder mithilfe eines Barcodescanners ein Prdoukt einscannen, welches im Warenkorb erscheint. Desweiteren kann er die Anzahl der Produkte erh\"ohen und seinen gesamten Warenkorb einsehen. Wenn er alle Waren im Warenkorb hat, kann er zur Kasse und die Waren durch einen Klick bezahlen, wodurch sein Konto belastet wird. Ein Abbruch oder das erreichen des Hauptmen\"us ist jederzeit m\"oglich.
+Am Raspberry kann der registrierte und angemeldete Benutzer ein Produkt aus einer Liste wählen oder mithilfe eines Barcodescanners ein Prdoukt einscannen, welches im Warenkorb erscheint. Desweiteren kann er die Anzahl der Produkte erhöhen und seinen gesamten Warenkorb einsehen. Wenn er alle Waren im Warenkorb hat, kann er zur Kasse und die Waren durch einen Klick bezahlen, wodurch sein Konto belastet wird. Ein Abbruch oder das erreichen des Hauptmenüs ist jederzeit möglich.
 
 \subsection{Programmfunktion}
 Beim Kauf eines Produktes aktualisiert das Programm automatisch den Warenbestand. Bei geringem Warenbestand wird eine Warnmeldung ausgegeben und bei fehlen des Artikels wird dieser entfernt.
 
 \subsection{Serverfunktion}
-Auf dem Raspberry soll ein Apache 2 Server mit PHP Unterst\"utzung laufen.
+Auf dem Raspberry soll ein Apache 2 Server mit PHP Unterstützung laufen.
 \subsubsection{Datenbank}
 Als Datenbank soll die resourcenschonendere SQLite Datenbank verwendet werden
 
 \subsection{Benutzerschnittstelle}
-Die Bedienung des Raspberry erfolgt \"uber einen eingebauten Touchscreen am Raspberry. Au\ss()erdem wird ein Barcodescanner installiert um Produkte einscannen zu k\"onnen.
+Die Bedienung des Raspberry erfolgt über einen eingebauten Touchscreen am Raspberry. Außerdem wird ein Barcodescanner installiert um Produkte einscannen zu können.
 
-
+\newpage
 
 
 \section{Meilensteine des Projektes}
 \label{Meilensteine}
 
 \subsection{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}
-Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis f\"ur das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einen Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
-\par
-Ausser dem Raspberry Pi 2 war zun\"achst ein 3,5 Zoll Touchscreen der Firma admatec mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Aufl\"osung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
-
+Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis für das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einem Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
 	\begin{figure}[h]
 	\makebox[\textwidth]{
 	\includegraphics[width=9cm]{RaspberryPi.png}}
 	\caption{Der Raspberry Pi 2}
 	\end{figure}
-\newpage
+\par
+Ausser dem Raspberry Pi 2 war zunächst ein 3,5 Zoll Touchscreen der Firma admatec \cite{10} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Auflösung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
 \par
 \subsubsection{Betriebssystem und Verbindung zu anderen Rechnern}
-Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest das ein Linuxderivat auf dem Raspberry laufen sollte. Hierbei fiel die Wahl auf das speziell f\''ur den Raspberry optimierte Debianderivat `Raspbian'.
+Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest das ein Linuxderivat auf dem Raspberry laufen soll. Hier fiel die Wahl auf das speziell für den Raspberry entwickelte Raspbian.
 \par
-'Raspbian' wurde so optimiert das es mit der geringen Hardware zurecht kommt und den ARM-Prozessor des Raspberrys unterst\''utzt. Als Alternative stand eine Ubuntu Version ,speziell f\"ur ARM-Prozessoren entwickelt, zu Verf\"ugung die jedoch noch nicht voll ausgereift und funktionst\''uchtig ist.
+'Raspbian' ist ein Debianderivat und wurde so optimiert, das es mit den geringen Hardwarespezifikationen zurecht kommt und den ARM-Prozessor des Raspberrys unterstützt. Als Alternative stand eine Ubuntu Version ,speziell für ARM-Prozessoren entwickelt, zu Verfügung, die jedoch noch nicht voll ausgereift ist und somit nicht einwandfrei und resourcenschonend auf dem Raspberry läuft.
 \par
- Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung \"uber ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols f\"ur Linux Names 'xrdp' installiert. \cite{berry1}
+ Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung über ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols (Windows) für Linux Names 'xrdp' installiert. \cite{1}
 \begin{frame}
 
 \begin{lstlisting}
@@ -202,10 +201,10 @@ sudo apt-get install xrdp
 \end{lstlisting}
 
 \end{frame}
-Damit ist eine einfache Remote Desktopverbindung zum Raspberry m\"oglich und die komplette Verwaltung kann \''uber einen Windows, Mac oder Linux Computer erfolgen. 
+Damit ist eine einfache Remote Desktopverbindung zum Raspberry möglich und die komplette Verwaltung kann über einen Windows, Mac oder Linux Computer erfolgen. 
 \par
 \subsubsection{Der Webserver}
-Als n\"achster Schritt wurde ein vollst\"andiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zun\"achst ein Apache Server der Version 2 installiert
+Als n\"achster Schritt wurde ein vollständiger Webserver auf dem Raspberry eingerichtet. Hierzu wurde zunächst ein Apache Server der Version 2 installiert
 \begin{frame}
 
 \begin{lstlisting}
@@ -213,7 +212,7 @@ sudo apt-get install apache2
 \end{lstlisting}
 
 \end{frame}
- der \"uber eine hohe Stabilit\"at und Geschwindigkeit verf\"ugt und serverseitig die Skriptsprache PHP unterst\"utzt. Im Anschluss wurde das PHP5 Paket installiert
+ der über eine hohe Stabilität und Geschwindigkeit verfügt und serverseitig die Skriptsprache PHP unterstützt. Im Anschluss wurde das PHP5 Paket installiert
  \begin{frame}
 
 \begin{lstlisting}
@@ -221,11 +220,11 @@ sudo apt-get install php5
 \end{lstlisting}
 
 \end{frame}
- um eine volle Unterst\"utzung f\"ur die kommende Websites zu gew\"ahrleisten.
- \cite{berry2}
+ um eine volle Unterstützung für die kommende Websites zu gewährleisten.
+ \cite{2}
  \par
- PHP ist eine Open Source-Skriptsprache die speziell f\''ur die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgef\''uhrt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
- \cite{berry3}
+ PHP ist eine Open Source-Skriptsprache die speziell für die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgeführt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
+ \cite{3}
 \par
 \subsubsection{Qt Creator}
 Das Programm an sich, Tally, wird auf einem externen Rechner programmiert und auf richtigkeit überprüft. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf dem Raspberry lauffähig gemacht.
@@ -265,10 +264,10 @@ beim Debugger
 
 \end{frame}
 Danach nur noch bestätigen und der Qt Creator ist einsatzbereit. Nun kann eine Projektdatei mit der Endung .pro geöffnet und kompiliert werden.
-\cite{berry4}
+\cite{4}
 \par
 \subsubsection{Die passende Datenbank}
-Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauff\"ahig ist aber keine hohe Stabilit\"at besitzt und sehr resourcenlastig auf dem Raspberry l\"auft. Daher wurde das SQLite Datenbanksystem ausgew\"ahlt.
+Nun stand die Auswahl des passenden Datenbankverwaltungssystems an. Zur Auswahl standen die Systeme MySQL und SQLite. Bei Recherchen zu den beiden Datenbanken stellte sich schnell heraus das die MySQL Datenbank zwar auf dem Raspberry lauffähig ist aber keine hohe Stabilität besitzt und sehr resourcenlastig auf dem Raspberry läuft. Daher wurde das SQLite Datenbanksystem ausgewählt.
 \begin{frame}
 
 \begin{lstlisting}
@@ -277,10 +276,10 @@ apt-get install php5-sqlite
 \end{lstlisting}
 
 \end{frame}
- SQLite ist eine relationale Datenbank und ben\"otigt im Gegensatz zu MySQL keine st\"andig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
+ SQLite ist eine relationale Datenbank und benötigt im Gegensatz zu MySQL keine ständig laufende Software da die Datenbank aus einer einzigen, wenigen Kilobyte grossen, Datei besteht. SQLite  legt Wert auf Geschwindigkeit und Einfachheit.
 \par
 \subsubsection{Der Touchscreen}
-Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert \cite{berry5}
+Als erstes wurde der Treiber für den bereitgestellte C-Berry Touchscreen installiert \cite{5}
 \begin{frame}
 
 \begin{lstlisting}
@@ -307,14 +306,21 @@ sudo ./tft_test
 
 \end{frame}
 
-Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Prim\"ares Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verz\"ogerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daf\''uhr gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
+Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Primäres Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verzögerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daführ gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
 \par
-Damit war der Touchscreen ungeeignet f\''ur das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer h\"oheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin zu verwenden das durch seine Gr\"osse viel Platz f\"ur das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateerm\"oglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausf\''uhren soll.
+Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
 \par
-Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel f\"ur den Raspberry und eins f\"ur das Display ben\"otigt, damit w\"are eine Energiesparende L\"osung ebenfalls nicht m\"oglich.
+Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel für den Raspberry und eins für das Display benötigt, damit wäre eine Energiesparende Lösung ebenfalls nicht möglich.
 \par
-Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus.\cite{berry6} Der Touchscreen besitzt eine Aufl\"osung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten erm\"oglicht.
-Die Vorteile bei diesem Display waren die kleine Bauform und keine zus\"atzlich ben\"otigte Stromquelle. Ausserdem wird vom Hersteller direkt ein passender Kernel f\"ur Raspbian zur Verf\"ugung gestellt.
+Deshalb fiel die Entscheidung zugunsten des 3,5 Zoll Touchscreen 4DPi-35 von 4D System aus.\cite{6} 
+\begin{figure}[h]
+	\makebox[\textwidth]{
+	\includegraphics[width=9cm]{4dpi.png}}
+	\caption{Der 4 DPi-35 Touchscreen}
+	\end{figure}
+Der Touchscreen besitzt eine Auflösung von 480x320 Pixeln und durch die High Speed 48Mhz SPI Verbindung werden hohe und konstante Bildwiederholungsraten ermöglicht.
+\newpage
+Die Vorteile bei diesem Display waren die kleine Bauform und keine zusätzlich benötigte Stromquelle. Ausserdem wird vom Hersteller direkt ein passender Kernel für Raspbian zur Verfügung gestellt.
 \begin{frame}
 
 \begin{lstlisting}
@@ -325,15 +331,17 @@ sudo dpkg -i kernel4dpi_1.3-3_pi2.deb
 
 \end{frame}
 
- Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren und vom Strom getrennt werden. Das Display wird an den GPIO-Ports angebracht und der Raspberry kann wieder mit Strom versorgt und hoch gefahren werden. Danach war ein sofortiger Betrieb m\"oglich da der Raspberry das Display als primäres Display erkennt und direkt auf den Desktop bootet. Dadurch ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich \"uber den Touchscreen erfolgen.
+ Nachdem das erforderliche Paket installiert wurde, musste der Raspberry herunter gefahren und vom Strom getrennt werden. Das Display wird an den GPIO-Ports angebracht und der Raspberry kann wieder mit Strom versorgt und hoch gefahren werden. Danach war ein sofortiger Betrieb möglich da der Raspberry das Display als primäres Display erkennt und direkt auf den Desktop bootet. Dadurch ist kein HDMI Bildschirm mehr notwendig und die Bedienung kann ausschliesslich über den Touchscreen erfolgen.
 \par
 \subsubsection{Produkte scannen}
-Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handesl\"ublicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
+Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handelsüblicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
 \par
- Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verf\"ugung stellt, wurde überlegt eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen. Die Wahl fiel allerdings auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung mit verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
+ Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, wurde überlegt eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen. Die Wahl fiel allerdings auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung mit verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
 \par
 \subsubsection{Wlan für den Raspberry}
-Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss, wurde der Edimax WLAN USB Stick am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen m\"ochte. Zun\"achst wurde in der automatische 'Power Saving' Modus abgeschaltet. Hierzu wurde eine Konfigurationsdatei f\"ur den Treiber des WLAN Sticks erstellt.
+Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss, wurde der Edimax WLAN USB Stick am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde in der automatische 'Power Saving' Modus abgeschaltet. 
+\newpage
+Hierzu wurde eine Konfigurationsdatei für den Treiber des WLAN Sticks erstellt.
 \begin{frame}
 
 \begin{lstlisting}
@@ -381,7 +389,6 @@ wpa-psk "WLAN-PASSWORT"
 \end{lstlisting}
 
 \end{frame}
-\newpage
 
 damit eine Verbindung mit dem WLAN Netz hergestellt werden kann.
 Anschliessend muss nur noch per
@@ -394,10 +401,10 @@ sudo service networking restart
 \end{frame}
 der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen WLAN Netz wird hergestellt.
 \par
-Da diese M\''oglichkeit jedoch relativ umst\''andlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN konfiguration eingebaut in der man den WLAN-Namen un das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
+Da diese Möglichkeit jedoch relativ umständlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN konfiguration eingebaut in der man den WLAN-Namen un das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
-Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild w\''ahrend des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer l\''adt das w\''ahrend des hochfahrens angezeigt werden kann. \cite{berry7}
+Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt das während des hochfahrens angezeigt werden kann. \cite{7}
 \begin{frame}
 
 \begin{lstlisting}
@@ -492,9 +499,9 @@ Der Entschluss fiel auf ein Backup der Datenbank, da diese auch per Mail an den 
 sudo apt-get install rsync
 \end{lstlisting}
 \end{frame}
- Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu \"uberpr\"uft es zun\"achst ob die zu kopierende Datei ge\"ander wurde oder nicht, wodurch ein unn\"utzes kopieren von Daten unterbunden wird.
+ Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu überprüft es zunächst ob die zu kopierende Datei geändert wurde oder nicht, wodurch ein unnützes kopieren von Daten unterbunden wird.
 \par
-Damit die backups autmatisch und t\"aglich erstellt werden, wird ein cronjob hinzugef\"ugt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu k\''onnen. Zunächst wird die Konfigurationsdatei von cronjob geöffnet
+Damit die backups autmatisch und täglich erstellt werden, wird ein cronjob hinzugefügt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu können. Zunächst wird die Konfigurationsdatei von cronjob geöffnet
 \begin{frame}
 
 \begin{lstlisting}
@@ -511,17 +518,17 @@ Hier wird folgende Zeile eingef\"ugt
 \end{frame}
 Dadurch wird das Programm jeden Tag um 22:15Uhr aufgerufen und die Datenabank von /var/www/sqlite nach /home/pi/Tally/sicherung  kopiert. Hier wurde die erste Stelle auf 15 gesetzt welche die Minuten Angabe ist, die zweite auf 22 für die Stunden Angaben. Die dritte Stelle gibt an, an welchem Tag das Skript/Programm ausgeführt werden soll, die vierte an welchem Monat und die fünfte an welchem Wochentag. Da rsync jeden Tag ausgeführt werden soll werden nur die ersten beiden Stellen angegeben.
 \par
-Diese Datei soll nun auch t\"aglich, nach dem erstellen des Backups, an den Admin per mail gesendet.
-Daf\"ur wird das Programm sendEmail und zwei Perl- Libraries installiert.
+Diese Datei soll nun auch täglich, nach dem erstellen des Backups, an den Admin per mail gesendet.
+Dafür wird das Programm sendEmail und zwei Perl- Libraries installiert.
 \begin{frame}
 
 \begin{lstlisting}
 sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
 \end{lstlisting}
 \end{frame}
-SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird. Die beiden Perl- Libraries dienen dazu damit eine verschl\"usselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
+SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird. Die beiden Perl- Libraries dienen dazu damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
 \par
-Zum autmatischen versenden der Mails wird folgendes Skript erstellt \cite{berry8}
+Zum autmatischen versenden der Mails wird folgendes Skript erstellt \cite{8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -639,7 +646,7 @@ SMTPPASSWORD="MeinMailPasswort"
 \end{lstlisting}
 \end{frame}
 Hier müssen nur noch die sende Email Adresse, Sender of the mail, der Empfänger der Mail, Recipient of the mail und der SMTP Server mit dazugehörigen Benutzername und Passwort angegeben werden.
-Danach muss das Skript ausf\"uhrbar gemacht werden
+Danach muss das Skript ausführbar gemacht werden
 \begin{frame}
 
 \begin{lstlisting}
@@ -656,7 +663,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht."
 \end{lstlisting}
 \end{frame}
 \newpage
-Damit wird das Skript aufgerufen, wobei der text in den ersten Anf\"uhrungszeichen den Betreff, und der Text in den zweite Anführungszeichen den Inhalt der Email.
+Damit wird das Skript aufgerufen, wobei der text in den ersten Anführungszeichen den Betreff, und der Text in den zweite Anführungszeichen den Inhalt der Email.
 Hierbei kam es jedoch zu folgendem Fehler
 \begin{frame}
 
@@ -666,7 +673,7 @@ invalid SSL_version specified at /usr/share/perl5/IO/Socket/SSL.pm line 332
 \end{lstlisting}
 \end{frame}
 
-Dieser Fehler entsteht da die dazugeh\"orige SSL konfiguration einen kleinen Fehler enth\"ahlt.
+Dieser Fehler entsteht da die dazugehörige SSL konfiguration einen kleinen Fehler enthählt.
 Folgende Datei muss aufgerufen werden
 \begin{frame}
 
@@ -704,8 +711,8 @@ Jul 15 16:32:30 raspberrypi sendEmail[4163]: Email was sent successfully!
 \end{lstlisting}
 \end{frame}
 \par
-Damit auch Anh\"ange mit versandt werden k\"onnen muss lediglich das Skript etwas ver\"andert werden
-Hinzu kommt folgender Ausdruck. \cite{berry9}
+Damit auch Anhänge mit versandt werden können muss lediglich das Skript etwas verändert werden.
+Hinzu kommt folgender Ausdruck. \cite{9}
 \begin{frame}
 
 \begin{lstlisting}
@@ -720,7 +727,7 @@ fi
 \end{lstlisting}
 \end{frame}
 \newpage
-Somit sieht das Skript wie folgt aus \cite{berry8}
+Somit sieht das Skript wie folgt aus \cite{8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -805,7 +812,7 @@ sendEmail -f ${SENDER} -t ${RECIPIENT} -u "${SUBJECT}" -m "${BODY}" ${OPTIONS}
 exit 0
 \end{lstlisting}
 \end{frame}
-Im Befehl zum senden wird nun ein drittes Argument hinzugef\"ugt das den Pfad mit der Datei die zu versenden ist enth\"alt.
+Im Befehl zum senden wird nun ein drittes Argument hinzugefügt das den Pfad mit der Datei die zu versenden ist enth\"alt.
 \begin{frame}
 
 \begin{lstlisting}
@@ -833,9 +840,9 @@ hinzugefügt wird
 Damit wird das Skript mailnotify.sh um 23:45Uhr gestartet und eine Email mit dem Betreff `Sicherung Tally Datenbank', dem Inhalt der Mail `Dies ist eine automatische Sicherungsmail der Tally Datenbank' und dem Dateianhang `/home/pi/Tally/sicherung/database.sqlite' gesendet.
 
 \subsubsection{Tally autostarten}
-Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart f\"ur das Programm konfiguriert werden.
+Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart für das Programm konfiguriert werden.
 \par
-Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Daf\"ur musste zun\"achst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einem cronjob nach jedem hochfahren ausgef\"uhrt wird.
+Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Dafür musste zunächst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einem cronjob nach jedem hochfahren ausgeführt wird.
 \begin{frame}
 
 \begin{lstlisting}
@@ -879,7 +886,7 @@ exit 0
 \end{lstlisting}
 \end{frame}
 
-Danach wird das Skript ausf\"uhrbar gemacht
+Danach wird das Skript ausführbar gemacht
 \begin{frame}
 
 \begin{lstlisting}
@@ -902,7 +909,7 @@ sudo /etc/init.d/NameDesSkripts stop
 \end{lstlisting}
 \end{frame}
 
-Damit der Raspberry das Skript beim booten l\"adt wird noch folgender Befehl ausgef\"uhrt der das Programm in den passenden Runlevel bringt
+Damit der Raspberry das Skript beim booten lädt wird noch folgender Befehl ausgeführt der das Programm in den passenden Runlevel bringt
 \begin{frame}
 
 \begin{lstlisting}
@@ -911,7 +918,7 @@ sudo update-rc.d NameDesSkripts defaults
 \end{frame}
 \par
 
-Als n\"achstes wird das Skript durch einen cronjob jedes mal beim starten des Raspberrys ausgef\"uhrt
+Als nächstes soll das Skript durch einen cronjob jedes mal beim starten des Raspberrys ausgeführt
 \begin{frame}
 
 \begin{lstlisting}
@@ -919,16 +926,16 @@ sudo crontab -e
 \end{lstlisting}
 \end{frame}
 \newpage
-Dazu wurde folgende zeile eingef\"ugt
+Dazu wurde folgende zeile eingefügt
 \begin{frame}
 
 \begin{lstlisting}
 @reboot \bin\bash .....
 \end{lstlisting}
 \end{frame}
-Das '@reboot' steht f\"ur das ausf\"uhren der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole ge\"offnet wurde startete der cronjob das Skript und somit das Programm.
+Das '@reboot' steht für das ausführen der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete der cronjob das Skript und somit das Programm.
 \par
-Die beschriebene Methode war lediglich daf\"ur gedacht Programme auszuf\"uhren die keine GUI ben\"otigen. Alle Programme die autostarten sollen und eine GUI ben\"otigen m\"ussen \"uber die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden.
+Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden.
 Dazu erstellt man in folgendem Pfad
 \begin{frame}
 
@@ -949,145 +956,505 @@ Type=Application
 \end{lstlisting}
 \end{frame}
 
-Diese Datei wieder ausf\"uhrbar machen
+Diese Datei wieder ausführbar machen
 \begin{frame}
 
 \begin{lstlisting}
 chmod +x x11vnc.desktop
 \end{lstlisting}
 \end{frame}
-Und das gew\"unschte Programm startet nachdem die GUI geladen ist.
+Und das gewünschte Programm startet nachdem die GUI geladen ist.
 
-
+\newpage
 
 \subsection{QT Creator - Das Tally Programm}
 Als Programmierumgebung, für den Raspberry Pi 2, wurde Qt gewählt.
-Qt ist eine Klassenbibliothek von C++ und bietet die Programmierung für  graphische Benutzeroberfläche und Datenbankfunktionen.
-Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel sind.
-Als Debugger haben wir GNU gdb 7.8 für MinGW 4.9.1 gewählt.
+Qt ist eine Klassenbibliothek in C++, vereinfacht die Programmierung für graphische Benutzeroberflächen und bietet zahlreiche weitere Funktionen an.
+Wir arbeiten mit der Version 4.8.1 von Qt, da neuere Versionen noch nicht mit dem Raspberry Pi 2 kompatibel ist.
+Als Debugger haben wir GNU gdb 7.8 und MinGW 4.9.1 als Compiler gewählt.
 \par
-Programmiert wird hauptsächlich auf einem PC, da dieser schneller debuggen kann.
+Programmiert wird hauptsächlich auf unseren eigenen PCs, da diese schneller debuggen können.
 Darüber hinaus musste der Raspberry PI 2 noch konfiguriert werden, wie in 4.1 beschrieben, wodurch ein zeitgleiches arbeiten erschwert wäre.
 Es wurde sich darauf geeinigt das Programm zu Demonstrationszwecke, während den Teammeetings, auf dem Raspberry PI 2 laufen zu lassen.
 Zum Ende des Projekts, sobald die Konfiguration beendet ist, sollten wir denn Raspberry PI 2 bekommen um die Benutzeroberfläche letztendlich anpassen zu können.
 \par
-\subsubsection{Die Benutzeroberfl\"ache}
-Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir eine herausgearbeitet, welche in dem Plichtenheft zu sehen ist.
+\subsubsection{Die Benutzeroberfläche}
+Als erstes haben wir erste Grundzüge der Benutzeroberfläche thematisiert. Letztendlich haben wir die GUI herausgearbeitet, welche in dem Plichtenheft zu sehen ist.[Information]
 Außerdem wurden mehrere Strukturen für das Hauptprogramm besprochen und haben uns auf einen Automaten geeinigt. Näheres dazu findet sich in dem Unterpunkt Aufbau des Programmes.
+\par
 Daraufhin wurde sich in Qt eingelesen und die ersten Funktionen für den Login-Screen programmiert.
 Wie bereits in Abschnitt 4.1 erklärt, wurde entschieden das Display zu wechseln.
-Außerdem ist uns Aufgefallen das  sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was Benutzerunfreundlich ist.
+Außerdem ist uns Aufgefallen das sehr viele Klicks gebraucht werden um eine Kaufvorgang abzuschließen, was benutzerunfreundlich ist.
 Aus diesen beiden Gründen wurde die komplette Benutzeroberfläche überarbeitet.
-Die Knopfgröße und die Schriftgröße mussten vergrößert werden als auch das Knöpfe, aufgrund Platzmangels, weggelassen werden mussten.
-Die Screens sollten aber erst beim Programmieren festgelegt werden  um evtl. Hürden zu meistern.
-Außerdem wussten wir zu diesem Zeitpunkt noch nicht, welches Display für den Raspberry Pi 2 gewählt wird.
-Die endgültige Benutzeroberfläche befindet sich unter dem Unterpunkt Funktionen des Programmes.
 \par
+Die Knopfgröße und die Schriftgröße mussten vergrößert werden als auch das Knöpfe, aufgrund Platzmangels, weggelassen werden mussten.
+Die Screens sollten aber erst beim Programmieren festgelegt werden um evtl. Hürden zu meistern.
+Außerdem wussten wir zu diesem Zeitpunkt noch nicht, welches Display für den Raspberry Pi 2 gewählt wird.
+\par
+\subsubsection{Datenbank und Tally}
 Nach dem die ersten Funktionen des Login-Screens und des Passwort-Screen implementiert wurden, wurde begonnen die Datenbank mit einzuarbeiten.
-Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen welche Tabellen angelegt werden  und womit diese befüllt werden.
-Eine genaue Beschreibung der Datenbank befindet sich unter Abschnitt 5.
+Aus Abschnitt 4.1 geht heraus, dass wir uns für SQLite entschieden haben. Um auf diese zuzugreifen, mussten wir uns zunächst darauf einigen, welche Tabellen angelegt werden und womit diese befüllt werden.
+\par
 Nachdem wir uns auf die Datenbank geeinigt haben, wurde diese in das Programm implementiert.
 Zu diesem Zeitpunkt wurde noch nicht mit einer eindeutigen ID jedes Benutzer gearbeitet sondern mit seinem Namen, was später zu Komplikationen führen würde.
 Zeitgleich zum Login-Screen und dem Passwort-Screen wurden alle, die bis zu diesem Zeitpunkt erarbeitete Screen oberflächlich implementiert.
+\par
 So konnten man zu diesem Zeitpunkt sich anmelden, (die Daten dafür wurden aus der Datenbank genommen) und konnte sich über alle Screens klicken, auch wenn die meisten keine Funktionen hatten.
 \par
-Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID die der eingeloggten Person global im Programm bekannt gemacht.
+Nachdem das Grundgerüst des Programmes stand, wurde um die Kauffunktion implementieren zu können, die ID der eingeloggten Person global im Programm bekannt gemacht werden.
 Dies haben wird entweder über get-Funktionen realisiert oder beim Erzeugen eines neuen Screens mitgegeben.
 Daraufhin konnten die restlichen Funktionen implementieren werden.
-Als erstes wurden die Tabellen implementiert in welche alle kaufbaren Artikel aufgelistet werden.
-Die Information über die Artikel konnten über die Datenbank in Erfahrung gebracht werden.
-Nachdem die Tabellen mit Artikeln vorhanden waren, wurde mit dem Hauptaspekt des Programmes begonnen, dem Kaufvorgang.
+\par
+Als erstes wurden die Liste implementiert in welche alle kaufbaren Artikel aufgelistet werden.
+Die Information über die Artikel konnten über die Datenbank eingelesen werden.
+Nachdem sich die Listen mit Artikeln befüllten, wurde mit dem Hauptaspekt des Programmes begonnen, dem Kaufvorgang.
 \par
 Für den Kaufvorgang ist hauptsächlich das Shoppingcart verantwortlich. Sobald ein Artikel dort liegt, wird es immer auf dem rechten Teil des Bildschirmes angezeigt.
-Außerdem ist es dafür verantwortlich, dass wenn Artikel gekauft werden, den Kaufvorgang abzuschließen.
+Außerdem ist es dafür verantwortlich, dass wenn Artikel gekauft werden, der Kaufvorgang korrekt abgeschlossen wird.
 Dies bedeutet vor allem, dass die Datenbank mit neuen Informationen gefüllt wird. Einerseits wird die Anzahl der entsprechenden Artikel geändert und das Konto des Käufers belastet.
 Dies bürgte eine große Hürde. Das Problem mit der Synchronität des Shoppingcart über den gesamten Einkauf.
-Jedes Mal wenn der Zustannd gewechselt wurde(siehe Aufbau des Programmes), wurde das Shoppingcart gelöscht und damit auch der Inhalt.
-Das Shoppingcart ist ein eigenständiges Teil Programmes und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
-Dies tut es allerdings nicht und wird jedes Mal gelöscht, wenn sich der Zustand ändert.
-Da wir das Problem nicht finden konnten, warum es sich jedes Mal mit löscht, wird nun beim Verlassen des Zustandes eine Liste mitgegeben in der alle Artikel gespeichert sind die im Shoppingcart lagen.
-Mit dieser Liste wird ein neues Shoppingcart erzeugt in der diese Artikel liegen.
 \par
-Nachdem diese Hürde genommen wurde, gab es nur noch wenige Funktionen die noch implementiert werden mussten.
+Jedes Mal wenn der Zustannd gewechselt wurde(siehe Aufbau des Programmes), wurde das Shoppingcart gelöscht und damit auch der Inhalt.
+Das Shoppingcart ist ein eigenständiges Teil Programme und somit sollte es unabhängig sein, wenn sich der Zustand des Programmes ändert.
+Da wir allerdings keinen Weg gefunden haben ein Widget auf mehrere Widgets angezeigt zu haben, konnten wir das Problem auch nicht anders lösen. Das Soppingcart erstellt nun vor jedem löschen eine Liste mit seinen Items, welche dem neu erzeugten Shoppigcart gegeben wird.
+\par
 Bis zu diesem Zeitpunkt wurde das Programm fast ausschließlich auf einem PC programmiert, debugt und auch die Größen wurden auf diesen angepasst, wie bereits anfangs erwähnt.
-Deswegen war der nächste Schritt die Benutz Oberfläche, mit dem Raspberry PI 2 und dem neuen Display, anzupassen.
+Deswegen war der nächste Schritt die Benutzer Oberfläche, mit dem Raspberry PI 2 und dem neuen Display, anzupassen.
 Zusätzlich wurde auch der Barcode Scanner implementiert, was kein Problem dargestellt hat, da sich das Signal des Barcode Scanners verhält wie ein Tastendruck mit der Tastatur. Qt stellt für solche Signale bereits Funktionen.
+\par
 Somit war das Programm so gut wie fertig. Es fehlten nur noch ein paar kleine Funktionen und vor allem musste noch eventuelle Bugs entfernt werden.
 Alle Funktionen des Programmes wurden nicht während dieses Abschnittes erfasst, da dies den Umfang dieser Dokumentation sprengen würde.
-Alle wichtigen Funktionen wurde erwähnt und gegebenenfalls erläutert, vor allem in dem Abschnitt Funktionen des Programmes werden alle wichtigen erwähnt und was das Programm leistet.
-
-
+Alle wichtigen Funktionen wurde erwähnt und gegebenenfalls erläutert, darüber hinuas werden noch welche in dem Unterpunkt Aufbau des Programmes näheres erklärt.
 \par
+
+
 \subsubsection{Aufbau des Programmes}
-Das Programm wurde in 12 Klassen unterteilt.Im folgendem werden die einzelnen Klassen erläutert.
-Allgemein lässt läuft das Programm nach einem Automaten ab. Bildschirm wurde in Teilbereiche unterteilt, wodurch nicht bei jedem Zustandswechsel der komplette Bildschirm neu geladen werden muss, sondern nur die betreffenden Teile.
-Dadurch Teilen wir den Bildschirm in drei Teile. Die Kopfteil,linker Teil und rechter Teil. Näheres dazu wird in den dementsprechenden Klassen erläutert.
+Das Programm wurde in 13 Klassen und einer main unterteilt.Im folgendem werden die einzelnen Klassen erläutert.
+Allgemein läuft das Programm nach einem Automaten ab. Der Bildschirm wurde in zwei Bereiche unterteilt, wodurch nicht bei jedem Zustandswechsel der komplette Bildschirm neu geladen werden muss, sondern nur der betreffende Teil.
+Dadurch Teilen wir den Bildschirm in die Kopfzeile und der Automatenbereich. Näheres dazu wird in den dementsprechenden Klassen erläutert.
 main.cpp :
-	Die main.cpp ist verantwortlich für den Ablauf des Programmes. Die Struktur dafür ist aufgebaut wie ein Mealy-Automat.In den Zustanänden sind die jeweiligen möglichenkeien aus diesem Zustand herauszukommen.
-	Dies wird realisiert durch den exitcode des aktuellen Screen, welche zurückgegeben wird, wenn das passende Event dazu geschehen ist(Bsp. Knopf gedrückt).
-	Zustände:
+	Die main.cpp ist verantwortlich für den Ablauf des Programmes. Die Struktur dafür ist aufgebaut wie ein Mealy-Automat.Die Zustände geben an welcher Bildschirm gerade angezeigt wird. Die Übergänge sind die Exitcodes.
+	Die Ausgaben der Kanten sind jeweils der Screen-Wechsel, welcher nicht im Automaten abgebildet ist.-->(MEALYAUTOMATBILD)<--
+	Exitcodes erlaubt es Programmen bei bestimmten Events(z.B. ein Knopf wurde geklickt) wieder zurück in die main.cpp zu gelangen.
+	 -->mainWindowPointer->exit(21); 
+	Es wird Anfangs die Ip ermittelt und diese auf einem eigenen Screen angezeigt.
+	-->QTcpSocket socket;
+    QString ip;
+\begin{frame}
+
 \begin{lstlisting}
+    socket.connectToHost(`8.8.8.8', 53); // google DNS, or something else reliable
+    if (socket.waitForConnected()) {
+        ip = socket.localAddress().toString();
+    } else {
+        ip = socket.errorString();
+    }
+    w.showIpScreen(ip);
+\end{lstlisting}
+\end{frame}
+\par
+\paragraph{Zustände:} $\;$ \\
+	
 		0 : Es wird der Login-Screen auf dem Bildschirm gezeigt.
 			Exitcode: 
-				10 : Es wurde der Benutzer gew\"ahlt und m\"ochte sich nun mit dem Account anmelden.
-				!10 & !100 : Das Programm beendet sich.
-				
+\begin{enumerate}
+			\item	10 : Es wurde der Benutzer gewählt und möchte sich nun mit dem Account anmelden.
+			\item	!10 \& !100 \& !34 : Das Programm beendet sich.
+\end{enumerate}
 		1 : Es wird der Passwort-Screen auf dem Bildschirm angezeigt.
 			Exitcode:
-				20 : Es wurde auf den 'Back' Knopf gedr\"uckt gelangt in Zustand 0.
-				21 : Das Passwort wurde korrekt eingegeben und man gelangt zum Coffee/Sweet/Scan Men\"u.
-				!20 & !21 & !100 : Das Programm beendet sich.
-				
+\begin{enumerate}			
+			\item	20 : Es wurde auf den `Back' Knopf gedrückt gelangt in Zustand 0.
+			\item	21 : Das Passwort wurde korrekt eingegeben und man gelangt zum Coffee/Sweet/Scan Menü.
+				!20 \& !21 \& !100 \& !34 : Das Programm beendet sich.
+\end{enumerate}			
 		2 : Es gibt die Auswahlpunkte zwischen Coffee/Sweets/Scan als auch die Favoriten oder das Shoppingcart.
 			Exitcode:
-				31 : Es wurde auf 'Coffee' geklickt und man gelangt zur Getr\"ankeliste mit dem Shoppingcart.
-				32 : Es wurde auf 'Sweets' geklickt und man gelangt zur S\"u \{\ss} uigkeitenliste mit dem Shoppingcart.
----->        	33 : Es wurde auf 'Scan' geklickt und man wird ins Scan-Menue geleitet mit dem Shoppingcart.
-				34 : Es wurde ein Artikel gescannt und wird in das Scan_Menue geleitet mit dem Shoppingcart.
-				99 : Es wurde auf 'Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt.
-				!31 & !32 & !33 ! & !34 & !99 & !100 & !98 : Das Programm beendet sich.
-				
-		3 : Es wird die Getr\"ankeliste mit dem Shoppingcart gezeigt.
+\begin{enumerate}			
+			\item	31 : Es wurde auf `Coffee' geklickt und man gelangt zur Getränkeliste mit dem Shoppingcart.
+			\item	32 : Es wurde auf `Sweets' geklickt und man gelangt zur Süßigkeitenliste mit dem Shoppingcart.
+			\item	34 : Es wurde ein Artikel gescannt und wird in das Scan\_Menue geleitet mit dem Shoppingcart.
+			\item	35 : Es wurde auf `Favoriten' geklickt und man gelangt in den Favoriten-Screen.
+			\item	36 : Es wurde auf `Settings' geklickt und wird in das Settingsmenue geschickt.
+			\item	51 : Es wurde auf `Back' geklickt und man wird automatisch ausgeloggt.
+			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
+				!31 \& !32 \& !33 ! \& !34 \& !99 \& !100 \& !98 : Das Programm beendet sich.
+\end{enumerate}			
+		3 : Es wird die Getränkeliste mit dem Shoppingcart gezeigt.
 			Exitcode:
-				51 : Es wurde auf 'Back' geklickt und man wird in Zustand 2 gesetzt.
-				99 : Es wurde auf 'Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt.
-				98 : Ein Artikel wurde aus dem Warenkorb entdfernt.
-				
-		4 : Es wird die S\"u \{\ss} uigkeitenliste mit dem Shoppingcart gezeigt. 
+\begin{enumerate}			
+			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
+			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
+			\item	98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Getränkeliste aufgelistet.
+\end{enumerate}			
+		4 : Es wird die Süßigkeitenliste mit dem Shoppingcart gezeigt. 
 			Exitcode:
-				51 : Es wurde auf 'Back geklickt und man wird in Zustand 2 gesetzt.
-				99 : Es wurde auf 'Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktualisiert und man wird in den afterbuyscreen geschickt.
-				98 : Ein Artikel wurde aus dem Warenkorb entdfernt.
-			
+\begin{enumerate}			
+			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
+			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
+			\item	98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Süßigkeitenliste angezeigt.
+\end{enumerate}			
 		5 : Es wird das Scan-Menue angezeigt.
-				51 : Es wurde auf 'Back geklickt und man wird in Zustand 2 gesetzt.
-				99 : Es wurde auf 'Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt.
-\end{lstlisting}	
-Dafür haben wir eine QListWidget ,da diese mit QListWidgetItem's gefüllt werden kann welche alle Informationen über ein Artikel speichern kann.
-Ein QListWidgetItem kann man sich vorstellen wie ein Array an dessen Position spezielle Werte gespeichert werden.
-In unserem Fall stehen FOlgende Werte in dem QListWidgetItem:
+\begin{enumerate}		
+			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
+			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
+\end{enumerate}		
+		6 : Es wird das Shoppingcart als auch die Favoriten angezeigt.
+\begin{enumerate}		
+			\item	99 : Es wurde auf `Buy' geklickt. Der Kaufvorgang wird beendet. Die Datenbank wird aktgualisiert und man wird in den afterbuyscreen geschickt nach einigen 						Sekunden dann wieder in den Login-Screen.
+			\item	51 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
+			\item	98 : Ein Artikel wurde aus dem Warenkorb entfernt und wird wieder in der Favoritenliste angezeigt.
+\end{enumerate}				
+		7 : Es werden die Settings angezeigt(Nur als Admin)
+\begin{enumerate}		
+			\item	71 : Es wurde auf `Back' geklickt und man wird in Zustand 2 gesetzt.
+\end{enumerate}
+
+\paragraph{mainwindows.cpp:} $\;$ \\
+	Wie bereits erwähnt haben wir die Oberfläche in zwei Teile unterteilt, in welche dann Widget hinzugefügt und entfertn werden können. 
+	Für diese Unterteilung ist die mainwindow.cpp verantwortlich, als auch noch für andere Funktionen.-->(BILD1)<--
+	Die Kopfzeile wird erzeugt und dann nur noch verändert, bezüglich Datum,Zeit,Name und ob der Logout-Button aktiv ist.
+	Der Automatenbereich wird mit jedem Zustanswechsel verändert.
+	Durch die Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+-->removeWidget()
+\end{lstlisting}
+\end{frame}
+werden alle Widgets die sich im Automatenbereich befindet entfernt, wodurch neue Widget dort gesetzt werden können.
+	Fast jeder Screen besitzt eine Funktion names setMainWindowPointer. In diesem wird der Bezug zwischen dem Screen und dem mainwindow hergestellt.
+	Außerdem wird dieser Funktion auch die User\_Id mitübergeben, damit in der Klasse die User\_id des angemeldeten Benutzers bekannt ist.
+	\begin{frame}
+
+\begin{lstlisting}
+	-->setMainWindowPointer(QApplication *a,QString gUserId)
+	\end{lstlisting}
+\end{frame}
+	
+	Alle Funktionen die mit 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->show
+	\end{lstlisting}
+\end{frame}
+	beginnen, sind dafür da die entsprechenden Widget in dem Fenster zu erstmalig zu zeigen.
+	Die Funktionen die mit 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->update
+	\end{lstlisting}
+\end{frame}
+	beginnen, updaten die entsprechend Widgets um auf entsprechende Events zu reagieren.
+	Im Konstruktor der Klasse wird erstmalig die Uhrzeit und das Datum ermittelt. Dies funktioniert über die von Qt zur verfügung gestellten Klassen QTime und QDate.
+	Diese Funktionen ermitteln die aktuelle Zeiten über das Betreibssystem, über welches Qt momentan läuft und gibt dieses in einem, vom Programmierer gewählten Format, zurück.
+	
+	\begin{frame}
+
+\begin{lstlisting}
+	-->QTime qtime = QTime::currentTime();
+	-->QString stime = qtime.toString(Qt::LocalDate);
+	\end{lstlisting}
+\end{frame}
+	Zusätzlich bietet QTime noch die Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->timerEvent(QTimerEvent *event)
+	\end{lstlisting}
+\end{frame}
+	Diese Funktion wird jede Sekunde ausgeführt. Dadurch wird ein Zähler erzeugt denn wir für mehrere Funktionen genutzt haben.
+	Einerseits wird die Zeit jede Sekunde aktualisiert um die aktuelle Uhrzeit auf der Oberfläche anzeigen zu lassen.
+	Andererseits nutzten wir den Zähler auch für den Watchdog. Diese wird jede Sekunde einen hochgesetzt. Wenn eine gewisse Anzahl, welche in den Setting(Datenbank) angegeben ist, erreicht, 
+	wird der Benutzer automatisch abgemeldet und man landet wider in dem Login-Screen. Bei jedem Tastendruck, unabhängig in welchem Screen man sich befindet, wird der Watchdog wieder zurückgestellt.
+\par	
+	Zusätzlich wird auch die, von Qt zur Verfügung gestellt Klasse QKeyEvent verwendet. In der Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->keyPressEvent(QKeyEvent *ev)
+	\end{lstlisting}
+\end{frame}
+	  wird ein Tastendruck der Tastur erfasst und wird an einen String angehangen.
+	Sobald `Enter' gedrückt ist, wird ein Exitcode geworfen. Diese Funktion realisiert den Barcode-Scanner. 
+	Das Signals des Barcode\_Scanners verhält sich wie ein Signal von der Tastatur und beendet den eingelesen Code mit einem `Enter'. Mit dieser Funktion ist der Barcode\_scanner implementiert.
+\par	
+\paragraph{loginscreen.cpp:} $\;$ \\
+	Im Login-Screen werden auf der Linken Seite alle Benutzer aufgelistet die in der Datenbank vorhanden sind. Dies geschieht über eine QListWidget in welche QListWidgetItem's hinzugefügt wird.
+	In den QListWidgetItem's werden die Werte der Benutzer gespeichert, wlche über die Datenbank eingefortdert wurden. 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->QListWidgetItem *item = new QListWidgetItem();      //Erzeugen eines Benutzers
+       item->setData(4,Database.getString(0).toInt());     //User\_Id wird an vierter Position gespeichert
+       item->setIcon(Database.getPixmap(3));               //Bild des Benutzers wird gespeichert
+       item->setText(Database.getString(2));               //Nickname des Benutzers wird gespeichert
+       ui->listWidget->addItem(item);                      //Neuer Benutzer wird in die Tabelle hinzugef\''ugt
+       \end{lstlisting}
+\end{frame}
 \par
-- Der Name der Artikels wird der Name des QListWidgetItem's (item->setText(name);)
-- Das Bild des Artikels hat einen extra Platz im QListWidgetItem (item->setIcon(picture);)
-- An der vierten Stelle wird die Artikel ID gespeichert (item->setData(4,itmeID);)
-- An der fünften Stelle wird der Preis des Artikels gespeichert (item->setData(5,price);)
-- An der sechsten Stelle wird die Menge gespeichert die noch vorrätig ist (item->setData(5,amount);)
+	Auf der rechten Seite erscheint eine Tastatur. Auf den 8 Knöpfen verteilt stehen die Buchstaben des Alpabhets. Jeweils 3 oder 4 Buchstaben pro Knopf.
+	Nun kann man seinen Account in der Liste suchen. Entweder man scrollt in der Liste so lange bis man sich gefunden hat oder man gibt seinen Namen, rechts auf der Tastatur ein.
+	Auf der Tastatur muss man seinem Namen mithilfe seines T9 Codes eingeben. Dies bedeuted jeder Buchstabe in seinem Namen wird durch eine Zahl ersetzt(Zahl laut Tastatur), 
+	wodurch die Namen auf der rechten Seite verschwinden, die keine Teil des bisher Eingegebenen Codes sind.
+	Realisiert haben wir dies, indem von jedem Benutzer der T9\_Code in der Datenbank gespeichert ist und nun mitHilfe des compare()Befehls von QString verglichen wird.
+	\begin{frame}
+
+\begin{lstlisting}
+	-->if(tempID.contains(NameField) || NameField.length() == 0){      //vergleicht den eingegeben Code(Namefield) mit den Werten aus der Datenbank  
+	\end{lstlisting}
+\end{frame}
+\par	
+	Wenn der Benutzer seinen Account gefunden hat kann er auf diesen klicken und gelangt automatisch in denn Passwort-Screen.
+	Auserdem wird bei diesem Befehl, die User\_Id gespeichert, womit andere Funktionen wissen welcher Bemnutzer sich anmelden möchte.	
 \par
-An den ersten drei Stellen sind wir uns nicht sicher was dort gespeichert wird.
-Wir können nichts darauf expliziet speichern und wenn wir ausgeben lassen was dort gespeichert ist, bekommen wir einen leeren String zurück.
-\subsubsection{Funktionen des Programmes}
+\paragraph{passwordscreen.cpp:} $\;$ \\
+	Im PasswordScreen erscheint auf der linken Seite, das Bild als auch der Credit des Benutzers. Auf der Rechten Seite befindet sich eine Tastatur mit den Zahlen von 0 bis 9, wodmit der Benutzer sich anmelden kann.
+	Wenn der Benutzer sein Passwort korrekt eingegeben hat, wird bei der Datenbankabfrage bezüglich Benutzer und Passwort , den Wert true zurückgeben und man wird automatisch in den den Coffee/Sweet/Scan -Screen weitergeleitet.
+	\begin{frame}
 
+\begin{lstlisting}
+	-->if(database.checkPassword(userId,password) \&\& blocked != `1' \&\& database.checkUserLoginCount(userId)){  //Passwort wurde korrekt eingegeben und der User ist niocht geblockt
+            database.updateLoginAttempt(userId,true);
+            Data.close();
+            mainWindowPointer->exit(21);<--
+            \end{lstlisting}
+\end{frame}
+\par			
+	Außerdem wurde der Zeitstempel für den User gesetzt. 
+	Falls sich der Benutzer drei mal mit dem Falschen Passwort anmelden wollte wird dieser Account für 60 Sekunden geblocket.
+	Dies geschieht in dem wir, bei den letzten misslungten einloggen den Zeitstempel speichern und einen Zähler erhöhen(beide Werte werden in der Datenbank gespeichert).
+	Nun wird bei jedem misslungenen einloggen der Zähler erhöht. Wenn dieser die drei erreicht, wird der account für 60 Sekunden gespeert.
+	Sobald man sich einmal richtig einloggt wird der Zeitstempel aktualisiert und der Zähler wider auf 0 gesetzt. Die Funktion für die Datenbankänderung gibt die Klasse sqlzugriff, wobei die Abfrage über eine if-Anweisung geklärt wird.
+	
+	\begin{frame}
 
-Wie wir im vorangegangen Text gesehen haben, sind die Zeilenumbche automatisch ganz gut. Neue Abschnitte werden durch eine Leerzeile erzeugt. Wenn man trotzdem eine Zeile in einem Absatz abbrechen will, so geht das natrlich auch. \\  Aber eigentlich sehen diese Umbche seltsam aus und man sollte sie vermeiden. Da ist es doch in der Regel besser, gleich einen neuen Absatz zu beginnen. In Abschnitt \ref{Sonderzeichen} sehen wir, wie eine gute Absatzstruktur aussieht. brigens knnen wir auch einen neuen Seitenbeginn erzwingen.
+\begin{lstlisting}
+-->if(database.checkPassword(userName,password))
+\end{lstlisting}
+\end{frame}
+\par	
+	Falls der Benutzer gesperrt ist, wird anstelle des Credits, die Nachricht angezeigt `User blocked' angezeigt.
+	
+	\begin{frame}
 
-\newpage
+\begin{lstlisting}
+	-->ui->label\_name->setText(`User blocked');
+	\end{lstlisting}
+\end{frame}
+	Falls der Benutzer nur kurzeitig gespeert ist aufgrund zu häufiger Eingabe des falschen Passwortes, wird dieser auch geblockt.
+	Dann erscheint ansttele des Credits `Wrong login!' und `Temp blocked.'
+	Es wird eine Loginversuch immer dann als gescheitert definiert, wenn der Benutzer Login drückt und ein falsches Passwort eingegeben wurde und dann, wenn auf delete gedrückt wurde.
+\par	
+\paragraph{favwidget.cpp :} $\;$ \\
+	Diese Klasse beinhaltet den Screen der Favoriten.Diese enthält die Funktion setMainWindowPointer wodurch es die Schnittstelle liefert zwischen mainwindow.cpp und der favcart.cpp.
+\par
+\paragraph{favcart.cpp \& buywidget.cpp:} $\;$ \\	
+	favcart.cpp zeigt die Favoriten an des jeweiligen Benutzers. buywidget.cpp zeigt entweder die Getränkeliste oder die Süßigkeitenlsite an.
+	Welcher der beiden Liste gezeigt wird, wird dem der Funktion über die setMainwindowPointer Funktion bekanntgegeben.
+	
+	\begin{frame}
 
-Aber auch das sollte man in der Regel vermeiden. \LaTeX\ bricht Seiten in der Regel selbst vernnftig um, und wenn man spter noch Text einfgt, stehen manuelle Seitenumbrche fast immer an der falschen Stelle.\footnote{Manuelle Seitenumbrche sollten deswegen hchstens dann eingefgt werden, wenn das Dokument vollstndig fertig ist und die Seitenumbrche von \LaTeX\ nicht zufriedenstellend waren.}
+\begin{lstlisting}
+	-->setMainWindowPointer(QApplication *a,QList<QListWidgetItem> *cartItems,bool gSweetsActive,QString gUserId)
+	\end{lstlisting}
+\end{frame}
+	Wenn der bool Wert true ist wird die Süßigkeitenliste angezeigt, andernfalls die Getränkeliste. Die Werte dafür werden jeweils aus der Datenbank gezogen.
+\par	
+	Beiden Klassen sind gleich Aufgebaut. Sie besitzen ein Tabelle wo alle Artikel aufgelistet sind. Dies wird über eine QListWidget organisiert wie bereits die Namen im Login-Screen.
+	In den QListWidgetItem's sind folgende Werte an deren Position gespeichert:
+	
+	\begin{frame}
 
-\subsection{Sonderzeichen}
-\label{Sonderzeichen}
+\begin{lstlisting}
+	- Der Name der Artikels wird der Name des QListWidgetItem's (item->setText(name);)
+	- Das Bild des Artikels hat einen extra Platz im QListWidgetItem (item->setIcon(picture);)
+	- An der vierten Stelle wird die Artikel ID gespeichert (item->setData(4,itmeID);)
+	- An der f\''unften Stelle wird der Preis des Artikels gespeichert (item->setData(5,price);)
+	- An der sechsten Stelle wird die Menge gespeichert die noch vorr\''atig ist (item->setData(5,amount);)
+	\end{lstlisting}
+\end{frame}
+\par
+	An den ersten drei Stellen sind wir uns nicht sicher was dort gespeichert wird.
+	Wir können nichts darauf expliziet speichern und wenn wir ausgeben lassen was dort gespeichert ist, bekommen wir einen leeren String zurück.
+\par	
+	Zusätzlich verändert sich die Farbe bei unterscheidlichen Beständen. Bei nur noch einem vorhanden Element wird der Name Rot angezeigt und bei unter 6 Elementen ändert sich die Farbe des Testes auf Gelb.
+\par	
+\paragraph{coffeesweetsscan.cpp :} $\;$ \\
+	In diesem Screen hat an die Möglichkeit zu wählen, zwischen der Getränkeliste und der Süßigkeitenliste. Gegebenenfalls bei Adminrechte auch den Button für die Settings.
+	Diese Auswahlmoglichkeiten stehen auf der Rechten Seite und können durch anklicken ausgewählt werden. 
+	Auf der linken Seite befindet sich entweder das Shoppingcart, falls in diesem Items liegen oder falls das Shoppingcart leer ist, steht dort die Favoriten.
+\par	
+\paragraph{shoppingcart.cpp :} $\;$ \\
+	Das shoppingcart ist verantwortlich für den eigentlichen kauf. Es kombinbiert die Einkäufe aus den beiden Einkaufslisten, den eingescannten Artikeln und die aus dem Favoriten.
+	Das Shoppingcart selber ist wider eine QListWidget mit QListWidgetItem's, wie bereits mehrmals verwendet.
+	Mit der Funktion 
+		\begin{frame}
 
-Viele Sonderzeichen haben in \LaTeX\ eine spezielle Bedeutung und drfen nicht einfach so verwendet werden, sondern werden durch spezielle Befehle erzeugt. Das ist ganz hnlich wie HTML. Zum Beispiel ist \& ein Trennzeichen in Tabellen, \$ signalisiert den Beginn und das Ende von mathematischem Text, \% macht eine Zeile zu einem Kommentar, der von \LaTeX\ natrlich ignoriert wird, \{ und \} sind fr die Parametebergabe bei Befehlen reserviert, \_ und \^{} haben ihre Bedeutung bei dem Setzen von mathematischen Formeln und \# ist erforderlich bei selbst definierten Befehlen.
+\begin{lstlisting}
+	-->void Shoppingcart::updatePrice()
+	    \end{lstlisting}
+\end{frame}
+	 wird der Preis aller Artikel im Shoppingcart aktualisiert. 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->while(ui->listWidget->item(loop) != NULL){
+       tempItem = ui->listWidget->item(loop);
+       price = price + (tempItem->data(5).toDouble() * tempItem->data(6).toInt());
+       loop++;
+    }
+    \end{lstlisting}
+\end{frame}
+	Falls der angemeldete Account nicht genügend Guthaben zur Verfügung steht wird der Preis rot markiert und es kann auch nicht eingekauft werden.
+	Guthaben wird über die Datenbank ermittelt und in der Settings-Tabelle der Datenbank steht die Information um wie viel man sein Konto überziehen darf.
+	Dies geschieht über die Funktion
+	 \begin{frame}
+
+\begin{lstlisting}
+	-->bool Shoppingcart::hasEnoughCredit(QString userId,double price)
+		\end{lstlisting}
+\end{frame}
+	Über die Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->void Shoppingcart::addItem(QListWidgetItem *item)
+		\end{lstlisting}
+\end{frame}
+	 wird ein Item in das Shoppingcart hinzugefügt.Außerdem wird Anzahl an ausgewählten Artikel auch in den Liste verringern.
+	Dadurch synchonisieren sich die Listen, wodurch nicht mehr Artikel existieren als es eigentlich gibt.
+	Die Funktion
+	\begin{frame}
+
+\begin{lstlisting}
+	-->void Shoppingcart::on\_pushButton\_buy\_clicked()(Eingabe)<--
+	\end{lstlisting}
+\end{frame}
+	    wickelt die kaufabwicklung ab. Diese öffnet die Datenbank. ändert den Credit des Benutzers
+	    
+	\begin{frame}
+
+\begin{lstlisting}
+	--> Database.updateCredits(userId,QString::number(credits.toDouble()-price));
+	\end{lstlisting}
+\end{frame}
+	Außerdem reduziert es die Artikelmenge in der Datenbank um die Anzahl, wie viele gekauft wurden und trägt die Käufe in den ConsumIndex-Tabelle, als auch in die Sell-History ein.
+	\begin{frame}
+
+\begin{lstlisting}
+	-->Database.updateAmount(tempItem->data(4).toString(),QString::number(Database.getString(0).toInt() - tempItem->data(6).toInt()));
+	   Database.addSell(userId,tempItem->data(4).toString(),tempItem->data(6).toString(),tempItem->data(5).toString());
+       Database.updateConsumeIndex(userId,tempItem->data(4).toString(),tempItem->data(6).toString());
+       \end{lstlisting}
+\end{frame}
+\par	   
+\paragraph{scanwidget.cpp :} $\;$ \\
+	Das Klasse wird erzeugt sobald ein Artikel eingescannt wurde, währrend man in Zustand 2 sich befindet.
+	Bei dieser MainWindowPointer Funktion wird noch zusätzlich der eingescannte Artikel, bereits als QListWidgetItem, mit übergeben, als auch das Shoppingcart.
+	Der Eingescannte Artikel erscheit auf der linken Seite in einem QListWidget, wähhrend auf der rechten Seite das Shoppingcart angezeigt wird.
+	Durch die Funktionen -->void ScanWidget::on\_pushButton\_plus\_clicked() und -->void ScanWidget::on\_pushButton\_minus\_clicked() wird die Anzahl des Artikel erhöht bzz verringert.
+	Durch die Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+-->void ScanWidget::updateAmountEveryItem()
+\end{lstlisting}
+\end{frame}
+wird die Farbe des Artikels geändert wie bereits zuvor in den Liste erwähnt.
+	Durch die Funktion 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->void ScanWidget::on\_pushButton\_add\_clicked()
+	\end{lstlisting}
+\end{frame}
+	  wir der eingescannte Artikel in das Shoppigcart hinzugefügt.
+	\begin{frame}
+
+\begin{lstlisting}
+	-->ui->listWidget->item(0)->setText(ui->listWidget->item(0)->text().insert(0,x0 + QString::number(count) +  ));	
+	\end{lstlisting}
+\end{frame}
+\par		
+\paragraph{sqlzugriff.cpp :} $\;$ \\
+	Diese Klasse ist verantwortlich für die Datenbankzugriffe.
+	Ein Zugriff funktioniert wie folgt:
+	Man erzeugt zuerst eine Schlange vom Typ QSqlQuery . In diese werden später die gefunden Elemente aus der Datenbank gespeichert. Nun kann man mit der Funktion .exec auf bestimmte Teile der Datenbank zugreifen.
+	\begin{frame}
+
+\begin{lstlisting}
+-->QSqlQuery query;
+	-->query.exec(`SELECT Value from Settings WHERE Setting\_ID = `3');
+	\end{lstlisting}
+\end{frame}
+	An der Stelle wo im Beispiel Settings steht, kommt der Name der Tabelle geschrieben, in welcher man suchen möchte.
+	An der Stelle wo im Beispiel Value steht, kommt der Spaltenname geschrieben, welchen man suchen möchte.
+	An der Stelle wo im Beispiel Setting\_ID = `3' steht, steht eine Bedingung die die gesuchten Werte erfüllebn muss. Dieser Befehl muss nicht geschrieben wenn keine Bedingung vorhanden ist.
+	
+	\begin{frame}
+
+\begin{lstlisting}
+	-->picPath = query.value(0);
+	\end{lstlisting}
+\end{frame}
+	Mit diesem Befehl, speichert man ein Element, welches in der Datenbank gefunden wurde. Falls es mehrer Werte geben sollte, benutzt man die Funktion -->query.next()
+	Falls es ein nächstes Element existiert, wird das erste Elemnt der Schlange entfernt, wodurch das Element als nächstes ausgewertet werden kann. Falls kein Elemt mehr vorhanden ist, gibt die Funktion FALSE zurück.
+\par	
+	Außerdem kann die Klasse auch in Datenbank schreiben. Einamla kann eine neue Splate erzeugt werden durch
+	
+	\begin{frame}
+
+\begin{lstlisting}
+	-->query.exec(INSERT INTO Consum\_Index (User\_ID, Grocery\_ID, Count) VALUES(+userId+,+Grocery\_Id+,+count+));
+	Zuerst wird die Tabelle mit den Spalten, die gef\''ullt werden sollen genannt Consum\_Index (User\_ID, Grocery\_ID, Count) und dann werden die einzuf\''ugenden Werte genannt (+userId+,+Grocery\_Id+,+count+).
+	\end{lstlisting}
+\end{frame}
+\par	
+	Um nun in einer Klasse auf die Datenbank zugreifen zu können, muss zuerst ein Objekt vom Typ QSqlDatabase erzeugt werden. Dann muss dem Objekt gesagt werden, das es mit einer SQL Datenbank arbeiten soll,
+	auch die Stelle, an der man die Datenbank findet.
+	\begin{frame}
+
+\begin{lstlisting}
+	-->Data = QSqlDatabase::addDatabase(QSQLITE);
+	-->Data.setDatabaseName(C:/SQLite/database.sqlite);
+	\end{lstlisting}
+\end{frame}
+\par	
+	Letztendlich muus die Datenbank geöffnet werden durch
+	\begin{frame}
+
+\begin{lstlisting}
+	-->Data.open();
+		\end{lstlisting}
+\end{frame}
+	Ab nun kann man ein Objekt erzeugen von sqlzugriff und mit deren Funktionen auf die Datenbank zugreifen.
+	Am Ende muss die Datenbank noch geschlossen werden durch
+		\begin{frame}
+
+\begin{lstlisting}
+	-->Data.close();
+	\end{lstlisting}
+\end{frame}
+\par	
+\paragraph{settingswidget.cpp :} $\;$ \\
+	In diesem Screen können die WLAN Einstellungen des Rapsberry Pi verändert werden. Der Admin kann dort die WLAN SSID und das Passwort über die extra dazu implementierte Tastatur GUI angeben/ändern.
+	Klickt er dann auf `accept' wird ein dirty Bit gesetzt, wodurch beim Verlassen des Widgets der WLAN Treiber neu gestartet wird. 
+	\begin{frame}
+
+\begin{lstlisting}
+	-->process.start(`sudo service networking restart');
+	\end{lstlisting}
+\end{frame}
+\par	
+\paragraph{afterbuyscreen.cpp :} $\;$ \\
+	Diese Klasse wird Aufgerufen, sobald der Warenkorb gekauft wurde. Sie enthält jediglich die Eigenschaft, mehrere Sekunden ein Screen zu zeigen auf dem der Benutzer erkennen kann, das der Kauf durchgeführt wurde.
+	Danach wird diese wieder gelöscht und man gelangt in den Login-Screen.
+
+\paragraph{showipscreen.cpp :} $\;$ \\
+		Diese Klasse wird nur beim Start des Programmes erzeugt. Sie dient dazu die IP-Adresse anzuzeigen.
 
 
 %------------------------------------------------------------------------------------------------
@@ -1202,7 +1569,8 @@ Tina       &   11      &  151    &  43     \\
 \caption{Dasselbe nochmal als Gleitobjekt. \label{bild}}
 \end{center}
 \end{figure}
-
+\newpage
+\newpage
 \begin{center}
 \bibliographystyle{alphadin}
 \bibliography{literature}
