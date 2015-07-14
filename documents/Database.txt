@@ -10,7 +10,7 @@ Groceries :
 	Typ und Typ_Group speichern die selbe Eingenschaft, und zwar ob es sich bei dem Artikel umd Sweets oder Coffe handelt. Dies wird bei Typ als Integer gespeichert, währrend Typ_Group es mit einem String speichert.
 	
 Consum_Index :
-	In dieser Tabelle werden Einkaufe bezüglich der Account gespeichert, für mögliche personalisierten Statistiken.
+	In dieser Tabelle werden Einkaufe bezüglich der Accounts gespeichert, für mögliche personalisierten Statistiken.
 
 Favorites :
 	In dieser Tablle werden die Favoriten der einzelnen Accounts gespeichert.
@@ -21,7 +21,7 @@ Price_History :
 	In dieser Tabelle werden Preisänderungen bei Artikel gespeichert um daraus möglicherweise Statistiken anzeigen zu lassen.
 	
 Sell_History : 
-	In dieser Tabelle werden alle Einkäufe gespeichert, um die Verkaufszahlen der Artikel einsehen zu können.
+	In dieser Tabelle werden alle Einkäufe gespeichert, um die Verkaufszahlen der Artikel einsehen zu können, um daraus evtl Statistiken zu erstellen.
 	
 Sessions :
 	
