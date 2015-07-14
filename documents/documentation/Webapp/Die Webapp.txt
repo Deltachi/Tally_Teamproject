@@ -141,9 +141,264 @@ Die index.html wird somit zur Build Datei der App die die Komponenten der Webapp
 \end{lstlisting}
 \end{frame}
 
-Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
+Innerhalb von app.js wird die App wie folgt gebaut:
 
+\begin{frame}
+\begin{lstlisting}
+	
+	var app = angular.module('app',[
+		'ui.router',
+		'ui.bootstrap',
+		'app.directives.myNavbar',
+		'app.directives.myFooter',
+		'app.directives.login',
+		'app.directives.menuModal',
+
+		'app.controllers.userCtrl',
+		'app.controllers.menuCtrl',
+		'app.controllers.loginCtrl',
+		'app.controllers.loginModalCtrl',
+		'app.controllers.updatedCtrl',
+		'app.controllers.logoutCtrl',
+		'app.controllers.lbCtrl',
+
+		'app.services.myService',
+		'app.services.userDataService',
+		'app.services.menuService',
+		'app.services.loginService',
+		'app.services.loginModalService'
+
+		]);
+\end{lstlisting}
+\end{frame}
+
+Dabei stellt alles, das sich in dem Array befindet, eine Dependency dar, die vor der Ausführung der App geladen werden muss.
+
+Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
+Wenn der User im Begriff ist einen Bereich zu betreten der eine Authentifikation benötigt wird überprüft ob Userdaten vorhanden sind mit denen sich der Client identifizieren kann. Falls nicht aka der Client nicht angemeldet ist wird kein Aufruf zum Backend gestartet, sondern der Client zum Home-Bildschirm weitergeleitet mit der Bitte, sich anzumelden.
+Hier der Code für das Routing:
+
+\begin{frame}
+\begin{lstlisting}
+	//UI-ROUTER
+	app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $stateProvider) {
+		$urlRouterProvider.otherwise('/');
+		$stateProvider
+			.state('/', {
+				url: '/',
+				templateUrl: 'ng-templates/home.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('home', {
+				url: '/home',
+				templateUrl: 'ng-templates/home.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('menu', {
+				url: '/menu',
+				templateUrl: 'ng-templates/menu.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('app' ,{
+				abstract: true,
+				data: {
+					requireLogin: true //this property will apply to all children of 'app'
+				}
+			})
+			.state('notifications', {
+				url: '/notifications',
+				templateUrl: 'ng-templates/notifications.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('leaderboard', {
+				url: '/leaderboard',
+				templateUrl: 'ng-templates/leaderboard.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('settings', {
+				url: '/settings',
+				templateUrl: 'ng-templates/settings.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('favorites', {
+				url: '/favorites',
+				templateUrl: 'ng-templates/favorites.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('logout', {
+				url: '/logout',
+				templateUrl: 'ng-templates/logout.html',
+				controller: 'logoutCtrl',
+				data: {
+					requireLogin: true 
+				}
+			})
+	}]);
+\end{lstlisting}
+\end{frame}
+
+URLs werden nicht als tatsächliche URL behandelt sondern in einen State verwandelt. Wenn der User also zur URL '/home' weitergeleitet wird, ändert sich der State zu 'home' und es werden die benötigten Templates und Controller geladen.
+
+Ein Template mit Controller sieht in Angular wie folgt aus:
+
+HTML:
+\begin{frame}
+\begin{lstlisting}
+	<div ng-controller="mainController as myController">
+		<h1>{{myController.template}}</h1>
+	</div>
+\end{lstlisting}
+\end{frame}
+
+Angular.js
+\begin{frame}
+\begin{lstlisting}
+	app.controller('mainController', function(){
+		this.template = "Hier steht der Templatetext!"
+	})
+\end{lstlisting}
+\end{frame}
+
+Die Ausgabe sieht dann so ähnlich aus:
+\begin{frame}
+\begin{lstlisting}
+	Hier steht der Templatetext!
+\end{lstlisting}
+\end{frame}
+
+Im Controller kann man nun Funktionen und Zuweisungen schreiben mit denen man im HTML Code arbeiten kann. Zudem kann man im Funktionskopf Dependencies bestimmen, wie z.B. andere Services oder den $scope um das 'this' weglassen zu können.
+
+Das Backend wird mit PHP realisiert. Dabei stehen mehrere PHP Scripts mit eingeschränkten Funktionsumfang zur Verfügung um entweder aus der SQlite Database zu lesen, oder Zeilen zu updaten/einfügen/löschen. Wie so ein Datenbank-Zugriff in einem PHP Script aussieht wird im folgenden Codeausschnitt dargestellt:
+
+\begin{frame}
+\begin{lstlisting}
+	<?php
+		try {
+		    // Use database file "database.sqlite" 
+		    $db = new PDO('sqlite:../../sqlite/database.sqlite');
+		    
+		    // Throw exceptions on error
+		    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		    $name = $_POST["request"];	//must be Username
+
+		    //Vorzeitiges erstellen der Query um injection-attacks zu vermeiden
+		    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
+
+			$results = $db->query($query);
+
+			$rows = $results->fetchAll(PDO::FETCH_ASSOC);
+			$data = array();
+
+			foreach ($rows as $rowKey => $row) {
+				$data[] = $row;
+				break;	//Break after 1 result. Should do that automatically, since Username is UNIQUE
+			}
+			echo json_encode($data);	//Convert the data to a JSON String since we use JSON as Object format
+		    $db = NULL;		// Close database
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>	
+\end{lstlisting}
+\end{frame}
+
+Diese Methode des seperierten Statement-Erstellen und folgenden Ausfüren bietet relativ guten Schutz vor Injektions-Angriffen, bei denen man die Variablen der Abfrage ändert und somit den Query zwecksentfremdet und an Daten kommt, die man schützen wollte.
+Nun wird ein Service geschrieben, der dem Backend die Request-Daten schickt, die Antwort abfängt und diese in ein Object erstellt.
+Das wird mit Angular-Services realisiert, die im Folgenden beschrieben werden:
+\begin{frame}
+\begin{lstlisting}
+	angular.module('app.services.userDataService', []) 
+	
+
+		.factory("userDataService", function($http){
+			
+			//Dummy Daten, falls es zu einem Fehler kommt um undefinierte Zustände zu vermeiden
+			var userData =  {
+				"firstname": "Unknown",
+				"lastname": "Intruder",
+				"username": "(no name)",
+				"password": "0000",
+				"mail": "nomail@me.com",
+				"leaderboard": true,
+				"balance": -6.66,
+				"messages": [
+					{"Sender":"System","Type":"alert-danger","Title":"Hey, intruder","Message":"I'm watching you."},
+				],
+				"history": [
+					{"history_id":"0", "title": "No recent purchases", "price":"","date": ""},
+					
+				],
+				"favorites": [
+					{"favorite_id":"0", "title": "Kaffee L", "price":"1.50"},
+					{"favorite_id":"1", "title": "Cappuchino", "price":"1.20"},
+					{"favorite_id":"2", "title": "Snickers", "price":"0.50"},
+					{"favorite_id":"3", "title": "Kaffee M", "price":"1"},
+					{"favorite_id":"4", "title": "Macchiato", "price":"1.50"}
+				]
+			};
+
+			//Funktionen zum getten und setten dieser Userdaten
+			function getUserData() {
+				return userData;
+			}
+			function setUserData(newData) {
+				userData = newData;
+			}
+			return {
+				getUserData: getUserData,
+				setUserData: setUserData,
+			
+				//Diese Funktion wird aufgerufen um Daten vom Backend anzufordern
+			  	getUserDataSync: function(postData){
+
+				  			//Hier wird der Ajax Befehl vorbereitet
+				  	return	$.ajax({
+								type: "POST",
+								async: false,
+								url: "/apis/users/getUserData.php",
+								data: postData, 
+								success: function(response){
+					  				console.log("Successful service request: getUserDataSync");
+									return response.data;	//Daten werden zum ausführenden Controller zurückgegeben
+								},
+								error: function(jqXHR, status, errors){
+									console.log("Error service request");
+									console.log(status);
+								}
+							});
+				},
+					
+			}
+		});
+\end{lstlisting}
+\end{frame}
+
+Mit diesen Techniken kann man den vollen Umfang der Website gewährleisten.
 
 4.3.4 Probleme / Schwierigkeiten
 
+Ein Problem ist, dass man alle Daten aktuell halten muss, die sich bei jeder Benutzereingabe ändern können.
+Um dies zu gewährleisten, müssen Variablen unter $watch gestellt werden oder im $rootScope abgespeichert werden, was Ressourcen kostet, die im kleinen Umfang jedoch umbeträchtlich sind.
+Zudem muss man seht genau auf Timing achten, da es keine Refreshes oder sonstige Events gibt, die Änderungen von Daten Triggern. Ajax bedeutet auch, dass Daten evtl. erst dann fertig geladen werden wenn das Template schon eingesetzt wurde. Das kann aber mit angulars eigenen Tags und Attributen umgangen werden, indem man z.B. anstatt 'src=' die Angular-Variante 'ng-src=' benutzt, welche darauf ausgelegt ist, die Daten später zu erhalten.
+ 
 4.3.5 Verbesserungen / Änderungen für die Zukunft
+
+In Zukunft muss der Code deutlich sauberer gemacht werden und auskommentierter Code, der für Testzwecke drin geblieben ist, muss entfernt werden. Außerdem können Verbesserung zum Thema Sicherheit gemacht werden. Dazu gibt es noch etliche Angular-Funktionen und Angular-PlugIns. Letztendlich kann mit dem BootstrapUI-Plugin Bootstrap besser mit Angular verbunden werden, jedoch fehlte die Zeit um den Code zum wiederholten mal umzustrukturieren.
