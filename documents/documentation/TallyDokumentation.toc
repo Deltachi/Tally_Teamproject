@@ -50,9 +50,4 @@
 \contentsline {paragraph}{settingswidget.cpp :}{39}{section*.12}
 \contentsline {paragraph}{afterbuyscreen.cpp :}{39}{section*.13}
 \contentsline {paragraph}{showipscreen.cpp :}{39}{section*.14}
-\contentsline {subsection}{\numberline {4.3}Fazit des Tally Projekts}{40}{subsection.4.3}
-\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{40}{section.5}
-\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{41}{section.6}
-\contentsline {subsection}{\numberline {6.1}Grafiken}{41}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Tabellen}{42}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{42}{subsection.6.3}
+\contentsline {section}{\numberline {5}Fazit des Tally Projekts}{40}{section.5}

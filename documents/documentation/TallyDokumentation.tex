@@ -1143,7 +1143,7 @@ main.cpp :
 	
 	\begin{figure}[h]
 	\makebox[\textwidth]{
-	\includegraphics[width=9cm]{bootscreen.png}}
+	\includegraphics[width=9cm]{automat.png}}
 	\caption{MEALEY}
 	\end{figure}
 	
@@ -1608,7 +1608,7 @@ QSqlQuery query;
 		Diese Klasse wird nur beim Start des Programmes erzeugt. Sie dient dazu die IP-Adresse anzuzeigen.
 		
 		
-\subsection{Fazit des Tally Projekts}
+\section{Fazit des Tally Projekts}
 Die vorgegebenen Ziele konnten alle erfüllt werden. Der Raspberry besitzt alle erforderliche Hardware und Software um einen Webserver darauf laufen lassen zu können und um das Programm darauf ausführen zu können. Der Touchscreen und der Barcodescanner arbeiten auch ohne Störungen.
 \par 
 Auch die selbstgeschriebene Software Tally arbeitet einwandfrei und der Einkauf von Produkten funktioniert. Der Zuigriff auf die Datenbank erfolgt ebenfalls, sodass die dort gespeicherten Informationen über die Website eingesehen und geändert werden können.
@@ -1624,118 +1624,7 @@ Bei Tally könnte man die GUI überarbeiten. Außerdem wären weitere Einstellun
 Auf der Website könnten noch die gewünschten Statistiken einsehbar gemacht werden.	
 
 
-%------------------------------------------------------------------------------------------------
 
-\section{Auflistungen und Aufzhlungen}
-\label{Listen}
-
-%------------------------------------------------------------------------------------------------
-Wir fassen zusammen, was wir bisher knnen:
-
-\begin{itemize}
- \item Die Schrift anpassen
- \item Den Text ausrichten. Da gab es folgende Mglichkeiten:
-    \begin{itemize}
-        \item Blocksatz
-        \item linksndig
-        \item rechtsbndig
-        \item zentriert. Zentrierte Text ist vor allem gut um
-            \begin{itemize}
-                \item Text hervorzuheben
-                \item Objekte, wie Tabellen und Grafiken zu zentrieren
-            \end{itemize}
-    \end{itemize}
- \item Umbrche erzwingen
- \item Sonderzeichen setzen
-\end{itemize}
-
-Bisher knnen wir noch nicht:
-
-\begin{enumerate}
- \item Tabellen erzeugen
- \item Grafiken einbinden
- \item mathematischen Text setzen. Dazu gehrt
-    \begin{enumerate}
-       \item weitere mathematische Sonderzeichen, wie z.B.
-           \begin{enumerate}
-               \item griechische Buchstaben, etwa $\alpha$, $\zeta$, usw.
-               \item spezielle Akzente, wie $\vec{a}$ oder $\ddot{x}$
-               \item echte Sonderzeichen, wie $\oplus$ oder $\perp$
-               \item alle Mglichen Klammern, wie $\lfloor x \rfloor$
-               \item und noch vieles mehr\ldots
-           \end{enumerate}
-       \item spezielle mathematische Objekte, wie Matrizen
-       \item automatische Nummerierung von Formeln
-    \end{enumerate}
- \item Referenzen und Bibliographie erzeugen
- \item Prentationsfolien erstellen
-\end{enumerate}
-
-Offensichtlich kann man hier ziemlich tief schachteln. Ob das allerdings immer sinnvoll ist?
-
-
-%------------------------------------------------------------------------------------------------
-
-\section{Tabellen, Grafiken und Gleitobjekte}
-\label{TabellenGrafikenFloats}
-
-%------------------------------------------------------------------------------------------------
-
-\subsection{Grafiken}
-\label{Grafiken}
-
-
-\begin{center}
-\includegraphics[width=12cm]{TallyLogo.png}
-\end{center}
-
-Hier hatten wir Gtig kommt?
-
-\subsection{Tabellen}
-\label{Tabellen}
-
-
-
-\begin{center}
-\begin{tabular}{|l||c|c|c|}
-\hline
-           & \multicolumn{3}{|c|}{gemessen von Dr. Tex} \\
-\cline{2-4}
-Name       &  Alter    & Gre   & Gewicht \\
-           &  (Jahre)  & (in cm) & (in kg) \\
-\hline
-\hline
-           &   7       &  120    &  25     \\
-\cline{2-4}
-Andreas    &   10      &  141    &  34     \\
-\cline{2-4}
-           &   14      &  163    &  50     \\
-\hline
-           &   6       &  110    &  22     \\
-\cline{2-4}
-Beate      &   9       &  138    &  32     \\
-\cline{2-4}
-           &   13      &  156    &  46     \\
-\hline
-           &   8       &  132    &  30     \\
-\cline{2-4}
-Tina       &   11      &  151    &  43     \\
-\cline{2-4}
-           &   15      &  174    &  51     \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Bewegliche Objekte}
-\label{Floats}
-
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[angle=-90,width=6cm]{bild.pdf}
-\caption{Dasselbe nochmal als Gleitobjekt. \label{bild}}
-\end{center}
-\end{figure}
 \newpage
 \newpage
 \begin{center}
