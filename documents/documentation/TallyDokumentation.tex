@@ -100,9 +100,9 @@
 
 \subsection{Kaffeestrichliste bisher}
 
-In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee/ Getränke -automaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getränke und Snacks kaufen zu können wird meistens eine Strichliste auf Papier, meist in der Nähe des Automaten oder der Snacks, angebracht damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch häaufig das die Strichliste sehr unleserlich wird und es bei der Übertragung in die Datenbank auf den PC zu Fehlern kommt. Außerdem ist diese Methode für den Verantwortlichen sehr zeitaufwendig da alles per Hand übertragen werden muss.
+In kleineren Unternehmen und Arbeitsgruppen gibt es oft einen zentralen Kaffee-/ Getränkeautomaten und Snacks, an denen sich jeder Mitarbeiter bedienen kann. Um die Getränke und Snacks kaufen zu können wird meistens eine Strichliste auf Papier, in der Nähe des Automaten oder der Snacks angebracht, damit sich jeder Mitarbeiter eintragen kann, was er gekauft hat. Diese Liste wird oft zur besseren Verwaltung in eine Datenbank oder Tabelle eingepflegt, damit der Administrator einsehen kann wer wie viel gekauft hat. Hier passiert es jedoch häufig, dass die Strichliste sehr unleserlich wird und es bei der Übertragung in die Datenbank auf den PC zu Fehlern kommt. Außerdem ist diese Methode für den Verantwortlichen sehr zeitaufwendig, da alles per Hand übertragen werden muss.
 \par
-Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese Daten 'digital' und einfacher speichern zu können.
+Um diesem Problem entgegen zu wirken, erarbeiten wir eine neue Methode, um diese Daten 'digital' und somit einfacher speichern zu können.
 
 
 \section{Rahmenbedingungen}
@@ -111,7 +111,7 @@ Um diesem Problem entgegen zu wirken erarbeiten wir eine neue Methode um diese D
 \subsection{Aufgabe - die neue Kaffeestrichliste}
 \label{SchriftAnpassen}
 
-Um eine möglichst energiesparende und handliche Lösung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zunächst soll eine passende Benutzeroberfläche für den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Einkäufe verbuchen kann. Dies soll mithilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von plattformunabhängigen C++ Programmen gedacht ist, entwickelt werden.
+Um eine möglichst energiesparende und handliche Lösung zu finden, sollte die neue Strichliste auf einem Raspberry Pi 2 realisiert werden. Zunächst soll eine passende Benutzeroberfläche für den Raspberry entwickelt werden, damit der Benutzer am Raspberry selber seine Einkäufe verbuchen kann. Dies soll mit Hilfe der integrierten Entwicklungsumgebung 'Qt Creator', die besonders zur Entwicklung von plattformunabhängigen C++ Programmen gedacht ist, entwickelt werden.
 \par
 Mithilfe eines Webservers, der ebenfalls auf dem Raspberry läuft, soll die Administration von jedem Computer im selben Netzwerk über eine Weboberfläche möglich sein. Hier sollen auch die Benutzer ihre Daten einsehen und ändern können. Dazu wird eine MySQL/ SQLite Datenbank, sowie PHP Unterstützung benötigt. Mittels eines Barcodescanners soll es möglich sein am Raspberry Produkte ein zu scannen.
 
@@ -141,7 +141,7 @@ Personengruppen und Unternehmen bei denen Getränke und Snacks privat für alle 
 Die Strichliste soll möglichst Wartungsarm und einen niedrigen Stromverbrauch haben. Desweiteren soll sie täglich vierundzwanzig Stunden laufen.
 
 \subsection{Produktumgebung}
-Das Produkt kann unabhängig an jedem Ort betrieben werden, solange eine Stromquelle in der nähe ist.
+Das Produkt kann unabhängig an jedem Ort betrieben werden, solang eine Stromquelle in der Nähe ist.
 
 \subsubsection{Software}
 Die einzige Software die vom Benutzer benötigt wird ist ein aktueller Webbrowser.
@@ -155,11 +155,11 @@ Der Administrator kann die Betriebsparameter konfigurieren.
 \subsection{Produktfunktion}
 \subsubsection{Benutzerfunktion}
 Ein im System registrierter Benutzer kann das System erst nutzen, wenn er angemeldet ist.
-Nur ein Administrator kann einen Benutzer anlegen und ihm einen Benutzernamen sowie Passwort zuwesien. Sobald ein Benutzer registriert ist kann er sich sowohl am Raspberry als auch an der Weboberfläche anmelden. Dafür benötigt er seinen Benutzernamen und sein Passwort. Abmelden ist bei beiden Oberflächen jederzeit möglich.
+Nur ein Administrator kann einen Benutzer anlegen und ihm einen Benutzernamen sowie Passwort zuwesien. Sobald ein Benutzer registriert ist, kann er sich sowohl am Raspberry, als auch an der Weboberfläche anmelden. Dafür benötigt er seinen Benutzernamen und sein Passwort. Abmelden ist bei beiden Oberflächen jederzeit möglich.
 \par
 Der Administrator kann über die Weboberfläche Produkte hinzufügen,entfernen und deren Details ändern. Benutzer können über Weboberfläche Favoriten einrichten und Statistiken einsehen.
 \par
-Am Raspberry kann der registrierte und angemeldete Benutzer ein Produkt aus einer Liste wählen oder mithilfe eines Barcodescanners ein Prdoukt einscannen, welches im Warenkorb erscheint. Desweiteren kann er die Anzahl der Produkte erhöhen und seinen gesamten Warenkorb einsehen. Wenn er alle Waren im Warenkorb hat, kann er zur Kasse und die Waren durch einen Klick bezahlen, wodurch sein Konto belastet wird. Ein Abbruch oder das erreichen des Hauptmenüs ist jederzeit möglich.
+Am Raspberry kann der registrierte und angemeldete Benutzer ein Produkt aus einer Liste wählen oder mithilfe eines Barcodescanners ein Prdoukt einscannen, welches in den Warenkorb gelegt wird. Desweiteren kann er die Anzahl der Produkte erhöhen und seinen gesamten Warenkorb einsehen. Wenn er alle Waren im Warenkorb hat, kann er zur Kasse und die Waren durch einen Klick bezahlen, wodurch sein Konto belastet wird. Ein Abbruch oder das erreichen des Hauptmenüs ist jederzeit möglich.
 
 \subsection{Programmfunktion}
 Beim Kauf eines Produktes aktualisiert das Programm automatisch den Warenbestand. Bei geringem Warenbestand wird eine Warnmeldung ausgegeben und bei fehlen des Artikels wird dieser entfernt.
@@ -179,7 +179,7 @@ Die Bedienung des Raspberry erfolgt über einen eingebauten Touchscreen am Raspb
 \label{Meilensteine}
 
 \subsection{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}
-Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis für das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einem Gigabyte ARbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
+Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis für das Projekt gegeben. Der Raspberry Pi 2 besitzt einen Vierkern ARM Cortex-A7 Prozessor mit jeweils 900MHz und einem Gigabyte Arbeitsspeicher. Desweiteren befinden sich vier USB 2.0 Ports, eine 40 GPIO pin Steckerleiste, ein HDMI Anschluss, ein Ethernet Port und ein Micro SD Kartenslot am Raspberry.
 	\begin{figure}[h]
 	\makebox[\textwidth]{
 	\includegraphics[width=9cm]{RaspberryPi.png}}
@@ -189,11 +189,11 @@ Mit dem Raspberry Pi 2 war schon im Projektvorfeld eine passende Basis für das 
 Ausser dem Raspberry Pi 2 war zunächst ein 3,5 Zoll Touchscreen der Firma admatec \cite{1} mit dem Namen C-Berry Touch vorhanden, das mittels eines Adapterboards an der GPIO Stiftleiste des Raspberry angesteckt wird. Das Display besitzt eine Auflösung von 320x240 Pixeln, eine LED- Hintergrundbeleuchtung und wird komplett vom Raspberry mit Strom versorgt.
 \par
 \subsubsection{Betriebssystem und Verbindung zu anderen Rechnern}
-Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest das ein Linuxderivat auf dem Raspberry laufen soll. Hier fiel die Wahl auf das speziell für den Raspberry entwickelte Raspbian.
+Als erster Schritt wurde nach einem passenden Betriebssystem gesucht. Von Anfang an stand fest, dass ein Linuxderivat auf dem Raspberry laufen soll. Hier fiel die Wahl auf das speziell für den Raspberry entwickelte Raspbian.
 \par
 'Raspbian' ist ein Debianderivat und wurde so optimiert, das es mit den geringen Hardwarespezifikationen zurecht kommt und den ARM-Prozessor des Raspberrys unterstützt. Als Alternative stand eine Ubuntu Version ,speziell für ARM-Prozessoren entwickelt, zu Verfügung, die jedoch noch nicht voll ausgereift ist und somit nicht einwandfrei und resourcenschonend auf dem Raspberry läuft.
 \par
- Um die weitere Einrichtung des Raspberrys zu vereinfachen wurde, neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung über ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols (Windows) für Linux Names 'xrdp' installiert. \cite{2}
+ Um die weitere Einrichtung des Raspberrys zu vereinfachen, wurde neben der vorkonfigurierten und installierten SSH Verbindung zur Verwaltung über ein Konsolenprogramm (Windows: Putty), eine freie Implementierung des Remote Desktop Protocols (Windows) für Linux Names 'xrdp' installiert. \cite{2}
 \begin{frame}
 
 \begin{lstlisting}
@@ -222,15 +222,15 @@ sudo apt-get install php5
 \end{frame}
  um eine volle Unterstützung für die kommende Website zu gewährleisten.
  \par
- PHP ist eine Open Source-Skriptsprache die speziell für die Webprogrammierung geeignet ist. Wenn eine Anfrage an die Website gestellt wird, wird der PHP-Code auf dem Server ausgeführt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
+ PHP ist eine Open Source-Skriptsprache, welche speziell für die Webprogrammierung geeignet ist. Bei einer Anfrage an die Website, wird der PHP-Code auf dem Server ausgeführt und erzeugt eine HTML-Ausgabe die dann letztendlich an den Client gesendet wird.
  \cite{3}
 \par
 \subsubsection{Qt Creator}
-Das Programm an sich, Tally, wird auf einem externen Rechner in Qt programmiert und auf richtigkeit überprüft, debuggt. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf den Raspberry geladen.
+Das Programm an sich, Tally, wird auf einem externen Rechner in Qt programmiert und auf Richtigkeit überprüft, debuggt. Erst dann wird die Version auf GitHub zur Verfügung gestellt und auf den Raspberry geladen.
 \par
 Damit das Programm auf dem Raspberry lauffähig gemacht werden kann, bzw kompiliert werden kann, muss der Qt Creator\cite{4} samt Qt4 Umgebung installiert werden. Dieser kann dann das gespeichert unkompilierte Programm öffnen und passend für den Raspberry kompilieren.
 \par
-Das Programm auf einem anderen Computer zu kompilieren fällt weg, da das Programm speziell für ARM-Prozessoren kompiliert werden muss. Es gibt zwar die Möglichkeit des Cross-Compilierens, wo man auf einem anderen System als dem gedachten das Programm schreibt aber so kompilieren kann das es auf dem Raspberry läuft. Diese weist aber noch einige Fehler beim kompilieren für den Raspberry auf, so dass ein fehlerfreies programmieren und kompilieren nicht möglich ist.
+Das Programm auf einem anderen Computer zu kompilieren entfällt, da das Programm speziell für ARM-Prozessoren kompiliert werden muss. Es gibt zwar die Möglichkeit des Cross-Compilierens, wo man auf einem anderen System als dem gedachten das Programm schreibt aber so kompilieren kann das es auf dem Raspberry läuft. Diese weist aber noch einige Fehler beim kompilieren für den Raspberry auf, so dass ein fehlerfreies programmieren und kompilieren nicht möglich ist.
 \par
 Für den Qt Creator mit den passenden development Tools führt man folgende Befehle aus
  \begin{frame}
@@ -245,7 +245,6 @@ sudo apt-get install subversion
 \end{lstlisting}
 
 \end{frame}
-\newpage
 Danach muss man nur noch die passende Toolchain, also den passenden Compiler für den Raspberry, auswählen. Dazu geht man im Qt Creator auf Optionen > build and run > tab tool chains > add und wählt GCC aus. Bei dem Compiler Pfad stellt man folgenden Pfad ein
 \begin{frame}
 
@@ -305,9 +304,9 @@ sudo ./tft_test
 
 \end{frame}
 
-Nach ersten Tests mit dem C-Berry Touchscreen fiel auf das es nicht als Primäres Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verzögerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist mehr daführ gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
+Nach ersten Tests mit dem C-Berry Touchscreen wurde bemerkt, dass es nicht als Primäres Display geeignet ist, da vom Desktop ein Screenshot erstellt wird und dieser auf dem Display ausgegeben wird. Starke Verzögerungen im Bildaufbau und eine schlechte Bedienung mithilfe des Touchscreens waren die Folge. Das Display ist dafür gedacht andere Inhalte als den Desktop wiederzugeben, die dann per Touchscreen bedient werden wie zum Beispiel einzelne Buttons.
 \par
-Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin \cite{6} zu verwenden das durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller der die Bedienung des Touchscreens besser ausführen soll.
+Damit war der Touchscreen ungeeignet für das Projekt und ein neuer Touchscreen mit besserer Anbindung an den Rapsberry und einer höheren Bildwiederholungsrate musste gesucht werden. Dabei kam die Idee auf, ein 7 Zoll resistives Touchscreen von Pollin \cite{6} zu verwenden, welches durch seine Grösse viel Platz für das Tally Programm bietet und eine sehr gute Touch Bedienung verspricht. Von Vorteil war auch die eigene externe Grafikeinheit die eine hohe Bildwiederholungsrateermöglicht  und ein externer USB- Touchcontroller, der die Bedienung des Touchscreens besser ausführen soll.
 \par
 Jedoch stellte die externe Stromversorgung ein Problem dar, da man jeweils ein Stromkabel für den Raspberry und eins für das Display benötigt, damit wäre eine Energiesparende Lösung ebenfalls nicht möglich.
 \par
@@ -335,11 +334,11 @@ sudo dpkg -i kernel4dpi_1.3-3_pi2.deb
 \subsubsection{Produkte scannen}
 Zur vereinfachten Eingabe von Produkten soll ausserdem ein Barcodescanner angebracht werden. Hier sollte entweder ein handelsüblicher Barcodescanner per USB an den Raspberry angeschlossen werden, der Barcode mittels USB Webcam und passender Software oder aber ein Barcodescannermodul an den GPIO's des Raspberry als Lösung dienen.
 \par
- Da jedoch das ein Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, fiel diese Möglichkeit weg. Deshalb war eine weitere Möglichkeit eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen, wobei es allerdings Probleme mit dem Autofokus der Webcams gab. Damit ein Barcode gelesen werden kann muss ein Autofokus vorhanden sein, der sich auch passend scharf stellt. Diese Webcams sind allerdings relativ teuer. Die Wahl fiel deshalb auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
+ Da jedoch das Barcodescannermodul nur mit ca. drei Volt betrieben werden kann, der Raspberry aber ca. fünf Volt an den GPIO's zur Verfügung stellt, fiel diese Möglichkeit weg. Deshalb war eine weitere Möglichkeit, eine Webcam an den Raspberry anzuschliessen und mittels einer Software das Bild auf Barcodes zu untersuchen, wobei es allerdings Probleme mit dem Autofokus der Webcams gab. Damit ein Barcode gelesen werden kann, muss ein Autofokus vorhanden sein, der sich auch passend scharf stellt. Diese Webcams sind allerdings relativ teuer. Die Wahl fiel deshalb auf das Scannen mittels USB Barcodescanner, da dies eine einfacherere Handhabung verspricht und der Barcodescanner direkt als USB Tastatur erkannt wird.
 \par
 \subsubsection{Wlan für den Raspberry}
-Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss und der Raspberry nur einen Stromanschluss benötigt, wurde der Edimax WLAN USB Stick\cite{8} am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind, weshalb dieser WLAN Stick empfohlen wird falls man WLAN am Raspberry benutzen möchte. Zunächst wurde der automatische 'Power Saving' Modus abgeschaltet, da der Wlan Stick sonst immer automatisch in den Ruhemodus geht und der Raspberry somit nicht mehr von aussen erreichbar wäre.
-\newpage
+Damit am Raspberry nicht immer ein Patchkabel angeschlossen werden muss und nur einen Stromanschluss benötigt wird, wurde der Edimax WLAN USB Stick\cite{8} am Raspberry angeschlossen. Der Edimax WLAN Stick wird automatisch von Raspbian erkannt da schon alle erforderlichen Pakete und Treiber installiert sind. Daher wird der WLAN Stick empfohlen falls man WLAN am Raspberry nutzen möchte. Zunächst wurde der automatische 'Power Saving' Modus abgeschaltet, da der Wlan Stick sonst immer automatisch in den Ruhemodus geht und der Raspberry somit nicht mehr von aussen erreichbar wäre.
+
 Hierzu wurde eine Konfigurationsdatei für den Treiber des WLAN Sticks erstellt.
 \begin{frame}
 
@@ -403,7 +402,7 @@ der Netzwerkdienst neu gestartet werden und eine Verbindung mit dem angegebenen 
 Da diese Möglichkeit jedoch relativ umständlich ist und Linux Kenntnisse erfordert, wird in das Tally Programm eine einfache WLAN Konfiguration eingebaut, in der man den WLAN-Namen und das WLAN-Passwort eingeben kann um sich mit dem WLAN-Netz zu verbinden.
 
 \subsubsection{angepasster Bootscreen}
-Während eines Meetings kam die Idee auf den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt das während des hochfahrens angezeigt werden kann. \cite{9}
+Während eines Meetings kam die Idee auf, den Bootscreen zu verändern und ein eigenes Bild während des hochfahrens anzuzeigen. Dazu wird eine weitere Software benötigt, der 'Frame Buffer Imageviewer', der ein Bild in den Speicherbuffer lädt, welches während des Hochfahrens angezeigt werden kann. \cite{9}
 
 \begin{figure}[h]
 	\makebox[\textwidth]{
@@ -541,7 +540,7 @@ Zum automatischen versenden der Mails wird folgendes Skript erstellt, das vielfa
 sudo nano /usr/local/bin/mailnotify.sh
 \end{lstlisting}
 \end{frame}
-\newpage
+
 Das Skript sieht wie folgt aus
 \begin{frame}
 
@@ -1144,7 +1143,7 @@ main.cpp :
 	
 	\begin{figure}[h]
 	\makebox[\textwidth]{
-	\includegraphics[width=9cm]{bootscreen.png}}
+	\includegraphics[width=9cm]{automat.png}}
 	\caption{MEALEY}
 	\end{figure}
 	
@@ -1607,120 +1606,25 @@ QSqlQuery query;
 
 \paragraph{showipscreen.cpp :} $\;$ \\
 		Diese Klasse wird nur beim Start des Programmes erzeugt. Sie dient dazu die IP-Adresse anzuzeigen.
-
-
-%------------------------------------------------------------------------------------------------
-
-\section{Auflistungen und Aufzhlungen}
-\label{Listen}
-
-%------------------------------------------------------------------------------------------------
-Wir fassen zusammen, was wir bisher knnen:
-
-\begin{itemize}
- \item Die Schrift anpassen
- \item Den Text ausrichten. Da gab es folgende Mglichkeiten:
-    \begin{itemize}
-        \item Blocksatz
-        \item linksndig
-        \item rechtsbndig
-        \item zentriert. Zentrierte Text ist vor allem gut um
-            \begin{itemize}
-                \item Text hervorzuheben
-                \item Objekte, wie Tabellen und Grafiken zu zentrieren
-            \end{itemize}
-    \end{itemize}
- \item Umbrche erzwingen
- \item Sonderzeichen setzen
-\end{itemize}
-
-Bisher knnen wir noch nicht:
-
-\begin{enumerate}
- \item Tabellen erzeugen
- \item Grafiken einbinden
- \item mathematischen Text setzen. Dazu gehrt
-    \begin{enumerate}
-       \item weitere mathematische Sonderzeichen, wie z.B.
-           \begin{enumerate}
-               \item griechische Buchstaben, etwa $\alpha$, $\zeta$, usw.
-               \item spezielle Akzente, wie $\vec{a}$ oder $\ddot{x}$
-               \item echte Sonderzeichen, wie $\oplus$ oder $\perp$
-               \item alle Mglichen Klammern, wie $\lfloor x \rfloor$
-               \item und noch vieles mehr\ldots
-           \end{enumerate}
-       \item spezielle mathematische Objekte, wie Matrizen
-       \item automatische Nummerierung von Formeln
-    \end{enumerate}
- \item Referenzen und Bibliographie erzeugen
- \item Prentationsfolien erstellen
-\end{enumerate}
-
-Offensichtlich kann man hier ziemlich tief schachteln. Ob das allerdings immer sinnvoll ist?
-
-
-%------------------------------------------------------------------------------------------------
-
-\section{Tabellen, Grafiken und Gleitobjekte}
-\label{TabellenGrafikenFloats}
-
-%------------------------------------------------------------------------------------------------
-
-\subsection{Grafiken}
-\label{Grafiken}
-
-
-\begin{center}
-\includegraphics[width=12cm]{TallyLogo.png}
-\end{center}
-
-Hier hatten wir Gtig kommt?
-
-\subsection{Tabellen}
-\label{Tabellen}
+		
+		
+\section{Fazit des Tally Projekts}
+Die vorgegebenen Ziele konnten alle erfüllt werden. Der Raspberry besitzt alle erforderliche Hardware und Software um einen Webserver darauf laufen lassen zu können und um das Programm darauf ausführen zu können. Der Touchscreen und der Barcodescanner arbeiten auch ohne Störungen.
+\par 
+Auch die selbstgeschriebene Software Tally arbeitet einwandfrei und der Einkauf von Produkten funktioniert. Der Zuigriff auf die Datenbank erfolgt ebenfalls, sodass die dort gespeicherten Informationen über die Website eingesehen und geändert werden können.
+\par
+Probleme gab es zum Teil bei der Einrichtung von Backups auf dem Raspberry, die aber durch eine weit verbreitete Methode, rsync, behoben werden konnten. Wie zunächst gedacht konnte allerdings leider nicht das Barcodescannermodul verwendet werden, da die Spannung am Raspberry zu hoch ist, weshalb wir auf einen USB Barcodescanner umgestiegen sind.
+\par
+Bei der Programmierung der Website und des Tally Programmes waren die größten Probleme die Zugriffe auf die Datenbank, wie man darauf lesen und schreiben kann, und die Anordnung der einzelnen Tabellen in der Datenbank. Nach weitreichenden Recherchen konnten diese Probleme aber behoben werden.
+\par
+Für die Zukunft wäre es möglich einen größeren Touchscreen und ein Barcodescannermodul anzubringen. Desweiteren wäre ein Akku denkbar, sodass der Raspberyr auch bei Stromausfall noch einige Stunden arbeiten kann.
+\par
+Bei Tally könnte man die GUI überarbeiten. Außerdem wären weitere Einstellungsmöglichkeiten im Hauptmenü des Admins denkbar. 
+\par
+Auf der Website könnten noch die gewünschten Statistiken einsehbar gemacht werden.	
 
 
 
-\begin{center}
-\begin{tabular}{|l||c|c|c|}
-\hline
-           & \multicolumn{3}{|c|}{gemessen von Dr. Tex} \\
-\cline{2-4}
-Name       &  Alter    & Gre   & Gewicht \\
-           &  (Jahre)  & (in cm) & (in kg) \\
-\hline
-\hline
-           &   7       &  120    &  25     \\
-\cline{2-4}
-Andreas    &   10      &  141    &  34     \\
-\cline{2-4}
-           &   14      &  163    &  50     \\
-\hline
-           &   6       &  110    &  22     \\
-\cline{2-4}
-Beate      &   9       &  138    &  32     \\
-\cline{2-4}
-           &   13      &  156    &  46     \\
-\hline
-           &   8       &  132    &  30     \\
-\cline{2-4}
-Tina       &   11      &  151    &  43     \\
-\cline{2-4}
-           &   15      &  174    &  51     \\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Bewegliche Objekte}
-\label{Floats}
-
-
-\begin{figure}[h]
-\begin{center}
-\includegraphics[angle=-90,width=6cm]{bild.pdf}
-\caption{Dasselbe nochmal als Gleitobjekt. \label{bild}}
-\end{center}
-\end{figure}
 \newpage
 \newpage
 \begin{center}

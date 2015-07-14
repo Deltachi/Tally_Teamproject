@@ -26,32 +26,28 @@
 \contentsline {subsubsection}{\numberline {4.1.1}Betriebssystem und Verbindung zu anderen Rechnern}{7}{subsubsection.4.1.1}
 \contentsline {subsubsection}{\numberline {4.1.2}Der Webserver}{8}{subsubsection.4.1.2}
 \contentsline {subsubsection}{\numberline {4.1.3}Qt Creator}{8}{subsubsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.4}Die passende Datenbank}{10}{subsubsection.4.1.4}
-\contentsline {subsubsection}{\numberline {4.1.5}Der Touchscreen}{10}{subsubsection.4.1.5}
-\contentsline {subsubsection}{\numberline {4.1.6}Produkte scannen}{12}{subsubsection.4.1.6}
+\contentsline {subsubsection}{\numberline {4.1.4}Die passende Datenbank}{9}{subsubsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.5}Der Touchscreen}{9}{subsubsection.4.1.5}
+\contentsline {subsubsection}{\numberline {4.1.6}Produkte scannen}{11}{subsubsection.4.1.6}
 \contentsline {subsubsection}{\numberline {4.1.7}Wlan f\IeC {\"u}r den Raspberry}{12}{subsubsection.4.1.7}
-\contentsline {subsubsection}{\numberline {4.1.8}angepasster Bootscreen}{14}{subsubsection.4.1.8}
-\contentsline {subsubsection}{\numberline {4.1.9}Backups einrichten und versenden per Mail}{17}{subsubsection.4.1.9}
-\contentsline {subsubsection}{\numberline {4.1.10}Tally autostarten}{25}{subsubsection.4.1.10}
-\contentsline {subsection}{\numberline {4.2}QT Creator - Das Tally Programm}{28}{subsection.4.2}
-\contentsline {subsubsection}{\numberline {4.2.1}Die Benutzeroberfl\IeC {\"a}che}{28}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Datenbank und Tally}{28}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Aufbau des Programmes}{30}{subsubsection.4.2.3}
-\contentsline {paragraph}{Zust\IeC {\"a}nde:}{31}{section*.2}
-\contentsline {paragraph}{mainwindows.cpp:}{35}{section*.3}
-\contentsline {paragraph}{loginscreen.cpp:}{37}{section*.4}
-\contentsline {paragraph}{passwordscreen.cpp:}{37}{section*.5}
-\contentsline {paragraph}{favwidget.cpp :}{38}{section*.6}
-\contentsline {paragraph}{favcart.cpp \& buywidget.cpp:}{38}{section*.7}
-\contentsline {paragraph}{coffeesweetsscan.cpp :}{39}{section*.8}
-\contentsline {paragraph}{shoppingcart.cpp :}{39}{section*.9}
-\contentsline {paragraph}{scanwidget.cpp :}{40}{section*.10}
-\contentsline {paragraph}{sqlzugriff.cpp :}{41}{section*.11}
-\contentsline {paragraph}{settingswidget.cpp :}{42}{section*.12}
-\contentsline {paragraph}{afterbuyscreen.cpp :}{42}{section*.13}
-\contentsline {paragraph}{showipscreen.cpp :}{42}{section*.14}
-\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{43}{section.5}
-\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{44}{section.6}
-\contentsline {subsection}{\numberline {6.1}Grafiken}{44}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Tabellen}{44}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{44}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {4.1.8}angepasster Bootscreen}{13}{subsubsection.4.1.8}
+\contentsline {subsubsection}{\numberline {4.1.9}Backups einrichten und versenden per Mail}{15}{subsubsection.4.1.9}
+\contentsline {subsubsection}{\numberline {4.1.10}Tally autostarten}{22}{subsubsection.4.1.10}
+\contentsline {subsection}{\numberline {4.2}QT Creator - Das Tally Programm}{25}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Die Benutzeroberfl\IeC {\"a}che}{25}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Datenbank und Tally}{25}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Aufbau des Programmes}{27}{subsubsection.4.2.3}
+\contentsline {paragraph}{Zust\IeC {\"a}nde:}{28}{section*.2}
+\contentsline {paragraph}{mainwindows.cpp:}{32}{section*.3}
+\contentsline {paragraph}{loginscreen.cpp:}{34}{section*.4}
+\contentsline {paragraph}{passwordscreen.cpp:}{34}{section*.5}
+\contentsline {paragraph}{favwidget.cpp :}{35}{section*.6}
+\contentsline {paragraph}{favcart.cpp \& buywidget.cpp:}{35}{section*.7}
+\contentsline {paragraph}{coffeesweetsscan.cpp :}{36}{section*.8}
+\contentsline {paragraph}{shoppingcart.cpp :}{36}{section*.9}
+\contentsline {paragraph}{scanwidget.cpp :}{37}{section*.10}
+\contentsline {paragraph}{sqlzugriff.cpp :}{38}{section*.11}
+\contentsline {paragraph}{settingswidget.cpp :}{39}{section*.12}
+\contentsline {paragraph}{afterbuyscreen.cpp :}{39}{section*.13}
+\contentsline {paragraph}{showipscreen.cpp :}{39}{section*.14}
+\contentsline {section}{\numberline {5}Fazit des Tally Projekts}{40}{section.5}
