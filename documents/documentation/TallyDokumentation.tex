@@ -494,7 +494,7 @@ sudo apt-get install rsync
 \end{frame}
  Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu \"uberpr\"uft es zun\"achst ob die zu kopierende Datei ge\"ander wurde oder nicht, wodurch ein unn\"utzes kopieren von Daten unterbunden wird.
 \par
-Damit die backups autmatisch und t\"aglich erstellt werden, wird ein cronjob hinzugef\"ugt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu k\''onnen.
+Damit die backups autmatisch und t\"aglich erstellt werden, wird ein cronjob hinzugef\"ugt. Cronjobs, oder auch Cron-Daemon, ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu k\''onnen. Zunächst wird die Konfigurationsdatei von cronjob geöffnet
 \begin{frame}
 
 \begin{lstlisting}
@@ -506,15 +506,22 @@ Hier wird folgende Zeile eingef\"ugt
 \begin{frame}
 
 \begin{lstlisting}
-rsync -a QUELLE ZIEL 
+15 22 * * * rsync -av --delete /var/www/sqlite/database.sqlite  /home/pi/Tally/sicherung
 \end{lstlisting}
 \end{frame}
-Dadurch wird das Programm jeden Tag um .... aufgerufen und die Datenabank von ... nach ... kopiert.
+Dadurch wird das Programm jeden Tag um 22:15Uhr aufgerufen und die Datenabank von /var/www/sqlite nach /home/pi/Tally/sicherung  kopiert. Hier wurde die erste Stelle auf 15 gesetzt welche die Minuten Angabe ist, die zweite auf 22 für die Stunden Angaben. Die dritte Stelle gibt an, an welchem Tag das Skript/Programm ausgeführt werden soll, die vierte an welchem Monat und die fünfte an welchem Wochentag. Da rsync jeden Tag ausgeführt werden soll werden nur die ersten beiden Stellen angegeben.
 \par
-Diese Datei wird nun auch t\"aglich, nach dem erstellen des Backups, an den Admin per mail gesendet.
-Daf\"ur wird das Programm sendEmail und zwei Perl- Libraries installiert. SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird. Die beiden Perl- Libraries dienen dazu damit eine verschl\"usselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
+Diese Datei soll nun auch t\"aglich, nach dem erstellen des Backups, an den Admin per mail gesendet.
+Daf\"ur wird das Programm sendEmail und zwei Perl- Libraries installiert.
+\begin{frame}
+
+\begin{lstlisting}
+sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
+\end{lstlisting}
+\end{frame}
+SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird. Die beiden Perl- Libraries dienen dazu damit eine verschl\"usselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
 \par
-Zum autmatischen versenden der Mails wird folgendes Skript erstellt
+Zum autmatischen versenden der Mails wird folgendes Skript erstellt \cite{berry8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -522,7 +529,7 @@ sudo nano /usr/local/bin/mailnotify.sh
 \end{lstlisting}
 \end{frame}
 \newpage
-Das Skript sieht wie folgt aus \cite{berry8}
+Das Skript sieht wie folgt aus
 \begin{frame}
 
 \begin{lstlisting}
@@ -631,7 +638,7 @@ SMTPUSERNAME="MeinMailAccount"
 SMTPPASSWORD="MeinMailPasswort"
 \end{lstlisting}
 \end{frame}
-Hier m\"ussen nur noch die Empf\"anger-Emai-Adresse und Absende-Email-Adresse mit dazugeh\"origem SMTP- Server, Benutzername und Passwort angegeben werden.
+Hier müssen nur noch die sende Email Adresse, Sender of the mail, der Empfänger der Mail, Recipient of the mail und der SMTP Server mit dazugehörigen Benutzername und Passwort angegeben werden.
 Danach muss das Skript ausf\"uhrbar gemacht werden
 \begin{frame}
 
@@ -649,7 +656,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht."
 \end{lstlisting}
 \end{frame}
 \newpage
-Damit wird das Skript aufgerufen, wobei der text in den ersten Anf\"uhrungszeichen den Betreff, un der zweite den Inhalt der Email.
+Damit wird das Skript aufgerufen, wobei der text in den ersten Anf\"uhrungszeichen den Betreff, und der Text in den zweite Anführungszeichen den Inhalt der Email.
 Hierbei kam es jedoch zu folgendem Fehler
 \begin{frame}
 
@@ -713,7 +720,7 @@ fi
 \end{lstlisting}
 \end{frame}
 \newpage
-Somit sieht das Skript wie folgt aus
+Somit sieht das Skript wie folgt aus \cite{berry8}
 \begin{frame}
 
 \begin{lstlisting}
@@ -802,10 +809,28 @@ Im Befehl zum senden wird nun ein drittes Argument hinzugef\"ugt das den Pfad mi
 \begin{frame}
 
 \begin{lstlisting}
-mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.tar.gz
+mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.txt
 
 \end{lstlisting}
 \end{frame}
+\par
+Nun muss dieses Skript wieder in Cron eingefügt werden damit es täglich zu einer bestimmten Zeit ausgeführt wird
+\begin{frame}
+
+\begin{lstlisting}
+sudo crontab -e
+
+\end{lstlisting}
+\end{frame}
+hinzugefügt wird
+\begin{frame}
+
+\begin{lstlisting}
+45 23 * * * /bin/bash /usr/local/bin/mailnotify.sh "Sicherung Tally Datenbank" "Dies ist eine automatische Sicherungsmail der Tally Datenbank" /home/pi/Tally/sicherung/database.sqlite
+
+\end{lstlisting}
+\end{frame}
+Damit wird das Skript mailnotify.sh um 23:45Uhr gestartet und eine Email mit dem Betreff `Sicherung Tally Datenbank', dem Inhalt der Mail `Dies ist eine automatische Sicherungsmail der Tally Datenbank' und dem Dateianhang `/home/pi/Tally/sicherung/database.sqlite' gesendet.
 
 \subsubsection{Tally autostarten}
 Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart f\"ur das Programm konfiguriert werden.

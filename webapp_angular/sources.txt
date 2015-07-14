@@ -1,0 +1,54 @@
+LISTE aller Quellen die benutzt wurden:
+(Aufgrund der großen Masse an Onlinemedien die durchsucht wurden (zum Recherchieren bzw fürs Bugfixing) sind einige Einträge abgekürzt da diese Seite für ein breites Spektrum benutzt wurde)
+
+	Online Dokumentationen:
+		Angular JS: 
+			https://docs.angularjs.org/
+
+		Twitter Bootstrap:
+			http://getbootstrap.com/
+
+		jQuery:
+			http://api.jquery.com/
+
+		UI-Bootstrap for Angularjs:
+			https://angular-ui.github.io/bootstrap/
+
+	Blogs & Online Foren für Bugsupport:
+		General:
+			stackoverflow.com
+			http://www.html5rocks.com/en/tutorials/
+			https://dhue.de/html-schreibweise-fuer-aeueoess/
+
+		Angular JS services:
+			https://angularjs.de/artikel/service-factory-provider
+
+		jQuery Ajax to php to sqlite:
+			http://www.kriwanek.de/raspberry-pi/raspberry-webserver/375-webseiten-mit-php5-pdo-und-sqlite-erstellen.html
+
+		PHP:
+			http://tutorialzine.com/2009/10/cool-login-system-php-jquery/
+			http://www.php-einfach.de/
+			http://php.net/manual/en/
+
+		Authentication Service: 
+			brewhouse.io/blog/2014712/09/authentication-made-simple-in-single-page-angularjs-applications.html
+			learnwebtutorials.com/angularjs-posting-login-form
+			http://fdietz.github.io/recipes-with-angular-js/urls-routing-and-partials/listening-on-route-changes-to-implement-a-login-mechanism.html
+		
+	Online-Kurse / Web-School-Services
+		w3schools - Schule für HTML, CSS und weiteres
+			http://www.w3schools.com/
+		
+		Angular JS Kurs sponsored by Google:
+			http://campus.codeschool.com/courses/shaping-up-with-angular-js/
+
+	Video Tutorials
+		Web Development tutorials, web site design tutorials by Will Stern (HTML, CSS, JavaScript, Sublime Text, CSS Layouts, Responsive Design, Node.js, Angular.js, Backbone.js, Dev Ops, Server Administration, Deployment Strategies):
+			https://www.youtube.com/user/learncodeacademy/videos
+
+		Official angularjs Channel on Youtube:
+			https://www.youtube.com/user/angularjs
+
+		more tutorials:
+			https://www.youtube.com/user/CDPAdvertising/videos

@@ -15,14 +15,12 @@
 					</div>
 				</div>
 				<div class="modal-body">
-					<form class="form not-available " id="formLogin"> 	
-							<div>
-								<input  style="border-radius:10px 10px 0 0;" name="username" id="username"  type="text" class="form-control" placeholder="Username">
-							</div>
+					<form ng-controller="loginCtrl as login" class="form" ng-submit="login.submitForm(login.data)" novalidate> 	
+							<input  style="border-radius:10px 10px 0 0;" name="username" id="username"  type="text" class="form-control" placeholder="Username" ng-model="login.data.username">
 							<div class="input-group" >
-								<input style="border-radius:0 0 0 10px;" name="password" id="password" type="password" class="form-control" placeholder="Password">
+								<input style="border-radius:0 0 0 10px;" name="password" id="password" type="password" class="form-control" placeholder="Password" ng-model="login.data.password">
 								<span class="input-group-btn">
-									<button style="border-radius:0 0 10px 0;" id="btn_login" type="submit" class="btn btn-default">Login</button>
+									<button style="border-radius:0 0 10px 0;" id="btn_login" type="submit" class="btn btn-default" ng-submit="submitForm()">Login</button>
 								</span>
 							</div>
 					</form>
