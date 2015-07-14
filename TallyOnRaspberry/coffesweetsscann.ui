@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,0">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="1,1,1">
        <property name="spacing">
         <number>0</number>
        </property>

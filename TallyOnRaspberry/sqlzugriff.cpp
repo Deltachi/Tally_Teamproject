@@ -186,9 +186,9 @@ void SqlZugriff::updateConsumeIndex(QString userId,QString Grocery_Id,QString co
 }
 //this will ad a sell to the sell history table.
 void SqlZugriff::addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc){
-    MainWindow w;
-    QString timestamp = w.getTimestamp();
-    if(query.exec("INSERT INTO Sell_History (User_ID, Grocery_ID, Amount, Price_per_piece, Timestamp)" "VALUES('"+userId+"','"+Grocery_Id+"','"+Amount+"','"+price_per_pc+"','"+timestamp+"')"));
+    QString date(QDate::currentDate().toString(Qt::ISODate));
+    date.append(' ' + QTime::currentTime().toString());
+    if(query.exec("INSERT INTO Sell_History (User_ID, Grocery_ID, Amount, Price_per_piece, Timestamp)" "VALUES('"+userId+"','"+Grocery_Id+"','"+Amount+"','"+price_per_pc+"','"+date+"')"));
     else throwError();
 }
 //this will look at the max overdraw value from the settings table.
