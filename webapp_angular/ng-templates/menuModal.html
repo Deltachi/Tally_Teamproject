@@ -11,7 +11,7 @@
 					<div class="row">
 						<div class="col-sm-6"><h4 class="modal-title" id="menuModalLabel">Edit the details of: </h4><hr style="margin: 8 auto"><h3>{{editItem().Nick}}</h3></div>
 						<div class="col-sm-5">
-							<img alt="Brand" src="styles/images/gif/loadingscreen_480x320.gif" class="logoMargin" style="margin-right:5px; width:100%; border-radius: 5px; box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.2);">
+							<img alt="Brand" src="styles/images/gif/loadingscreen_480x320.gif" class="logoMargin" style="margin-right:5px; width:100%; border-radius: 5px; box-shadow: 0px 0px 0px 2px rgba(0,0,0,0.2); max-width: 260px;">
 						</div>  <!-- images/tally_logo.png -->
 					</div>
 				</div>
@@ -20,36 +20,63 @@
 							<!-- <div class="form-group"> -->
 							<div class="input-group">
 								<span class="input-group-addon">Item name:</span> 
-								<input type="text" id="Name" name="Name" maxlength="12" class="form-control" placeholder="{{editItem().Name}}">
+								<input type="text" id="Name" name="Name" maxlength="32" class="form-control" placeholder="{{editItem().Name}}" ng-model="setItem.Name">
 							</div>
 							<div class="input-group">	
 								<span class="input-group-addon">Display name:</span> 
-								<input type="text" id="Nick" name="Nick" maxlength="12" class="form-control" placeholder="{{editItem().Nick}}">
+								<input type="text" id="Nick" name="Nick" maxlength="32" class="form-control" placeholder="{{editItem().Nick}}" ng-model="setItem.Nick">
+							</div>
+							<div class="input-group">	
+								<span class="input-group-addon">Barcode:</span> 
+								<input type="text" id="Barcode" name="Barcode" maxlength="32" class="form-control" placeholder="{{editItem().Barcode}}" ng-model="setItem.Barcode">
 							</div>
 							<div class="input-group">	
 								<span class="input-group-addon">Amount:</span> 
-								<input type="text" id="Amount" name="Amount" maxlength="12" class="form-control" placeholder="{{editItem().Amount}}">
+								<input type="text" id="Amount" name="Amount" maxlength="32" class="form-control" placeholder="{{editItem().Amount}}" ng-model="setItem.Amount">
 							</div>
 							<div class="input-group">	
 								<span class="input-group-addon">Price:</span> 
-								<input type="text" id="Price" name="Price" maxlength="12" class="form-control" placeholder="{{editItem().Price}}">
+								<input type="text" id="Price" name="Price" maxlength="32" class="form-control" placeholder="{{editItem().Price}}" ng-model="setItem.Price">
 								<span class="input-group-addon postfix">€</span>
 							</div>
 							<div class="input-group">	
 								<span class="input-group-addon">Buy in price:</span> 
-								<input type="text" id="Prime_Cost" name="Prime_Cost" maxlength="12" class="form-control" placeholder="{{editItem().Prime_Cost}}">
+								<input type="text" id="Prime_Cost" name="Prime_Cost" maxlength="32" class="form-control" placeholder="{{editItem().Prime_Cost}}" ng-model="setItem.Prime_Cost">
 								<span class="input-group-addon postfix">€</span>
 							</div>
 							<div class="input-group">	
+								<span class="input-group-addon">Image path:</span> 
+								<input type="text" id="Image" name="Image" maxlength="32" class="form-control" placeholder="{{editItem().Image}}" ng-model="setItem.Image">
+							</div>
+							<div class="input-group">	
 								<span class="input-group-addon">Item info:</span> 
-								<input type="text" id="Info" name="Info" maxlength="12" class="form-control" placeholder="{{editItem().Info}}">
+								<input type="text" id="Info" name="Info" maxlength="32" class="form-control" placeholder="{{editItem().Info}}" ng-model="setItem.Info">
+							</div>
+							<div class="input-group">	
+								<span class="input-group-addon">Ingredients:</span> 
+								<input type="text" id="Ingredients" name="Ingredients" maxlength="32" class="form-control" placeholder="{{editItem().Ingredients}}" ng-model="setItem.Ingredients">
+							</div>
+							<div class="input-group">	
+								<span class="input-group-addon">Type 0/1:</span> 
+								
+								<select class="form-control" id="Typ_select" ng-model="setItem.Typ" convert-to-number>
+									<option value="0">0</option>
+									<option value="1">1</option>
+								</select>
+							</div>
+							<div class="input-group">	
+								<span class="input-group-addon">Type in Words:</span> 
+								<select class="form-control" id="Type_Group_select" ng-model="setItem.Type_Group">
+									<option value="Drinks">Drinks</option>
+									<option value="Sweets">Sweets</option>
+								</select>
 							</div>
 							<div class="input-group">	
 								<span class="input-group-addon">Visible:</span> 
 								
-								<input disabled type="text" id="Info" name="Info" maxlength="12" class="form-control" placeholder="{{editItem().Visible}}">
+								<input disabled type="text" id="Info" name="Info" maxlength="32" class="form-control" placeholder="{{editItem().Visible}}">
 								<span class="input-group-btn">
-									<button type="button" class="btn btn-default">
+									<button type="button" class="btn btn-default" ng-click="toggleVisible()">
 										<div ng-if="editItem().Visible == 1">
 											Hide <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
 										</div>
@@ -75,9 +102,9 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-						<button type="button" class="btn btn-danger">Delete item <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+						<button type="button" class="btn btn-danger" ng-click="deleteItem();">Delete item <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-success register">Submit changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+						<button type="button" class="btn btn-success" ng-click="submitItem();">Submit changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 				</div>
 			</div>
 		</div>

@@ -13,14 +13,9 @@
 					<div class="jumbotron inline-text balancePanel" ng-hide="loading">
 						<h3>Your balance: <strong><span id="balance" style="font-size:35px;" ng-class="'text-'+barColor();">{{userData.balance | number:2}} &euro;</span></strong></h3>
 						<div class="progress">
-							<div class="progress-bar progress-bar-striped active" ng-class="'progress-bar-'+barColor();" role="progressbar" aria-valuenow="{{userData.balance}}" aria-valuemin="0" aria-valuemax="100" ng-style="{'width': {{userData.balance | positive}} +'%'}">
+							<div class="progress-bar progress-bar-striped active" ng-class="'progress-bar-'+barColor();" role="progressbar" aria-valuenow="{{userData.balance}}" aria-valuemin="0" aria-valuemax="100" style="width: {{userData.balance | positive}}%">
 								<span class="sr-only">{{userData.balance}}&euro;</span>
 							</div>
-						</div>
-						<div ng-hide="true">
-							<div id="btn-good" class="btn btn-success">Example: Positive</div>
-							<div id="btn-neutral" class="btn btn-warning">Example: Neutral</div>
-							<div id="btn-bad" class="btn btn-danger">Example: Warning</div>
 						</div>
 					</div>
 					<div class="jumbotron inline-text" ng-show="loading">
@@ -30,7 +25,7 @@
 						<!-- <div class="jumbotron lil-jumbo"> -->
 						<div class="panel panel-default messagePanel">
 							<div class="panel-heading inline-text">
-								<h3>You got {{userData.messages.length}} message<span ng-show="userData.feeds() >1">s</span>:</h3>
+								<h3>You got {{userData.messages.length}} message<span ng-show="userData.messages.length >1">s</span>:</h3>
 							</div>
 							<div class="panel-body panel-notifications">
 								<div class="row" ng-repeat="message in userData.messages">

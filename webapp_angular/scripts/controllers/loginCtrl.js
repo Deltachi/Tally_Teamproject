@@ -22,6 +22,7 @@ angular.module('app.controllers.loginCtrl', [])
 		this.data;
 		this.submitForm = function(submitData){
 			this.loadUserData(submitData);
+			$('#myModal').modal('hide');
 		}
 
 		this.loadUserData = function(submitData){

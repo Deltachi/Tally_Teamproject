@@ -1,5 +1,6 @@
 var app = angular.module('app',[
 	'ui.router',
+	'ui.bootstrap',
 	'app.directives.myNavbar',
 	'app.directives.myFooter',
 	'app.directives.login',
@@ -101,7 +102,6 @@ app.filter('positive', function() {
     })
 
 app.run(['$rootScope','$location', '$state','loginService', 'loginModalService', function($rootScope, $location, $state, loginService, loginModalService){
-	console.log("testtesttest");
 	
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParams){
 		var requireLogin = toState.data.requireLogin;
@@ -114,13 +114,17 @@ app.run(['$rootScope','$location', '$state','loginService', 'loginModalService',
 			// $('#myModal').modal('show');
 			loginModalService()
 				.then(function(){
-					return $state.go(toState.name, toParams);
+					// return $state.go(toState.name, toParams);
+					return $state.go('home');
 				})
 				.catch(function(){
 					return $state.go('home');
 				})
 			// $state.go('home');
 
+		}
+		if (requireLogin && loginService.getUser() != null){
+			//load user data 
 		}
 	});
 }]);

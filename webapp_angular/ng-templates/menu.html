@@ -14,11 +14,11 @@
 				<div class="panel panel-default menuTable">
 					<table class="table panel-body table-hover">
 						<tbody id="drink-list">
-							<tr ng-repeat="drink in drinks" data-toggle="tooltip" title="Noch {{drink.Amount}} verfügbar!" data-container="body" data-placement="bottom"  ng-class="{'hiddenItem' : drink.Visible == 0}">
+							<tr ng-repeat="drink in drinks" data-toggle="tooltip" title="Noch {{drink.Amount}} verfügbar!" data-container="body" data-placement="bottom"  ng-class="{'hiddenItem' : drink.Visible == 0}" ng-show="drink.Visible == 1 || userData.rights >= 3">
 								<th>{{drink.Nick}}</th>
 								<td>{{drink.Info}}</td>
 								<td>{{drink.Price | number:2}} &euro;</td>
-								<td ng-show="true">
+								<td ng-show="userData.rights >= 3">
 									<button class="btn btn-xs btn-info" data-id="{{drink.Grocery_ID}}" data-toggle="modal" data-target="#menuModal" ng-click="setNewEditItem(drink.Grocery_ID);"><span class="glyphicon glyphicon-pencil" ></span> edit</button>
 								</td>
 							</tr>
@@ -43,7 +43,7 @@
 								<th>{{sweet.Nick}}</th>
 								<td>{{sweet.Info}}</td>
 								<td>{{sweet.Price | number:2}} &euro;</td>
-								<td ng-show="true">
+								<td ng-show="userData.rights >= 3">
 									<button class="btn btn-xs btn-info" data-id="{{sweet.Grocery_ID}}" data-toggle="modal" data-target="#menuModal" ng-click="setNewEditItem(sweet.Grocery_ID);"><span class="glyphicon glyphicon-pencil" ></span> edit</button>
 								</td>
 							</tr>
