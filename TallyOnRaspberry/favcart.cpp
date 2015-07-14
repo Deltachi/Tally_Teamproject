@@ -1,10 +1,11 @@
+//this is a widget which displays the users favorites. The user can pick one and an exit code will be thrown.
 #include "favcart.h"
 #include "ui_favcart.h"
 #include <QDebug>
 #include <QString>
 #include "mainwindow.h"
 #include "shoppingcart.h"
-
+//constructs the GUI
 FavCart::FavCart(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::FavCart)
@@ -12,19 +13,21 @@ FavCart::FavCart(QWidget *parent) :
     ui->setupUi(this);
     myShoppingCart = NULL;
 }
-
+//deletes the object
 FavCart::~FavCart()
 {
     delete ui;
 }
+//inits the object
 void FavCart::setMainWindowPointer(QApplication *a,QString gUserId){
     MainWindowPointer = a;
     userId = gUserId;
 }
+//This links the favcart to the shoppingcart. If the favcart was clicked it can directly tell the shoppingcart to add that item.
 void FavCart::linkToShoppingCart(Shoppingcart *gCart){
     myShoppingCart = gCart;
 }
-
+//This will refresh the favcart items. It will not check if some items are already in the shoppingcart!
 void FavCart::updateItems(){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
@@ -34,7 +37,7 @@ void FavCart::updateItems(){
     Database.selectFavorites(userId);
 
     QString tmp;
-    while(Database.next()){
+    while(Database.next()){ //get next favorite from database
         int amount = Database.getString(9).toInt();
         if(amount > 0){
             QListWidgetItem *item = new QListWidgetItem();
@@ -58,9 +61,10 @@ void FavCart::updateItems(){
     }
     Data.close();
 }
+//if an item was removed from the shoppingcart this will update the favorites list.
 void FavCart::lookAtItemsInShoppingcart(){
     int itemId = myShoppingCart->getLatestDeletedItemId();
-    for(int i=0;i<ui->listWidget->count();i++){
+    for(int i=0;i<ui->listWidget->count();i++){ //search for the deleted item and update the amount!
         if(ui->listWidget->item(i)->data(4).toInt()==itemId){
             Data = QSqlDatabase::addDatabase("QSQLITE");
             Database_Link
@@ -84,6 +88,7 @@ void FavCart::lookAtItemsInShoppingcart(){
         }
     }
 }
+//this will remove an item with that id from the favcart.
 void FavCart::removeOneItemFromId(int id){
     for(int i = 0; i < ui->listWidget->count();i++){
         if(ui->listWidget->item(i)->data(4).toInt() == id){
@@ -102,14 +107,15 @@ void FavCart::removeOneItemFromId(int id){
         }
     }
 }
+//This will get the latest selected item from the favcart.
 QListWidgetItem *FavCart::getSelectedItem(){
     return selectedItem;
 }
-
+//event handling for an clicked item in the favcart
 void FavCart::on_listWidget_itemClicked(QListWidgetItem *item)
 {
     if(item->data(6).toInt() > 0){
-        if(myShoppingCart == NULL){
+        if(myShoppingCart == NULL){//is there a link to the shoppingcart?
             selectedItem = item;
             MainWindowPointer->exit(35);
         }else{

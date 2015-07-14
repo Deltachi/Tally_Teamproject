@@ -1,3 +1,4 @@
+//this class will do the database stuff. =)
 #include "sqlzugriff.h"
 #include <QString>
 #include <QDebug>
@@ -53,7 +54,7 @@ void SqlZugriff::initGetGroceries(bool sweets){
     }
 }
 
-
+//this will find a grocery with the given barcode.
 bool SqlZugriff::findGroceriesWithBarcode(QString code){
     if(query.exec("SELECT * FROM Groceries WHERE Barcode=\ '"+code+"'"))
         return query.next();
@@ -85,7 +86,7 @@ bool SqlZugriff::next(){
     return query.next();
 }
 
-//
+//This will check if the user is blocked.
 QString SqlZugriff::blocked(QString userId){
     if(query.exec("SELECT Blocked from Users WHERE User_ID = '"+userId+"'"));
     else throwError();
@@ -95,7 +96,7 @@ QString SqlZugriff::blocked(QString userId){
     blocked = query.value(0).toString();
     return blocked;
 }
-
+//this will return the name from the user with the given id.
 QString SqlZugriff::getName(QString ID){
     if(query.exec("Select Username from Users where User_ID = '"+ID+"'"));
     else throwError();
@@ -105,6 +106,7 @@ QString SqlZugriff::getName(QString ID){
     ausgabe = query.value(0).toString();
     return ausgabe;
 }
+//this will check how often the user has logged in wrongly an check if 1 minute is gone.
 bool SqlZugriff::checkUserLoginCount(QString userId){
     if(query.exec("SELECT Login_Attempts, Timestamp FROM Users WHERE User_ID = '"+userId+"'"));
     else throwError();
@@ -125,6 +127,7 @@ bool SqlZugriff::checkUserLoginCount(QString userId){
     }
     return valid;
 }
+//this will update the counter which counts how often a user has logged in wrongly. If valid = true it will reset the counter.
 void SqlZugriff::updateLoginAttempt(QString userId, bool valid){
     QString date(QDate::currentDate().toString(Qt::ISODate));
     date.append(' ' + QTime::currentTime().toString());
@@ -135,7 +138,7 @@ void SqlZugriff::updateLoginAttempt(QString userId, bool valid){
         query.exec("UPDATE Users SET Login_Attempts = Login_Attempts + '1' WHERE User_ID='"+userId+"'");
     }
 }
-
+//this will check the password from the given user and returns true or false.
 bool SqlZugriff::checkPassword(QString userId, QString password){
     if(query.exec("SELECT Username FROM Users WHERE User_ID=\'" + userId +
                "\' AND Password=\'" + password + "\'")){
@@ -153,20 +156,23 @@ void SqlZugriff::update(QString tab, QString column, QString value, QString id ,
     if(query.exec("UPDATE '"+tab+"' SET '"+column+"' = '"+value+"' WHERE '"+id+"'=\\ '"+number+"'"));
     else throwError();
 }
-
+//this will update the amount from the credits.
 void SqlZugriff::updateCredits(QString userId ,QString newCredits){
     if(query.exec("UPDATE Users SET Credits = '"+newCredits+"' WHERE User_ID=\ '"+userId+"'"));
     else throwError();
 }
+//this will update the amount of on item.
 void SqlZugriff::updateAmount(QString itemId ,QString newAmount){
     if(query.exec("UPDATE Groceries SET Amount = '"+newAmount+"' WHERE Grocery_ID=\ '"+itemId+"'"));
     else throwError();
 }
+//this will select the amount from the given item.
 void SqlZugriff::getAmount(QString itemId){
     if(query.exec("SELECT Amount FROM Groceries WHERE Grocery_ID=\ '"+itemId+"'"))
         query.first();
     else throwError();
 }
+//this will update the consume inded table.
 void SqlZugriff::updateConsumeIndex(QString userId,QString Grocery_Id,QString count){
     if(query.exec("SELECT Count FROM Consum_Index WHERE User_ID=\'"+userId+"\' AND Grocery_ID=\'"+Grocery_Id+"\'")){
         if(!query.next()){
@@ -178,12 +184,14 @@ void SqlZugriff::updateConsumeIndex(QString userId,QString Grocery_Id,QString co
     }
     else throwError();
 }
+//this will ad a sell to the sell history table.
 void SqlZugriff::addSell(QString userId,QString Grocery_Id,QString Amount,QString price_per_pc){
     MainWindow w;
     QString timestamp = w.getTimestamp();
     if(query.exec("INSERT INTO Sell_History (User_ID, Grocery_ID, Amount, Price_per_piece, Timestamp)" "VALUES('"+userId+"','"+Grocery_Id+"','"+Amount+"','"+price_per_pc+"','"+timestamp+"')"));
     else throwError();
 }
+//this will look at the max overdraw value from the settings table.
 double SqlZugriff::getMaxOverdrawValue(){
     if(query.exec("SELECT Value FROM Settings WHERE Setting_ID='2'"))
         query.first();
@@ -191,11 +199,13 @@ double SqlZugriff::getMaxOverdrawValue(){
 
     return query.value(0).toDouble();
 }
+//this will select the credit.
 void SqlZugriff::getCredit(QString userId){
     if(query.exec("SELECT Credits FROM Users WHERE User_ID=\ '"+userId+"'"))
         query.first();
     else throwError();
 }
+//this will select the favorites from the user.
 void SqlZugriff::selectFavorites(QString userId){
     if(query.exec("SELECT * FROM Favorites INNER JOIN Groceries ON Favorites.Grocery_ID=Groceries.Grocery_ID WHERE Favorites.User_ID = '"+userId+"'"));
     else throwError();
