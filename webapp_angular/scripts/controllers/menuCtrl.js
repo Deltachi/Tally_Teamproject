@@ -49,6 +49,13 @@ angular.module('app.controllers.menuCtrl', [])
 			console.log(menuService.editItem);
 		}
 
+		// $scope.tooltips = function(){
+		setTimeout(function(){
+			console.log("Enable tooltips");
+			$('[data-toggle="tooltip"]').tooltip();
+		},300);
+		// } 
+
 		$scope.$watch(function () { return userDataService.getUserData(); }, function (value) {
 			$scope.userData = value;
 		});

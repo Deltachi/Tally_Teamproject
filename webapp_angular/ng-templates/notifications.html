@@ -11,10 +11,17 @@
 				</div>
 				<div class="panel-body">
 					<div class="jumbotron inline-text balancePanel" ng-hide="loading">
-						<h3>Your balance: <strong><span id="balance" style="font-size:35px;" ng-class="'text-'+barColor();">{{userData.balance | number:2}} &euro;</span></strong></h3>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped active" ng-class="'progress-bar-'+barColor();" role="progressbar" aria-valuenow="{{userData.balance}}" aria-valuemin="0" aria-valuemax="100" style="width: {{userData.balance | positive}}%">
-								<span class="sr-only">{{userData.balance}}&euro;</span>
+						<div class="row">
+							<div class="col-md-3 col-sm-12">
+								<img class="thumbnail" ng-src="/sqlite{{userData.imagePath}}" alt="" style="max-width: 150px; margin: auto;">
+							</div>	
+							<div class="col-md-8 col-sm-12 col-md-offset-1">
+								<h3>Your balance: <strong><span id="balance" style="font-size:35px;" ng-class="'text-'+barColor();">{{userData.balance | number:2}} &euro;</span></strong></h3>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped active" ng-class="'progress-bar-'+barColor();" role="progressbar" aria-valuenow="{{userData.balance}}" aria-valuemin="0" aria-valuemax="100" style="width: {{userData.balance | positive}}%">
+										<span class="sr-only">{{userData.balance}}&euro;</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

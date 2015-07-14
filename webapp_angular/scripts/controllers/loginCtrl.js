@@ -13,12 +13,6 @@ angular.module('app.controllers.loginCtrl', [])
 			}
 		}
 	
-		
-		$scope.tooltips = function(){
-			setTimeout(function(){
-				$('[data-toggle="tooltip"]').tooltip();
-			},300);
-		} 
 		this.data;
 		this.submitForm = function(submitData){
 			this.loadUserData(submitData);
