@@ -65,6 +65,85 @@ jQuery Code:
 	});
 \end{lstlisting}
 \end{frame}
+
+Nach mehrfachen hinzufügen von HTML Seiten fiel auf, dass es zur ständigen Wiederholung einzelner Elemente wie z.B. der Navigationsleiste kommt, was bedeutet, dass man bei einer Änderung die selbe Codeänderung in jeder Datei durchführen muss. Deshalb wurde das Mustache.js-Plugin zum Projekt hinzugefügt. Dies stellt einige Funktionen zum Templating von HTML Code zur Verfügung, welche den Code um einiges schrumpfen würde. Doch wurde Mustache nach kurzem Tests von Angular.js abgelöst, das teilweise die gleichen Funktionen wie Mustache besitzt (zum Thema Templating). Das größte Feature von Angular ist die Erstellung einer Single-Page-Webapp. Anstelle vieler verschiedener HTML Dateien (für z.B. 'Home','Login','Menu') zwischen denen hin und her gesprungen wird, was ein ständiges nachladen aller Elemente bedeutet, bietet eine SPA den Vorteil das es nur eine Index.html Datei gibt in die eine app.js geladen wird und all ihre Komponenten. Von da aus lädt sich die App per Ajax (Asynchrones Java und XML) Templates, Controller, Services und Daten aus dem Backend dynamisch, während die Webapp geladen ist.
+Die index.html wird somit zur Build Datei der App die die Komponenten der Webapp vereint und anschließend ausführt. Die Darstellung der Seite wird mit Directives zugewiesen, die sich in den Custom Tags von HTML5 befinden. Ein Beispiel für die Directives und dem Build der App in Codeform:
+
+\begin{frame}
+\begin{lstlisting}
+	<html ng-app="app">
+		<head>
+			<title>Tally C&amp;S</title>		
+			
+			<!-- Laden der Stylesheets und anderes...-->
+			
+		</head>
+
+		<body class="color-bg">
+
+			<div id="wrap">
+
+				<!-- Directive für die Navigationsleiste-->
+				<my-navbar></my-navbar> 
+
+				<!-- Directive für das Login ModalFenster-->
+				<login></login>
+
+				<!-- Directive für den Body oder View der Seite-->
+				<div ui-view></div>
+
+			</div> <!-- close wrap -->
+
+			<footer id="footer" class="text-center">
+
+				<!-- Directive für die Fußleißte-->
+				<my-footer></my-footer>
+			</footer>
+			
+			<!-- Plugins and Services -->
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+				<script src="scripts/jquery-1.11.2.js"></script>
+				<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+				<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+				<!-- <script src="mustache/mustache.js"></script> -->
+				<script src="angular/angular.js"></script>
+				<script src="angular-ui-router/build/angular-ui-router.js"></script>
+				<script src="ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+
+			<!-- End Plugins and Services -->
+
+			<!-- Build; Hier werden alle Elemente der App geladen-->
+				<script src="scripts/app.js"></script>
+				<script src="scripts/directives/myNavbar.js"></script>
+				<script src="scripts/directives/login.js"></script>
+				<script src="scripts/directives/myFooter.js"></script>
+				<script src="scripts/directives/menuModal.js"></script>
+				<script src="scripts/controllers/userCtrl.js"></script>
+				<script src="scripts/controllers/menuCtrl.js"></script>
+				<script src="scripts/controllers/loginCtrl.js"></script>
+				<script src="scripts/controllers/loginModalCtrl.js"></script>
+				<script src="scripts/controllers/updatedCtrl.js"></script>
+				<script src="scripts/controllers/logoutCtrl.js"></script>
+				<script src="scripts/controllers/lbCtrl.js"></script>
+				<script src="scripts/services/myService.js"></script>
+				<script src="scripts/services/userDataService.js"></script>
+				<script src="scripts/services/menuService.js"></script>
+				<script src="scripts/services/loginService.js"></script>
+				<script src="scripts/services/loginModalService.js"></script>
+
+
+			<!-- End Build -->
+
+			<script src="scripts/main.js"></script>
+		</body>
+	</html>
+
+\end{lstlisting}
+\end{frame}
+
+Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
+
+
 4.3.4 Probleme / Schwierigkeiten
 
 4.3.5 Verbesserungen / Änderungen für die Zukunft
