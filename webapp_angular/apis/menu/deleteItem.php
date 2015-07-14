@@ -5,7 +5,7 @@
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    $grocery_id = $_POST["request"];	//must be User_ID
+	    $grocery_id = $_POST["Grocery_ID"];	//
 
 	    $query = "DELETE FROM Groceries WHERE Grocery_ID = '".$grocery_id."'";
 		$results = $db->query($query);

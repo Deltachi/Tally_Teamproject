@@ -29,10 +29,6 @@ angular.module('app.controllers.menuCtrl', [])
 			});
 
 
-		
-		$scope.drinks = menuService.menu.drinks;
-		$scope.sweets = menuService.menu.sweets;
-
 		// menuService.editItem = {"Nick":"Item placeholder"};
 		// console.log("Initialize editItem with: "+menuService.editItem.Nick);
 		$scope.addItem = function(){
@@ -55,6 +51,12 @@ angular.module('app.controllers.menuCtrl', [])
 
 		$scope.$watch(function () { return userDataService.getUserData(); }, function (value) {
 			$scope.userData = value;
+		});
+		$scope.$watch(function () { return menuService.menu.drinks; }, function (value) {
+			$scope.drinks = value;
+		});
+		$scope.$watch(function () { return menuService.menu.sweets; }, function (value) {
+			$scope.sweets = value;
 		});
 		
 	}]);
