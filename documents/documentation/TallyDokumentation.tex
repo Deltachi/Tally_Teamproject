@@ -1607,6 +1607,178 @@ QSqlQuery query;
 \paragraph{showipscreen.cpp :} $\;$ \\
 		Diese Klasse wird nur beim Start des Programmes erzeugt. Sie dient dazu die IP-Adresse anzuzeigen.
 		
+
+\subsection{Die Tally Website - Das Interface zur Einsicht und Konfiguration aller Daten}
+
+
+\subsubsection{Erste Konzeption}
+
+Zur  Kontrolle der Daten und aller Benutzerkonten haben wir uns entschieden, eine Web Applikation zu entwickeln, die Zugriff auf die Datenbank nehmen kann, um deren Informationen anzuzeigen / bearbeiten / löschen und ggf. neue Datensätze hinzufügen kann. 
+\par
+Zudem soll dies dadurch vereinfacht werden indem die Applikation für einige Einträge Vorschläge für Werte macht bzw. ausfiltert, falls ungültige Eingaben getätigt werden. Die App soll verschiedene Sicherheitsbereiche besitzen, die nur Erreichbar sind, falls ein Nutzer angemeldet ist. 
+\par
+Administrative Bereiche sollen bei gegebener Sicherheitsfreigabestufe (Eintrag  'Rights' in der 'Users' Tabelle der Datenbank) in die vorhandene Website eingebettet werden um unnötige Doppelungen von Bereichen zu vermeiden bzw. die Benutzung der App weiter zu erleichtern.
+
+
+\subsubsection{Ziele zur Bedienung und der Benutzeroberfläche}
+
+Der User soll ohne Anmeldung Zugriff auf die Bereiche 'Home' und 'Menu' haben. Dabei beinhaltet Home allgemeine Informationen und Neuigkeiten zur Seite, sowie sonstige Infos. Der Menübereich beinhaltet lediglich aktuelle Angaben zu verfügbaren Speisen ohne weiteren Zugriff in Form von Bestellungen oder Ähnliches. 
+\par
+Sobald sich der User angemeldet hat, verschwindet der Login-Button und wird von einem User-Dropdown abgelöst, in dem der User Links zu den Bereichen 'Notifications', 'Leaderboard', 'Settings', 'Favorites' und den Logout erhält.  Es wird sichergestellt, dass der Client keinen Zugriff auf Daten bekommt bevor dieser die benötigten Userdaten zum Anmelden abgeschickt hat. 
+\par
+Im Notifications-Bereich kann der User seinen Kontostand, Nachrichten und letzte Einkäufe einsehen. Das Leaderboard dient nur Kosmetischen Unterhaltungszwecken und zeigt die Top 5 der Kilokalorien / Koffein Konsumenten, die dieses Feature aktiviert haben. In den Settings kann der User seine persönlichen Daten bearbeiten. Im Favorites-Tab kann er Favoriten aussuchen, die in der Schnellauswahl am Raspberry Pi angezeigt werden. 
+\par
+Der Logoutbereich entfernt alle gespeicherten Userdaten vom Client und trennt die aktive Sitzung. Der Admin hat folgende zusätzliche Features: Es werden im Menü Admin-Bedienelemente eingebettet, er hat einen separaten Bereich, um Userstatistiken einzusehen (Layout ist ähnlich dem Menü), wo er diese auch bearbeiten / löschen, oder neue User hinzufügen kann. 
+
+
+\subsubsection{Umsetzung}
+
+Zu den Bereichen der Entwicklung gehören zum einen die Grundsprachen HTML5, CSS, JavaScript PHP und SQL, jedoch werden weitere Frameworks, Plugins und Erweiterungen benutzt, wie: jQuery-1.11.2, Mustache v2.1.2, Bootstrap-3.3.4, AngularJS v1.4.3-build.4096, Angular-UI-Router v0.2.15 und UI-Bootstrap-tpls-0.13.0.
+\par
+In der ersten Version der Webapp, wurde ein Grundgerüst mit HTML5 CSS und Bootstrap erstellt. Der Fokus lag dabei beim Design und der Anordnung aller Elemente, die leichte Bedienbarkeit und eine selbsterklärende Grafische Benutzeroberfläche. Da der RaspberryPi sich möglicherweise innerhalb eines Intranetzes, ohne Internetzugriff befindet, muss dafür gesorgt werden dass die Libraries auch offline geladen werden können.
+
+ Hier ein Code-Auszug:
+\begin{frame}
+
+\begin{lstlisting}
+<html ng-app='app'>
+	<head>
+		<title>Tally C&amp;S</title>		
+		
+		<!-- Latest compiled and locally saved CSS bootstrap -->
+		<link rel='stylesheet' href='styles/bootstrap-3.3.4-dist/css/bootstrap.css'>
+
+		<!-- Optional theme (locally saved) -->
+		<link rel='stylesheet' href='styles/bootstrap-3.3.4-dist/css/bootstrap-theme.css'>
+	</head>
+	<body class='color-bg'> 
+<!-- Plugins and Services -->
+			<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+			<script src='scripts/jquery-1.11.2.js'></script>
+			<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+			<script src='styles/bootstrap-3.3.4-dist/js/bootstrap.js'></script>
+			<!-- <script src='mustache/mustache.js'></script> -->
+			<script src='angular/angular.js'></script>
+			<script src='angular-ui-router/build/angular-ui-router.js'></script>
+			<script src='ui-bootstrap/ui-bootstrap-tpls-0.13.0.js'></script>
+
+		<!-- End Plugins and Services -->
+	</body>
+</html>
+\end{lstlisting}
+\end{frame}
+
+Um ein breiteres Spektrum zur DOM Traversal zu bekommen wurde jQuery in das Projekt eingebunden. Event-Listeners und Callbacks für z.B. Buttons sind somit einfach zu realisieren. Hier ist ein Codebeispiel für einen einfachen Button und ein Event-Listener in jQuery:
+
+HTML Code:
+\begin{frame}
+
+\begin{lstlisting}
+	<button id='button1' class='btn btn-default'>This is a button</btn>
+\end{lstlisting}
+\end{frame}
+
+jQuery Code:
+\begin{frame}
+
+\begin{lstlisting}
+	$(function(){
+		// DOM Element - Event  -  Callback
+		$('#button1').on('click', function(){
+			//Callback function
+		});
+	});
+\end{lstlisting}
+\end{frame}
+
+Nach mehrfachen hinzufügen von HTML Seiten fiel auf, dass es zur ständigen Wiederholung einzelner Elemente wie z.B. der Navigationsleiste kommt, was bedeutet, dass man bei einer Änderung die selbe Codeänderung in jeder Datei durchführen muss. 
+\par
+Deshalb wurde das Mustache.js-Plugin zum Projekt hinzugefügt. Dies stellt einige Funktionen zum Templating von HTML Code zur Verfügung, welche den Code um einiges schrumpfen würde. Doch wurde Mustache nach kurzem Tests von Angular.js abgelöst, das teilweise die gleichen Funktionen wie Mustache besitzt (zum Thema Templating). Das größte Feature von Angular ist die Erstellung einer Single-Page-Webapp. 
+\par
+Anstelle vieler verschiedener HTML Dateien (für z.B. 'Home','Login','Menu') zwischen denen hin und her gesprungen wird, was ein ständiges nachladen aller Elemente bedeutet, bietet eine SPA den Vorteil das es nur eine Index.html Datei gibt in die eine app.js geladen wird und all ihre Komponenten. Von da aus lädt sich die App per Ajax (Asynchrones Java und XML) Templates, Controller, Services und Daten aus dem Backend dynamisch, während die Webapp geladen ist.
+\par
+Die index.html wird somit zur Build Datei der App die die Komponenten der Webapp vereint und anschließend ausführt. Die Darstellung der Seite wird mit Directives zugewiesen, die sich in den Custom Tags von HTML5 befinden. Ein Beispiel für die Directives und dem Build der App in Codeform:
+
+\begin{frame}
+
+\begin{lstlisting}
+	<html ng-app="app">
+		<head>
+			<title>Tally C&amp;S</title>		
+			
+			<!-- Laden der Stylesheets und anderes...-->
+			
+		</head>
+
+		<body class="color-bg">
+
+			<div id="wrap">
+
+				<!-- Directive f\''ur die Navigationsleiste-->
+				<my-navbar></my-navbar> 
+
+				<!-- Directive f\''ur das Login ModalFenster-->
+				<login></login>
+
+				<!-- Directive f\''ur den Body oder View der Seite-->
+				<div ui-view></div>
+
+			</div> <!-- close wrap -->
+
+			<footer id="footer" class="text-center">
+
+				<!-- Directive f\''ur die Fussleiste-->
+				<my-footer></my-footer>
+			</footer>
+			
+			<!-- Plugins and Services -->
+				<!-- jQuery (necessary for Bootstrap's JavaScript plugins. Saved on Drive) -->
+				<script src="scripts/jquery-1.11.2.js"></script>
+				<!-- Latest compiled and locally saved JavaScript from Bootstrap -->
+				<script src="styles/bootstrap-3.3.4-dist/js/bootstrap.js"></script>
+				<!-- <script src="mustache/mustache.js"></script> -->
+				<script src="angular/angular.js"></script>
+				<script src="angular-ui-router/build/angular-ui-router.js"></script>
+				<script src="ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+
+			<!-- End Plugins and Services -->
+
+			<!-- Build; Hier werden alle Elemente der App geladen-->
+				<script src="scripts/app.js"></script>
+				<script src="scripts/directives/myNavbar.js"></script>
+				<script src="scripts/directives/login.js"></script>
+				<script src="scripts/directives/myFooter.js"></script>
+				<script src="scripts/directives/menuModal.js"></script>
+				<script src="scripts/controllers/userCtrl.js"></script>
+				<script src="scripts/controllers/menuCtrl.js"></script>
+				<script src="scripts/controllers/loginCtrl.js"></script>
+				<script src="scripts/controllers/loginModalCtrl.js"></script>
+				<script src="scripts/controllers/updatedCtrl.js"></script>
+				<script src="scripts/controllers/logoutCtrl.js"></script>
+				<script src="scripts/controllers/lbCtrl.js"></script>
+				<script src="scripts/services/myService.js"></script>
+				<script src="scripts/services/userDataService.js"></script>
+				<script src="scripts/services/menuService.js"></script>
+				<script src="scripts/services/loginService.js"></script>
+				<script src="scripts/services/loginModalService.js"></script>
+
+
+			<!-- End Build -->
+
+			<script src="scripts/main.js"></script>
+		</body>
+	</html>
+
+\end{lstlisting}
+\end{frame}
+
+Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
+
+
+\subsubsection{Probleme / Schwierigkeiten}
+
+\subsubsection{Verbesserungen / Änderungen für die Zukunft}
+		
 		
 \section{Fazit des Tally Projekts}
 Die vorgegebenen Ziele konnten alle erfüllt werden. Der Raspberry besitzt alle erforderliche Hardware und Software um einen Webserver darauf laufen lassen zu können und um das Programm darauf ausführen zu können. Der Touchscreen und der Barcodescanner arbeiten auch ohne Störungen.

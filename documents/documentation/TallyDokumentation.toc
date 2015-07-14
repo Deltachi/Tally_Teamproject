@@ -50,4 +50,10 @@
 \contentsline {paragraph}{settingswidget.cpp :}{39}{section*.12}
 \contentsline {paragraph}{afterbuyscreen.cpp :}{39}{section*.13}
 \contentsline {paragraph}{showipscreen.cpp :}{39}{section*.14}
-\contentsline {section}{\numberline {5}Fazit des Tally Projekts}{40}{section.5}
+\contentsline {subsection}{\numberline {4.3}Die Tally Website - Das Interface zur Einsicht und Konfiguration aller Daten}{40}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Erste Konzeption}{40}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Ziele zur Bedienung und der Benutzeroberfl\IeC {\"a}che}{40}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Umsetzung}{41}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Probleme / Schwierigkeiten}{44}{subsubsection.4.3.4}
+\contentsline {subsubsection}{\numberline {4.3.5}Verbesserungen / \IeC {\"A}nderungen f\IeC {\"u}r die Zukunft}{44}{subsubsection.4.3.5}
+\contentsline {section}{\numberline {5}Fazit des Tally Projekts}{44}{section.5}
