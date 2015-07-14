@@ -1,45 +1,57 @@
-\contentsline {section}{\numberline {1}Projektvorfeld}{3}
-\contentsline {subsection}{\numberline {1.1}Kaffeestrichliste bisher}{3}
-\contentsline {section}{\numberline {2}Rahmenbedingungen}{3}
-\contentsline {subsection}{\numberline {2.1}Aufgabe - die neue Kaffeestrichliste}{3}
-\contentsline {section}{\numberline {3}Ziele des Projekts}{3}
-\contentsline {subsection}{\numberline {3.1}Zielbestimmung}{4}
-\contentsline {subsubsection}{\numberline {3.1.1}Der Benutzer Account}{4}
-\contentsline {subsubsection}{\numberline {3.1.2}Das Programm}{4}
-\contentsline {subsubsection}{\numberline {3.1.3}Der Administrator Account}{4}
-\contentsline {subsection}{\numberline {3.2}Produkteinsatz}{4}
-\contentsline {subsubsection}{\numberline {3.2.1}Anwendungsbereiche}{4}
-\contentsline {subsubsection}{\numberline {3.2.2}Zielgruppen}{4}
-\contentsline {subsubsection}{\numberline {3.2.3}Betriebsbedingungen}{4}
-\contentsline {subsection}{\numberline {3.3}Produktumgebung}{5}
-\contentsline {subsubsection}{\numberline {3.3.1}Software}{5}
-\contentsline {subsubsection}{\numberline {3.3.2}Hardware}{5}
-\contentsline {subsubsection}{\numberline {3.3.3}Orgware}{5}
-\contentsline {subsection}{\numberline {3.4}Produktfunktion}{5}
-\contentsline {subsubsection}{\numberline {3.4.1}Benutzerfunktion}{5}
-\contentsline {subsection}{\numberline {3.5}Programmfunktion}{6}
-\contentsline {subsection}{\numberline {3.6}Serverfunktion}{6}
-\contentsline {subsubsection}{\numberline {3.6.1}Datenbank}{6}
-\contentsline {subsection}{\numberline {3.7}Benutzerschnittstelle}{6}
-\contentsline {section}{\numberline {4}Meilensteine des Projektes}{6}
-\contentsline {subsection}{\numberline {4.1}Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}{6}
-\contentsline {subsubsection}{\numberline {4.1.1}Betriebssystem und Verbindung zu anderen Rechnern}{7}
-\contentsline {subsubsection}{\numberline {4.1.2}Der Webserver}{7}
-\contentsline {subsubsection}{\numberline {4.1.3}Qt Creator}{8}
-\contentsline {subsubsection}{\numberline {4.1.4}Die passende Datenbank}{9}
-\contentsline {subsubsection}{\numberline {4.1.5}Der Touchscreen}{9}
-\contentsline {subsubsection}{\numberline {4.1.6}Produkte scannen}{10}
-\contentsline {subsubsection}{\numberline {4.1.7}Wlan f\IeC {\"u}r den Raspberry}{11}
-\contentsline {subsubsection}{\numberline {4.1.8}angepasster Bootscreen}{12}
-\contentsline {subsubsection}{\numberline {4.1.9}Backups einrichten und versenden per Mail}{14}
-\contentsline {subsubsection}{\numberline {4.1.10}Tally autostarten}{19}
-\contentsline {subsection}{\numberline {4.2}QT Creator - Das Tally Programm}{21}
-\contentsline {subsubsection}{\numberline {4.2.1}Die Benutzeroberfl\"ache}{22}
-\contentsline {subsubsection}{\numberline {4.2.2}Aufbau des Programmes}{23}
-\contentsline {subsubsection}{\numberline {4.2.3}Funktionen des Programmes}{25}
-\contentsline {subsection}{\numberline {4.3}Sonderzeichen}{26}
-\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{26}
-\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{27}
-\contentsline {subsection}{\numberline {6.1}Grafiken}{27}
-\contentsline {subsection}{\numberline {6.2}Tabellen}{28}
-\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{28}
+\contentsline {section}{\numberline {1}Projektvorfeld}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Kaffeestrichliste bisher}{3}{subsection.1.1}
+\contentsline {section}{\numberline {2}Rahmenbedingungen}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Aufgabe - die neue Kaffeestrichliste}{3}{subsection.2.1}
+\contentsline {section}{\numberline {3}Ziele des Projekts}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Zielbestimmung}{4}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Der Benutzer Account}{4}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Das Programm}{4}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Der Administrator Account}{4}{subsubsection.3.1.3}
+\contentsline {subsection}{\numberline {3.2}Produkteinsatz}{4}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Anwendungsbereiche}{4}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Zielgruppen}{4}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Betriebsbedingungen}{4}{subsubsection.3.2.3}
+\contentsline {subsection}{\numberline {3.3}Produktumgebung}{5}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Software}{5}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Hardware}{5}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Orgware}{5}{subsubsection.3.3.3}
+\contentsline {subsection}{\numberline {3.4}Produktfunktion}{5}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Benutzerfunktion}{5}{subsubsection.3.4.1}
+\contentsline {subsection}{\numberline {3.5}Programmfunktion}{6}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Serverfunktion}{6}{subsection.3.6}
+\contentsline {subsubsection}{\numberline {3.6.1}Datenbank}{6}{subsubsection.3.6.1}
+\contentsline {subsection}{\numberline {3.7}Benutzerschnittstelle}{6}{subsection.3.7}
+\contentsline {section}{\numberline {4}Meilensteine des Projektes}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}{7}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Betriebssystem und Verbindung zu anderen Rechnern}{7}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Der Webserver}{8}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Qt Creator}{8}{subsubsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.4}Die passende Datenbank}{10}{subsubsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.5}Der Touchscreen}{10}{subsubsection.4.1.5}
+\contentsline {subsubsection}{\numberline {4.1.6}Produkte scannen}{12}{subsubsection.4.1.6}
+\contentsline {subsubsection}{\numberline {4.1.7}Wlan f\IeC {\"u}r den Raspberry}{12}{subsubsection.4.1.7}
+\contentsline {subsubsection}{\numberline {4.1.8}angepasster Bootscreen}{13}{subsubsection.4.1.8}
+\contentsline {subsubsection}{\numberline {4.1.9}Backups einrichten und versenden per Mail}{15}{subsubsection.4.1.9}
+\contentsline {subsubsection}{\numberline {4.1.10}Tally autostarten}{20}{subsubsection.4.1.10}
+\contentsline {subsection}{\numberline {4.2}QT Creator - Das Tally Programm}{23}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Die Benutzeroberfl\IeC {\"a}che}{23}{subsubsection.4.2.1}
+\contentsline {subsubsection}{\numberline {4.2.2}Datenbank und Tally}{23}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.3}Aufbau des Programmes}{25}{subsubsection.4.2.3}
+\contentsline {paragraph}{Zust\IeC {\"a}nde:}{25}{section*.2}
+\contentsline {paragraph}{mainwindows.cpp:}{27}{section*.3}
+\contentsline {paragraph}{loginscreen.cpp:}{29}{section*.4}
+\contentsline {paragraph}{passwordscreen.cpp:}{29}{section*.5}
+\contentsline {paragraph}{favwidget.cpp :}{30}{section*.6}
+\contentsline {paragraph}{favcart.cpp \& buywidget.cpp:}{30}{section*.7}
+\contentsline {paragraph}{coffeesweetsscan.cpp :}{31}{section*.8}
+\contentsline {paragraph}{shoppingcart.cpp :}{31}{section*.9}
+\contentsline {paragraph}{scanwidget.cpp :}{33}{section*.10}
+\contentsline {paragraph}{sqlzugriff.cpp :}{33}{section*.11}
+\contentsline {paragraph}{settingswidget.cpp :}{34}{section*.12}
+\contentsline {paragraph}{afterbuyscreen.cpp :}{34}{section*.13}
+\contentsline {paragraph}{showipscreen.cpp :}{35}{section*.14}
+\contentsline {section}{\numberline {5}Auflistungen und Aufzhlungen}{35}{section.5}
+\contentsline {section}{\numberline {6}Tabellen, Grafiken und Gleitobjekte}{36}{section.6}
+\contentsline {subsection}{\numberline {6.1}Grafiken}{36}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Tabellen}{36}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Bewegliche Objekte}{36}{subsection.6.3}

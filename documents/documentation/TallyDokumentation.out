@@ -1,0 +1,44 @@
+\BOOKMARK [1][-]{section.1}{Projektvorfeld}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Kaffeestrichliste bisher}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Rahmenbedingungen}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Aufgabe - die neue Kaffeestrichliste}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Ziele des Projekts}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Zielbestimmung}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Der Benutzer Account}{subsection.3.1}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Das Programm}{subsection.3.1}% 8
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Der Administrator Account}{subsection.3.1}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Produkteinsatz}{section.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Anwendungsbereiche}{subsection.3.2}% 11
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Zielgruppen}{subsection.3.2}% 12
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Betriebsbedingungen}{subsection.3.2}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Produktumgebung}{section.3}% 14
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Software}{subsection.3.3}% 15
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Hardware}{subsection.3.3}% 16
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Orgware}{subsection.3.3}% 17
+\BOOKMARK [2][-]{subsection.3.4}{Produktfunktion}{section.3}% 18
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Benutzerfunktion}{subsection.3.4}% 19
+\BOOKMARK [2][-]{subsection.3.5}{Programmfunktion}{section.3}% 20
+\BOOKMARK [2][-]{subsection.3.6}{Serverfunktion}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.6.1}{Datenbank}{subsection.3.6}% 22
+\BOOKMARK [2][-]{subsection.3.7}{Benutzerschnittstelle}{section.3}% 23
+\BOOKMARK [1][-]{section.4}{Meilensteine des Projektes}{}% 24
+\BOOKMARK [2][-]{subsection.4.1}{Raspberry Pi 2 Model B - Die Hardware mit der passenden Software}{section.4}% 25
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Betriebssystem und Verbindung zu anderen Rechnern}{subsection.4.1}% 26
+\BOOKMARK [3][-]{subsubsection.4.1.2}{Der Webserver}{subsection.4.1}% 27
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Qt Creator}{subsection.4.1}% 28
+\BOOKMARK [3][-]{subsubsection.4.1.4}{Die passende Datenbank}{subsection.4.1}% 29
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Der Touchscreen}{subsection.4.1}% 30
+\BOOKMARK [3][-]{subsubsection.4.1.6}{Produkte scannen}{subsection.4.1}% 31
+\BOOKMARK [3][-]{subsubsection.4.1.7}{Wlan f\374r den Raspberry}{subsection.4.1}% 32
+\BOOKMARK [3][-]{subsubsection.4.1.8}{angepasster Bootscreen}{subsection.4.1}% 33
+\BOOKMARK [3][-]{subsubsection.4.1.9}{Backups einrichten und versenden per Mail}{subsection.4.1}% 34
+\BOOKMARK [3][-]{subsubsection.4.1.10}{Tally autostarten}{subsection.4.1}% 35
+\BOOKMARK [2][-]{subsection.4.2}{QT Creator - Das Tally Programm}{section.4}% 36
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Die Benutzeroberfl\344che}{subsection.4.2}% 37
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Datenbank und Tally}{subsection.4.2}% 38
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Aufbau des Programmes}{subsection.4.2}% 39
+\BOOKMARK [1][-]{section.5}{Auflistungen und Aufzhlungen}{}% 40
+\BOOKMARK [1][-]{section.6}{Tabellen, Grafiken und Gleitobjekte}{}% 41
+\BOOKMARK [2][-]{subsection.6.1}{Grafiken}{section.6}% 42
+\BOOKMARK [2][-]{subsection.6.2}{Tabellen}{section.6}% 43
+\BOOKMARK [2][-]{subsection.6.3}{Bewegliche Objekte}{section.6}% 44
