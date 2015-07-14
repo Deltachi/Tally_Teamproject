@@ -4,6 +4,8 @@
 	<div class="color-bg topic-padding">
 		<div class="container">
 			<div class="jumbotron inline-text lil-jumbo">
+				<button ng-show="drink.Visible == 1 || userData.rights >= 3" class="btn btn-success" ng-click="addItem();" data-toggle="modal" data-target="#menuModal" >Add new item</button>
+				<hr ng-show="drink.Visible == 1 || userData.rights >= 3">
 				<h2>Drinks</h2>
 			</div>
 		</div>
@@ -39,7 +41,7 @@
 				<div class="panel panel-default menuTable">
 					<table class="table panel-body table-hover">
 						<tbody id="item-list">
-							<tr href ng-repeat="sweet in sweets" data-toggle="tooltip" title="Noch {{sweet.Amount}} verfügbar!" data-container="body" data-placement="bottom">
+							<tr href ng-repeat="sweet in sweets" data-toggle="tooltip" title="Noch {{sweet.Amount}} verfügbar!" data-container="body" data-placement="bottom"   ng-class="{'hiddenItem' : sweet.Visible == 0}" ng-show="sweet.Visible == 1 || userData.rights >= 3">
 								<th>{{sweet.Nick}}</th>
 								<td>{{sweet.Info}}</td>
 								<td>{{sweet.Price | number:2}} &euro;</td>

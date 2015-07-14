@@ -102,9 +102,10 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-						<button type="button" class="btn btn-danger" ng-click="deleteItem();">Delete item <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+						<button ng-show="editMode() == 'update'" type="button" class="btn btn-danger" ng-click="deleteItem();">Delete item <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
 						<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-success" ng-click="submitItem();">Submit changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+						<button ng-show="editMode() == 'update'" type="button" class="btn btn-success" ng-click="submitItem();">Submit changes <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+						<button ng-hide="editMode() == 'update'" type="button" class="btn btn-success" ng-click="createItem();">Create item <span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
 				</div>
 			</div>
 		</div>

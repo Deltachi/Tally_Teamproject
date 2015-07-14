@@ -35,7 +35,13 @@ angular.module('app.controllers.menuCtrl', [])
 
 		// menuService.editItem = {"Nick":"Item placeholder"};
 		// console.log("Initialize editItem with: "+menuService.editItem.Nick);
+		$scope.addItem = function(){
+			menuService.editItem = {'Nick': "New Item", 'Typ':"0", "Type_Group": "Drinks", "Visible": "1"};
+			menuService.editMode = 'insert';
+		}
+
 		$scope.setNewEditItem = function(item_id){
+			menuService.editMode = 'update';
 			console.log("Change item with id: "+item_id);
 			postData['request'] = item_id;
 			menuService.getItemSync(postData).then(
