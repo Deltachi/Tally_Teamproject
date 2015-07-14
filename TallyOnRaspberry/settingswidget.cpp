@@ -1,3 +1,4 @@
+//this widget will help to configure the wlan settings on the rapsberry.
 #include "settingswidget.h"
 #include "ui_settingswidget.h"
 #include "mainwindow.h"
@@ -10,7 +11,7 @@
 #include <QtNetwork/QNetworkConfigurationManager>
 #include <QtNetwork/QNetworkSession>
 #include <QtNetwork/QTcpSocket>
-
+//inits the GUI
 SettingsWidget::SettingsWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SettingsWidget)
@@ -18,11 +19,12 @@ SettingsWidget::SettingsWidget(QWidget *parent) :
     ui->setupUi(this);
     error = false;
 }
-
+//deletes the object
 SettingsWidget::~SettingsWidget()
 {
     delete ui;
 }
+//this inits the widget
 bool SettingsWidget::setMainWindowPointer(QApplication *a){
     MainWindowPointer = a;
     text = " ";
@@ -36,17 +38,18 @@ bool SettingsWidget::setMainWindowPointer(QApplication *a){
     ui->lineEdit->setSelection(count,1);
     return !error;
 }
+//this will find the given string in the wlan config file from the raspberry and returns the text which is written right after the given string.
 QString SettingsWidget::findLineWithText(QString findThis){
     Interface_Path
 
     QFile file(filename);
     QString s;
-    if(file.open(QIODevice::ReadWrite)){
+    if(file.open(QIODevice::ReadWrite)){//does the file exist/can i access it?
         QTextStream stream(&file);
         while(!stream.atEnd()){
             QString line = stream.readLine();
 
-            if(line.contains(findThis)){
+            if(line.contains(findThis)){//find the correct line
                 line.remove(0,findThis.length());
                 s.append(line);
                 file.close();
@@ -60,38 +63,39 @@ QString SettingsWidget::findLineWithText(QString findThis){
             }
         }
         file.close();
-    }else{
+    }else{//this will display a warning if the file could not be found
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(NULL, QObject::tr("Warning"), QObject::tr(qPrintable("Could not find:\r\n \"" + filename + "\"\r\nWLAN configuration wont work.\r\n:(")),QMessageBox::Close);
         error = true;
     }
     return s;
 }
+//this finds the given string in the wlan config file and will replace everything after it with the "replaceHere" string. (It will replace just everything in the same line).
 void SettingsWidget::replaceLineWithText(QString replaceHere,QString writeThis){
    Interface_Path
     QFile file(filename);
     QString s;
-    if(file.open(QIODevice::ReadWrite | QIODevice::Text)){
+    if(file.open(QIODevice::ReadWrite | QIODevice::Text)){//can i access the  file?
         QTextStream stream(&file);
         while(!stream.atEnd()){
             QString line = stream.readLine();
 
-            if(line.contains(replaceHere)){
-                s.append(replaceHere + writeThis + "\"\r\n");
+            if(line.contains(replaceHere)){//find the given String and copy everything you find to the "s" string.
+                s.append(replaceHere + writeThis + "\"\r\n"); //Here the line will be replaced.
             }else{
-                s.append(line + "\r\n");
+                s.append(line + "\r\n"); //here we will just save the lines which do not contain the replaceHere string.
             }
         }
-        file.resize(0);
+        file.resize(0);//delete the file and add the string "s".
         stream << s;
         file.close();
-    }else{
+    }else{//this message will be shown if the file could not be accessed.
         QMessageBox::StandardButton reply;
         reply = QMessageBox::warning(NULL, QObject::tr("Warning"), QObject::tr(qPrintable("Could not find:\r\n \"" + filename + "\"\r\nWLAN configuration wont work.\r\n:(")),QMessageBox::Close);
         error = true;
     }
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_1_clicked()
 {
     switch(text.at(count).toAscii()){
@@ -100,7 +104,7 @@ void SettingsWidget::on_pushButton_1_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_2_clicked()
 {
     if(shiftActive){
@@ -121,7 +125,7 @@ void SettingsWidget::on_pushButton_2_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_3_clicked()
 {
     if(shiftActive){
@@ -142,7 +146,7 @@ void SettingsWidget::on_pushButton_3_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_4_clicked()
 {
     if(shiftActive){
@@ -163,7 +167,7 @@ void SettingsWidget::on_pushButton_4_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_5_clicked()
 {
     if(shiftActive){
@@ -184,7 +188,7 @@ void SettingsWidget::on_pushButton_5_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_6_clicked()
 {
     if(shiftActive){
@@ -205,7 +209,7 @@ void SettingsWidget::on_pushButton_6_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_7_clicked()
 {
     if(shiftActive){
@@ -228,7 +232,7 @@ void SettingsWidget::on_pushButton_7_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_8_clicked()
 {
     if(shiftActive){
@@ -249,7 +253,7 @@ void SettingsWidget::on_pushButton_8_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_9_clicked()
 {
     if(shiftActive){
@@ -272,7 +276,7 @@ void SettingsWidget::on_pushButton_9_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_Shift_clicked()
 {
     if(shiftActive){
@@ -299,7 +303,7 @@ void SettingsWidget::on_pushButton_Shift_clicked()
         shiftActive = true;
     }
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_0_clicked()
 {
     switch(text.at(count).toAscii()){
@@ -309,7 +313,7 @@ void SettingsWidget::on_pushButton_0_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling if text button was pressed
 void SettingsWidget::on_pushButton_Hashtag_clicked()
 {
     switch((int)text.at(count).toAscii()){
@@ -320,7 +324,7 @@ void SettingsWidget::on_pushButton_Hashtag_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//selects the next char.
 void SettingsWidget::on_pushButton_backwards_clicked()
 {
     if(count > 0){
@@ -328,7 +332,7 @@ void SettingsWidget::on_pushButton_backwards_clicked()
     }
     ui->lineEdit->setSelection(count,1);
 }
-
+//selects the previous char.
 void SettingsWidget::on_pushButton_forward_clicked()
 {
     count++;
@@ -338,7 +342,7 @@ void SettingsWidget::on_pushButton_forward_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//this will save the written string to the wlan config file.
 void SettingsWidget::on_pushButton_accept_clicked()
 {
     ui->pushButton_back->setText("Res LAN");
@@ -348,7 +352,7 @@ void SettingsWidget::on_pushButton_accept_clicked()
         this->replaceLineWithText("wpa-psk \"",text);
     }
 }
-
+//this will remove one char from the written text.
 void SettingsWidget::on_pushButton_delete_clicked()
 {
     if(count > 0){
@@ -358,12 +362,12 @@ void SettingsWidget::on_pushButton_delete_clicked()
         ui->lineEdit->setSelection(count,1);
     }
 }
-
+//event handling for back button.
 void SettingsWidget::on_pushButton_back_clicked()
 {
     MainWindowPointer->exit(71);
 }
-
+//this will switch to the next editable setting.
 void SettingsWidget::on_pushButton_next_clicked()
 {
     if(countSetting == 1){
@@ -379,17 +383,17 @@ void SettingsWidget::on_pushButton_next_clicked()
     ui->lineEdit->setText(text);
     ui->lineEdit->setSelection(count,1);
 }
-
+//event handling for show ip button
 void SettingsWidget::on_pushButton_10_clicked() //showip
 {
     QString ip;
-    foreach(const QHostAddress &address,QNetworkInterface::allAddresses()){
+    foreach(const QHostAddress &address,QNetworkInterface::allAddresses()){//look at all ip adresses you can find.
         ip.append(address.toString()+"\r\n");
     }
-    QMessageBox::StandardButton reply;
+    QMessageBox::StandardButton reply; //this will print the found ip adresses.
     reply = QMessageBox::information(NULL, QObject::tr("Ips:"), QObject::tr(qPrintable("Tally found this:\r\n \"" + ip)),QMessageBox::Close);
 }
-
+//event handling for lan reset. This will reset the lan/wlan drivers.
 void SettingsWidget::on_pushButton_clicked()//reset lan
 {
     QProcess process;

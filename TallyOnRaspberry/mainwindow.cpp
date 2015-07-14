@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     showFavCart = true;
     counter = -1;
 
-    QTime qtime = QTime::currentTime();
+    QTime qtime = QTime::currentTime(); //Init the clock on the widget.
     QString stime = qtime.toString(Qt::LocalDate);
     ui->label_Time->setText(stime);
     startTimer(1000);
@@ -60,7 +60,7 @@ void MainWindow::timerEvent(QTimerEvent *event)
     QString sdate = qdate.toString(Qt::LocalDate);
     ui->label_Date->setText(sdate);
 
-    if(watchdogtime == time.toInt() && watchdogactive){   //watchdog overtime
+    if(watchdogtime == time.toInt() && watchdogactive){   //Should the Watchdog automatically do a logout?
         mainWindowPointer->exit(100);
         watchdogtime = 0;
     }else
@@ -73,13 +73,13 @@ void MainWindow::timerEvent(QTimerEvent *event)
         //do nothing
     }else if(counter <= 1){
         counter++;
-    }else if(counter > 1){              //was the after buy screen shown for more than 1 second?
+    }else if(counter > 1){              //was the AfterBuy-Screen shown for more than 1 second? Then remove it and do a logout for the current user.
         counter = -1;
         mainWindowPointer->exit(100);
     }
 
 }
-
+//resets the watchdog
 void MainWindow::setWatchDogactive(bool value){
     watchdogactive = value;
 }
@@ -87,7 +87,7 @@ void MainWindow::setWatchDogactive(bool value){
 //read the Barcode-Scanner
 void MainWindow::keyPressEvent(QKeyEvent *ev)
 {
-    if(ev->text().at(0) == 0xD){           //if /n/r was pressed
+    if(ev->text().at(0) == 0xD){           //if /n/r was pressed the Barcode Scanner has finished transmitting.
         mainWindowPointer->exit(34);
     }
     else scanString = scanString + ev->text();
@@ -126,8 +126,7 @@ void MainWindow::getUserFromLoginScreen(){
 
    ui->label_username->setText(myLoginScreen->getUsername());
 }
-
-
+//removes any Widget laying in the gridLayout_port
 void MainWindow::removeWidget(){
 
     QLayoutItem *oldItem = ui->gridLayout_port->itemAt(0);
@@ -138,20 +137,19 @@ void MainWindow::removeWidget(){
         delete oldWidget;
     }
 }
-
-
+//Puts the IPScreen into the gridLayoutPort and inits it.
 void MainWindow::showIpScreen(QString text){
     ShowIpScreen *myIpScreen = new ShowIpScreen();
     myIpScreen->setMainWindowPointer(mainWindowPointer,text);
     ui->gridLayout_port->addWidget(myIpScreen);
 }
-
+//if the Loginscreen is still active, it will get the UserId from it. Otherwise it will fail.
 void MainWindow::getUserIDFromLoginScreen(){
     LoginScreen *loginS;
     loginS = (LoginScreen*)(ui->gridLayout_port->itemAt(0)->widget());
     userID = loginS->getUserID();
 }
-
+//Puts the LoginPasswordWidget into the gridLayoutPort and inits it.
 void MainWindow::showLoginPasswordWidget(){
     passwordscreen *myPwScreen = new passwordscreen();
     myPwScreen->setUsername(ui->label_username->text());
@@ -159,23 +157,26 @@ void MainWindow::showLoginPasswordWidget(){
     ui->gridLayout_port->addWidget(myPwScreen);
     showFavCart = true;
 }
+//Puts the SettingsWidget into the gridLayoutPort and inits it.
 bool MainWindow::showSettingsWidget(){
     this->removeWidget();
     SettingsWidget *mySettingsWidget = new SettingsWidget();
-    if(mySettingsWidget->setMainWindowPointer(mainWindowPointer)){
+    if(mySettingsWidget->setMainWindowPointer(mainWindowPointer)){//could the settings File be read from the system? else return false!
         ui->gridLayout_port->addWidget(mySettingsWidget);
         return true;
     }
     return false;
 }
-
+//returns the userId. This just works if the userId was set before. E.g. via this.getUserIDFromLoginScreen();
 QString MainWindow::getUserID(){
     return userID;
 }
+//If some Items have been manipulated the FavWidget will reset them.
 void MainWindow::updateFavScreenAmount(){
     FavWidget *temp = (FavWidget*)ui->gridLayout_port->itemAt(0)->widget();
     temp->forceFavCartUpdate();
 }
+//Puts the CoffeeSweetScann widget into the gridLayoutPort and inits it.
 void MainWindow::showCoffeeSweetWidget(){
     scanString = "";
     CoffeSweetsScann *myCoffeeWidget = new CoffeSweetsScann();
@@ -184,14 +185,14 @@ void MainWindow::showCoffeeSweetWidget(){
     if(showFavCart){
         myCartItems.clear();
     }
-    if(myCartItems.length() == 0){
+    if(myCartItems.length() == 0){//Is the shoppingcart empty? -> show the favcart.
         FavCart *myFavCart = new FavCart();
         myFavCart->setMainWindowPointer(mainWindowPointer,userID);
         myFavCart->updateItems();
         myCoffeeWidget->setQWidget(myFavCart);
         showFavCart = false;
         favCartVisible = true;
-    }else{
+    }else{ //init the shoppingcart and place it into the CoffeeSweetsScan widget.
         Shoppingcart *cart = new Shoppingcart;
         cart->setMainWindowPointer(mainWindowPointer,userID);
         myCoffeeWidget->setQWidget(cart);
@@ -199,7 +200,7 @@ void MainWindow::showCoffeeSweetWidget(){
         favCartVisible = false;
         CoffeSweetsScann *temp = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
         Shoppingcart *tempCart = temp->getShoppingcart();
-        while(loop < myCartItems.length()){
+        while(loop < myCartItems.length()){ //copy every item from the old shoppingcart into the new one.
             QListWidgetItem *test = new QListWidgetItem;
             *test = myCartItems.at(loop);
             tempCart->addItem(test);
@@ -207,6 +208,7 @@ void MainWindow::showCoffeeSweetWidget(){
         }
     }
 }
+//updates the qList "myCartItems" which backups all items from the shoppingcart. The items will be read from the CoffeeSweetsScann widget.
 void MainWindow::updateQListCart(){
     if(!favCartVisible){ //is there a shopping cart or is there the favcart?
         CoffeSweetsScann *temp = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
@@ -214,30 +216,37 @@ void MainWindow::updateQListCart(){
         myCartItems = tempCart->getItems();
     }
 }
+//updates the qList "myCartItems" which backups all items from the shoppingcart.
 void MainWindow::setQListCart(QList<QListWidgetItem> item){
     myCartItems = item;
 }
+//updates the qList "myCartItems" which backups all items from the shoppingcart. The items will be read from the Buywidget widget.
 void MainWindow::updateCartFromBuyWidget(){
     buywidget *temp = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();
     myCartItems = temp->getItems();
 }
+//updates the qList "myCartItems" which backups all items from the shoppingcart. The items will be read from the Scan widget.
 void MainWindow::updateCartFromScanWidget(){
     ScanWidget *temp = (ScanWidget*)ui->gridLayout_port->itemAt(0)->widget();
     myCartItems = temp->getItems();
 }
+//updates the qList "myCartItems" which backups all items from the shoppingcart. The items will be read from the Fav widget.
 void MainWindow::updateCartFromFavWidget(){
     FavWidget *temp = (FavWidget*)ui->gridLayout_port->itemAt(0)->widget();
     myCartItems = temp->getItems();
 }
+//enables/disables the logout button.
 void MainWindow::setLogoutButton(bool a){
     ui->pushButton_logout->setEnabled(a);
 }
+//Puts the Buywidget into the gridLayoutPort and inits it.
 void MainWindow::showSweetsWidget(){
     buywidget *myBuyWidget = new buywidget();
 
     myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,true,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
+//Puts the FavWidget into the gridLayoutPort and inits it.
 void MainWindow::showFavWidget(){
     CoffeSweetsScann *c = (CoffeSweetsScann*)ui->gridLayout_port->itemAt(0)->widget();
     QListWidgetItem item = *(c->getFavSelectedItem());
@@ -248,17 +257,20 @@ void MainWindow::showFavWidget(){
     myFavWidget->setMainWindowPointer(mainWindowPointer,userID,&item);
     ui->gridLayout_port->addWidget(myFavWidget);
 }
+//Puts the AfterBuyScreen into the gridLayout_Port and inits it.
 void MainWindow::showAfterBuyScreen(){
     AfterBuyScreen *myAfterBuyScreen = new AfterBuyScreen();
     ui->gridLayout_port->addWidget(myAfterBuyScreen);
     counter = 0;
 }
+//Puts the Buywidget into the gridLayout_Port and inits it.
 void MainWindow::showCoffeeWidget(){
     buywidget *myBuyWidget = new buywidget();
 
     myBuyWidget->setMainWindowPointer(mainWindowPointer,&myCartItems,false,userID);
     ui->gridLayout_port->addWidget(myBuyWidget);
 }
+//Puts the Scan into the gridLayout_Port and inits it.
 bool MainWindow::showScanWidget(){
     Data = QSqlDatabase::addDatabase("QSQLITE");
     Database_Link
@@ -267,7 +279,7 @@ bool MainWindow::showScanWidget(){
     SqlZugriff database;
     database.getPicturePath();
     bool valid = false;
-    if(database.findGroceriesWithBarcode(scanString)){
+    if(database.findGroceriesWithBarcode(scanString)){ //Find the scanned item and give it to the Scanwidget
         item->setData(4,database.getString(0));
         item->setData(5,database.getString(5));
         item->setData(6,database.getString(4));
@@ -301,16 +313,17 @@ bool MainWindow::showScanWidget(){
         return false;
     }
 }
+//updates the qList "myCartItems" which backups all items from the buywidget. The items will be read from the Scan widget.
 void MainWindow::updateBuyscreenAmount(){
     buywidget *myBuyWidget = (buywidget*)ui->gridLayout_port->itemAt(0)->widget();
     myBuyWidget->updateAmount();
 }
+//this will get called if the logout Button was clicked
 void MainWindow::on_pushButton_logout_clicked()
 {
     showFavCart = true;
     mainWindowPointer->exit(100);
 }
-
 void MainWindow::on_pushButton_clicked()
 {
     mainWindowPointer->exit(0);
