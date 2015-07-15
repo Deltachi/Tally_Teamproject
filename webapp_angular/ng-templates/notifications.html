@@ -43,7 +43,47 @@
 										{{message.Message}}</a>
 									</div>
 								</div>
-								<!-- <a class="alert-link" href="menu.html"> menu?</a> -->
+
+								<div class="jumbotron">
+									<h2>Write a message:</h2>
+									<div class="input-group">
+										<span class="input-group-addon">To User_ID:</span> 
+										<input type="text" id="Name" name="Name" maxlength="32" class="form-control" placeholder="" ng-model="newMessage.User_ID">
+									</div>
+									<hr>
+									<div class="input-group">	
+										<span class="input-group-addon">From:</span> 
+										<input type="text" id="Nick" name="Nick" maxlength="32" class="form-control" placeholder="" ng-model="newMessage.Sender">
+									</div>
+									<hr>
+									<div class="input-group">	
+										<span class="input-group-addon">Title:</span> 
+										<input type="text" id="Barcode" name="Barcode" maxlength="32" class="form-control" placeholder="" ng-model="newMessage.Title">
+									</div>
+									<hr>
+									<!-- <div class="input-group">	
+										<span class="input-group-addon">Type:</span> 
+										<input type="text" id="Amount" name="Amount" maxlength="32" class="form-control" placeholder="" ng-model="newMessage.Type">
+									</div> -->
+									<div class="input-group">	
+										<span class="input-group-addon">Type:</span> 
+										<select class="form-control" id="Type_Group_select" ng-model="newMessage.Type">
+											<option value="alert-default" ng-selected="true">Default</option>
+											<option value="alert-info">Light Blue / Info</option>
+											<option value="alert-success">Green / Success</option>
+											<option value="alert-warning">Yellow / Warning</option>
+											<option value="alert-danger">Red / Danger</option>
+										</select>
+									</div>
+									<hr>
+									<div class="input-group">	
+										<span class="input-group-addon">Message:</span> 
+										<input type="text" id="Price" name="Price" maxlength="32" class="form-control" placeholder="" ng-model="newMessage.Message">
+									</div>
+									<br>
+										<button class="btn btn-success" ng-click="submitMessage(newMessage);">Submit</button>
+									
+								</div>
 							</div> <!-- panel-body -->
 						</div> <!-- panel -->
 					</div> <!-- Messages col-md-4 -->
