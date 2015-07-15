@@ -67,7 +67,7 @@
 
 
 \title{\normalfont\bfseries{Tally\\ digitale Strichliste am Raspberry Pi}\\---}
-\author{Nicolai Tegtmeier \\ Dominik Scheffler \\ Philip Frieling \\ Sebastian Reinke}
+\author{Nicolai Tegtmeier(Raspberry 4.1) \\ Dominik Scheffler(Website 4.3) \\ Philip Frieling(Tally 4.2) \\ Sebastian Reinke(Tally 4.2)}
 \date{23.06.2015}
 
 
@@ -1774,28 +1774,403 @@ Die index.html wird somit zur Build Datei der App die die Komponenten der Webapp
 
 Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
 
+Innerhalb von app.js wird die App wie folgt gebaut:
 
-\subsubsection{Probleme / Schwierigkeiten}
+\begin{frame}
 
-\subsubsection{Verbesserungen / Änderungen für die Zukunft}
+\begin{lstlisting}
+	
+	var app = angular.module('app',[
+		'ui.router',
+		'ui.bootstrap',
+		'app.directives.myNavbar',
+		'app.directives.myFooter',
+		'app.directives.login',
+		'app.directives.menuModal',
+
+		'app.controllers.userCtrl',
+		'app.controllers.menuCtrl',
+		'app.controllers.loginCtrl',
+		'app.controllers.loginModalCtrl',
+		'app.controllers.updatedCtrl',
+		'app.controllers.logoutCtrl',
+		'app.controllers.lbCtrl',
+
+		'app.services.myService',
+		'app.services.userDataService',
+		'app.services.menuService',
+		'app.services.loginService',
+		'app.services.loginModalService'
+
+		]);
+\end{lstlisting}
+\end{frame}
+
+Dabei stellt alles, das sich in dem Array befindet, eine Dependency dar, die vor der Ausführung der App geladen werden muss.
+
+Zum Routing auf der Website wurde der Angular-UI-Router ins Projekt eingebunden. Er ermöglicht das Filtern vom User eingegebenen/ausgewählten Routen nach Authentifikation und Authorisierung und ungültigen Pfaden. 
+Wenn der User im Begriff ist einen Bereich zu betreten der eine Authentifikation benötigt wird überprüft ob Userdaten vorhanden sind mit denen sich der Client identifizieren kann. Falls nicht aka der Client nicht angemeldet ist wird kein Aufruf zum Backend gestartet, sondern der Client zum Home-Bildschirm weitergeleitet mit der Bitte, sich anzumelden.
+Hier der Code für das Routing:
+
+\begin{frame}
+
+\begin{lstlisting}
+	//UI-ROUTER
+	app.config(['$urlRouterProvider','$stateProvider',function($urlRouterProvider, $stateProvider) {
+		$urlRouterProvider.otherwise('/');
+		$stateProvider
+			.state('/', {
+				url: '/',
+				templateUrl: 'ng-templates/home.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('home', {
+				url: '/home',
+				templateUrl: 'ng-templates/home.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('menu', {
+				url: '/menu',
+				templateUrl: 'ng-templates/menu.html',
+				data: {
+					requireLogin: false 
+				}
+			})
+			.state('app' ,{
+				abstract: true,
+				data: {
+					requireLogin: true //this property will apply to all children of 'app'
+				}
+			})
+			.state('notifications', {
+				url: '/notifications',
+				templateUrl: 'ng-templates/notifications.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('leaderboard', {
+				url: '/leaderboard',
+				templateUrl: 'ng-templates/leaderboard.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('settings', {
+				url: '/settings',
+				templateUrl: 'ng-templates/settings.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('favorites', {
+				url: '/favorites',
+				templateUrl: 'ng-templates/favorites.html',
+				data: {
+					requireLogin: true 
+				}
+			})
+			.state('logout', {
+				url: '/logout',
+				templateUrl: 'ng-templates/logout.html',
+				controller: 'logoutCtrl',
+				data: {
+					requireLogin: true 
+				}
+			})
+	}]);
+\end{lstlisting}
+\end{frame}
+
+URLs werden nicht als tatsächliche URL behandelt sondern in einen State verwandelt. Wenn der User also zur URL '/home' weitergeleitet wird, ändert sich der State zu 'home' und es werden die benötigten Templates und Controller geladen.
+
+Ein Template mit Controller sieht in Angular wie folgt aus:
+
+HTML:
+\begin{frame}
+
+\begin{lstlisting}
+	<div ng-controller="mainController as myController">
+		<h1>{{myController.template}}</h1>
+	</div>
+\end{lstlisting}
+\end{frame}
+
+Angular.js
+\begin{frame}
+
+\begin{lstlisting}
+	app.controller('mainController', function(){
+		this.template = "Hier steht der Templatetext!"
+	})
+\end{lstlisting}
+\end{frame}
+
+Die Ausgabe sieht dann so ähnlich aus:
+\begin{frame}
+
+\begin{lstlisting}
+	Hier steht der Templatetext!
+\end{lstlisting}
+\end{frame}
+
+Im Controller kann man nun Funktionen und Zuweisungen schreiben mit denen man im HTML Code arbeiten kann. Zudem kann man im Funktionskopf Dependencies bestimmen, wie z.B. andere Services oder den \$scope um das 'this' weglassen zu können.
+
+Das Backend wird mit PHP realisiert. Dabei stehen mehrere PHP Scripts mit eingeschränkten Funktionsumfang zur Verfügung um entweder aus der SQlite Database zu lesen, oder Zeilen zu updaten/einfügen/löschen. Wie so ein Datenbank-Zugriff in einem PHP Script aussieht wird im folgenden Codeausschnitt dargestellt:
+
+\begin{frame}
+
+\begin{lstlisting}
+	<?php
+		try {
+		    // Use database file "database.sqlite" 
+		    $db = new PDO('sqlite:../../sqlite/database.sqlite');
+		    
+		    // Throw exceptions on error
+		    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		    $name = $_POST["request"];	//must be Username
+
+		    //Vorzeitiges erstellen der Query um injection-attacks zu vermeiden
+		    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
+
+			$results = $db->query($query);
+
+			$rows = $results->fetchAll(PDO::FETCH_ASSOC);
+			$data = array();
+
+			foreach ($rows as $rowKey => $row) {
+				$data[] = $row;
+				break;	//Break after 1 result. Should do that automatically, since Username is UNIQUE
+			}
+			echo json_encode($data);	//Convert the data to a JSON String since we use JSON as Object format
+		    $db = NULL;		// Close database
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>	
+\end{lstlisting}
+\end{frame}
+
+Diese Methode des seperierten Statement-Erstellen und folgenden Ausfüren bietet relativ guten Schutz vor Injektions-Angriffen, bei denen man die Variablen der Abfrage ändert und somit den Query zwecksentfremdet und an Daten kommt, die man schützen wollte.
+Nun wird ein Service geschrieben, der dem Backend die Request-Daten schickt, die Antwort abfängt und diese in ein Object erstellt.
+Das wird mit Angular-Services realisiert, die im Folgenden beschrieben werden:
+\begin{frame}
+
+\begin{lstlisting}
+	angular.module('app.services.userDataService', []) 
+	
+
+		.factory("userDataService", function($http){
+			
+		//Dummy Daten, falls es zu einem Fehler kommt um undefinierte Zust\''ande zu vermeiden
+		var userData =  {
+		"firstname": "Unknown",
+		"lastname": "Intruder",
+		"username": "(no name)",
+		"password": "0000",
+		"mail": "nomail@me.com",
+		"leaderboard": true,
+		"balance": -6.66,
+			"messages": [
+				{"Sender":"System","Type":"alert-danger","Title":"Hey, intruder","Message":"I'm watching you."},
+			],
+			"history": [
+				{"history_id":"0", "title": "No recent purchases", "price":"","date": ""},
+					
+			],
+			"favorites": [
+			{"favorite_id":"0", "title": "Kaffee L", "price":"1.50"},
+			{"favorite_id":"1", "title": "Cappuchino", "price":"1.20"},
+			{"favorite_id":"2", "title": "Snickers", "price":"0.50"},
+			{"favorite_id":"3", "title": "Kaffee M", "price":"1"},
+			{"favorite_id":"4", "title": "Macchiato", "price":"1.50"}
+			]
+		};
+
+		//Funktionen zum getten und setten dieser Userdaten
+		function getUserData() {
+			return userData;
+		}
+		function setUserData(newData) {
+			userData = newData;
+		}
+		return {
+		getUserData: getUserData,
+		setUserData: setUserData,
+			
+		//Diese Funktion wird aufgerufen um Daten vom Backend anzufordern
+	  	getUserDataSync: function(postData){
+
+  			  			//Hier wird der Ajax Befehl vorbereitet
+		return	$.ajax({
+		type: "POST",
+		async: false,
+		url: "/apis/users/getUserData.php",
+		data: postData, 
+		success: function(response){
+		  	console.log("Successful service request: getUserDataSync");
+			return response.data;	//Daten werden zum ausf\''uhrenden Controller zur\''uckgegeben
+								},
+			//Fehlerbericht im Falle eines Backend-Errors
+			error: function(jqXHR, status, errors){
+			console.log("Error service request");
+			console.log(status);
+								}
+							});
+				},
+					
+			}
+		});
+\end{lstlisting}
+\end{frame}
+
+In den Servicefunktionen zum Datenfetching aus dem Backend werden im Falle eines Fehlers ein ausreichender Fehlerbericht in die Console ausgegeben. Dieser reicht meißtens aus um die Fehlerquelle zu lokalisieren.
+
+Damit sich der User nicht jedes mal anmelden muss, wenn dieser die Webapp neu lädt, oder die Seite kurzzeitig verlässt, arbeiten wir mit Sessions, in denen wir die wichtigsten Eckdaten speichern, die der Server braucht um den Client einem gespeicherten User zuzuordnen. Das login-Script und Erstellen der Session-Cookies wird im Folgendem gezeigt:
+(login.php)
+\begin{frame}
+
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    // Use database file "database.sqlite" 
+		    $db = new PDO('sqlite:../../sqlite/database.sqlite');
+		    // Throw exceptions on error
+		    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		    if (isset($_POST["username"])){$username = $_POST["username"];}else{$username = "";}	//must be Username
+		    if (isset($_POST["password"])){$password = $_POST["password"];}else{$password = "";}	//must be Password
+
+		    $query = "SELECT * FROM Users WHERE Username = '".$username."' AND Password = '".$password."'";
+			$results = $db->query($query);
+			$rows = $results->fetchAll(PDO::FETCH_ASSOC);
+			$data = array();
+			foreach ($rows as $rowKey => $row) {
+				array_push($data,$row);
+
+			}
+			if (!empty($data)){
+				echo 'true';//json_encode($data);
+
+				$_SESSION['username'] = $data[0]['Username'];
+				$_SESSION['user_ID'] = $data[0]['User_ID'];
+				$_SESSION['rights'] = $data[0]['Rights'];
+				//$_SESSION['password'] = $data[0]['Password'];
+
+			}
+			else{
+				echo 'nodata';
+			}
+			// http_response_code(404);
+		    $db = NULL;		// Close database
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+\end{lstlisting}
+\end{frame}
+
+(retrieveData.php)
+\begin{frame}
+
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    
+			$data = array();
+			// foreach ($rows as $rowKey => $row) {
+			// 	array_push($data,$row);
+			// }
+			foreach ($_SESSION as $key=>$value) {
+				//array_push($data,$value);
+				$data[$key] = $value;
+			}
+			if (!empty($data)){
+				echo json_encode($data);
+			}
+			else{
+				echo "nodata";
+			}
+			
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+ \end{lstlisting}
+\end{frame}
+
+Falls keine Daten oder falsche Daten eingegeben werden, gibt das Backend ein 'nodata' Object zurück, welches im Frontend behandelt wird. Andernfalls bekommt das Frontend die gespeicherten Userinformationen und kann damit die fehlenden Daten aus der DB nachreichen.
+Um so eine Session manuell zu löschen, gibt es auch ein logout.php Script:
+\begin{frame}
+
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    
+			session_destroy();
+			
+			echo true;
+			
+			
+			
+			
+			
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+ \end{lstlisting}
+\end{frame}
+
 		
 		
 \section{Fazit des Tally Projekts}
 Die vorgegebenen Ziele konnten alle erfüllt werden. Der Raspberry besitzt alle erforderliche Hardware und Software um einen Webserver darauf laufen lassen zu können und um das Programm darauf ausführen zu können. Der Touchscreen und der Barcodescanner arbeiten auch ohne Störungen.
 \par 
-Auch die selbstgeschriebene Software Tally arbeitet einwandfrei und der Einkauf von Produkten funktioniert. Der Zuigriff auf die Datenbank erfolgt ebenfalls, sodass die dort gespeicherten Informationen über die Website eingesehen und geändert werden können.
-\par
+Auch die selbstgeschriebene Software Tally arbeitet einwandfrei und der Einkauf von Produkten funktioniert. Der Zugriff auf die Datenbank erfolgt ebenfalls, sodass die dort gespeicherten Informationen über die Website eingesehen und geändert werden können.
+
+\subsection{Probleme und Schwierigkeiten}
+
+\subsubsection{Raspberry Pi 2}
 Probleme gab es zum Teil bei der Einrichtung von Backups auf dem Raspberry, die aber durch eine weit verbreitete Methode, rsync, behoben werden konnten. Wie zunächst gedacht konnte allerdings leider nicht das Barcodescannermodul verwendet werden, da die Spannung am Raspberry zu hoch ist, weshalb wir auf einen USB Barcodescanner umgestiegen sind.
-\par
-Bei der Programmierung der Website und des Tally Programmes waren die größten Probleme die Zugriffe auf die Datenbank, wie man darauf lesen und schreiben kann, und die Anordnung der einzelnen Tabellen in der Datenbank. Nach weitreichenden Recherchen konnten diese Probleme aber behoben werden.
-\par
-Für die Zukunft wäre es möglich einen größeren Touchscreen und ein Barcodescannermodul anzubringen. Desweiteren wäre ein Akku denkbar, sodass der Raspberyr auch bei Stromausfall noch einige Stunden arbeiten kann.
-\par
-Bei Tally könnte man die GUI überarbeiten. Außerdem wären weitere Einstellungsmöglichkeiten im Hauptmenü des Admins denkbar. 
-\par
-Auf der Website könnten noch die gewünschten Statistiken einsehbar gemacht werden.	
+
+\subsubsection{Tally}
 
 
+\subsubsection{Website}
+Ein Problem ist, dass man alle Daten aktuell halten muss, die sich bei jeder Benutzereingabe ändern können.
+Um dies zu gewährleisten, müssen Variablen unter $watch gestellt werden oder im $rootScope abgespeichert werden, was Ressourcen kostet, die im kleinen Umfang jedoch umbeträchtlich sind.
+\par
+Zudem muss man seht genau auf Timing achten, da es keine Refreshes oder sonstige Events gibt, die Änderungen von Daten Triggern. Ajax bedeutet auch, dass Daten evtl. erst dann fertig geladen werden wenn das Template schon eingesetzt wurde. Das kann aber mit angulars eigenen Tags und Attributen umgangen werden, indem man z.B. anstatt 'src=' die Angular-Variante 'ng-src=' benutzt, welche darauf ausgelegt ist, die Daten später zu erhalten.
+
+\subsection{Verbesserungen und mögliche Änderungen in der Zukunft}
+
+\subsubsection{Raspberry Pi 2}
+Als Verbesserung für den Raspberry könnte man einen größeren Touchscreen verwenden, da in Zukunft noch mehr Hardware für den Raspberry erscheinen wird. Auch wäre der Umstieg auf den neuen Raspberry Pi 2 B+ denkbar der durch seine bessere Hardware schneller arbeitet. Desweiteren könnte man ein Barcodescannermodul einbauen sodass der Raspberry noch handlicher wird.
+
+\subsubsection{Tally}
+
+\subsubsection{Website}
+In Zukunft muss der Code deutlich sauberer gemacht werden und auskommentierter Code, der für Testzwecke drin geblieben ist, muss entfernt werden. Außerdem können Verbesserung zum Thema Sicherheit gemacht werden. Dazu gibt es noch etliche Angular-Funktionen und Angular-PlugIns. Letztendlich kann mit dem BootstrapUI-Plugin Bootstrap besser mit Angular verbunden werden, jedoch fehlte die Zeit um den Code zum wiederholten mal umzustrukturieren.
 
 \newpage
 \newpage
