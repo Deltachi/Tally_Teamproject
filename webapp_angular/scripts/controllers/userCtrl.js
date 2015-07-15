@@ -45,6 +45,9 @@ angular.module('app.controllers.userCtrl', [])
 				console.log(response + " affected rows");
 			})
 		};
+		$scope.submitMessage = function(data){
+			
+		}
 
 		//In Settings, if the static fields or the textfields are shown
 		$scope.setEditing = function(value){
