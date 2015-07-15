@@ -21,9 +21,16 @@ angular.module('app.directives.menuModal', [])
 					}
 				}
 				$scope.createItem = function(){
-					menuService.insertItemSync($scope.setItem);
+					menuService.insertItemSync($scope.setItem).then(function(response){
+						if (response != 1){
+							alert("Invalid item form!");
+						}
+						else{
+							$('#menuModal').modal('hide');
+						}
+					})
 					refreshMenu();
-					$('#menuModal').modal('hide');
+					
 				}
 				$scope.submitItem = function(){
 					menuService.updateItemSync($scope.setItem);

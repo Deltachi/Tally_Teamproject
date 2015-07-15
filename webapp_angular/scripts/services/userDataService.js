@@ -105,6 +105,23 @@ angular.module('app.services.userDataService', [])
 							}
 						});
 			},
+			insertMessageSync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/addMessage.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: insertMessageSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
 			getUserFavoritesSync: function(postData){
 			  	return	$.ajax({
 							type: "POST",

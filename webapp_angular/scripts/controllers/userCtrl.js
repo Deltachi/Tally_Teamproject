@@ -45,8 +45,13 @@ angular.module('app.controllers.userCtrl', [])
 				console.log(response + " affected rows");
 			})
 		};
+
+		$scope.newMessage;
+
 		$scope.submitMessage = function(data){
-			
+			userDataService.insertMessageSync(data).then(function(response){
+				console.log("Sent message, count: "+ response);
+			})
 		}
 
 		//In Settings, if the static fields or the textfields are shown
