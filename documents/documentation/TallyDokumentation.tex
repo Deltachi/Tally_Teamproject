@@ -504,7 +504,7 @@ Der Entschluss fiel auf ein Backup der Datenbank, da diese auch per Mail an den 
 sudo apt-get install rsync
 \end{lstlisting}
 \end{frame}
- Rsync ist ein Programm das Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu überprüft es zunächst ob die zu kopierende Datei geändert wurde oder nicht, wodurch ein unnützes kopieren von Daten unterbunden wird.
+ Rsync ist ein Programm, welches Dateien oder Ordner in verschiedenen Pfaden speichern kann. Dazu überprüft es zunächst ob die zu kopierende Datei geändert wurde oder nicht, wodurch ein unnützes kopieren von Daten unterbunden wird.
 \par
 Damit die backups autmatisch und täglich erstellt werden, wird ein cronjob hinzugefügt. Cron-Daemon ist ein Dienst um Skripte oder Programme zu einer bestimmten Zeit starten zu lassen, ohne diese aktiv aufrufen zu müssen. Der Befehl dazu wird in der zugehörigen Tabelle, der crontab, gespeichert. Zunächst wird die Tabelle crontab mit dem editier-Befehl geöffnet
 \begin{frame}
@@ -521,7 +521,7 @@ Hier wird folgende Zeile eingefügt
 15 22 * * * rsync -av --delete /var/www/sqlite/database.sqlite  /home/pi/Tally/sicherung
 \end{lstlisting}
 \end{frame}
-Dadurch wird das Programm jeden Tag um 22:15Uhr aufgerufen und die Datenabank von /var/www/sqlite nach /home/pi/Tally/sicherung  kopiert. Hier wurde die erste Stelle auf 15 gesetzt welche die Minuten Angabe ist, die zweite auf 22 für die Stunden Angaben. Die dritte Stelle gibt an, an welchem Tag das Skript/Programm ausgeführt werden soll, die vierte an welchem Monat und die fünfte an welchem Wochentag. Da rsync jeden Tag ausgeführt werden soll werden nur die ersten beiden Stellen angegeben.
+Dadurch wird das Programm jeden zum Beispiel Tag um 22:15Uhr aufgerufen und die Datenabank von /var/www/sqlite nach /home/pi/Tally/sicherung  kopiert. Hier wurde die erste Stelle auf 15 gesetzt, welche die Minuten Angabe ist, die zweite auf 22 für die Stunden Angaben. Die dritte Stelle gibt an, an welchem Tag das Skript/Programm ausgeführt werden soll, die vierte an welchem Monat und die fünfte an welchem Wochentag. Da rsync täglich ausgeführt werden soll werden nur die ersten beiden Stellen angegeben.
 \par
 Diese Datei soll nun auch täglich, nach dem erstellen des Backups, an den Admin per mail gesendet.
 Dafür wird das Programm sendEmail und zwei Perl- Libraries installiert.
@@ -531,9 +531,9 @@ Dafür wird das Programm sendEmail und zwei Perl- Libraries installiert.
 sudo apt-get install sendemail libio-socket-ssl-perl libnet-ssleay-perl
 \end{lstlisting}
 \end{frame}
-SendEmail hat den Vorteil das kein Mailserver auf dem Raspberry installiert werden muss und der Raspberry als ein eigener 'sende Client' erkannt wird und nur die Zugangsdaten zum SMTP-Server des Email Accounts über den gesendet werden soll hinterlegt werden müssen. Die beiden Perl- Libraries dienen dazu damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
+SendEmail hat den Vorteil, dass kein Mailserver auf dem Raspberry installiert werden muss.Der Raspberry wird als ein eigener 'sende Client' erkannt und nur die Zugangsdaten zum SMTP-Server des Email Accounts, über den gesendet werden soll, hinterlegt werden müssen. Die beiden Perl- Libraries dienen dazu, damit eine verschlüsselte Verbindung per TLS zum Mailserver aufgebaut werden kann.
 \par
-Zum automatischen versenden der Mails wird folgendes Skript erstellt, das vielfach für den Raspberry verwendet wird. Im Code findet sich der Name des Autors \cite{10}
+Zum automatischen versenden der Mails wird folgendes Skript erstellt, welches vielfach für den Raspberry verwendet wird. Im Code findet sich der Name des Autors \cite{10}
 \begin{frame}
 
 \begin{lstlisting}
@@ -668,7 +668,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht."
 \end{lstlisting}
 \end{frame}
 \newpage
-Damit wird das Skript aufgerufen, wobei der text in den ersten Anführungszeichen den Betreff, und der Text in den zweite Anführungszeichen den Inhalt der Email.
+Damit wird das Skript aufgerufen, wobei der text in den ersten Anführungszeichen den Betreff, und der Text in den zweiten Anführungszeichen den Inhalt der Email enthält.
 Hierbei kam es jedoch zu folgendem Fehler
 \begin{frame}
 
@@ -678,7 +678,7 @@ invalid SSL_version specified at /usr/share/perl5/IO/Socket/SSL.pm line 332
 \end{lstlisting}
 \end{frame}
 
-Dieser Fehler entsteht da die dazugehörige SSL konfiguration einen kleinen Fehler enthählt.
+Dieser Fehler entsteht, da die dazugehörige SSL Konfiguration einen kleinen Fehler enthählt.
 Folgende Datei muss aufgerufen werden
 \begin{frame}
 
@@ -917,7 +917,7 @@ sendEmail -f ${SENDER} -t ${RECIPIENT} -u "${SUBJECT}" -m "${BODY}" ${OPTIONS}
 exit 0
 \end{lstlisting}
 \end{frame}
-Im Befehl zum senden wird nun ein drittes Argument hinzugefügt das den Pfad mit der Datei die zu versenden ist enth\"alt.
+Im Befehl zum senden wird nun ein drittes Argument hinzugefügt das den Pfad mit der Datei, die zu versenden ist, enthält.
 \begin{frame}
 
 \begin{lstlisting}
@@ -926,7 +926,7 @@ mailnotify.sh "Test" "Dies ist eine Testnachricht." anhang.txt
 \end{lstlisting}
 \end{frame}
 \par
-Nun muss dieses Skript wieder in die crontab eingefügt werden damit es täglich zu einer bestimmten Zeit ausgeführt wird
+Nun muss dieses Skript wieder in die crontab eingefügt werden, damit es täglich zu einer bestimmten Zeit ausgeführt wird
 \begin{frame}
 
 \begin{lstlisting}
@@ -934,7 +934,7 @@ sudo crontab -e
 
 \end{lstlisting}
 \end{frame}
-hinzugefügt wird
+Hinzugefügt wird
 \begin{frame}
 
 \begin{lstlisting}
@@ -942,12 +942,12 @@ hinzugefügt wird
 
 \end{lstlisting}
 \end{frame}
-Damit wird das Skript mailnotify.sh um 23:45Uhr gestartet und eine Email mit dem Betreff `Sicherung Tally Datenbank', dem Inhalt der Mail `Dies ist eine automatische Sicherungsmail der Tally Datenbank' und dem Dateianhang `/home/pi/Tally/sicherung/database.sqlite' gesendet.
+Damit wird das Skript mailnotify.sh um 23:45 Uhr gestartet und eine Email mit dem Betreff `Sicherung Tally Datenbank', dem Inhalt der Mail `Dies ist eine automatische Sicherungsmail der Tally Datenbank' und dem Dateianhang `/home/pi/Tally/sicherung/database.sqlite' gesendet.
 
 \subsubsection{Tally autostarten}
-Damit nach dem starten des Raspberry Pi direkt das Tally Programm geladen wird musste der Autostart für das Programm konfiguriert werden.
+Damit nach dem Starten des Raspberry Pi direkt das Tally Programm geladen wird, musste der Autostart für das Programm konfiguriert werden.
 \par
-Die erste Idee war das Programm per cronjob nach jedem neuen hochfahren zu starten. Dafür musste zunächst ein kleines Skript geschrieben werden das das Programm startet, welches dann in einer crontab nach jedem hochfahren ausgeführt wird.
+Die erste Idee war, das Programm per cronjob nach jedem neuen Hochfahren zu starten. Dafür musste zunächst ein kleines Skript geschrieben werden, dass das Programm startet, und dann in einer crontab nach jedem Hochfahren ausgeführt wird.
 \begin{frame}
 
 \begin{lstlisting}
@@ -1031,16 +1031,16 @@ sudo crontab -e
 \end{lstlisting}
 \end{frame}
 \newpage
-Dazu wurde folgende zeile eingefügt
+Dazu wurde folgende Zeile eingefügt
 \begin{frame}
 
 \begin{lstlisting}
 @reboot \bin\bash /etc/init.d/NameDesSkripts
 \end{lstlisting}
 \end{frame}
-Das '@reboot' steht für das ausführen der Datei nach jedem neuen hochfahren des Raspberry. Jedoch startete das Programm nach dem hoch fahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete das Skript und somit das Programm.
+Das '@reboot' steht für das Ausführen der Datei nach jedem neuen Hochfahren des Raspberry. Jedoch startete das Programm nach dem Hochfahren des Raspberrys nicht. Erst als die Konsole geöffnet wurde startete das Skript und somit das Programm.
 \par
-Die beschriebene Methode war lediglich dafür gedacht Programme auszuführen die keine GUI benötigen. Alle Programme die autostarten sollen und eine GUI benötigen müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart funktion gestartet werden. \cite{12}
+Die beschriebene Methode war lediglich dafür gedacht, Programme auszuführen, die keine GUI benötigen. Alle Programme, die Autostarten sollen und eine GUI benötigen, müssen über die globale LXDE (Lightweight X11 Desktop Environment) Autostart- Funktion, gestartet werden. \cite{12}
 Dazu erstellt man in folgendem Pfad
 \begin{frame}
 
@@ -1048,7 +1048,7 @@ Dazu erstellt man in folgendem Pfad
 /etc/xdg/autostart/
 \end{lstlisting}
 \end{frame}
-eine Datei die wie folgt lauten muss 'NamedesProgramm.desktop'. Wichtig ist das die Datei auf `.desktop' endet da sonst das Programm nicht nach dem hochfahren gestartet wird.
+eine Datei, die wie folgt lauten muss: 'NamedesProgramm.desktop'. Wichtig ist das die Datei auf `.desktop' endet, da sonst das Programm nicht nach dem hochfahren gestartet wird.
 \begin{frame}
 
 \begin{lstlisting}
@@ -1068,7 +1068,7 @@ Diese Datei wieder ausführbar machen
 chmod +x x11vnc.desktop
 \end{lstlisting}
 \end{frame}
-Und das gewünschte Programm startet nachdem die GUI geladen ist.
+Und das gewünschte Programm startet, nachdem die GUI geladen ist.
 
 \newpage
 
