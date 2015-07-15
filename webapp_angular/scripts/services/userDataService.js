@@ -95,7 +95,7 @@ angular.module('app.services.userDataService', [])
 							url: "/apis/users/getFavorites.php",
 							data: postData, // serializes the form's elements.
 							success: function(response){
-				  				console.log("Successful service request");
+				  				console.log("Successful service request: getUserFavoritesSync");
 
 								return response.data;
 							},
@@ -105,6 +105,41 @@ angular.module('app.services.userDataService', [])
 							}
 						});
 			},
+			getUsersSync: function(){
+			  	return	$.ajax({
+							type: "GET",
+							async: false,
+							url: "/apis/users/getUsers.php",
+							success: function(response){
+				  				console.log("Successful service request: getUsersSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
+			setUserSync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/setUser.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: setUserSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
+			users: {},
+			editUser:{}
 			
 		}
 	});

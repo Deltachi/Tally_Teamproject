@@ -5,20 +5,15 @@
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    if (isset($_POST["request"])){
-	    	$name = $_POST["request"];	//must be Username
-		}
-		else{
-			$name = $_POST["username"];
-		}
+	    // $type_string = $_POST["request"];	//must be Type_Group
 
-	    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
+	    $query = "SELECT * FROM Users";
 		$results = $db->query($query);
 		$rows = $results->fetchAll(PDO::FETCH_ASSOC);
 		$data = array();
 		foreach ($rows as $rowKey => $row) {
-			$data[] = $row;
-			break;	//Break after 1 result. Should do that automatically, since Username is UNIQUE
+			// array_push($data,$row);
+			$data[$rowKey] = $row;
 		}
 		echo json_encode($data);
 		// http_response_code(404);
@@ -29,4 +24,4 @@
 	    echo $e->getMessage();
 	    echo $e->getTraceAsString();
 	}
-?>	
+?>

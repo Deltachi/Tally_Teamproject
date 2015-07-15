@@ -1,16 +1,12 @@
 angular.module('app.controllers.logoutCtrl', []) 	
 	.controller('logoutCtrl', ['$scope','$location', '$state', 'loginService','userDataService', function($scope,$location,$state,loginService,userDataService){
 		function redirect(){
-	  //   	if ($.cookie('session') == null){
-			// 	console.log('NO COOKIE THERE >.>')
-			// }
-			// else{
-				// $.removeCookie('session');
-				// $('[data-toggle="tooltip"]').tooltip('hide');
-				loginService.setUser(null);
-				userDataService.setUserData({});
-				$state.go('home');
-			// }
+	  
+			loginService.setUser(null);
+			loginService.logout();
+			userDataService.setUserData({});
+			$state.go('home');
+			
 		}
 
 		setTimeout(function(){

@@ -5,7 +5,7 @@
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    $type_string = $_POST["request"];	//must be User_ID
+	    $type_string = $_POST["request"];	//must be Type_Group
 
 	    $query = "SELECT * FROM Groceries WHERE Type_Group = '".$type_string."'";
 		$results = $db->query($query);

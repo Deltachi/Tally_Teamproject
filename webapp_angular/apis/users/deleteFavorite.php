@@ -5,22 +5,18 @@
 	    // Throw exceptions on error
 	    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-	    if (isset($_POST["request"])){
-	    	$name = $_POST["request"];	//must be Username
-		}
-		else{
-			$name = $_POST["username"];
-		}
+	    $Favorite_ID = $_POST["Favorite_ID"];	//
 
-	    $query = "SELECT * FROM Users WHERE Username = '".$name."'";
+	    $query = "DELETE FROM Favorites WHERE Favorite_ID = '".$Favorite_ID."'";
 		$results = $db->query($query);
-		$rows = $results->fetchAll(PDO::FETCH_ASSOC);
-		$data = array();
-		foreach ($rows as $rowKey => $row) {
-			$data[] = $row;
-			break;	//Break after 1 result. Should do that automatically, since Username is UNIQUE
-		}
-		echo json_encode($data);
+		$rows = $results->rowCount();
+		// $rows = $results->fetchAll(PDO::FETCH_ASSOC);
+		// $data = array();
+		// foreach ($rows as $rowKey => $row) {
+		// 	array_push($data,$row);
+		// }
+		// echo json_encode($data);
+		echo $rows;
 		// http_response_code(404);
 	    $db = NULL;		// Close database
 
@@ -29,4 +25,4 @@
 	    echo $e->getMessage();
 	    echo $e->getTraceAsString();
 	}
-?>	
+?>

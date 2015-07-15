@@ -2,7 +2,19 @@
 	<div class="color-bg topic-padding">
 		<div class="container">
 			<div class="jumbotron lil-jumbo boxShadow">
-				<h2>{{userData.username}}, <small>edit your settings here.</small></h2>
+				<h2 ng-hide="userData.Rights >= 3">{{userData.Username}}, <small>edit your settings here.</small></h2>
+				<h2 ng-show="userData.Rights >= 3">{{userData.Username}}, <small>edit every Users settings here.</small></h2>
+				<div ng-show="userData.Rights >= 3">
+					<div class="input-group">
+						<select class="form-control" id="User_select" ng-model="user.userSelect" >
+							<option value="{{$index}}" ng-repeat="userObj in usersData" ng-selected="$index == user.myID;">{{userObj.Username}}</option>
+						</select>
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button" ng-click="user.setEditUser(user.userSelect);">Select</button>
+						</span>
+					</div>
+					<br>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -12,10 +24,7 @@
 				<div class="panel-heading">
 					<div class="row inline-text">
 						<div class="">
-							<h3><small>Settings of: </small> {{userData.firstname}} {{userData.lastname}} <span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
-						</div>
-						<div class="">
-							
+							<h3><small>Settings of: </small> {{editUser.Firstname}} {{editUser.Lastname}} <span class="glyphicon glyphicon-user" aria-hidden="true"></span></h3>
 						</div>
 					</div>
 				</div>
@@ -25,72 +34,110 @@
 							<tr class="text-muted">
 								<th class="width-title"></th>
 								<th class="width-details">Details</th>
-								<th class="width-buttonbar">Edit</th>
 							</tr>
 						</thead>	
 						<tbody id="settings">
-							<tr id="name" ng-hide="editing">
+							<tr id="name">
 								<th class="index" scope="row">First and Lastname</th>
 								<td>
-									<span ng-hide="editing">{{userData.firstname}} 
+									<span ng-hide="editing">{{editUser.Firstname}} 
 									</span>
 									<span ng-hide="editing">
-										{{userData.lastname}}</span>
-									<input ng-show="editing" type="text" placeholder="{{userData.firstname}}
-									">
+										{{editUser.Lastname}}</span>
+									<input ng-show="editing" type="text" placeholder="{{editUser.Firstname}}
+									" ng-model="editUser.Firstname">
 									<input ng-show="editing" type="text" placeholder="
-									{{userData.lastname}}">
-								</td>
-								<td>
-									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
+									{{editUser.Lastname}}" ng-model="editUser.Lastname">
 								</td>
 							</tr>
-							<tr id="nick" ng-hide="editing">
+							<tr id="nick">
 								<th class="index" scope="row">Username</th>
 								<td>
-									<span ng-hide="editing">{{userData.username}}</span>
-									<input ng-show="editing" type="text" placeholder="{{userData.username}}">
-								</td>
-								<td>
-									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="nick"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="nick"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="nick"><span class="glyphicon glyphicon-remove"></span></button>
+									<span ng-hide="editing">{{editUser.Username}}</span>
+									<input ng-show="editing" type="text" placeholder="{{editUser.Username}}" ng-model="editUser.Username">
 								</td>
 							</tr>
-							<tr id="password" ng-hide="editing">
+							<tr id="password">
 								<th class="index" scope="row">Password</th>
 								<td>
 									<span  ng-hide="editing" class=" glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
-									<input ng-show="editing" type="password" placeholder="{{userData.password}}">
-								</td>
-								<td>
-									<button ng-hide="editing" class="btn btn-sm btn-info " data-panel="password"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="password"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="password"><span class="glyphicon glyphicon-remove"></span></button>
+									<input ng-show="editing" type="password" placeholder="{{editUser.Password}}" ng-model="editUser.Password">
 								</td>
 							</tr>
-							<tr id="email" ng-hide="editing">
+							<tr id="image">
+								<th class="index" scope="row">Image Path</th>
+								<td>
+									<span ng-hide="editing">{{editUser.Image}}</span>
+									<input ng-show="editing" type="imagePath" placeholder="{{editUser.Image}}" ng-model="editUser.Image">
+								</td>
+							</tr>
+							<tr id="email">
 								<th class="index" scope="row">E-Mail</th>
 								<td>
-									<span ng-hide="editing">{{userData.mail}}</span>
-									<input ng-show="editing" type="email" placeholder="{{userData.mail}}">
+									<span ng-hide="editing">{{editUser.Email}}</span>
+									<input ng-show="editing" type="email" placeholder="{{editUser.Email}}" ng-model="editUser.Email">
 								</td>
+							</tr>
+							<tr id="credits" ng-show="userData.Rights >= 3">
+								<th class="index" scope="row">Balance</th>
 								<td>
-									<button ng-hide="editing" class="btn btn-sm btn-info noedit" data-panel="email"><span class="glyphicon glyphicon-pencil"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-success col-sm-5" data-panel="email"><span class="glyphicon glyphicon-floppy-disk"></span></button>
-									<button ng-show="editing" class="btn btn-sm btn-danger col-sm-5 col-sm-offset-1" data-panel="email"><span class="glyphicon glyphicon-remove"></span></button>
+									<span ng-hide="editing">{{editUser.Credits | number:2}}</span>
+									<input ng-show="editing" type="credits" placeholder="{{editUser.Credits}}" ng-model="editUser.Credits"> 
+									<span class="text-muted">€</span>
+								</td>
+							</tr>
+							<tr id="blocked" ng-show="userData.Rights >= 3">
+								<th class="index" scope="row">Blocked</th>
+								<td>
+									<span ng-hide="editing">{{editUser.Blocked}}</span>
+									<!-- <input ng-show="editing" type="blocked" placeholder="{{editUser.blocked}}"> -->
+									<select ng-show="editing" class="form-control" id="Blocked_select" ng-model="editUser.Blocked" convert-to-number>
+										<option value="0">0</option>
+										<option value="1">1</option>
+									</select>
+								</td>
+							</tr>
+							<tr id="Rights" ng-show="userData.Rights >= 3">
+								<th class="index" scope="row">Rights</th>
+								<td>
+									<span ng-hide="editing">{{editUser.Rights}}</span>
+									<!-- <input ng-show="editing" type="Rights" placeholder="{{editUser.Rights}}"> -->
+									<select ng-show="editing" class="form-control" id="Rights_select" ng-model="editUser.Rights" convert-to-number>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+									</select>
 								</td>
 							</tr>
 							<tr id="leaderboard">
 								<th class="index" scope="row">Leaderboard</th>
-								<td><small class="text-muted">Do you want to appear in the Leaderboard-Section?</small></td>
-								<td><input type="checkbox" ng-checked="userData.leaderboard"></td>
+								<td>
+									<small class="text-muted">Do you want to appear in the Leaderboard-Section?</small>
+									<input type="checkbox" ng-checked="editUser.Leaderboard" ng-model="editUser.Leaderboard">
+								</td>
 							</tr>
 						</tbody>
 					</table>
 				</div> <!-- panel-body -->
+				<div class="panel-footer">
+					<div class="row inline-text">
+						<div class="">
+							<div class="col-sm-12">	
+								<span ng-hide="editing">Edit your Settings:</span>
+								<p ng-show="editing">Save or Cancel your Changes:</p>
+								<button ng-click="setEditing(true);" ng-hide="editing" class="btn btn-info " data-panel="name"><span class="glyphicon glyphicon-pencil"></span></button>
+							</div>
+							<div class="col-sm-3 col-sm-offset-2">	
+								<button ng-click="submitUserData(editUser);" ng-show="editing" class="btn btn-success" data-panel="name"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+							</div>
+							<div class="col-sm-3 col-sm-offset-2">
+								<button ng-click="setEditing(false);" ng-show="editing" class="btn btn-danger" data-panel="name"><span class="glyphicon glyphicon-remove"></span></button>
+							</div>
+						</div>
+					</div>
+				</div><!-- panel-footer -->
 			</div> <!-- panel -->
 		</div> <!-- container -->
 	</div> <!-- drinks-bg -->

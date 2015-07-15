@@ -9,7 +9,6 @@ angular.module('app.controllers.loginModalCtrl', [])
 			$modalInstance.dismiss('cancel');
 		};
 		this.submit = function(username, password){
-			//UsersApi.login(username, password).then(function (user){$scope.$close(user);})
-
+			//fake
 		}
 	}]);
