@@ -37,7 +37,7 @@
 							<div class="panel-body panel-notifications">
 								<div class="row" ng-repeat="message in userData.messages">
 									<div class="alert" ng-class="message.Type" role="alert">
-										<button type="button" class="close" aria-label="Close" ng-click="delete($index, message.Message_ID);"><span aria-hidden="true">&times;</span></button>
+										<button type="button" class="close" aria-label="Close" ng-click="deleteMessage($index, message.Message_ID);"><span aria-hidden="true">&times;</span></button>
 										<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span><strong>{{message.Sender}}<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> {{message.Title}} </strong>
 										<hr>
 										{{message.Message}}</a>

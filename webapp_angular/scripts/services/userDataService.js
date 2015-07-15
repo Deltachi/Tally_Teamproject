@@ -88,6 +88,23 @@ angular.module('app.services.userDataService', [])
 							}
 						});
 			},
+			deleteMessageSync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/deleteMessage.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: deleteMessageSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
 			getUserFavoritesSync: function(postData){
 			  	return	$.ajax({
 							type: "POST",
@@ -96,7 +113,7 @@ angular.module('app.services.userDataService', [])
 							data: postData, // serializes the form's elements.
 							success: function(response){
 				  				console.log("Successful service request: getUserFavoritesSync");
-
+				  				// console.log(response);
 								return response.data;
 							},
 							error: function(jqXHR, status, errors){
@@ -113,7 +130,7 @@ angular.module('app.services.userDataService', [])
 							data: postData, // serializes the form's elements.
 							success: function(response){
 				  				console.log("Successful service request: addFavoriteSync");
-
+				  				// console.log(response);
 								return response.data;
 							},
 							error: function(jqXHR, status, errors){

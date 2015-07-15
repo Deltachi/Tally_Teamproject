@@ -35,9 +35,15 @@ angular.module('app.controllers.userCtrl', [])
 		};
 
 		//In notifications, deletes a message from the internal userData variable
-		$scope.delete = function(index, Message_ID){
+		$scope.deleteMessage = function(index, Message_ID){
 			console.log("Gonna delete this msg: " + userDataService.getUserData().messages[index].Message + " -> msg_id = " + Message_ID);
 			userDataService.getUserData().messages.splice(index, 1);
+			var data = {
+				"Message_ID":  Message_ID
+			};
+			userDataService.deleteMessageSync(data).then(function(response){
+				console.log(response + " affected rows");
+			})
 		};
 
 		//In Settings, if the static fields or the textfields are shown
@@ -115,9 +121,9 @@ angular.module('app.controllers.userCtrl', [])
 		this.newDrink_ID;
 		this.newSweet_ID;
 		
-		reloadFavorites = function(postData){
+		$scope.reloadFavorites = function(postData){
 			var responseFavorites;
-			//Load mails from server
+			//Load favorites from server
 			userDataService.getUserFavoritesSync(postData).then(
 				function(data){
 					responseFavorites = jQuery.parseJSON(data);
@@ -141,7 +147,7 @@ angular.module('app.controllers.userCtrl', [])
 			userDataService.addFavoriteSync(data).then(function(response){
 				console.log(response + " affected rows");
 			})
-			// reloadFavorites(user_id);
+			$scope.reloadFavorites({"request":user_id});
 
 		}
 		$scope.deleteFavorite = function(favorite_id, index){
