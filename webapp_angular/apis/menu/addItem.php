@@ -8,12 +8,12 @@
 	    // $grocery_id = $_POST["Grocery_ID"];	
 	    $grocery_name = $_POST["Name"];	
 	    $grocery_nick = $_POST["Nick"];	
-	    if(isset($_POST["Barcode"]){$grocery_barcode = $_POST["Barcode"];}else{$grocery_barcode = "";}
+	    if(isset($_POST["Barcode"])){$grocery_barcode = $_POST["Barcode"];}else{$grocery_barcode = "";}
 	    $grocery_amount = $_POST["Amount"];	
 	    $grocery_price = $_POST["Price"];	
 	    $grocery_prime_cost = $_POST["Prime_Cost"];	
-	    if(isset($_POST["Image"]){$grocery_image = $_POST["Image"];}else{$grocery_image = "";}
-	    if(isset($_POST["Info"]){$grocery_info = $_POST["Info"];}else{$grocery_info = "";}	
+	    if(isset($_POST["Image"])){$grocery_image = $_POST["Image"];}else{$grocery_image = "";}
+	    if(isset($_POST["Info"])){$grocery_info = $_POST["Info"];}else{$grocery_info = "";}	
 	    if(isset($_POST["Ingredients"])){$grocery_ingredients = $_POST["Ingredients"];}else{$grocery_ingredients = 0;}
 	    $grocery_typ = $_POST["Typ"];
 	    $grocery_type_group = $_POST["Type_Group"];
