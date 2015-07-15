@@ -176,6 +176,20 @@ app.run(['$rootScope','$location', '$state','loginService', 'loginModalService',
 					userData.favorites = responseFavorites;
 					console.log("Loaded "+userData.favorites.length+" favorites");
 					userDataService.setUserData(userData);
+					// console.log("Sucessfully built user object");
+					// console.log("...I wont show it in public.");
+				});
+				var responseHistory;
+			//Load mails from server
+			userDataService.getUserHistorySync(postData).then(
+				function(data){
+					responseHistory = jQuery.parseJSON(data);
+					// console.log(data);
+					// console.log(responseHistory);
+					userData = userDataService.getUserData();
+					userData.history = responseHistory;
+					console.log("Loaded "+userData.history.length+" history");
+					userDataService.setUserData(userData);
 					console.log("Sucessfully built user object");
 					console.log("...I wont show it in public.");
 				});

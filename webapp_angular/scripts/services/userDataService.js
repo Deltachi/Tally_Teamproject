@@ -189,6 +189,23 @@ angular.module('app.services.userDataService', [])
 							}
 						});
 			},
+			getUserHistorySync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/getHistory.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: getUserHistorySync");
+				  				// console.log(response);
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
 			users: {},
 			editUser:{}
 			
