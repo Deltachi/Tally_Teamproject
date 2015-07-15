@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  15 JUL 2015 11:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.5.11)  15 JUL 2015 12:53
 entering extended mode
 **TallyDokumentation.tex
 
@@ -721,13 +721,8 @@ Package pdftex.def Info: 7Settings-Screen.png used on input line 1260.
 (pdftex.def)             Requested size: 256.0748pt x 143.04237pt.
  [32 <C:/Users/Nico/Documents/GitHub/Tally_Teamproject/documents/documentation/
 7Settings-Screen.png>] [33] [34] [35] [36] [37]
-[38] [39]
-Overfull \hbox (4.66554pt too wide) in paragraph at lines 1636--1637
-\T1/cmr/m/n/10.95 Bootstrap-3.3.4, An-gu-lar-JS v1.4.3-build.4096, Angular-UI-R
-outer v0.2.15 und
- []
-
-[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
+[38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52]
+[53]
 (C:\Users\Nico\Documents\GitHub\Tally_Teamproject\documents\documentation\Tally
 Dokumentation.bbl
 Underfull \hbox (badness 7613) in paragraph at lines 11--14
@@ -764,100 +759,117 @@ $\T1/pcr/m/n/10.95 watch ? v = 8opfd5aYkq8 & list = PLS1QulWo1RIZjrD _$
  []
 
 
-Underfull \hbox (badness 6332) in paragraph at lines 61--64
+Underfull \hbox (badness 10000) in paragraph at lines 76--81
+[]\T1/cmr/m/it/10.95 jQuery Ajax to php to sq-li-te\T1/cmr/m/n/10.95 .  []$\T1/
+pcr/m/n/10.95 http : / / www .$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--81
+$\T1/pcr/m/n/10.95 kriwanek . de / raspberry-[]pi / raspberry-[]webserver /$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 76--81
+$\T1/pcr/m/n/10.95 375-[]webseiten-[]mit-[]php5-[]pdo-[]und-[]sqlite-[]erstelle
+n .$
+ []
+
+
+Underfull \hbox (badness 6332) in paragraph at lines 93--96
 []\T1/cmr/m/it/10.95 Qt Crea-tor\T1/cmr/m/n/10.95 .  []$\T1/pcr/m/n/10.95 https
  : / / wiki . qt . io / Apt-[]get _ Qt4 _ on _ the _$
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 66--70
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 98--102
 []\T1/cmr/m/it/10.95 C-Berry Touch\T1/cmr/m/n/10.95 .  []$\T1/pcr/m/n/10.95 htt
 p : / / www . forum-[]raspberrypi . de /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--70
+Underfull \hbox (badness 10000) in paragraph at lines 98--102
 $\T1/pcr/m/n/10.95 Thread-[]test-[]c-[]berry-[]3-[]5-[]tft-[]display$[]\T1/cmr/
 m/n/10.95 . --  Ein-ge-se-hen
  []
 
 
-Underfull \hbox (badness 4492) in paragraph at lines 72--77
+Underfull \hbox (badness 4492) in paragraph at lines 104--109
 []\T1/cmr/m/it/10.95 7 Zoll Pol-lin Touch-s-creen\T1/cmr/m/n/10.95 .  []$\T1/pc
 r/m/n/10.95 http : / / www . pollin . de / shop /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--77
+Underfull \hbox (badness 10000) in paragraph at lines 104--109
 $\T1/pcr/m/n/10.95 dt / NTMwOTc4OTk-[] / Bauelemente _ Bauteile / Aktive _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--77
+Underfull \hbox (badness 10000) in paragraph at lines 104--109
 $\T1/pcr/m/n/10.95 Bauelemente / Displays / 7 _ 17 _ 78 _ cm _ Display _ Set _ 
 mit _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--84
+Underfull \hbox (badness 10000) in paragraph at lines 111--116
 []\T1/cmr/m/it/10.95 4DPi-35 Touch-s-creen\T1/cmr/m/n/10.95 .  []$\T1/pcr/m/n/1
 0.95 http : / / www . 4dsystems . com . au /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 79--84
+Underfull \hbox (badness 10000) in paragraph at lines 111--116
 $\T1/pcr/m/n/10.95 productpages / 4DPi-[]35 / downloads / 4DPi-[]35 _ datasheet
  _ R _$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--91
+Underfull \hbox (badness 10000) in paragraph at lines 118--123
 []\T1/cmr/m/it/10.95 Edimax Wlan Stick\T1/cmr/m/n/10.95 .  []$\T1/pcr/m/n/10.95
  http : / / www . edimax . com / edimax /$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--91
+Underfull \hbox (badness 10000) in paragraph at lines 118--123
 $\T1/pcr/m/n/10.95 merchandise / merchandise _ detail / data / edimax / global 
 /$
  []
 
 
-Underfull \hbox (badness 8000) in paragraph at lines 86--91
+Underfull \hbox (badness 8000) in paragraph at lines 118--123
 $\T1/pcr/m/n/10.95 wireless _ adapters _ n150 / ew-[]7811un$[]\T1/cmr/m/n/10.95
  . --  Ein-ge-se-hen am
  []
 
-[53]
-Underfull \hbox (badness 10000) in paragraph at lines 93--98
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 []\T1/cmr/m/it/10.95 Bootlogo\T1/cmr/m/n/10.95 .  []$\T1/pcr/m/n/10.95 http : /
  / www . edv-[]huber .$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 93--98
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 $\T1/pcr/m/n/10.95 com / index . php / problemloesungen /$
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2183.
- [54]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2183.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2188.
+ [55]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 2188.
 
 (C:\Users\Nico\Documents\GitHub\Tally_Teamproject\documents\documentation\Tally
 Dokumentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2183.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 2188.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2188.
 
 Package rerunfilecheck Info: File `TallyDokumentation.out' has not changed.
 (rerunfilecheck)             Checksum: E8F33BA829FC4AC4C38101B16DC63AC2;4004.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2183.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2188.
  ) 
 Here is how much of TeX's memory you used:
- 9181 strings out of 493921
- 132798 string characters out of 3144879
- 342440 words of memory out of 3000000
- 11232 multiletter control sequences out of 15000+200000
+ 9194 strings out of 493921
+ 132871 string characters out of 3144879
+ 341590 words of memory out of 3000000
+ 11238 multiletter control sequences out of 15000+200000
  16933 words of font info for 41 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
  30i,8n,39p,820b,1808s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -873,9 +885,9 @@ X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Nico\AppData\Lo
 cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-Output written on TallyDokumentation.pdf (55 pages, 1837940 bytes).
+Output written on TallyDokumentation.pdf (56 pages, 1846430 bytes).
 PDF statistics:
- 2221 PDF objects out of 2487 (max. 8388607)
- 1126 named destinations out of 1200 (max. 500000)
+ 2254 PDF objects out of 2487 (max. 8388607)
+ 1133 named destinations out of 1200 (max. 500000)
  477 words of extra memory for PDF output out of 10000 (max. 10000000)
 

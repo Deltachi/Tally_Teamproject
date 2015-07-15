@@ -1627,13 +1627,14 @@ Der User soll ohne Anmeldung Zugriff auf die Bereiche 'Home' und 'Menu' haben. D
 Sobald sich der User angemeldet hat, verschwindet der Login-Button und wird von einem User-Dropdown abgelöst, in dem der User Links zu den Bereichen 'Notifications', 'Leaderboard', 'Settings', 'Favorites' und den Logout erhält.  Es wird sichergestellt, dass der Client keinen Zugriff auf Daten bekommt bevor dieser die benötigten Userdaten zum Anmelden abgeschickt hat. 
 \par
 Im Notifications-Bereich kann der User seinen Kontostand, Nachrichten und letzte Einkäufe einsehen. Das Leaderboard dient nur Kosmetischen Unterhaltungszwecken und zeigt die Top 5 der Kilokalorien / Koffein Konsumenten, die dieses Feature aktiviert haben. In den Settings kann der User seine persönlichen Daten bearbeiten. Im Favorites-Tab kann er Favoriten aussuchen, die in der Schnellauswahl am Raspberry Pi angezeigt werden. 
-\par
+
 Der Logoutbereich entfernt alle gespeicherten Userdaten vom Client und trennt die aktive Sitzung. Der Admin hat folgende zusätzliche Features: Es werden im Menü Admin-Bedienelemente eingebettet, er hat einen separaten Bereich, um Userstatistiken einzusehen (Layout ist ähnlich dem Menü), wo er diese auch bearbeiten / löschen, oder neue User hinzufügen kann. 
 
 
 \subsubsection{Umsetzung}
-
-Zu den Bereichen der Entwicklung gehören zum einen die Grundsprachen HTML5, CSS, JavaScript PHP und SQL, jedoch werden weitere Frameworks, Plugins und Erweiterungen benutzt, wie: jQuery-1.11.2, Mustache v2.1.2, Bootstrap-3.3.4, AngularJS v1.4.3-build.4096, Angular-UI-Router v0.2.15 und UI-Bootstrap-tpls-0.13.0.
+\par
+Zu den Bereichen der Entwicklung gehören zum einen die Grundsprachen HTML5, CSS, JavaScript PHP und SQL,\cite{22}  jedoch werden weitere Frameworks, Plugins und Erweiterungen benutzt, wie: jQuery-1.11.2 \cite{18}, Mustache v2.1.2, Bootstrap-3.3.4 \cite{17}, AngularJS v1.4.3-build.4096 \cite{16}, Angular-UI-Router v0.2.15  und UI-Bootstrap-tpls-0.13.0
+\cite{19}
 \par
 In der ersten Version der Webapp, wurde ein Grundgerüst mit HTML5 CSS und Bootstrap erstellt. Der Fokus lag dabei beim Design und der Anordnung aller Elemente, die leichte Bedienbarkeit und eine selbsterklärende Grafische Benutzeroberfläche. Da der RaspberryPi sich möglicherweise innerhalb eines Intranetzes, ohne Internetzugriff befindet, muss dafür gesorgt werden dass die Libraries auch offline geladen werden können.
 
@@ -1920,7 +1921,7 @@ Die Ausgabe sieht dann so ähnlich aus:
 
 Im Controller kann man nun Funktionen und Zuweisungen schreiben mit denen man im HTML Code arbeiten kann. Zudem kann man im Funktionskopf Dependencies bestimmen, wie z.B. andere Services oder den \$scope um das 'this' weglassen zu können.
 
-Das Backend wird mit PHP realisiert. Dabei stehen mehrere PHP Scripts mit eingeschränkten Funktionsumfang zur Verfügung um entweder aus der SQlite Database zu lesen, oder Zeilen zu updaten/einfügen/löschen. Wie so ein Datenbank-Zugriff in einem PHP Script aussieht wird im folgenden Codeausschnitt dargestellt:
+Das Backend wird mit PHP realisiert. \cite{21} Dabei stehen mehrere PHP Scripts mit eingeschränkten Funktionsumfang zur Verfügung um entweder aus der SQlite Database zu lesen, oder Zeilen zu updaten/einfügen/löschen. Wie so ein Datenbank-Zugriff in einem PHP Script aussieht wird im folgenden Codeausschnitt dargestellt:
 
 \begin{frame}
 
@@ -2154,7 +2155,9 @@ Auch die selbstgeschriebene Software Tally arbeitet einwandfrei und der Einkauf 
 Probleme gab es zum Teil bei der Einrichtung von Backups auf dem Raspberry, die aber durch eine weit verbreitete Methode, rsync, behoben werden konnten. Wie zunächst gedacht konnte allerdings leider nicht das Barcodescannermodul verwendet werden, da die Spannung am Raspberry zu hoch ist, weshalb wir auf einen USB Barcodescanner umgestiegen sind.
 
 \subsubsection{Tally}
-
+Außerdem war ein Problem das weiterleiten auf die nächste Seite durch klicken auf einen Button. Es war nicht klar ob man den Screen komplett löschen und neu aufbauen muss oder einen Screen komplett neu aufbauen kann. Deshalb haben wir das Fenster unterteilt in Bereiche. In diesen werden jeweils Widget eingebunden. Diese besitzen die entsprechenden Screens und können gelöscht und neu gesetzt werden.
+\par
+Ein Problem gab es bei der Synchronisation des Shoppingcarts. Es muss jedesmal in dem MainWindow verankert werden, aber bei jedem Screen-Wechsel werden alle Widget von diesem entfernt. Wir haben es nicht hinbekommen das einmal erzeuge Shoppingcart in jedem neuen Screen zu verankern. Aus diesem Grund wird bei jedem neuen  Screen ein neues Shoppingcart erzeugt und diesem werden die Items mitgegeben die bereits indem vorherigen  lagen und im neuem Screen verankert.
 
 \subsubsection{Website}
 Ein Problem ist, dass man alle Daten aktuell halten muss, die sich bei jeder Benutzereingabe ändern können.
@@ -2165,9 +2168,11 @@ Zudem muss man seht genau auf Timing achten, da es keine Refreshes oder sonstige
 \subsection{Verbesserungen und mögliche Änderungen in der Zukunft}
 
 \subsubsection{Raspberry Pi 2}
-Als Verbesserung für den Raspberry könnte man einen größeren Touchscreen verwenden, da in Zukunft noch mehr Hardware für den Raspberry erscheinen wird. Auch wäre der Umstieg auf den neuen Raspberry Pi 2 B+ denkbar der durch seine bessere Hardware schneller arbeitet. Desweiteren könnte man ein Barcodescannermodul einbauen sodass der Raspberry noch handlicher wird.
+Als Verbesserung für den Raspberry könnte man einen größeren Touchscreen verwenden, da in Zukunft noch mehr Hardware für den Raspberry erscheinen wird. Auch wäre der Umstieg auf den neuen Raspberry Pi 2 B+ denkbar der durch seine bessere Hardware schneller arbeitet. Desweiteren könnte man ein Barcodescannermodul einbauen sodass der Raspberry noch handlicher wird. Auch das direkte verbinden mit einer Kaffeemaschine oder einem Snackautomaten wäre denkbar.
 
 \subsubsection{Tally}
+Eine Verbesserung wäre es , eine erwiterte Preiskalkulation mit einzubinden. Wenn ein Benutzter sehr viel von einem Artikel kauft, soll diese für den Benutzter preiswerter werden.
+Zusätzlich könnten man die Scrollbar vergrößern für eine vereinfachte Bedienung und eine vereinfachte sucher von Artikeln in den einzelnen Listen.
 
 \subsubsection{Website}
 In Zukunft muss der Code deutlich sauberer gemacht werden und auskommentierter Code, der für Testzwecke drin geblieben ist, muss entfernt werden. Außerdem können Verbesserung zum Thema Sicherheit gemacht werden. Dazu gibt es noch etliche Angular-Funktionen und Angular-PlugIns. Letztendlich kann mit dem BootstrapUI-Plugin Bootstrap besser mit Angular verbunden werden, jedoch fehlte die Zeit um den Code zum wiederholten mal umzustrukturieren.
