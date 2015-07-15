@@ -397,6 +397,110 @@ Das wird mit Angular-Services realisiert, die im Folgenden beschrieben werden:
 
 In den Servicefunktionen zum Datenfetching aus dem Backend werden im Falle eines Fehlers ein ausreichender Fehlerbericht in die Console ausgegeben. Dieser reicht meißtens aus um die Fehlerquelle zu lokalisieren.
 
+Damit sich der User nicht jedes mal anmelden muss, wenn dieser die Webapp neu lädt, oder die Seite kurzzeitig verlässt, arbeiten wir mit Sessions, in denen wir die wichtigsten Eckdaten speichern, die der Server braucht um den Client einem gespeicherten User zuzuordnen. Das login-Script und Erstellen der Session-Cookies wird im Folgendem gezeigt:
+(login.php)
+\begin{frame}
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    // Use database file "database.sqlite" 
+		    $db = new PDO('sqlite:../../sqlite/database.sqlite');
+		    // Throw exceptions on error
+		    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+		    if (isset($_POST["username"])){$username = $_POST["username"];}else{$username = "";}	//must be Username
+		    if (isset($_POST["password"])){$password = $_POST["password"];}else{$password = "";}	//must be Password
+
+		    $query = "SELECT * FROM Users WHERE Username = '".$username."' AND Password = '".$password."'";
+			$results = $db->query($query);
+			$rows = $results->fetchAll(PDO::FETCH_ASSOC);
+			$data = array();
+			foreach ($rows as $rowKey => $row) {
+				array_push($data,$row);
+
+			}
+			if (!empty($data)){
+				echo 'true';//json_encode($data);
+
+				$_SESSION['username'] = $data[0]['Username'];
+				$_SESSION['user_ID'] = $data[0]['User_ID'];
+				$_SESSION['rights'] = $data[0]['Rights'];
+				//$_SESSION['password'] = $data[0]['Password'];
+
+			}
+			else{
+				echo 'nodata';
+			}
+			// http_response_code(404);
+		    $db = NULL;		// Close database
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+\end{lstlisting}
+\end{frame}
+
+(retrieveData.php)
+\begin{frame}
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    
+			$data = array();
+			// foreach ($rows as $rowKey => $row) {
+			// 	array_push($data,$row);
+			// }
+			foreach ($_SESSION as $key=>$value) {
+				//array_push($data,$value);
+				$data[$key] = $value;
+			}
+			if (!empty($data)){
+				echo json_encode($data);
+			}
+			else{
+				echo "nodata";
+			}
+			
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+ \end{lstlisting}
+\end{frame}
+
+Falls keine Daten oder falsche Daten eingegeben werden, gibt das Backend ein 'nodata' Object zurück, welches im Frontend behandelt wird. Andernfalls bekommt das Frontend die gespeicherten Userinformationen und kann damit die fehlenden Daten aus der DB nachreichen.
+Um so eine Session manuell zu löschen, gibt es auch ein logout.php Script:
+\begin{frame}
+\begin{lstlisting}
+	<?php
+		try {
+			session_start();
+		    
+			session_destroy();
+			
+			echo true;
+			
+			
+			
+			
+			
+
+		} catch(PDOException $e) 	{
+		    echo "ERROR you noob :P -> ";
+		    echo $e->getMessage();
+		    echo $e->getTraceAsString();
+		}
+	?>
+ \end{lstlisting}
+\end{frame}
+
 4.3.4 Probleme / Schwierigkeiten
 
 Ein Problem ist, dass man alle Daten aktuell halten muss, die sich bei jeder Benutzereingabe ändern können.
