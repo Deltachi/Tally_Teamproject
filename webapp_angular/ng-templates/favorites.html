@@ -34,7 +34,7 @@
 								<th class="index" scope="row">{{$index+1}}</th>
 								<td>{{item.Nick}}</td>
 								<td>{{item.Price | number:2}} &euro;</td>
-								<td><button class="btn btn-sm btn-danger deleteBtn" ng-click="deleteFavorite(item.Favorite_ID);"><span class="glyphicon glyphicon-trash"></span></button></td>
+								<td><button class="btn btn-sm btn-danger deleteBtn" ng-click="deleteFavorite(item.Favorite_ID,$index);"><span class="glyphicon glyphicon-trash"></span></button></td>
 							</tr>
 						</tbody>
 					</table>
@@ -53,17 +53,17 @@
 				</div>
 				<div class="panel-body" ng-controller="menuCtrl as menu">
 					<div class="input-group">
-						<select id="itemList" class="form-control">
-							<option value="drink.Grocery_ID" class="topic" ng-repeat="drink in drinks">{{drink.Nick}}</option>
+						<select id="itemList" class="form-control" ng-model="user.newDrink_ID">
+							<option value="{{drink.Grocery_ID}}" class="topic" ng-repeat="drink in drinks">{{drink.Nick}}</option>
 						</select>
-						<span class="input-group-btn"><div id="addBtn" class="btn btn-success"> Add Drink to the list</div></span>
+						<span class="input-group-btn"><div id="addBtn" class="btn btn-success" ng-click="addFavorite(userData.User_ID, user.newDrink_ID);"> Add Drink to the list</div></span>
 					</div>	<!-- group -->
 					<br>
 					<div class="input-group">
-						<select id="itemList" class="form-control">
-							<option value="sweet.Grocery_ID" class="topic" ng-repeat="sweet in sweets">{{sweet.Nick}}</option>
+						<select id="itemList" class="form-control" ng-model="user.newSweet_ID">
+							<option value="{{sweet.Grocery_ID}}" class="topic" ng-repeat="sweet in sweets">{{sweet.Nick}}</option>
 						</select>
-						<span class="input-group-btn"><div id="addBtn" class="btn btn-success">Add Sweet to the list</div></span>
+						<span class="input-group-btn"><div id="addBtn" class="btn btn-success" ng-click="addFavorite(userData.User_ID, user.newSweet_ID);">Add Sweet to the list</div></span>
 					</div>	<!-- group -->
 				</div> 	<!-- panel-body -->				
 			</div> <!-- panel-default -->

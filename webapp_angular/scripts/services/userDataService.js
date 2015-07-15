@@ -105,6 +105,40 @@ angular.module('app.services.userDataService', [])
 							}
 						});
 			},
+			addFavoriteSync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/addFavorite.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: addFavoriteSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
+			deleteFavoriteSync: function(postData){
+			  	return	$.ajax({
+							type: "POST",
+							async: false,
+							url: "/apis/users/deleteFavorite.php",
+							data: postData, // serializes the form's elements.
+							success: function(response){
+				  				console.log("Successful service request: deleteFavoriteSync");
+
+								return response.data;
+							},
+							error: function(jqXHR, status, errors){
+								console.log("Error service request");
+								console.log(status);
+							}
+						});
+			},
 			getUsersSync: function(){
 			  	return	$.ajax({
 							type: "GET",

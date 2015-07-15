@@ -112,8 +112,47 @@ angular.module('app.controllers.userCtrl', [])
 			
 		}
 
-		$scope.deleteFavorite = function(favorite_id){
+		this.newDrink_ID;
+		this.newSweet_ID;
+		
+		reloadFavorites = function(postData){
+			var responseFavorites;
+			//Load mails from server
+			userDataService.getUserFavoritesSync(postData).then(
+				function(data){
+					responseFavorites = jQuery.parseJSON(data);
+					console.log(data);
+					console.log(responseFavorites);
+					userData = userDataService.getUserData();
+					userData.favorites = responseFavorites;
+					console.log("Loaded "+userData.favorites.length+" favorites");
+					userDataService.setUserData(userData);
+					console.log("Sucessfully built user object");
+					console.log("...I wont show it in public.");
+				});
+		}
+
+		$scope.addFavorite = function(user_id, grocery_id){
+			console.log("Going to add a favorite with grocery_id: "+ grocery_id + " user_id: "+ user_id);
+			var data = {
+				"User_ID":  user_id,
+				"Grocery_ID": grocery_id
+			};
+			userDataService.addFavoriteSync(data).then(function(response){
+				console.log(response + " affected rows");
+			})
+			// reloadFavorites(user_id);
+
+		}
+		$scope.deleteFavorite = function(favorite_id, index){
 			console.log("Going to delete favorite with id: "+ favorite_id);
+			var data = {
+				"Favorite_ID":  favorite_id
+			};
+			userDataService.deleteFavoriteSync(data).then(function(response){
+				console.log(response + " affected rows");
+			})
+			userDataService.getUserData().favorites.splice(index, 1);
 		}
 
 		$scope.$watch(function () { return userDataService.users; }, function (value) {

@@ -23,7 +23,7 @@
 			$_SESSION['username'] = $data[0]['Username'];
 			$_SESSION['user_ID'] = $data[0]['User_ID'];
 			$_SESSION['rights'] = $data[0]['Rights'];
-			$_SESSION['password'] = $data[0]['Password'];
+			//$_SESSION['password'] = $data[0]['Password'];
 
 		}
 		else{
